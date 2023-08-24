@@ -6,6 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	#reserveWrap{
+		width: 1300px;
+		height: 860px;
+		position: relative;
+		border:4px solid #f1f1f1;
+		float: left;
+	    margin-left: 30px;
+	    padding:7px;
+	    text-align: left;
+	}
+	#reserveWrap h3{
+		color:#333;
+		font-size:25px;
+		font-family: NotoSansM;
+		text-align:center;
+		margin-bottom: 65px;
+	    margin-top: 30px;
+	}
 #section {
 	width:100%;
 	margin:auto 0;
@@ -14,8 +32,8 @@
 	position:relative;
 }
 .inner_right {
-    width: 995px;
-    border: 1px solid;
+    width: 1000px;
+    border: 2px solid #ccc;
     position: relative;
     height: 650px;
     margin:auto;
@@ -86,6 +104,7 @@
 	top:0; left: 0; bottom: 0; right: 0;
 	background: rgba(0, 0, 0, 0.8);
 	display:none;
+	z-index:100;
 }
 #layer {
     position: fixed;
@@ -207,94 +226,111 @@ input[type=button] {
 			if(document.getElementsByClassName("chktime")[i].checked){
 				document.getElementsByClassName("chktime")[i].checked = false;
 				document.getElementsByClassName("time")[i].style.background ="white";
+				document.getElementById("userid").innerText="";
+				
 			}
 		}
 	}
 </script>
 </head>
 <body>
-<div id="section">
-	<div id="notice1">좌석 당일 예약</div>
-<div class="inner_right">
-	<div class="pc_left_line">
-	<div class="pc_line">
-		<div class="pc" onclick="reservePc(0)">pc1</div>
-		<div class="pc" onclick="reservePc(1)">pc2</div>
-		<div class="pc" onclick="reservePc(2)">pc3</div>
-		<div class="pc" onclick="reservePc(3)">pc4</div>
-		<div class="pc" onclick="reservePc(4)">pc5</div>
-		<div class="pc" onclick="reservePc(5)">pc6</div>
-		<div class="pc" onclick="reservePc(6)">pc7</div>
-		<div class="pc" onclick="reservePc(7)">pc8</div>
-		<div class="pc" onclick="reservePc(8)">pc9</div>
-		<div class="pc" onclick="reservePc(9)">pc10</div>
-		<div class="pc" onclick="reservePc(10)">pc11</div>
-		<div class="pc" onclick="reservePc(11)">pc12</div>
-	</div>
-	<div class="pc_line">
-		<div class="pc" onclick="reservePc(12)">pc13</div>
-		<div class="pc" onclick="reservePc(13)">pc14</div>
-		<div class="pc" onclick="reservePc(14)">pc15</div>
-		<div class="pc" onclick="reservePc(15)">pc16</div>
-		<div class="pc" onclick="reservePc(16)">pc17</div>
-		<div class="pc" onclick="reservePc(17)">pc18</div>
-		<div class="pc" onclick="reservePc(18)">pc19</div>
-		<div class="pc" onclick="reservePc(19)">pc20</div>
-		<div class="pc" onclick="reservePc(20)">pc21</div>
-		<div class="pc" onclick="reservePc(21)">pc22</div>
-		<div class="pc" onclick="reservePc(22)">pc23</div>
-		<div class="pc" onclick="reservePc(23)">pc24</div>
-	</div>
-	</div>
-	<div class="pc_right_line">
-		<div class="pc_line_two">
-			<div class="nomal" onclick="reserveNomal()">N1</div>
-			<div class="nomal" onclick="reserveNomal()">N2</div>
-			<div class="nomal" onclick="reserveNomal()">N3</div>
-			<div class="nomal" onclick="reserveNomal()">N4</div>
-			<div class="nomal" onclick="reserveNomal()">N5</div>
-			<div class="nomal" onclick="reserveNomal()">N6</div>
-			<div class="nomal" onclick="reserveNomal()">N7</div>
-			<div class="nomal" onclick="reserveNomal()">N8</div>
-			<div class="nomal" onclick="reserveNomal()">N9</div>
-			<div class="nomal" onclick="reserveNomal()">N10</div>
-			<div class="nomal" onclick="reserveNomal()">N11</div>
-			<div class="nomal" onclick="reserveNomal()">N12</div>
-			<div class="nomal" onclick="reserveNomal()">N13</div>
-			<div class="nomal" onclick="reserveNomal()">N14</div>
-			<div class="nomal" onclick="reserveNomal()">N15</div>
-			<div class="nomal" onclick="reserveNomal()">N16</div>
-			<div class="nomal" onclick="reserveNomal()">N17</div>
-			<div class="nomal" onclick="reserveNomal()">N18</div>
-			<div class="nomal" onclick="reserveNomal()">N19</div>
-			<div class="nomal" onclick="reserveNomal()">N20</div>
+<div id="secWrap">
+	<div class="sImg"></div>
+	<div id="section">
+		<div id="labNav">
+			<h2><span>회원정보</span></h2>
+			<ul id="lnb">
+				<li class="on"><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
+				<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
+			</ul>
 		</div>
-	</div>
-	<div class="pc_right_line_two">
-		<div class="pc_line_three">
-			<div class="nomal" onclick="reserveNomal()">N21</div>
-			<div class="nomal" onclick="reserveNomal()">N22</div>
-			<div class="nomal" onclick="reserveNomal()">N23</div>
-			<div class="nomal" onclick="reserveNomal()">N24</div>
-			<div class="nomal" onclick="reserveNomal()">N25</div>
-			<div class="nomal" onclick="reserveNomal()">N26</div>
-			<div class="nomal" onclick="reserveNomal()">N27</div>
-			<div class="nomal" onclick="reserveNomal()">N28</div>
-			<div class="nomal" onclick="reserveNomal()">N29</div>
-			<div class="nomal" onclick="reserveNomal()">N30</div>
-			<div class="nomal" onclick="reserveNomal()">N31</div>
-			<div class="nomal" onclick="reserveNomal()">N32</div>
-			<div class="nomal" onclick="reserveNomal()">N33</div>
-			<div class="nomal" onclick="reserveNomal()">N34</div>
-			<div class="nomal" onclick="reserveNomal()">N35</div>
-			<div class="nomal" onclick="reserveNomal()">N36</div>
-			<div class="nomal" onclick="reserveNomal()">N37</div>
-			<div class="nomal" onclick="reserveNomal()">N38</div>
-			<div class="nomal" onclick="reserveNomal()">N39</div>
-			<div class="nomal" onclick="reserveNomal()">N40</div>
+		<div id="reserveWrap">
+		<h3> 좌석 당일 예약</h3>
+		<div class="ruletab">
+	<div class="inner_right">
+		<div class="pc_left_line">
+			<div class="pc_line">
+				<div class="pc" onclick="reservePc(0)">pc1</div>
+				<div class="pc" onclick="reservePc(1)">pc2</div>
+				<div class="pc" onclick="reservePc(2)">pc3</div>
+				<div class="pc" onclick="reservePc(3)">pc4</div>
+				<div class="pc" onclick="reservePc(4)">pc5</div>
+				<div class="pc" onclick="reservePc(5)">pc6</div>
+				<div class="pc" onclick="reservePc(6)">pc7</div>
+				<div class="pc" onclick="reservePc(7)">pc8</div>
+				<div class="pc" onclick="reservePc(8)">pc9</div>
+				<div class="pc" onclick="reservePc(9)">pc10</div>
+				<div class="pc" onclick="reservePc(10)">pc11</div>
+				<div class="pc" onclick="reservePc(11)">pc12</div>
+			</div>
+			<div class="pc_line">
+				<div class="pc" onclick="reservePc(12)">pc13</div>
+				<div class="pc" onclick="reservePc(13)">pc14</div>
+				<div class="pc" onclick="reservePc(14)">pc15</div>
+				<div class="pc" onclick="reservePc(15)">pc16</div>
+				<div class="pc" onclick="reservePc(16)">pc17</div>
+				<div class="pc" onclick="reservePc(17)">pc18</div>
+				<div class="pc" onclick="reservePc(18)">pc19</div>
+				<div class="pc" onclick="reservePc(19)">pc20</div>
+				<div class="pc" onclick="reservePc(20)">pc21</div>
+				<div class="pc" onclick="reservePc(21)">pc22</div>
+				<div class="pc" onclick="reservePc(22)">pc23</div>
+				<div class="pc" onclick="reservePc(23)">pc24</div>
+			</div>
+		</div>
+		<div class="pc_right_line">
+			<div class="pc_line_two">
+				<div class="nomal" onclick="reserveNomal()">N1</div>
+				<div class="nomal" onclick="reserveNomal()">N2</div>
+				<div class="nomal" onclick="reserveNomal()">N3</div>
+				<div class="nomal" onclick="reserveNomal()">N4</div>
+				<div class="nomal" onclick="reserveNomal()">N5</div>
+				<div class="nomal" onclick="reserveNomal()">N6</div>
+				<div class="nomal" onclick="reserveNomal()">N7</div>
+				<div class="nomal" onclick="reserveNomal()">N8</div>
+				<div class="nomal" onclick="reserveNomal()">N9</div>
+				<div class="nomal" onclick="reserveNomal()">N10</div>
+				<div class="nomal" onclick="reserveNomal()">N11</div>
+				<div class="nomal" onclick="reserveNomal()">N12</div>
+				<div class="nomal" onclick="reserveNomal()">N13</div>
+				<div class="nomal" onclick="reserveNomal()">N14</div>
+				<div class="nomal" onclick="reserveNomal()">N15</div>
+				<div class="nomal" onclick="reserveNomal()">N16</div>
+				<div class="nomal" onclick="reserveNomal()">N17</div>
+				<div class="nomal" onclick="reserveNomal()">N18</div>
+				<div class="nomal" onclick="reserveNomal()">N19</div>
+				<div class="nomal" onclick="reserveNomal()">N20</div>
+			</div>
+		</div>
+		<div class="pc_right_line_two">
+			<div class="pc_line_three">
+				<div class="nomal" onclick="reserveNomal()">N21</div>
+				<div class="nomal" onclick="reserveNomal()">N22</div>
+				<div class="nomal" onclick="reserveNomal()">N23</div>
+				<div class="nomal" onclick="reserveNomal()">N24</div>
+				<div class="nomal" onclick="reserveNomal()">N25</div>
+				<div class="nomal" onclick="reserveNomal()">N26</div>
+				<div class="nomal" onclick="reserveNomal()">N27</div>
+				<div class="nomal" onclick="reserveNomal()">N28</div>
+				<div class="nomal" onclick="reserveNomal()">N29</div>
+				<div class="nomal" onclick="reserveNomal()">N30</div>
+				<div class="nomal" onclick="reserveNomal()">N31</div>
+				<div class="nomal" onclick="reserveNomal()">N32</div>
+				<div class="nomal" onclick="reserveNomal()">N33</div>
+				<div class="nomal" onclick="reserveNomal()">N34</div>
+				<div class="nomal" onclick="reserveNomal()">N35</div>
+				<div class="nomal" onclick="reserveNomal()">N36</div>
+				<div class="nomal" onclick="reserveNomal()">N37</div>
+				<div class="nomal" onclick="reserveNomal()">N38</div>
+				<div class="nomal" onclick="reserveNomal()">N39</div>
+				<div class="nomal" onclick="reserveNomal()">N40</div>
+			</div>
+		</div>
 		</div>
 	</div>
 </div>
+</div>
+</div>		
 <div id="layer_background">
 	<div id="layer">
 		<div class="head">
@@ -320,7 +356,7 @@ input[type=button] {
 					<div class="time" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="chktime" class="chktime" value="time18" style="display:none;">
 				</div>
 				<div class="sbouter">
-					<input type="text" name="userid" placeholder="userid">
+					<input type="text" name="userid" placeholder="userid" id="userid">
 					<input type="submit" value="좌석예약">
 					<input type="button" value="뒤로가기" onclick="hideLayer()">
 				</div>

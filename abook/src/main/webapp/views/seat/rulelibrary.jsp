@@ -46,8 +46,8 @@
 		<div id="labNav">
 			<h2><span>회원정보</span></h2>
 			<ul id="lnb">
-				<li class="on"><a href=""><span>이용규칙</span></a></li>
-				<li><a href="/member/member"><span>좌석예약</span></a></li>
+				<li class="on"><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
+				<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
 			</ul>
 		</div>
 		<div id="ruleWrap">
