@@ -47,6 +47,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return "/member/login";
 	}
+
+	@Override
+	public String login() {
+		
+		return "/member/login";
+	}
 	
 	
 }

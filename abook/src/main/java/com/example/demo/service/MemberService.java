@@ -8,4 +8,5 @@ public interface MemberService {
 	public String member();
     public int useridCheck(MemberVo mvo);
     public String memberOk(MemberVo mvo,HttpServletRequest request);
+    public String login();
 }

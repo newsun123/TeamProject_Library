@@ -174,6 +174,7 @@
 		}else{
 			mform.email2.value=txt;
 			document.getElementsByClassName("selected_value")[0].innerText=txt;
+			document.getElementsByClassName("email2")[0].readOnly=true; 
 			
 		}
 		
@@ -280,7 +281,6 @@
 	function check(my){
 		
 		if(uidchk==0){
-			
 			if(document.mform.userid.value.trim()==""){	
 				document.getElementById("idMsg").innerText="아이디를 입력하세요.";
 				document.getElementById("idMsg").style.display="block";

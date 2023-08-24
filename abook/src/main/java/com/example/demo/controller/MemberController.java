@@ -36,5 +36,9 @@ public class MemberController {
 	    return service.memberOk(mvo,request);
 	 }
 
+	 @RequestMapping("/member/login")
+	 public String login() {
+		 return service.login();
+	 }
 
 }
