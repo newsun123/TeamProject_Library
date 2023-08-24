@@ -40,5 +40,7 @@ public class MemberController {
 	 public String login() {
 		 return service.login();
 	 }
+	 
+	 
 
 }

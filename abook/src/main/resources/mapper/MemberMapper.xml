@@ -10,4 +10,7 @@
 	    insert into member(userid,name,pwd,phone,email,juso,writeday)
 	    values(#{userid},#{name},#{pwd},#{phone},#{email},#{juso},now())
     </insert>
+    <select id="jjimView" resultType="HashMap">
+    	select * from jjim where userid=#{userid}
+    </select>
 </mapper>
