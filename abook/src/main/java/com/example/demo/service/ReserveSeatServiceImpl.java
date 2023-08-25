@@ -26,11 +26,15 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	}
 
 	@Override
-	public String reservePc(HttpServletRequest request, Model model) {
-		String num = request.getParameter("num");
-		ReserveSeatVo rvo = mapper.getPc(num);
-		model.addAttribute("rvo",rvo);
-		return "/seat/reserveseseat";
+	public String tableName(HttpServletRequest request, Model model) {
+		try {
+			String num = request.getParameter("num");			
+			model.addAttribute("tvo",mapper.getTableName(num));
+			return "0";
+		}catch(Exception e) {
+			return "1";
+		}
+		
 	}
 
 	@Override

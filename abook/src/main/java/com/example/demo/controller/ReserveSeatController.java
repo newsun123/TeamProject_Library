@@ -23,14 +23,15 @@ public class ReserveSeatController {
 		return rs.reserveseat();
 	}
 	
-	@RequestMapping("/seat/reservePc")
-	public @ResponseBody String reservePc(HttpServletRequest request,Model model) {
-		return rs.reservePc(request,model);
-	}
-	
 	@RequestMapping("/seat/rulelibrary")
 	public String rulelibrary() {
 		return rs.rulelibrary();
 	}
+	
+	@RequestMapping("/seat/reservePc")
+	public @ResponseBody String reservePc(HttpServletRequest request,Model model) {
+		return rs.tableName(request,model);
+	}
+	
 	
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,21 +176,20 @@ input[type=button] {
 }
 </style>
 <script>
-	function reservePc(n) {
+	function tableName(n) {
 		document.getElementById("layer_background").style.display="inline-block";
-		const num = document.getElementsByClassName("pc")[n];
-		//ReserveSeatVo rvo = new ReserveSeatVo();
-		const cyd = new XMLHttpRequest();
+		var num = document.getElementsByClassName("tablename")[n];
+		var cyd = new XMLHttpRequest();
 		cyd.onload = function() {
-			//rvo = cyd.responseText;
+			if(cyd.responseText==1){
+				alert("오류");				
+			}else{
+				alert("값 불러옴");
+			}
 		}
-		cyd.open("GET","reservePc?num="+num);
+		cyd.open("GET","tablename?num="+num);
 		cyd.send();
 	} 
-	
-	function reserveNomal(my) {
-		document.getElementById("layer_background").style.display="inline-block";
-	}
 	
 	function checktime(n, my) {
 		var t = document.getElementsByClassName("chktime")[n];
@@ -250,80 +251,80 @@ input[type=button] {
 	<div class="inner_right">
 		<div class="pc_left_line">
 			<div class="pc_line">
-				<div class="pc" onclick="reservePc(0)">pc1</div>
-				<div class="pc" onclick="reservePc(1)">pc2</div>
-				<div class="pc" onclick="reservePc(2)">pc3</div>
-				<div class="pc" onclick="reservePc(3)">pc4</div>
-				<div class="pc" onclick="reservePc(4)">pc5</div>
-				<div class="pc" onclick="reservePc(5)">pc6</div>
-				<div class="pc" onclick="reservePc(6)">pc7</div>
-				<div class="pc" onclick="reservePc(7)">pc8</div>
-				<div class="pc" onclick="reservePc(8)">pc9</div>
-				<div class="pc" onclick="reservePc(9)">pc10</div>
-				<div class="pc" onclick="reservePc(10)">pc11</div>
-				<div class="pc" onclick="reservePc(11)">pc12</div>
+				<div class="pc tablename" onclick="tableName(0)">pc1</div>
+				<div class="pc tablename" onclick="tableName(1)">pc2</div>
+				<div class="pc tablename" onclick="tableName(2)">pc3</div>
+				<div class="pc tablename" onclick="tableName(3)">pc4</div>
+				<div class="pc tablename" onclick="tableName(4)">pc5</div>
+				<div class="pc tablename" onclick="tableName(5)">pc6</div>
+				<div class="pc tablename" onclick="tableName(6)">pc7</div>
+				<div class="pc tablename" onclick="tableName(7)">pc8</div>
+				<div class="pc tablename" onclick="tableName(8)">pc9</div>
+				<div class="pc tablename" onclick="tableName(9)">pc10</div>
+				<div class="pc tablename" onclick="tableName(10)">pc11</div>
+				<div class="pc tablename" onclick="tableName(11)">pc12</div>
 			</div>
 			<div class="pc_line">
-				<div class="pc" onclick="reservePc(12)">pc13</div>
-				<div class="pc" onclick="reservePc(13)">pc14</div>
-				<div class="pc" onclick="reservePc(14)">pc15</div>
-				<div class="pc" onclick="reservePc(15)">pc16</div>
-				<div class="pc" onclick="reservePc(16)">pc17</div>
-				<div class="pc" onclick="reservePc(17)">pc18</div>
-				<div class="pc" onclick="reservePc(18)">pc19</div>
-				<div class="pc" onclick="reservePc(19)">pc20</div>
-				<div class="pc" onclick="reservePc(20)">pc21</div>
-				<div class="pc" onclick="reservePc(21)">pc22</div>
-				<div class="pc" onclick="reservePc(22)">pc23</div>
-				<div class="pc" onclick="reservePc(23)">pc24</div>
+				<div class="pc tablename" onclick="tableName(12)">pc13</div>
+				<div class="pc tablename" onclick="tableName(13)">pc14</div>
+				<div class="pc tablename" onclick="tableName(14)">pc15</div>
+				<div class="pc tablename" onclick="tableName(15)">pc16</div>
+				<div class="pc tablename" onclick="tableName(16)">pc17</div>
+				<div class="pc tablename" onclick="tableName(17)">pc18</div>
+				<div class="pc tablename" onclick="tableName(18)">pc19</div>
+				<div class="pc tablename" onclick="tableName(19)">pc20</div>
+				<div class="pc tablename" onclick="tableName(20)">pc21</div>
+				<div class="pc tablename" onclick="tableName(21)">pc22</div>
+				<div class="pc tablename" onclick="tableName(22)">pc23</div>
+				<div class="pc tablename" onclick="tableName(23)">pc24</div>
 			</div>
 		</div>
 		<div class="pc_right_line">
 			<div class="pc_line_two">
-				<div class="nomal" onclick="reserveNomal()">N1</div>
-				<div class="nomal" onclick="reserveNomal()">N2</div>
-				<div class="nomal" onclick="reserveNomal()">N3</div>
-				<div class="nomal" onclick="reserveNomal()">N4</div>
-				<div class="nomal" onclick="reserveNomal()">N5</div>
-				<div class="nomal" onclick="reserveNomal()">N6</div>
-				<div class="nomal" onclick="reserveNomal()">N7</div>
-				<div class="nomal" onclick="reserveNomal()">N8</div>
-				<div class="nomal" onclick="reserveNomal()">N9</div>
-				<div class="nomal" onclick="reserveNomal()">N10</div>
-				<div class="nomal" onclick="reserveNomal()">N11</div>
-				<div class="nomal" onclick="reserveNomal()">N12</div>
-				<div class="nomal" onclick="reserveNomal()">N13</div>
-				<div class="nomal" onclick="reserveNomal()">N14</div>
-				<div class="nomal" onclick="reserveNomal()">N15</div>
-				<div class="nomal" onclick="reserveNomal()">N16</div>
-				<div class="nomal" onclick="reserveNomal()">N17</div>
-				<div class="nomal" onclick="reserveNomal()">N18</div>
-				<div class="nomal" onclick="reserveNomal()">N19</div>
-				<div class="nomal" onclick="reserveNomal()">N20</div>
+				<div class="nomal tablename" onclick="tableName(24)">N1</div>
+				<div class="nomal tablename" onclick="tableName(25)">N2</div>
+				<div class="nomal tablename" onclick="tableName(26)">N3</div>
+				<div class="nomal tablename" onclick="tableName(27)">N4</div>
+				<div class="nomal tablename" onclick="tableName(28)">N5</div>
+				<div class="nomal tablename" onclick="tableName(29)">N6</div>
+				<div class="nomal tablename" onclick="tableName(30)">N7</div>
+				<div class="nomal tablename" onclick="tableName(31)">N8</div>
+				<div class="nomal tablename" onclick="tableName(32)">N9</div>
+				<div class="nomal tablename" onclick="tableName(33)">N10</div>
+				<div class="nomal tablename" onclick="tableName(34)">N11</div>
+				<div class="nomal tablename" onclick="tableName(35)">N12</div>
+				<div class="nomal tablename" onclick="tableName(36)">N13</div>
+				<div class="nomal tablename" onclick="tableName(37)">N14</div>
+				<div class="nomal tablename" onclick="tableName(38)">N15</div>
+				<div class="nomal tablename" onclick="tableName(39)">N16</div>
+				<div class="nomal tablename" onclick="tableName(40)">N17</div>
+				<div class="nomal tablename" onclick="tableName(41)">N18</div>
+				<div class="nomal tablename" onclick="tableName(42)">N19</div>
+				<div class="nomal tablename" onclick="tableName(43)">N20</div>
 			</div>
 		</div>
 		<div class="pc_right_line_two">
 			<div class="pc_line_three">
-				<div class="nomal" onclick="reserveNomal()">N21</div>
-				<div class="nomal" onclick="reserveNomal()">N22</div>
-				<div class="nomal" onclick="reserveNomal()">N23</div>
-				<div class="nomal" onclick="reserveNomal()">N24</div>
-				<div class="nomal" onclick="reserveNomal()">N25</div>
-				<div class="nomal" onclick="reserveNomal()">N26</div>
-				<div class="nomal" onclick="reserveNomal()">N27</div>
-				<div class="nomal" onclick="reserveNomal()">N28</div>
-				<div class="nomal" onclick="reserveNomal()">N29</div>
-				<div class="nomal" onclick="reserveNomal()">N30</div>
-				<div class="nomal" onclick="reserveNomal()">N31</div>
-				<div class="nomal" onclick="reserveNomal()">N32</div>
-				<div class="nomal" onclick="reserveNomal()">N33</div>
-				<div class="nomal" onclick="reserveNomal()">N34</div>
-				<div class="nomal" onclick="reserveNomal()">N35</div>
-				<div class="nomal" onclick="reserveNomal()">N36</div>
-				<div class="nomal" onclick="reserveNomal()">N37</div>
-				<div class="nomal" onclick="reserveNomal()">N38</div>
-				<div class="nomal" onclick="reserveNomal()">N39</div>
-				<div class="nomal" onclick="reserveNomal()">N40</div>
+				<div class="nomal tablename" onclick="tableName(44)">N21</div>
+				<div class="nomal tablename" onclick="tableName(45)">N22</div>
+				<div class="nomal tablename" onclick="tableName(46)">N23</div>
+				<div class="nomal tablename" onclick="tableName(47)">N24</div>
+				<div class="nomal tablename" onclick="tableName(48)">N25</div>
+				<div class="nomal tablename" onclick="tableName(49)">N26</div>
+				<div class="nomal tablename" onclick="tableName(50)">N27</div>
+				<div class="nomal tablename" onclick="tableName(51)">N28</div>
+				<div class="nomal tablename" onclick="tableName(52)">N29</div>
+				<div class="nomal tablename" onclick="tableName(53)">N30</div>
+				<div class="nomal tablename" onclick="tableName(54)">N31</div>
+				<div class="nomal tablename" onclick="tableName(55)">N32</div>
+				<div class="nomal tablename" onclick="tableName(56)">N33</div>
+				<div class="nomal tablename" onclick="tableName(57)">N34</div>
+				<div class="nomal tablename" onclick="tableName(58)">N35</div>
+				<div class="nomal tablename" onclick="tableName(59)">N36</div>
+				<div class="nomal tablename" onclick="tableName(60)">N37</div>
+				<div class="nomal tablename" onclick="tableName(61)">N38</div>
+				<div class="nomal tablename" onclick="tableName(62)">N39</div>
+				<div class="nomal tablename" onclick="tableName(63)">N40</div>
 			</div>
 		</div>
 		</div>
@@ -334,7 +335,7 @@ input[type=button] {
 <div id="layer_background">
 	<div id="layer">
 		<div class="head">
-			{bvo.userid}님의 선택 좌석 : ${rvo.no }번 <p>
+			{bvo.userid}님의 선택 좌석 : ${tvo.tname}번 <p>
 		</div>
 			<div id="notice">
 				<p> 본 도서관은 1인 최대 3시간까지 좌석 배정이 가능합니다. </p>
