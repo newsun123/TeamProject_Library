@@ -29,9 +29,9 @@ public class ReserveSeatController {
 		return rs.rulelibrary();
 	}
 	
-	@RequestMapping("/seat/tableName")
-	public @ResponseBody String tableName(TableNameVo tvo, HttpServletRequest request,Model model) {
-		return rs.tableName(tvo,request,model);
+	@RequestMapping("/seat/table")
+	public String table(TableNameVo tvo, HttpServletRequest request,Model model) {
+		return rs.table(tvo,request,model);
 	}
 	
 	

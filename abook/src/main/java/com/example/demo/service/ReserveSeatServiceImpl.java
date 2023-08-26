@@ -33,18 +33,11 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	}
 	
 	@Override
-	public String tableName(TableNameVo tvo, HttpServletRequest request, Model model) {
-		try {
+	public String table(TableNameVo tvo, HttpServletRequest request, Model model) {
 			String tname = request.getParameter("tname");
 			tvo = mapper.getTableName(tname);
 			model.addAttribute("tvo", tvo);
-			
-			return "0";
-		}catch (Exception e) {
-			return "1";
-		}
-		
-		
+			return "/seat/table";
 	}
 
 	

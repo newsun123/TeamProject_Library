@@ -178,21 +178,18 @@ input[type=button] {
 <script>
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
-		location="table?tname="+tname;
-	} 
-	function hideLayer() {
-		document.getElementById("layer_background").style.display="none";
-		const chk = document.getElementsByClassName("chktime").length;
-		for(i=0; i <= chk ; i++) {
-			if(document.getElementsByClassName("chktime")[i].checked){
-				document.getElementsByClassName("chktime")[i].checked = false;
-				document.getElementsByClassName("time")[i].style.background ="white";
-				document.getElementById("userid").innerText="";
-				
+		alert(tname);
+		var cyd = new XMLHttpRequest();
+		cyd.onload = function() {
+			if(cyd.responseText=="1"){
+				alert("오류");				
+			}else{
+				document.getElementById("layer_background").style.display="inline-block";
 			}
 		}
-	}
-</script>
+		cyd.open("GET","tableName?tname="+tname);
+		cyd.send(); 
+	} 
 </head>
 <body>
 <div id="secWrap">
@@ -292,7 +289,42 @@ input[type=button] {
 </div>
 </div>
 </div>		
+<div id="layer_background">
+	<div id="layer">
+		<c:forEach items="${tvo}" var="tvo">
+			<div class="head">
 
+				{bvo.userid}님의 선택 좌석 :  번 <p>
+
+			</div>
+				<div id="notice">
+					<p> 본 도서관은 1인 최대 3시간까지 좌석 배정이 가능합니다. </p>
+					<p> * 흰색 : 예약 가능 </p> 
+					<p> * 주황색 : 예약 중 </p>
+					<p> * 회  색 : 예약 불가 </p>
+				</div>
+				<form name="cf" method="post" action="reserve" onsubmit="return check(this)">
+					<div class="touter">
+						<div class="time" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="chktime" class="chktime" value="time9"style="display:none;">
+						<div class="time" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="chktime" class="chktime" value="time10" style="display:none;">
+						<div class="time" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="chktime" class="chktime" value="time11" style="display:none;">
+						<div class="time" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="chktime" class="chktime" value="time12" style="display:none;">
+						<div class="time" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="chktime" class="chktime" value="time13" style="display:none;">
+						<div class="time" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="chktime" class="chktime" value="time14" style="display:none;">
+						<div class="time" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="chktime" class="chktime" value="time15" style="display:none;">
+						<div class="time" onclick="checktime(7,this)">16시~17시</div><input type="checkbox" name="chktime" class="chktime" value="time16" style="display:none;">
+						<div class="time" onclick="checktime(8,this)">17시~18시</div><input type="checkbox" name="chktime" class="chktime" value="time17" style="display:none;">
+						<div class="time" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="chktime" class="chktime" value="time18" style="display:none;">
+					</div>
+					<div class="sbouter">
+						<input type="text" name="userid" placeholder="userid" id="userid">
+						<input type="submit" value="좌석예약">
+						<input type="button" value="뒤로가기" onclick="hideLayer()">
+					</div>
+				</form>
+		</c:forEach>
+	</div>
+</div>
 <div id="end"></div>
 </body>
 </html>
