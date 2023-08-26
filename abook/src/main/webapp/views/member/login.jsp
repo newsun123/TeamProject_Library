@@ -45,6 +45,15 @@
 		font-size: 14px;
     	padding-bottom: 20px;
 	}
+	.aBox a{
+		font-size: 15px;
+	    margin-right: 15px;
+	    color: #777;
+	    font-family: 'NotoSansM';
+	}
+	.aBox a:last-child {
+		margin-right: 0;
+	}
 </style>
 <script>
 
@@ -59,8 +68,8 @@
 				<ul id="lnb">
 					<li class="on"><a href=""><span>로그인</span></a></li>
 					<li><a href="/member/member"><span>회원가입</span></a></li>
-					<li><a href="#"><span>아이디찾기</span></a></li>
-					<li><a href="#"><span>비밀번호찾기</span></a></li>
+					<li><a href="/member/idfind"><span>아이디찾기</span></a></li>
+					<li><a href="/member/pwdfind"><span>비밀번호찾기</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -77,6 +86,11 @@
 						         <div><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></div>
 						         <div><input type="submit" value="로그인"></div> 
 						     </form>
+							<span class="aBox">
+								<a href="/member/idfind">아이디찾기</a>
+								<a href="/member/pwdfind">비밀번호찾기</a>
+								<a href="/member/member">회원가입</a>
+							</span>
 						</div>
 						<p class="txt">※로그인이 안되시는 경우 한/영 키와 Caps Lock 키가 눌러져 있지 않은지 확인하세요.</p>
 					</div>

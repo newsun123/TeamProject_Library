@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,11 +37,38 @@ public class MemberController {
 	    return service.memberOk(mvo,request);
 	 }
 
-	 @RequestMapping("/member/login")
+	 @RequestMapping("/member/login") 
 	 public String login() {
-		 return service.login();
+	    return service.login();
 	 }
 	 
+	 @RequestMapping("/member/loginOk")
+	 public String loginOk(MemberVo mvo,HttpSession session) {
+		 return service.loginOk(mvo,session);
+	 }
 	 
-
+	 @RequestMapping("/member/logout")
+	 public String logout(HttpSession session) {
+		 return service.logout(session);
+	 }
+	 
+	 @RequestMapping("/member/idfind")
+	 public String idfind() {
+		 return service.idfind();
+	 }
+	 
+	 @RequestMapping("/member/idcheck")
+	 public @ResponseBody String idcheck(HttpServletRequest request) {
+		 return service.idcheck(request);
+	 }
+	 
+	 @RequestMapping("/member/pwdfind")
+	 public String pwdfind() {
+		 return service.pwdfind();
+	 }
+	 
+	 @RequestMapping("/member/pwdcheck")
+	 public @ResponseBody String pwdcheck(HttpServletRequest request) {
+		 return service.pwdcheck(request);
+	 }
 }
