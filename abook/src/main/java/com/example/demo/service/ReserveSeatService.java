@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.example.demo.vo.TableNameVo;
+
 public interface ReserveSeatService {
 
 	public String reserveseat();
-	public String tableName(HttpServletRequest request,Model model);
 	public String rulelibrary();
+	public String tableName(TableNameVo tvo, HttpServletRequest request,Model model);
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.ReserveSeatService;
+import com.example.demo.vo.TableNameVo;
 
 @Controller
 public class ReserveSeatController {
@@ -28,9 +29,9 @@ public class ReserveSeatController {
 		return rs.rulelibrary();
 	}
 	
-	@RequestMapping("/seat/reservePc")
-	public @ResponseBody String reservePc(HttpServletRequest request,Model model) {
-		return rs.tableName(request,model);
+	@RequestMapping("/seat/tableName")
+	public @ResponseBody String tableName(TableNameVo tvo, HttpServletRequest request,Model model) {
+		return rs.tableName(tvo,request,model);
 	}
 	
 	
