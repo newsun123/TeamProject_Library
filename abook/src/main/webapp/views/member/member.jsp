@@ -41,8 +41,8 @@
 	    height: 48px!important;
 	}
 	form input[type=submit]{
-		height: 60px!important;
-		line-height: 60px;
+		height: 48px!important;
+		line-height: 48px;
 		color:#fff;
 		background: #967759; 
 		font-size: 17px;
@@ -238,23 +238,26 @@
 	}
 	
 	/* 비밀번호 길이체크 */
+	var pchk=0;
+	var pchk2=0;
 	function pwdLength(my){
 		
 		if(my.length>5){
 			document.getElementById("pwdMsg1").innerText="사용 가능한 비밀번호입니다.";
 			document.getElementById("pwdMsg1").style.display="block";
     		document.getElementById("pwdMsg1").style.color="#00891a";
+    		pchk2=1;
     		pchk=1;
 		}else{
 			document.getElementById("pwdMsg1").innerText="비밀번호를 6자 이상 입력하세요.";
 			document.getElementById("pwdMsg1").style.display="block";
     		document.getElementById("pwdMsg1").style.color="#e52528";
+    		pchk2=0;
     		pchk=0;
 		}
 	}
 	
 	/* 비밀번호 체크 */
-	var pchk=0;
 	function pwdCheck(){
 		
 		var pwd=document.mform.pwd.value;
@@ -266,7 +269,11 @@
 				document.getElementById("pwdMsg2").innerText="비밀번호가 일치합니다.";
 				document.getElementById("pwdMsg2").style.display="block";
 	    		document.getElementById("pwdMsg2").style.color="#00891a";
-	    		pchk=1;
+	    		if(pchk2==1){
+	    			pchk=1;
+	    		}else{
+	    			pchk=0;
+	    		}
 			}else{
 				document.getElementById("pwdMsg2").innerText="비밀번호가 불일치합니다.";
 				document.getElementById("pwdMsg2").style.display="block";
@@ -277,8 +284,9 @@
 	}
 	
 	/* 전송전 입력값 유효성 체크 */
-	/*function check(my){
-
+	function check(my){
+	
+		var chk=7;
 		
 		var userid=my.userid.value;
 		var pwd=my.pwd.value;
@@ -301,7 +309,7 @@
 		if(uidchk==0){ //아이디 오류일때
 			
 			if(userid.trim().length==0){
-				idMsg.innerText="아이디를 입력하세요";
+				idMsg.innerText="아이디를 입력하세요.";
 				idMsg.style.display="block";
 				idMsg.style.color="#e52528";
 				
@@ -318,66 +326,85 @@
 				}	
 			}
 			
+		}else{
+			chk--; 
 		}
+		
 		if(pchk==0){
 			
-			if(pwd1.trim().length==0){
-				pwdMsg1.innerText="비밀번호를 입력하세요";
+			if(pwd.trim().length==0){
+				pwdMsg1.innerText="비밀번호를 입력하세요.";
 				pwdMsg1.style.display="block";
 				pwdMsg1.style.color="#e52528";
+			}else if(pwd.trim().length<6){
+				pwdMsg1.innerText="비밀번호를 6자 이상 입력하세요.";
+				pwdMsg1.style.display="block";
+				pwdMsg1.style.color="#e52528";
+			}else{
+				pwdMsg1.innerText="사용 가능한 비밀번호입니다.";
+				pwdMsg1.style.display="block";
+				pwdMsg1.style.color="#00891a";
 			}
-		}else if(name.trim().length==0){
-			nameMsg.innerText="이름을 입력하세요";
-			nameMsg.style.display="block";
-		}else{
-			chk=0;
-		}
+			
+			if(pwd!=pwd2){
+				pwdMsg2.innerText="비밀번호가 불일치합니다.";
+				pwdMsg2.style.display="block";
+				pwdMsg2.style.color="#e52528";
+			}
+			
+			if(pwd2.trim().length==0){
+				pwdMsg2.innerText="확인을 위해 새 비밀번호 다시 입력하세요.";
+				pwdMsg2.style.display="block";
+				pwdMsg2.style.color="#e52528";
+			}
 
-		return false;
-	/*
+		}else{
+			chk--; 
+		}
+	
 		if(name.trim().length==0){ //이름 
-			nameMsg.innerText="이름을 입력하세요";
+			nameMsg.innerText="이름을 입력하세요.";
 			nameMsg.style.display="block";
 		}else{
 			nameMsg.style.display="none";
-			chk--;
+			chk--; 
 		}
 		
-		if(zip.trim().length==0){ //주소 
-	
-			if(addrDtl.trim().length==0){
-				addMsg.innerText="상세주소를 입력하세요";
-				addMsg.style.display="block";
-			}else{
-				addMsg.innerText="주소를 입력하세요";
-				addMsg.style.display="block";
-			}
+		if(zip.trim().length==0){ //주소 	
+			addMsg.innerText="주소를 입력하세요.";
+			addMsg.style.display="block";
+		
+		}else if(addrDtl.trim().length==0){
+			addMsg.innerText="상세주소를 입력하세요.";
+			addMsg.style.display="block";
 		}else{
 			addMsg.style.display="none";
-			chk--;
+			chk--;	
 		}
 		
 		if(email1.trim().length==0 || email2.trim().length==0){ //이메일
-			emailMsg.innerText="이메일을 입력하세요";
+			emailMsg.innerText="이메일을 입력하세요.";
 			emailMsg.style.display="block";
 			
 		}else{
 			emailMsg.style.display="none";
-			chk--;
-			
+			chk--; //chk=2;	
 		}
 		
 		if(phone.trim().length==0){ //전화번호
-			phoneMsg.innerText="전화번호를 입력하세요";
+			phoneMsg.innerText="전화번호를 입력하세요.";
 			phoneMsg.style.display="block";
 		}else{
 			phoneMsg.style.display="none";
-			chk--;
+			chk--; //chk=1;
 		}
 		
-	
-		
-	}*/
+		if(chk==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
 </script>
 </head>
 <body>

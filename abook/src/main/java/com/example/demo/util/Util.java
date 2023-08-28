@@ -8,7 +8,7 @@ public class Util {
 		
 		for(int i=1;i<=12;i++) {
 			LocalDate mt=LocalDate.of(2023, i, 1);
-			System.out.println(mt);
+			//System.out.println(mt);
 		}
 	}
 }

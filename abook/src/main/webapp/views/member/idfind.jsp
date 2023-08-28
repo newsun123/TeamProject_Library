@@ -21,10 +21,11 @@
 		font-family: NotoSansM;
 		margin-bottom: 20px;
 	}
+	/*
 	#findform,
 	#sucessform{
 		height: 309px;
-	}
+	}*/
 	#findform > div{
 		width: 450px;
     	margin: auto;
@@ -39,8 +40,8 @@
 	    height: 48px!important;
 	}
 	#findform input[type=button]{
-		height: 60px!important;
-		line-height: 60px;
+		height: 48px!important;
+		line-height: 48px;
 		color:#fff;
 		background: #967759; 
 		font-size: 17px;
@@ -53,17 +54,15 @@
     	left: -10px;
     	width: 130px;
 	}
-	.msg{
+	#findform > div.msg{
 	    font-size: 14px;
 	    color: #e52528;
 	    position: relative;
 	    top: 10px;
-	}
-	#idmsg{
-		color: #333;
-	    height: 40px;
-	    font-weight: bold;
-	    font-size: 25px;
+	    display: none;
+	    height: 30px;
+	    margin-bottom: 0;
+	    text-align: center;
 	}
 	#sucessform a{
 	    font-size: 14px;
@@ -78,6 +77,19 @@
 	    position: relative;
 	    left: 8px;
 	}
+	.aBox{
+		position: relative;
+    	top: -10px;
+	}
+	.aBox a{
+		font-size: 15px;
+	    margin-right: 15px;
+	    color: #777;
+	    font-family: 'NotoSansM';
+	}
+	.aBox a:last-child {
+		margin-right: 0;
+	}
 </style>
 <script>
 	function check(){
@@ -88,13 +100,13 @@
 
 		chk.onload=function(){
 			if(chk.responseText=="") {
+				document.getElementById("failmsg").style.display="block";
 				document.getElementById("failmsg").innerHTML="일치하는 아이디가 없습니다. 다시 입력하세요.";
 				document.getElementById("sucessform").style.display="none";
 				document.getElementById("findform").style.display="block";
 			}else{
 				document.getElementById("findform").style.display="none";
 				document.getElementById("sucessform").style.display="block";
-				document.getElementById("idmsg").innerText=chk.responseText;
 			}
 		}
 		
@@ -129,6 +141,11 @@
 						        <div><input type="text" name="name" id="name" placeholder="이름"></div>
 						        <div><input type="text" name="phone" id="phone" placeholder="전화번호"></div>
 						        <div><input type="button" value="아이디찾기" onclick="check()"></div> 
+						        <span class="aBox">
+									<a href="/member/pwdfind">비밀번호찾기</a>
+									<a href="/member/login">로그인</a>
+									<a href="/member/member">회원가입</a>
+								</span>
 						        <div id="failmsg" class="msg"></div>
 							</div>
 							<div id="sucessform">

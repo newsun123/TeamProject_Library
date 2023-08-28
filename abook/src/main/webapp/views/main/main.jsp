@@ -334,7 +334,6 @@
 			<div id="noticList"> 
 				<ul>
 					<li>
-					gkgkgk
 						<a href="#">대한민국 독서대전 소문내기 이벤트1</a>
 						<span class="date">2023.08.07</span>
 					</li>

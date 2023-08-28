@@ -71,4 +71,15 @@ public class MemberController {
 	 public @ResponseBody String pwdcheck(HttpServletRequest request) {
 		 return service.pwdcheck(request);
 	 }
+	 
+	 @RequestMapping("/member/newPwdCheck")
+	 public @ResponseBody String newPwdCheck(HttpServletRequest request) {
+		 return service.newPwdCheck(request);
+	 }
+	 
+	 @RequestMapping("/member/updatePwd")
+	 public String updatePwd(MemberVo mvo) {
+		 return service.updatePwd(mvo);
+	 }
+	 
 }
