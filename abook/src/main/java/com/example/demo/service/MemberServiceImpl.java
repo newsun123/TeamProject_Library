@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MemberMapper;
 import com.example.demo.vo.MemberVo;
@@ -30,19 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String memberOk(MemberVo mvo,HttpServletRequest request) {
-		
-		String email1=request.getParameter("email1");
-		String email2=request.getParameter("email2");
-		String email=email1+"@"+email2;
-		
-		String zip_code=request.getParameter("zip_code");
-		String addr=request.getParameter("addr");
-		String addr_dtl=request.getParameter("addr_dtl");
-		String juso=zip_code+" "+addr+" "+addr_dtl;
-		
-		mvo.setEmail(email);
-		mvo.setJuso(juso);
-		
+
 		mapper.memberOk(mvo); 
 		
 		return "/member/login";
@@ -53,6 +43,61 @@ public class MemberServiceImpl implements MemberService {
 		
 		return "/member/login";
 	}
+
+	@Override
+	public String loginOk(MemberVo mvo, HttpSession session) {
+		
+		String name=mapper.loginOk(mvo);
+		
+		if(name==null){
+			return "redirect:/member/login?chk=1";
+		}else{
+			session.setAttribute("userid", mvo.getUserid());
+			session.setAttribute("name", name);
+
+			return "/main/main";
+		}
+
+	}
 	
-	
+	@Override
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main/main";
+	}
+
+	@Override
+	public String idfind() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String idcheck(HttpServletRequest request) {
+		
+		String name=request.getParameter("name");
+		String phone=request.getParameter("phone");	
+		String userid=mapper.idcheck(name,phone);
+		
+		return userid;
+	}
+
+	@Override
+	public String pwdfind() {
+		
+		return "/member/pwdfind";
+	}
+
+	@Override
+	public String pwdcheck(HttpServletRequest request) {
+		
+		String userid=request.getParameter("userid");
+		String name=request.getParameter("name");	
+		String phone=request.getParameter("phone");	
+		
+		String n=mapper.pwdcheck(userid, name, phone);
+		
+		System.out.println(n);
+		return n;
+	}	
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,10 +153,6 @@
 	.ftxt p span{
 		margin-left: 15px;
 	}
-	.mr13{
-		margin-right: 13px;
-		cursor: default;
-	}
 </style> 
 <script>
 	/*탭 메뉴*/
@@ -172,48 +167,43 @@
 <sitemesh:write property="head"/>
 </head>
 <body>
-	<header>
-		<h1><a href="../main/main"><img src="/static/img/common/logo.png"></a></h1>
-		<div id="sign">
-		<c:if test="${userid==null}">
-			<a href="../member/login">로그인</a>
-			<a href="../member/member">회원가입</a>
-		</c:if>
-		<c:if test="${userid!=null}">
-			<span class="mr13">${name}님</span>
-			<a href="../member/logout">로그아웃</a>
-			<a href="">마이페이지</a>
-		</c:if>
-		</div>
-	</header>
 	<nav>
 		<ul>
 			<li class="gnbMenu">
-				<a href="#">도서관 소개</a>
+				<a href="#">도서 관리</a>
 				<ul>
-					<li><a href="/introduce/intro">인사말</a></li>
-					<li><a href="/introduce/location">오시는 길</a></li>
+					<li><a href="#">도서등록</a></li>
+					<li><a href="#">대출현황</a></li>
+					<li><a href="#">예약현황</a></li>
+					<li><a href="#">신청현황</a></li>
+					<li><a href="#">희망도서</a></li>
+					<li><a href="#">월별대출</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">도서관 이용</a>
+				<a href="#">회원 관리</a>
 				<ul>
-					<li><a href="#">도서 예약</a></li>
-					<li><a href="#">도서 신청</a></li>
+					<li><a href="#">회원조회</a></li>
+					<li><a href="#">임시정지/삭제</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">열람실 이용</a>
+				<a href="#">좌석관리</a>
 				<ul>
-					<li><a href="/seat/rulelibrary">이용 규칙</a></li>
-					<li><a href="/seat/reserveseat">좌석 예약</a></li>
+					<li><a href="#">사용불가 지정</a></li>
+					<li><a href="#">퇴실 처리</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">열린 공간</a>
+				<a href="#">게시판관리</a>
 				<ul>
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">문의 게시판</a></li>
+					<li><a href="#">문의사항</a></li>
+				</ul>
+			</li>
+			<li class="gnbMenu">
+				<a href="#">공지사항</a>
+				<ul>
+					<li><a href="#">공지사항 작성</a></li>
 				</ul>
 			</li>
 		</ul>

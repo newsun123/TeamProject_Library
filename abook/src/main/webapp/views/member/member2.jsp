@@ -277,8 +277,8 @@
 	}
 	
 	/* 전송전 입력값 유효성 체크 */
-	/*function check(my){
-
+	function check(my){
+	var chk=6;
 		
 		var userid=my.userid.value;
 		var pwd=my.pwd.value;
@@ -318,23 +318,27 @@
 				}	
 			}
 			
+		}else {
+			idMsg.style.display="none";
+			chk--;
 		}
-		if(pchk==0){
+			
+		
+		
+		if(pchk==0){ //비밀번호 오류일때
 			
 			if(pwd1.trim().length==0){
-				pwdMsg1.innerText="비밀번호를 입력하세요";
+				pwdMsg1.innerText="아이디를 입력하세요";
 				pwdMsg1.style.display="block";
 				pwdMsg1.style.color="#e52528";
 			}
-		}else if(name.trim().length==0){
-			nameMsg.innerText="이름을 입력하세요";
-			nameMsg.style.display="block";
-		}else{
-			chk=0;
+			
+		}else{ 
+			
+			idMsg.style.display="none";
+			chk--;
 		}
 
-		return false;
-	/*
 		if(name.trim().length==0){ //이름 
 			nameMsg.innerText="이름을 입력하세요";
 			nameMsg.style.display="block";
@@ -375,9 +379,9 @@
 			chk--;
 		}
 		
-	
+		return false;
 		
-	}*/
+	}
 </script>
 </head>
 <body>
@@ -389,8 +393,8 @@
 				<ul id="lnb">
 					<li><a href="/member/login"><span>로그인</span></a></li>
 					<li class="on"><a href=""><span>회원가입</span></a></li>
-					<li><a href="/member/idfind"><span>아이디찾기</span></a></li>
-					<li><a href="/member/pwdfind"><span>비밀번호찾기</span></a></li>
+					<li><a href="#"><span>아이디찾기</span></a></li>
+					<li><a href="#"><span>비밀번호찾기</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
