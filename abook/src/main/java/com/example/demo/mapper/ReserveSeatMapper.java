@@ -10,4 +10,5 @@ import com.example.demo.vo.TableNameVo;
 @Mapper
 public interface ReserveSeatMapper {
 	public TableNameVo tableName(String tname);
+	public void reserveSeater(ReserveSeatVo rvo);
 }

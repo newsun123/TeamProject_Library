@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,6 +39,20 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		tvo = mapper.tableName(tname);
 		return tvo;
 	}
+
+	@Override
+	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request) {
+		String userid = session.getAttribute("userid").toString();
+		
+		rvo.setUserid(userid);
+		rvo.setTname(request.getParameter("tname"));
+		
+		
+		
+		mapper.reserveSeater(rvo);
+		return "redirect:/seat/reserveseat";
+	}
+
 	
 	
 	

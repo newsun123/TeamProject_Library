@@ -4,5 +4,8 @@
 <select id="tableName" resultType="com.example.demo.vo.TableNameVo">
 	select * from tablename where tname=#{tname}
 </select>
-
+<insert id="reserveSeater" parameterType="com.example.demo.vo.ReserveSeatVo">
+	insert into reserveseat(userid,reserveday,tname,time9,time10,time11,time12,time13,time14,time15,time16,time17,time18)
+	values(#{userid},now(),#{tname},#{time9},#{time10},#{time11},#{time12},#{time13},#{time14},#{time15},#{time16},#{time17},#{time18})
+</insert>
 </mapper>

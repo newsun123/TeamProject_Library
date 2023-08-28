@@ -169,13 +169,14 @@ input[type=button] {
 
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
-		alert(tname);
+		//alert(tname);
 		var cyd = new XMLHttpRequest();
 		cyd.onload = function() {
-			alert(cyd.responseText);
+			//alert(cyd.responseText);
 			var aa = JSON.parse(cyd.responseText);
 			document.getElementById("layer_background").style.display = "inline-block";
 			document.getElementById("tn").innerText = aa.tname;
+			document.cf.tname.value= aa.tname;
 			for(i=9; i<=18; i++) {
 				if(eval("aa.time"+i) == 1) {
 					eval("document.getElementById('time"+i+"').style.background='gray'");
@@ -217,16 +218,22 @@ input[type=button] {
 	}
 
 	function check(my) {
-		const chk = document.querySelectorAll('input[type="checkbox"]:checked');
-		if (chk.length > 3) {
+		var chk = document.querySelectorAll('input[type="checkbox"]:checked');
+		 if (chk.length > 3) {
 			alert("최대 3시간까지 가능합니다.");
 			return false;
 		} else if (chk.length == 0) {
 			alert("시간을 예약하세요");
 			return false;
-		} else {
-			return true;
 		}
+		 for(i=0; i<10; i++) {
+				if(my.chktime[i].checked){
+					my.chktime[i].value=1;
+				}else {
+					my.chktime[i].value=0;
+				}
+			}
+			 return true;
 	}
 </script>
 </head>
@@ -345,21 +352,21 @@ input[type=button] {
 				<div id="notice">
 					<p> 본 도서관은 1인 최대 3시간까지 좌석 배정이 가능합니다. </p>
 					<p> * 흰색 : 예약 가능 </p> 
-					<p> * 주황색 : 예약 중 </p>
-					<p> * 회  색 : 예약 불가 </p>
+					<p> * 회색 : 예약 불가 </p>
 				</div>
-				<form name="cf" method="post" action="reserve" onsubmit="return check(this)">
+				<form name="cf" method="post" action="reserveSeater" onsubmit="return check(this)">
+				<input type="hidden" name="tname" value=""> 
 					<div class="touter">
-						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="chktime" class="chktime" value="time9" style="display:none;">
-						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="chktime" class="chktime" value="time10" style="display:none;">
-						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="chktime" class="chktime" value="time11" style="display:none;">
-						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="chktime" class="chktime" value="time12" style="display:none;">
-						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="chktime" class="chktime" value="time13" style="display:none;">
-						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="chktime" class="chktime" value="time14" style="display:none;">
-						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="chktime" class="chktime" value="time15" style="display:none;">
-						<div class="time" id="time16" onclick="checktime(7,this)">16시~17시</div><input type="checkbox" name="chktime" class="chktime" value="time16" style="display:none;">
-						<div class="time" id="time17" onclick="checktime(8,this)">17시~18시</div><input type="checkbox" name="chktime" class="chktime" value="time17" style="display:none;">
-						<div class="time" id="time18" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="chktime" class="chktime" value="time18" style="display:none;">
+						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="time9" style="display:none;">
+						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="time10" style="display:none;">
+						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="time11" style="display:none;">
+						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="time12" style="display:none;">
+						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="time13" class="chktime" value="time13" style="display:none;">
+						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="time14" class="chktime" value="time14" style="display:none;">
+						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="time15" class="chktime" value="time15" style="display:none;">
+						<div class="time" id="time16" onclick="checktime(7,this)">16시~17시</div><input type="checkbox" name="time16" class="chktime" value="time16" style="display:none;">
+						<div class="time" id="time17" onclick="checktime(8,this)">17시~18시</div><input type="checkbox" name="time17" class="chktime" value="time17" style="display:none;">
+						<div class="time" id="time18" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="time18" class="chktime" value="time18" style="display:none;">
 					</div>
 					<div class="sbouter">
 						<input type="submit" value="좌석예약">
