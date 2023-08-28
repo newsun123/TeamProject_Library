@@ -16,5 +16,6 @@ public interface MemberService {
     public String idcheck(HttpServletRequest request);
     public String pwdfind();
     public String pwdcheck(HttpServletRequest request);
-    
+    public String newPwdCheck(HttpServletRequest request);
+    public String updatePwd(MemberVo mvo);
 }

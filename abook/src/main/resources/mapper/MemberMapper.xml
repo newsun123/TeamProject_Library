@@ -20,4 +20,10 @@
     <select id="pwdcheck" resultType="String">
     	select count(*) from member where name=#{name} and phone=#{phone}
     </select>
+    <select id="newPwdCheck" resultType="String">
+    	select pwd from member where userid=#{userid}
+    </select>
+    <update id="updatePwd">
+    	update member set pwd=#{pwd} where userid=#{userid}
+    </update>
 </mapper>

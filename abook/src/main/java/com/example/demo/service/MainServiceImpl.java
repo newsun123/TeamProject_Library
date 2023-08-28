@@ -31,7 +31,7 @@ public class MainServiceImpl  implements MainService{
 		    if(xday.getDayOfWeek().getValue()==5){
 			    imsi=imsi+xday.getDayOfMonth()+",";
 		    }
-		    System.out.println(imsi);
+		    //System.out.println(imsi);
 		    
 		}
 		

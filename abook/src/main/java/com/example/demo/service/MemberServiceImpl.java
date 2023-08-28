@@ -97,7 +97,23 @@ public class MemberServiceImpl implements MemberService {
 		
 		String n=mapper.pwdcheck(userid, name, phone);
 		
-		System.out.println(n);
+		return n;
+	}
+
+	@Override
+	public String newPwdCheck(HttpServletRequest request) {
+		
+		String userid=request.getParameter("userid");
+		String n=mapper.newPwdCheck(userid);
+		
 		return n;
 	}	
+	
+	@Override
+	public String updatePwd(MemberVo mvo) {
+		
+		mapper.updatePwd(mvo);
+		return "redirect:/member/login";
+	}
+
 }

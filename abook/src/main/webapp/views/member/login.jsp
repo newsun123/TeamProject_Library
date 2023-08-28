@@ -35,8 +35,8 @@
 	    height: 48px!important;
 	}
 	form input[type=submit]{
-		height: 60px!important;
-		line-height: 60px;
+		height: 48px!important;
+		line-height: 48px;
 		color:#fff;
 		background: #967759; 
 		font-size: 17px;
@@ -44,6 +44,10 @@
 	.txt{
 		font-size: 14px;
     	padding-bottom: 20px;
+	}
+	.aBox{
+		position: relative;
+    	top: -10px;
 	}
 	.aBox a{
 		font-size: 15px;
@@ -55,9 +59,6 @@
 		margin-right: 0;
 	}
 </style>
-<script>
-
-</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -85,7 +86,7 @@
 						         <div><input type="text" name="userid" id="userid" placeholder="아이디"></div>
 						         <div><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></div>
 						         <div><input type="submit" value="로그인"></div> 
-						     </form>
+						    </form>
 							<span class="aBox">
 								<a href="/member/idfind">아이디찾기</a>
 								<a href="/member/pwdfind">비밀번호찾기</a>

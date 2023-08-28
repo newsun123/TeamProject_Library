@@ -11,5 +11,6 @@ public interface MemberMapper {
 	 public String loginOk(MemberVo mvo);
 	 public String idcheck(String name,String phone);
 	 public String pwdcheck(String userid,String name,String phone);
-	 
+	 public String newPwdCheck(String userid);
+	 public void updatePwd(MemberVo mvo);
 }
