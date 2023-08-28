@@ -9,5 +9,5 @@ import com.example.demo.vo.TableNameVo;
 
 @Mapper
 public interface ReserveSeatMapper {
-	public TableNameVo getTableName(String tname);
+	public TableNameVo tableName(String tname);
 }
