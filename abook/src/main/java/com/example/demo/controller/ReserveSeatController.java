@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,8 +21,8 @@ public class ReserveSeatController {
 	private ReserveSeatService rs;
 
 	@RequestMapping("/seat/reserveseat")
-	public String reserveseat() {
-		return rs.reserveseat();
+	public String reserveseat(HttpSession session,Model model) {
+		return rs.reserveseat(session,model);
 	}
 
 	@RequestMapping("/seat/rulelibrary")

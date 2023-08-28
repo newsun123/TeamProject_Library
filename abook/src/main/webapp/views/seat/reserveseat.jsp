@@ -193,8 +193,6 @@ input[type=button] {
 			if (document.getElementsByClassName("chktime")[i].checked) {
 				document.getElementsByClassName("chktime")[i].checked = false;
 				document.getElementsByClassName("time")[i].style.background = "white";
-				document.getElementById("userid").innerText = "";
-
 			}
 		}
 	}
@@ -330,7 +328,7 @@ input[type=button] {
 						</div>
 					</div>
 			</div>
-			</div>
+		</div>
 	</div>
 </div>
 </div>
@@ -339,16 +337,15 @@ input[type=button] {
 	<div id="layer">
 			<div class="head">
 
-				{bvo.userid-로그인}님의 선택 좌석 : <span id="tn"></span>  번 <p>
+				${name}님의 선택 좌석 : <span id="tn"></span>  번 <p>
 
 			</div>
 				<div id="notice">
 					<p> 본 도서관은 1인 최대 3시간까지 좌석 배정이 가능합니다. </p>
 					<p> * 흰색 : 예약 가능 </p> 
-					<p> * 주황색 : 예약 중 </p>
-					<p> * 회  색 : 예약 불가 </p>
+					<p> * 회  색 : 예약중 또는 예약 불가 </p>
 				</div>
-				<form name="cf" method="post" action="reserve" onsubmit="return check(this)">
+				<form name="cf" method="post" action="reserveSeat" onsubmit="return check(this)">
 					<div class="touter">
 						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="chktime" class="chktime" value="time9" style="display:none;">
 						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="chktime" class="chktime" value="time10" style="display:none;">

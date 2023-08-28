@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,8 +22,9 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	private ReserveSeatMapper mapper;
 
 	@Override
-	public String reserveseat() {
-		// TODO Auto-generated method stub
+	public String reserveseat(HttpSession session,Model model) {
+		String name = session.getAttribute("name").toString();
+		model.addAttribute(name);
 		return "/seat/reserveseat";
 	}
 
