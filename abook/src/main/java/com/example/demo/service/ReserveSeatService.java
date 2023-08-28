@@ -10,6 +10,6 @@ public interface ReserveSeatService {
 
 	public String reserveseat();
 	public String rulelibrary();
-	public String table(TableNameVo tvo, HttpServletRequest request,Model model);
+	public String tableName(TableNameVo tvo, HttpServletRequest request,Model model);
 	
 }

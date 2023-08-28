@@ -19,26 +19,28 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 
 	@Autowired
 	private ReserveSeatMapper mapper;
-	
+
 	@Override
 	public String reserveseat() {
 		// TODO Auto-generated method stub
 		return "/seat/reserveseat";
 	}
-	
+
 	@Override
 	public String rulelibrary() {
 		// TODO Auto-generated method stub
 		return "/seat/rulelibrary";
 	}
-	
+
 	@Override
-	public String table(TableNameVo tvo, HttpServletRequest request, Model model) {
+	public String tableName(TableNameVo tvo, HttpServletRequest request, Model model) {
+		try {
 			String tname = request.getParameter("tname");
 			tvo = mapper.getTableName(tname);
-			model.addAttribute("tvo", tvo);
-			return "/seat/table";
+			return "0";
+		} catch (Exception e) {
+			return "1";
+		}
 	}
 
-	
 }

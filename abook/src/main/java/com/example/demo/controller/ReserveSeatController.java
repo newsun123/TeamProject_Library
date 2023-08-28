@@ -18,21 +18,20 @@ public class ReserveSeatController {
 	@Autowired
 	@Qualifier("rs")
 	private ReserveSeatService rs;
-	
+
 	@RequestMapping("/seat/reserveseat")
 	public String reserveseat() {
 		return rs.reserveseat();
 	}
-	
+
 	@RequestMapping("/seat/rulelibrary")
 	public String rulelibrary() {
 		return rs.rulelibrary();
 	}
-	
+
 	@RequestMapping("/seat/table")
-	public String table(TableNameVo tvo, HttpServletRequest request,Model model) {
-		return rs.table(tvo,request,model);
+	public @ResponseBody String tableName(TableNameVo tvo, HttpServletRequest request, Model model) {
+		return rs.tableName(tvo, request, model);
 	}
-	
-	
+
 }
