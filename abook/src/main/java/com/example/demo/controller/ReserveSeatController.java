@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.ReserveSeatService;
+import com.example.demo.vo.ReserveSeatVo;
 import com.example.demo.vo.TableNameVo;
 
 @Controller
@@ -33,6 +34,11 @@ public class ReserveSeatController {
 	@RequestMapping("/seat/tableName")
 	public @ResponseBody TableNameVo tableName(TableNameVo tvo, HttpServletRequest request, Model model) {
 		return rs.tableName(tvo, request, model);
+	}
+	
+	@RequestMapping("/seat/reserveSeater")
+	public String reserveSeater(ReserveSeatVo rvo,HttpSession session,HttpServletRequest request) {
+		return rs.reserveSeater(rvo,session,request);
 	}
 
 }

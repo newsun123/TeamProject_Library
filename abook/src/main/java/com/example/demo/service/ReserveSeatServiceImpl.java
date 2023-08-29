@@ -40,6 +40,20 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		tvo = mapper.tableName(tname);
 		return tvo;
 	}
+
+	@Override
+	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request) {
+		String userid = session.getAttribute("userid").toString();
+		
+		rvo.setUserid(userid);
+		rvo.setTname(request.getParameter("tname"));
+		
+		
+		
+		mapper.reserveSeater(rvo);
+		return "redirect:/seat/reserveseat";
+	}
+
 	
 	
 	
