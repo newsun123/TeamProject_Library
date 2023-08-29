@@ -163,21 +163,24 @@ input[type=button] {
 #end {
 	clear: both;
 }
+.chktime {
+	display:none;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
-		//alert(tname);
+		alert(tname);
 		var cyd = new XMLHttpRequest();
 		cyd.onload = function() {
 			//alert(cyd.responseText);
 			var aa = JSON.parse(cyd.responseText);
-			document.getElementById("layer_background").style.display = "inline-block";
-			document.getElementById("tn").innerText = aa.tname;
-			document.cf.tname.value= aa.tname;
-			for(i=9; i<=18; i++) {
+			document.getElementById("layer_background").style.display = "inline-block"; //레이어 표시
+			document.getElementById("tn").innerText = aa.tname; // 레이어창 tname 표시
+			document.cf.tname.value= aa.tname; //tname값 입력
+			for(i=9; i<19; i++) {
 				if(eval("aa.time"+i) == 1) {
 					eval("document.getElementById('time"+i+"').style.background='gray'");
 					eval("document.getElementById('time"+i+"').style.pointerEvents='none'");
@@ -369,7 +372,7 @@ input[type=button] {
 						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="0">
 						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="0">
 						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="0">
-						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
+						<div class="time" id="time11" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
 						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="time13" class="chktime" value="0">
 						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="time14" class="chktime" value="0">
 						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="time15" class="chktime" value="0">
