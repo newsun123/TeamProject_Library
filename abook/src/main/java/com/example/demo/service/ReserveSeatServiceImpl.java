@@ -44,13 +44,21 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request) {
 		String userid = session.getAttribute("userid").toString();
-		
+		//배열로 만들어 time value값 가져오기
+		String aa = request.getParameter("arrychktime");
+		String[] imsi = aa.split(",");
+		System.out.println(imsi.length);
 		rvo.setUserid(userid);
 		rvo.setTname(request.getParameter("tname"));
 		
+		mapper.reserveSeater(rvo); // 유저아이디 값 들어간 예약테이블
+		//tablename 테이블에 시간 추가 적기(배열이용하기)
+		for(int i=0;i<imsi.length;i++) {
+			if(imsi[i].equals("1")) {
+				mapper.updateTableName("time"+(i+9),rvo.getTname()); //time+숫자 , tname 사용				
+			}
+		}
 		
-		
-		mapper.reserveSeater(rvo);
 		return "redirect:/seat/reserveseat";
 	}
 

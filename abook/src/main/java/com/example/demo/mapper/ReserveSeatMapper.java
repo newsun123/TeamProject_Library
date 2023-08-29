@@ -11,4 +11,5 @@ import com.example.demo.vo.TableNameVo;
 public interface ReserveSeatMapper {
 	public TableNameVo tableName(String tname);
 	public void reserveSeater(ReserveSeatVo rvo);
+	public void updateTableName(String time,String tname);
 }

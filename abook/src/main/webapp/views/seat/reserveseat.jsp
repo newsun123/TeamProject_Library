@@ -225,15 +225,23 @@ input[type=button] {
 		} else if (chk.length == 0) {
 			alert("시간을 예약하세요");
 			return false;
-		}
-		 for(i=0; i<10; i++) {
-				if(my.chktime[i].checked){
-					my.chktime[i].value=1;
+		}else {
+			var chktime = document.getElementsByClassName("chktime");
+			var len = chktime.length;
+			alert(len);
+			var arrychktime="";			
+			for(i=0;i<len;i++){
+				if(chktime[i].checked){
+					chktime[i].value=1;
+					arrychktime= arrychktime+chktime[i].value+",";
 				}else {
-					my.chktime[i].value=0;
+					chktime[i].value=0;
+					arrychktime= arrychktime+chktime[i].value+",";
 				}
 			}
-			 return true;
+		}
+		 document.cf.arrychktime.value= arrychktime;
+		return true;
 	}
 </script>
 </head>
@@ -356,17 +364,18 @@ input[type=button] {
 				</div>
 				<form name="cf" method="post" action="reserveSeater" onsubmit="return check(this)">
 				<input type="hidden" name="tname" value=""> 
+				<input type="hidden" name="arrychktime">
 					<div class="touter">
-						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="time9" style="display:none;">
-						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="time10" style="display:none;">
-						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="time11" style="display:none;">
-						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="time12" style="display:none;">
-						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="time13" class="chktime" value="time13" style="display:none;">
-						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="time14" class="chktime" value="time14" style="display:none;">
-						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="time15" class="chktime" value="time15" style="display:none;">
-						<div class="time" id="time16" onclick="checktime(7,this)">16시~17시</div><input type="checkbox" name="time16" class="chktime" value="time16" style="display:none;">
-						<div class="time" id="time17" onclick="checktime(8,this)">17시~18시</div><input type="checkbox" name="time17" class="chktime" value="time17" style="display:none;">
-						<div class="time" id="time18" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="time18" class="chktime" value="time18" style="display:none;">
+						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="0">
+						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="0">
+						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="0">
+						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
+						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="time13" class="chktime" value="0">
+						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="time14" class="chktime" value="0">
+						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="time15" class="chktime" value="0">
+						<div class="time" id="time16" onclick="checktime(7,this)">16시~17시</div><input type="checkbox" name="time16" class="chktime" value="0">
+						<div class="time" id="time17" onclick="checktime(8,this)">17시~18시</div><input type="checkbox" name="time17" class="chktime" value="0">
+						<div class="time" id="time18" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="time18" class="chktime" value="0">
 					</div>
 					<div class="sbouter">
 						<input type="submit" value="좌석예약">
