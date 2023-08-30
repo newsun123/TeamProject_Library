@@ -164,7 +164,7 @@ input[type=button] {
 	clear: both;
 }
 .chktime {
-	display:none;
+	/* display:none; */
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -172,16 +172,18 @@ input[type=button] {
 
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
-		alert(tname);
+		alert("테이블이름 확인용: "+tname); //테이블 이름 확인
 		var cyd = new XMLHttpRequest();
 		cyd.onload = function() {
 			//alert(cyd.responseText);
-			var aa = JSON.parse(cyd.responseText);
+			var aa = JSON.parse(cyd.responseText); // JSON으로 tablename DB가져오기
 			document.getElementById("layer_background").style.display = "inline-block"; //레이어 표시
 			document.getElementById("tn").innerText = aa.tname; // 레이어창 tname 표시
 			document.cf.tname.value= aa.tname; //tname값 입력
 			for(i=9; i<19; i++) {
-				if(eval("aa.time"+i) == 1) {
+				
+				if(eval("aa.time"+i) == 1) { 
+					alert("예약된 테이블: "+"aa.time"+i); //DB 예약확인
 					eval("document.getElementById('time"+i+"').style.background='gray'");
 					eval("document.getElementById('time"+i+"').style.pointerEvents='none'");
 				}
@@ -190,7 +192,7 @@ input[type=button] {
 		cyd.open("GET", "tableName?tname="+tname);
 		cyd.send();
 	}
-	function hideLayer() {
+	function hideLayer() { //레이어 닫기
 		document.getElementById("layer_background").style.display = "none";
 		var chk = document.getElementsByClassName("chktime").length;
 		for (i = 0; i <= chk; i++) {
@@ -231,11 +233,14 @@ input[type=button] {
 		}else {
 			var chktime = document.getElementsByClassName("chktime");
 			var len = chktime.length;
-			alert(len);
+			// alert(len); chktime(체크박스) 길이 
+			
+			// 체크된 체크박스의 밸류값이 배열로 가져오기 힘들어 하나의 String으로 합치기
 			var arrychktime="";			
 			for(i=0;i<len;i++){
 				if(chktime[i].checked){
 					chktime[i].value=1;
+					alert(chktime[i].innerText+":"+chktime[i].value); // 1 체크된거 확인
 					arrychktime= arrychktime+chktime[i].value+",";
 				}else {
 					chktime[i].value=0;
