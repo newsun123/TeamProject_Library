@@ -88,8 +88,12 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		if(time9 == 1)
 			times = times + "9시~10시, ";
 		if(time10 == 1)
-			times = times + "11시~12시, ";
+			times = times + "10시~11시, ";
 		if(time11 == 1)
+			times = times + "11시~12시, ";
+		if(time12 == 1)
+			times = times + "12시~13시, ";
+		if(time13 == 1)
 			times = times + "13시~14시, ";
 		if(time14 == 1) 
 			times = times + "14시~15시, ";

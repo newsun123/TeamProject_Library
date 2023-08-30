@@ -374,10 +374,10 @@ input[type=button] {
 				<input type="hidden" name="tname" value=""> 
 				<input type="hidden" name="arrychktime">
 					<div class="touter">
-						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="0">
+						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시  </div><input type="checkbox" name="time9" class="chktime" value="0">
 						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="0">
 						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="0">
-						<div class="time" id="time11" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
+						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
 						<div class="time" id="time13" onclick="checktime(4,this)">13시~14시</div><input type="checkbox" name="time13" class="chktime" value="0">
 						<div class="time" id="time14" onclick="checktime(5,this)">14시~15시</div><input type="checkbox" name="time14" class="chktime" value="0">
 						<div class="time" id="time15" onclick="checktime(6,this)">15시~16시</div><input type="checkbox" name="time15" class="chktime" value="0">
