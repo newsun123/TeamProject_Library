@@ -12,7 +12,7 @@ public interface ReserveSeatService {
 
 	public String reserveseat(HttpSession session,Model model);
 	public String rulelibrary();
-	public TableNameVo tableName(TableNameVo tvo, HttpServletRequest request,Model model);
+	public TableNameVo tableName(HttpServletRequest request,Model model);
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request);
 	public String reserveok(HttpServletRequest req, Model model);
 }

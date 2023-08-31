@@ -173,14 +173,18 @@ input[type=button] {
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
 		alert("테이블이름 확인용: "+tname); //테이블 이름 확인
-		var cyd = new XMLHttpRequest();
-		cyd.onload = function() {
-			//alert(cyd.responseText);
-			var aa = JSON.parse(cyd.responseText); // JSON으로 tablename DB가져오기
+		
+		var chk = new XMLHttpRequest();
+		chk.onload = function() {
+			alert(chk.responseText);
+			var aa = JSON.parse(chk.responseText); // JSON으로 tablename DB가져오기
 			document.getElementById("layer_background").style.display = "inline-block"; //레이어 표시
 			document.getElementById("tn").innerText = aa.tname; // 레이어창 tname 표시
-			document.cf.tname.value= aa.tname; //tname값 입력
-			for(i=9; i<19; i++) {
+			
+			document.cf.tname.value= aa.tname; //input type hideen의 tname값 입력
+			
+			document.getElementById("chkaa").innerText = aa.time9+"/"+aa.time10+"/"+aa.time11+"/"+aa.time12+"/"+aa.time13+"/"+aa.time14+"/"+aa.time15+"/"+aa.time16+"/"+aa.time17+"/"+aa.time18;
+			for(i=9; i<19; i++) { // time 숫자 맞추려고 9부터 ~ 18까지의 값을 잡음
 				
 				if(eval("aa.time"+i) == 1) { 
 					alert("예약된 테이블: "+"aa.time"+i); //DB 예약확인
@@ -189,8 +193,8 @@ input[type=button] {
 				}
 			}	
 		}
-		cyd.open("GET", "tableName?tname="+tname);
-		cyd.send();
+		chk.open("GET", "tableName?tname="+tname);
+		chk.send();
 	}
 	function hideLayer() { //레이어 닫기
 		document.getElementById("layer_background").style.display = "none";
@@ -258,7 +262,7 @@ input[type=button] {
 	<div class="sImg"></div>
 	<div id="section">
 		<div id="labNav">
-			<h2><span>열람실 이용</span></h2>
+			<h2><span>열람실 이용 </span></h2>
 			<ul id="lnb">
 				<li><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
 				<li class="on"><a><span>좌석예약</span></a></li>
@@ -271,7 +275,7 @@ input[type=button] {
 				</div>
 				<div id="contents">
 				<div id="reserveWrap">
-					<h3> 좌석 당일 예약</h3>
+					<h3> 좌석 당일 예약 </h3>
 					<div class="ruletab">
 					<div class="inner_right">
 					<div class="pc_left_line">
@@ -374,7 +378,7 @@ input[type=button] {
 				<input type="hidden" name="tname" value=""> 
 				<input type="hidden" name="arrychktime">
 					<div class="touter">
-						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시  </div><input type="checkbox" name="time9" class="chktime" value="0">
+						<div class="time" id="time9" onclick="checktime(0,this)">9시~10시</div><input type="checkbox" name="time9" class="chktime" value="0">
 						<div class="time" id="time10" onclick="checktime(1,this)">10시~11시</div><input type="checkbox" name="time10" class="chktime" value="0">
 						<div class="time" id="time11" onclick="checktime(2,this)">11시~12시</div><input type="checkbox" name="time11" class="chktime" value="0">
 						<div class="time" id="time12" onclick="checktime(3,this)">12시~13시</div><input type="checkbox" name="time12" class="chktime" value="0">
@@ -388,6 +392,7 @@ input[type=button] {
 					<div class="sbouter">
 						<input type="submit" value="좌석예약">
 						<input type="button" value="뒤로가기" onclick="hideLayer()">
+						<span id="chkaa"></span>
 					</div>
 				</form>
 	</div>
