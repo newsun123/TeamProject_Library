@@ -61,9 +61,11 @@ input[type=button] {
 						<h2 style="font-size:20px; margin-top:30px;font-family: NotoSansM;"> 좌석 예약 완료</h2>
 						<div id="rsvouter">
 							<div id="inner">
-							<div>${rvo.userid} 님의 예약좌석은 ${rvo.tname}입니다. </div>
-							<div>예약시간:${rvo.reserveday} ${time}</div>
+							<div>${userid} 님의 예약내역입니다. </div>
+							<c:forEach items="${rlist}" var="rvo" varStatus="vs">
+							<div>예약 테이블 ${rvo.tname} 예약시간:${rvo.reserveday} ${time}</div>
 							<div><input type="button" value="예약취소하기"></div>
+							</c:forEach>
 							</div>
 						</div>
 					</div>

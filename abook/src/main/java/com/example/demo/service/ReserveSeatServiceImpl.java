@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,13 +50,18 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session, HttpServletRequest request) {
 		String userid = session.getAttribute("userid").toString();
+
+		//이 사람이 예약을 몇시간 했는지 확인하기 0831
+		String total = mapper.totalTime(userid); 
+		System.out.println(total);
+		
+		
 		// 배열로 만들어 time value값 가져오기
 		String aa = request.getParameter("arrychktime");
 		String[] imsi = aa.split(",");
 
 		rvo.setUserid(userid);
 		rvo.setTname(request.getParameter("tname"));
-		System.out.println(rvo.getTime12());
 
 		mapper.reserveSeater(rvo); // 유저아이디 값 들어간 예약테이블
 		// tablename 테이블에 시간 추가 적기(배열이용하기)
@@ -71,45 +77,55 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String reserveok(HttpServletRequest req, Model model) {
 		String userid=req.getParameter("userid");
-		ReserveSeatVo rvo = mapper.reserveok(userid);
-		model.addAttribute("rvo",rvo);
+		model.addAttribute("userid",userid);
+		ArrayList<ReserveSeatVo> rlist = mapper.reserveok(userid);
+		model.addAttribute("rlist",rlist);
+		
 		//시간 값이 int로 들어가서 값을 스트링으로 들여보내려고 노가다함.
-		int time9 = rvo.getTime9();
-		int time10 = rvo.getTime10();
-		int time11 = rvo.getTime11();
-		int time12 = rvo.getTime12();
-		int time13 = rvo.getTime13();
-		int time14 = rvo.getTime14();
-		int time15 = rvo.getTime15();
-		int time16 = rvo.getTime16();
-		int time17 = rvo.getTime17();
-		int time18 = rvo.getTime18();
+		ArrayList<String> timelist = new ArrayList<String>();
 		
-		String times = "";
-		if(time9 == 1)
-			times = times + "9시~10시, ";
-		if(time10 == 1)
-			times = times + "10시~11시, ";
-		if(time11 == 1)
-			times = times + "11시~12시, ";
-		if(time12 == 1)
-			times = times + "12시~13시, ";
-		if(time13 == 1)
-			times = times + "13시~14시, ";
-		if(time14 == 1) 
-			times = times + "14시~15시, ";
-		if(time15 == 1) 
-			times = times + "15시~16시, ";
-		if(time16 == 1) 
-			times = times + "16시~17시, ";			
-		if(time17 == 1) 
-			times = times + "17시~18시, ";			
-		if(time18 == 1) 
-			times = times + "18시~19시, ";	
-		String time = times.substring(0, times.length()-2); // 마지막 ,를 자르기 위해 사용
+		for (int i = 0; i < rlist.size(); i++) {
+			String time = "";
+			int time9 = rlist.get(i).getTime9();
+			int time10 = rlist.get(i).getTime10();
+			int time11 = rlist.get(i).getTime11();
+			int time12 = rlist.get(i).getTime12();
+			int time13 = rlist.get(i).getTime13();
+			int time14 = rlist.get(i).getTime14();
+			int time15 = rlist.get(i).getTime15();
+			int time16 = rlist.get(i).getTime16();
+			int time17 = rlist.get(i).getTime17();
+			int time18 = rlist.get(i).getTime18();
+			
+			if(time9 == 1)
+				time = time + "9시~10시, ";
+			if(time10 == 1)
+				time = time + "10시~11시, ";
+			if(time11 == 1)
+				time = time + "11시~12시, ";
+			if(time12 == 1)
+				time = time + "12시~13시, ";
+			if(time13 == 1)
+				time = time + "13시~14시, ";
+			if(time14 == 1) 
+				time = time + "14시~15시, ";
+			if(time15 == 1) 
+				time = time + "15시~16시, ";
+			if(time16 == 1) 
+				time = time + "16시~17시, ";			
+			if(time17 == 1) 
+				time= time + "17시~18시, ";			
+			if(time18 == 1) 
+				time = time + "18시~19시, ";	
+			
+			time.substring(0, time.length()-2); // 마지막 ,를 자르기 위해 사용
+			
+			timelist.add(time);
+		}
 		
 		
-		model.addAttribute("time",time);
+		
+		model.addAttribute("timelist",timelist);
 		
 		return "/seat/reserveok";
 	}
