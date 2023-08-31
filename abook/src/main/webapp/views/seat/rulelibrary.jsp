@@ -53,8 +53,8 @@
 			<div id="labNav">
 				<h2><span>열람실 이용</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href=""><span>이용규칙</span></a></li>
-					<li><a href="/member/member"><span>좌석예약</span></a></li>
+					<li class="on"><a><span>이용규칙</span></a></li>
+					<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -64,7 +64,7 @@
 				</div>
 				<div id="contents">
 					<div id="ruleWrap">
-						<h3>도서관 이용수칙</h3>
+						<h3>도서관 이용규칙</h3>
 						<div class="ruletab">
 							<div class="rule">
 								<div class="rule_img"><img src="/static/img/rule/libRlue1.png"></div>

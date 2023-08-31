@@ -14,4 +14,5 @@ public interface ReserveSeatService {
 	public String rulelibrary();
 	public TableNameVo tableName(TableNameVo tvo, HttpServletRequest request,Model model);
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request);
+	public String reserveok(HttpServletRequest req, Model model);
 }

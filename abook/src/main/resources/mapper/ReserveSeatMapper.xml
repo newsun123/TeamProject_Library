@@ -11,4 +11,8 @@
 <update id="updateTableName">
 	update tablename set ${time}=1 where tname=#{tname}
 </update>
+
+<select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
+	select * from reserveseat where userid=#{userid}
+</select>
 </mapper>
