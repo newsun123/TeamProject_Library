@@ -40,5 +40,10 @@ public class ReserveSeatController {
 	public String reserveSeater(ReserveSeatVo rvo,HttpSession session,HttpServletRequest request) {
 		return rs.reserveSeater(rvo,session,request);
 	}
+	
+	@RequestMapping("/seat/reserveok")
+	public String reserveok(HttpServletRequest req, Model model) {
+		return rs.reserveok(req, model);
+	}
 
 }

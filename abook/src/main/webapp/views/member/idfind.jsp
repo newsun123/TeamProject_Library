@@ -107,6 +107,7 @@
 			}else{
 				document.getElementById("findform").style.display="none";
 				document.getElementById("sucessform").style.display="block";
+				document.getElementById("idmsg").innerText = chk.responseText;
 			}
 		}
 		
