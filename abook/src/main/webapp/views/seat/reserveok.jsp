@@ -62,9 +62,9 @@ input[type=button] {
 						<div id="rsvouter">
 							<div id="inner">
 							<div>${userid} 님의 예약내역입니다. </div>
-							<c:forEach items="${rlist}" var="rvo" varStatus="vs">
-							<div>예약 테이블 ${rvo.tname} 예약시간:${rvo.reserveday} ${time}</div>
-							<div><input type="button" value="예약취소하기"></div>
+							<c:forEach items="${rlist}" var="rvo" varStatus="status">
+							<div>예약 테이블 ${rvo.tname} 예약시간: ${rvo.reserveday} / ${timelist.get(status.index)} <input type="button" value="예약취소하기"></div>
+							<div></div>
 							</c:forEach>
 							</div>
 						</div>

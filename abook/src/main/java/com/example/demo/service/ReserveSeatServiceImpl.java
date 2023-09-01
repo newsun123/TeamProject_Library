@@ -98,28 +98,28 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 			int time18 = rlist.get(i).getTime18();
 			
 			if(time9 == 1)
-				time = time + "9시~10시, ";
+				time = time + "9시~10시,";
 			if(time10 == 1)
-				time = time + "10시~11시, ";
+				time = time + "10시~11시,";
 			if(time11 == 1)
-				time = time + "11시~12시, ";
+				time = time + "11시~12시,";
 			if(time12 == 1)
-				time = time + "12시~13시, ";
+				time = time + "12시~13시,";
 			if(time13 == 1)
-				time = time + "13시~14시, ";
+				time = time + "13시~14시,";
 			if(time14 == 1) 
-				time = time + "14시~15시, ";
+				time = time + "14시~15시,";
 			if(time15 == 1) 
-				time = time + "15시~16시, ";
+				time = time + "15시~16시,";
 			if(time16 == 1) 
-				time = time + "16시~17시, ";			
+				time = time + "16시~17시,";			
 			if(time17 == 1) 
-				time= time + "17시~18시, ";			
+				time= time + "17시~18시,";			
 			if(time18 == 1) 
-				time = time + "18시~19시, ";	
+				time = time + "18시~19시,";	
 			
-			time.substring(0, time.length()-2); // 마지막 ,를 자르기 위해 사용
-			
+			time=time.substring(0, time.length()-1); // 마지막 ,를 자르기 위해 사용
+		    System.out.println(time.length());
 			timelist.add(time);
 		}
 		
