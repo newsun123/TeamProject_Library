@@ -375,10 +375,10 @@ form > div#addrDiv{
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>마이페이지♡</span></h2>
+				<h2><span>마이페이지</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href="/member/mypage"><span>회원정보 수정</span></a></li>
-					<li><a href=""><span>좌석 예약현황</span></a></li>
+					<li class="on"><a href="/mypage/mypage"><span>회원정보 수정</span></a></li>
+					<li><a href="/mypage/checkReserveSeat"><span>좌석 예약현황</span></a></li>
 					<li><a href=""><span>도서 예약현황</span></a></li>
 					<li><a href=""><span>1:1 문의 현황</span></a></li>
 				</ul>
