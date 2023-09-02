@@ -82,4 +82,14 @@ public class MemberController {
 		 return service.updatePwd(mvo);
 	 }
 	 
+	 @RequestMapping("/mypage/mypage")
+	 public String mypage(MemberVo mvo,HttpSession ss,Model model) {
+		 return service.mypage(mvo,ss,model);
+	 }
+	 
+	 @RequestMapping("/mypage/mypageUpdateOk")
+	 public String mypageUpdateOk(MemberVo mvo,HttpSession ss) {
+		 return service.mypageUpdateOk(mvo,ss);
+	 }
+	 
 }

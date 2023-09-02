@@ -26,4 +26,12 @@
     <update id="updatePwd">
     	update member set pwd=#{pwd} where userid=#{userid}
     </update>
+    <select id="mypage" resultType="com.example.demo.vo.MemberVo">
+    	select * from member where userid=#{userid}
+    </select>
+    <update id="mypageUpdateOk">
+    	update member set name=#{name},pwd=#{pwd},phone=#{phone},email1=#{email1},email2=#{email2},
+    	zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid}
+    </update>
+    
 </mapper>

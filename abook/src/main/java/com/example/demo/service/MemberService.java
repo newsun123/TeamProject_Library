@@ -3,6 +3,8 @@ package com.example.demo.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
+
 import com.example.demo.vo.MemberVo;
 
 public interface MemberService {	
@@ -18,4 +20,6 @@ public interface MemberService {
     public String pwdcheck(HttpServletRequest request);
     public String newPwdCheck(HttpServletRequest request);
     public String updatePwd(MemberVo mvo);
+    public String mypage(MemberVo mvo,HttpSession ss,Model model);
+    public String mypageUpdateOk(MemberVo mvo,HttpSession ss);
 }

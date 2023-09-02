@@ -13,4 +13,6 @@ public interface MemberMapper {
 	 public String pwdcheck(String userid,String name,String phone);
 	 public String newPwdCheck(String userid);
 	 public void updatePwd(MemberVo mvo);
+	 public MemberVo mypage(String userid);
+	 public void mypageUpdateOk(MemberVo mvo);
 }
