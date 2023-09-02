@@ -48,7 +48,7 @@ input[type=button] {
 				<h2><span>열람실 이용</span></h2>
 				<ul id="lnb">
 					<li><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
-					<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
+					<li><a href="/seat/chkReserveSeat"><span>좌석예약</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

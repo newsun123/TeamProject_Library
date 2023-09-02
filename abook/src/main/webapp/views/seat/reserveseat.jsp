@@ -171,7 +171,7 @@ input[type=button] {
 <script>
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
-		alert("테이블이름 확인용: "+tname); //테이블 이름 확인
+		//alert("테이블이름 확인용: "+tname); //테이블 이름 확인
 		
 		var chk = new XMLHttpRequest();
 		chk.onload = function() {
@@ -186,7 +186,7 @@ input[type=button] {
 			for(i=9; i<19; i++) { // time 숫자 맞추려고 9부터 ~ 18까지의 값을 잡음
 				
 				if(eval("aa.time"+i) == 1) { 
-					alert("예약된 테이블: "+"aa.time"+i); //DB 예약확인
+					//alert("예약된 테이블: "+"aa.time"+i); //DB 예약확인
 					eval("document.getElementById('time"+i+"').style.background='gray'");
 					eval("document.getElementById('time"+i+"').style.pointerEvents='none'");
 				}
@@ -227,7 +227,9 @@ input[type=button] {
 
 	function check(my) {
 		var chk = document.querySelectorAll('input[type="checkbox"]:checked');
-		 if (chk.length > 3) {
+		var total = ${total} + chk.length; // 이전에 예약한 값 가져와 예약 확인하기
+		//alert(total);
+		 if (total > 3) {
 			alert("최대 3시간까지 가능합니다.");
 			return false;
 		} else if (chk.length == 0) {
@@ -243,7 +245,7 @@ input[type=button] {
 			for(i=0;i<len;i++){
 				if(chktime[i].checked){
 					chktime[i].value=1;
-					alert(chktime[i].innerText+":"+chktime[i].value); // 1 체크된거 확인
+					//alert(chktime[i].innerText+":"+chktime[i].value); // 1 체크된거 확인
 					arrychktime= arrychktime+chktime[i].value+",";
 				}else {
 					chktime[i].value=0;
