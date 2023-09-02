@@ -16,7 +16,7 @@
 <select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
 	select * from reserveseat where userid=#{userid}
 </select>
-<select id="totalTime" resultType="String">
+<select id="totalTime" resultType="Integer">
 	select time9+time10+time11+time12+time13+time14+time15+time16+time17+time18 from reserveseat where userid=#{userid}
 </select>
 </mapper>
