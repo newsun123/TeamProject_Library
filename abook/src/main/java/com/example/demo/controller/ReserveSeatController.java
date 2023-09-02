@@ -22,8 +22,8 @@ public class ReserveSeatController {
 	private ReserveSeatService rs;
 
 	@RequestMapping("/seat/reserveseat")
-	public String reserveseat(HttpSession session,Model model) {
-		return rs.reserveseat(session,model);
+	public String reserveseat(HttpSession session,Model model,HttpServletRequest req) {
+		return rs.reserveseat(session,model,req);
 	}
 
 	@RequestMapping("/seat/rulelibrary")

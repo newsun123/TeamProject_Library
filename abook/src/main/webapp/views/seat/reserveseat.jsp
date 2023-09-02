@@ -169,7 +169,6 @@ input[type=button] {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
 	function tableName(n) {
 		var tname = document.getElementsByClassName("tablename")[n].innerText;
 		alert("테이블이름 확인용: "+tname); //테이블 이름 확인

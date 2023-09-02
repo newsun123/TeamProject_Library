@@ -10,7 +10,7 @@ import com.example.demo.vo.TableNameVo;
 
 public interface ReserveSeatService {
 
-	public String reserveseat(HttpSession session,Model model);
+	public String reserveseat(HttpSession session,Model model,HttpServletRequest req);
 	public String rulelibrary();
 	public TableNameVo tableName(HttpServletRequest request,Model model);
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session,HttpServletRequest request);

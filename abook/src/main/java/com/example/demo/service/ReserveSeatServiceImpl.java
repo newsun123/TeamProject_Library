@@ -23,7 +23,9 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	private ReserveSeatMapper mapper;
 
 	@Override
-	public String reserveseat(HttpSession session, Model model) {
+	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
+		String chk = req.getParameter("chk");
+		model.addAttribute("chk",chk);
 		if (session.getAttribute("userid") == null) {
 			return "redirect:/member/login";
 		} else {
@@ -51,32 +53,29 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session, HttpServletRequest request) {
 		String userid = session.getAttribute("userid").toString();
 
-		//이 사람이 예약을 몇시간 했는지 확인하기 0831
-		String total = mapper.totalTime(userid); 
-		System.out.println(total);
-		
-		
-		// 배열로 만들어 time value값 가져오기
-		String aa = request.getParameter("arrychktime");
-		String[] imsi = aa.split(",");
-
-		rvo.setUserid(userid);
-		rvo.setTname(request.getParameter("tname"));
-
-		mapper.reserveSeater(rvo); // 유저아이디 값 들어간 예약테이블
-		// tablename 테이블에 시간 추가 적기(배열이용하기)
-		for (int i = 0; i < imsi.length; i++) {
-			if (imsi[i].equals("1")) {
-				mapper.updateTableName("time" + (i + 9), rvo.getTname()); // time+숫자 , tname 사용
+			// 배열로 만들어 time value값 가져오기
+			String aa = request.getParameter("arrychktime");
+			String[] imsi = aa.split(",");
+			
+			rvo.setUserid(userid);
+			rvo.setTname(request.getParameter("tname"));
+			
+			mapper.reserveSeater(rvo); // 유저아이디 값 들어간 예약테이블
+			// tablename 테이블에 시간 추가 적기(배열이용하기)
+			for (int i = 0; i < imsi.length; i++) {
+				if (imsi[i].equals("1")) {
+					mapper.updateTableName("time" + (i + 9), rvo.getTname()); // time+숫자 , tname 사용
+				}
 			}
+			
+			return "redirect:/seat/reserveok?userid="+userid;
 		}
-
-		return "redirect:/seat/reserveok?userid="+userid;
-	}
 
 	@Override
 	public String reserveok(HttpServletRequest req, Model model) {
 		String userid=req.getParameter("userid");
+		
+		
 		model.addAttribute("userid",userid);
 		ArrayList<ReserveSeatVo> rlist = mapper.reserveok(userid);
 		model.addAttribute("rlist",rlist);
