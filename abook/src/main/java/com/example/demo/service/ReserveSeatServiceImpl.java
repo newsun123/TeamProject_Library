@@ -15,6 +15,8 @@ import com.example.demo.mapper.ReserveSeatMapper;
 import com.example.demo.vo.ReserveSeatVo;
 import com.example.demo.vo.TableNameVo;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+
 @Service
 @Qualifier("rs")
 public class ReserveSeatServiceImpl implements ReserveSeatService {
@@ -22,15 +24,29 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Autowired
 	private ReserveSeatMapper mapper;
 
+	
+	@Override
+	public String chkReserveSeat(HttpSession session, Model model) {
+		String userid = session.getAttribute("userid").toString();
+		String time = LocalDate.now().toString();
+		System.out.println(time);
+		int total = mapper.totalTime(userid,time);
+		model.addAttribute("total",total);
+		return "redirect:/seat/reserveseat?total="+total;
+	}
+	
+	
 	@Override
 	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
-		String chk = req.getParameter("chk");
-		model.addAttribute("chk",chk);
+		
+		String total = req.getParameter("total");
+		
 		if (session.getAttribute("userid") == null) {
 			return "redirect:/member/login";
 		} else {
 			String name = session.getAttribute("name").toString();
 			model.addAttribute(name);
+			model.addAttribute("total",total);
 			return "/seat/reserveseat";
 		}
 	}
@@ -118,7 +134,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 				time = time + "18시~19시,";	
 			
 			time=time.substring(0, time.length()-1); // 마지막 ,를 자르기 위해 사용
-		    System.out.println(time.length());
+		    //System.out.println(time.length());
 			timelist.add(time);
 		}
 		
@@ -128,5 +144,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		
 		return "/seat/reserveok";
 	}
+
+	
 
 }

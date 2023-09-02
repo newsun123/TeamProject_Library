@@ -206,7 +206,7 @@
 				<a href="#">열람실 이용</a>
 				<ul>
 					<li><a href="/seat/rulelibrary">이용 규칙</a></li>
-					<li><a href="/seat/reserveseat">좌석 예약</a></li>
+					<li><a href="/seat/chkReserveSeat">좌석 예약</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">

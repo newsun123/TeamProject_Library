@@ -15,5 +15,5 @@ public interface ReserveSeatMapper {
 	public void reserveSeater(ReserveSeatVo rvo);
 	public void updateTableName(String time,String tname);
 	public ArrayList<ReserveSeatVo> reserveok(String userid);
-	public Integer totalTime(String userid);
+	public int totalTime(String userid,String time);
 }

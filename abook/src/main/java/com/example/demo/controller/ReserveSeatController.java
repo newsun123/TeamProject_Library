@@ -20,6 +20,11 @@ public class ReserveSeatController {
 	@Autowired
 	@Qualifier("rs")
 	private ReserveSeatService rs;
+	
+	@RequestMapping("/seat/chkReserveSeat")
+	public String chkReserveSeat(HttpSession session,Model model) {
+		return rs.chkReserveSeat(session,model);
+	}
 
 	@RequestMapping("/seat/reserveseat")
 	public String reserveseat(HttpSession session,Model model,HttpServletRequest req) {
