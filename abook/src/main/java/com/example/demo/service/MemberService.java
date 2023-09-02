@@ -21,5 +21,5 @@ public interface MemberService {
     public String newPwdCheck(HttpServletRequest request);
     public String updatePwd(MemberVo mvo);
     public String mypage(MemberVo mvo,HttpSession ss,Model model);
-    public String mypageUpdateOk(MemberVo mvo,HttpSession ss);
+    public String mypageUpdateOk(MemberVo mvo,HttpSession ss,HttpServletRequest req);
 }

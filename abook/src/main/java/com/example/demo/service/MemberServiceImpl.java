@@ -125,8 +125,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String mypageUpdateOk(MemberVo mvo,HttpSession ss) {
-		mapper.mypageUpdateOk(mvo);
+	public String mypageUpdateOk(MemberVo mvo,HttpSession ss,HttpServletRequest req) {
+		String userid=ss.getAttribute("userid").toString();
+		mvo.setUserid(userid);
+		String pwd = mvo.getPwd();
+		System.out.println(mvo.getUserid());
+		System.out.println(pwd);
+		System.out.println(mvo.getEmail1());
+		if(pwd =="" || pwd == null) {
+			mapper.mypageUpdateOk2(mvo);
+		}else {
+			mapper.mypageUpdateOk(mvo);			
+		}
 		ss.invalidate();//회원정보를 변경했으니 로그아웃시키고 로그인페이지로 이동시키자
 		
 		return "redirect:/member/login";

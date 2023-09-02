@@ -29,9 +29,11 @@
     <select id="mypage" resultType="com.example.demo.vo.MemberVo">
     	select * from member where userid=#{userid}
     </select>
-    <update id="mypageUpdateOk">
-    	update member set name=#{name},pwd=#{pwd},phone=#{phone},email1=#{email1},email2=#{email2},
-    	zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid}
+    <update id="mypageUpdateOk" parameterType="com.example.demo.vo.MemberVo">
+    	update member set name=#{name},pwd=#{pwd},phone=#{phone},email1=#{email1},email2=#{email2},zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid} and no=#{no}
+    </update>
+    <update id="mypageUpdateOk2">
+    	update member set name=#{name},phone=#{phone},email1=#{email1},email2=#{email2},zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid} and no=#{no}
     </update>
     
 </mapper>

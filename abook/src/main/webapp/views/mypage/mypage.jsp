@@ -284,8 +284,9 @@ form > div#addrDiv{
 	/* 전송전 입력값 유효성 체크 */
 	function check(my){
 	
-		var chk=6;
+		var chk=5;
 		
+		var userid=my.userid.value;
 		var pwd=my.pwd.value;
 		var pwd2=my.pwd2.value;
 		var name=my.name.value;
@@ -305,11 +306,7 @@ form > div#addrDiv{
 		
 		if(pchk==0){
 			
-			if(pwd.trim().length==0){
-				pwdMsg1.innerText="비밀번호를 입력하세요.";
-				pwdMsg1.style.display="block";
-				pwdMsg1.style.color="#e52528";
-			}else if(pwd.trim().length<6){
+			if(pwd.trim().length<6){
 				pwdMsg1.innerText="비밀번호를 6자 이상 입력하세요.";
 				pwdMsg1.style.display="block";
 				pwdMsg1.style.color="#e52528";
@@ -323,16 +320,9 @@ form > div#addrDiv{
 				pwdMsg2.innerText="비밀번호가 불일치합니다.";
 				pwdMsg2.style.display="block";
 				pwdMsg2.style.color="#e52528";
-			}
-			
-			if(pwd2.trim().length==0){
-				pwdMsg2.innerText="확인을 위해 새 비밀번호 다시 입력하세요.";
-				pwdMsg2.style.display="block";
-				pwdMsg2.style.color="#e52528";
-			}
-
-		}else{
-			chk--; 
+			}else{
+				chk--; //5
+			} 
 		}
 	
 		if(name.trim().length==0){ //이름 
@@ -340,7 +330,7 @@ form > div#addrDiv{
 			nameMsg.style.display="block";
 		}else{
 			nameMsg.style.display="none";
-			chk--; 
+			chk--;  //4
 		}
 		
 		if(zip.trim().length==0){ //주소 	
@@ -352,7 +342,7 @@ form > div#addrDiv{
 			addMsg.style.display="block";
 		}else{
 			addMsg.style.display="none";
-			chk--;	
+			chk--;	//3
 		}
 		
 		if(email1.trim().length==0 || email2.trim().length==0){ //이메일
@@ -403,6 +393,7 @@ form > div#addrDiv{
 						<div id="mypage">
 							<h3>회원정보 수정</h3>
 							<form name="mform" method="post" action="mypageUpdateOk" onsubmit="return check(this)">
+							<input type="hidden" name="no" value="${mvo.no}">
 						         <div id="idDiv">
 						         	<input id="userid" type="text" name="userid" placeholder="아이디" oninput="useridCheck(this.value)" value="${mvo.userid}" disabled>
 						         </div>

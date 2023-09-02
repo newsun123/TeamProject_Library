@@ -88,8 +88,8 @@ public class MemberController {
 	 }
 	 
 	 @RequestMapping("/mypage/mypageUpdateOk")
-	 public String mypageUpdateOk(MemberVo mvo,HttpSession ss) {
-		 return service.mypageUpdateOk(mvo,ss);
+	 public String mypageUpdateOk(MemberVo mvo,HttpSession ss,HttpServletRequest req) {
+		 return service.mypageUpdateOk(mvo,ss,req);
 	 }
 	 
 }

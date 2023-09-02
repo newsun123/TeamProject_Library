@@ -15,4 +15,5 @@ public interface MemberMapper {
 	 public void updatePwd(MemberVo mvo);
 	 public MemberVo mypage(String userid);
 	 public void mypageUpdateOk(MemberVo mvo);
+	 public void mypageUpdateOk2(MemberVo mvo);
 }
