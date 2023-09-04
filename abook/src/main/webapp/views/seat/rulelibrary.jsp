@@ -64,7 +64,7 @@
 				</div>
 				<div id="contents">
 					<div id="ruleWrap">
-						<h3>도서관 이용규칙zzz</h3>
+						<h3>도서관 이용규칙</h3>
 						<div class="ruletab">
 							<div class="rule">
 								<div class="rule_img"><img src="/static/img/rule/libRlue1.png"></div>
