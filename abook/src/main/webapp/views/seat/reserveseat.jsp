@@ -281,80 +281,400 @@ input[type=button] {
 					<div class="inner_right">
 					<div class="pc_left_line">
 						<div class="pc_line">
+						<c:if test="${list.get(0).close==0}">
 							<div class="pc tablename" onclick="tableName(0)">pc1</div>
+						</c:if>		
+						<c:if test="${list.get(0).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc1</div>
+						</c:if>		
+						<c:if test="${list.get(1).close==0}">
 							<div class="pc tablename" onclick="tableName(1)">pc2</div>
+						</c:if>		
+						<c:if test="${list.get(1).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc2</div>
+						</c:if>		
+						<c:if test="${list.get(2).close==0}">	
 							<div class="pc tablename" onclick="tableName(2)">pc3</div>
-							<div class="pc tablename" onclick="tableName(3)">pc4</div>
+						</c:if>		
+						<c:if test="${list.get(2).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc3</div>
+						</c:if>		
+						<c:if test="${list.get(3).close==0}">	
+							<div class="pc tablename"  onclick="tableName(3)">pc4</div>
+						</c:if>		
+						<c:if test="${list.get(3).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc4</div>
+						</c:if>		
+						<c:if test="${list.get(4).close==0}">	
 							<div class="pc tablename" onclick="tableName(4)">pc5</div>
+						</c:if>		
+						<c:if test="${list.get(4).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc5</div>
+						</c:if>		
+						<c:if test="${list.get(5).close==0}">
 							<div class="pc tablename" onclick="tableName(5)">pc6</div>
+						</c:if>		
+						<c:if test="${list.get(5).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc6</div>
+						</c:if>		
+						<c:if test="${list.get(6).close==0}">
 							<div class="pc tablename" onclick="tableName(6)">pc7</div>
+						</c:if>		
+						<c:if test="${list.get(6).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc7</div>
+						</c:if>		
+						<c:if test="${list.get(7).close==0}">	
 							<div class="pc tablename" onclick="tableName(7)">pc8</div>
+						</c:if>		
+						<c:if test="${list.get(7).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc8</div>
+						</c:if>		
+						<c:if test="${list.get(8).close==0}">	
 							<div class="pc tablename" onclick="tableName(8)">pc9</div>
+						</c:if>		
+						<c:if test="${list.get(8).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc9</div>
+						</c:if>		
+						<c:if test="${list.get(9).close==0}">	
 							<div class="pc tablename" onclick="tableName(9)">pc10</div>
+						</c:if>		
+						<c:if test="${list.get(9).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc10</div>
+						</c:if>		
+						<c:if test="${list.get(10).close==0}">	
 							<div class="pc tablename" onclick="tableName(10)">pc11</div>
+						</c:if>		
+						<c:if test="${list.get(10).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc11</div>
+						</c:if>		
+						<c:if test="${list.get(11).close==0}">	
 							<div class="pc tablename" onclick="tableName(11)">pc12</div>
+						</c:if>		
+						<c:if test="${list.get(11).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc12</div>
+						</c:if>		
 						</div>
 						<div class="pc_line">
+						<c:if test="${list.get(12).close==0}">
 							<div class="pc tablename" onclick="tableName(12)">pc13</div>
+						</c:if>		
+						<c:if test="${list.get(12).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc13</div>
+						</c:if>		
+						<c:if test="${list.get(13).close==0}">	
 							<div class="pc tablename" onclick="tableName(13)">pc14</div>
+						</c:if>		
+						<c:if test="${list.get(13).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc14</div>
+						</c:if>		
+						<c:if test="${list.get(14).close==0}">	
 							<div class="pc tablename" onclick="tableName(14)">pc15</div>
+						</c:if>		
+						<c:if test="${list.get(14).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc15</div>
+						</c:if>		
+						<c:if test="${list.get(15).close==0}">	
 							<div class="pc tablename" onclick="tableName(15)">pc16</div>
+						</c:if>		
+						<c:if test="${list.get(15).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc16</div>
+						</c:if>	
+						<c:if test="${list.get(16).close==0}">	
 							<div class="pc tablename" onclick="tableName(16)">pc17</div>
+						</c:if>	
+						<c:if test="${list.get(16).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc17</div>
+						</c:if>	
+						<c:if test="${list.get(17).close==0}">	
 							<div class="pc tablename" onclick="tableName(17)">pc18</div>
+						</c:if>	
+						<c:if test="${list.get(17).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc18</div>
+						</c:if>	
+						<c:if test="${list.get(18).close==0}">	
 							<div class="pc tablename" onclick="tableName(18)">pc19</div>
+						</c:if>	
+						<c:if test="${list.get(18).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc19</div>
+						</c:if>	
+						<c:if test="${list.get(19).close==0}">	
 							<div class="pc tablename" onclick="tableName(19)">pc20</div>
+						</c:if>	
+						<c:if test="${list.get(19).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc20</div>
+						</c:if>	
+						<c:if test="${list.get(20).close==0}">	
 							<div class="pc tablename" onclick="tableName(20)">pc21</div>
+						</c:if>	
+						<c:if test="${list.get(20).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc21</div>
+						</c:if>	
+						<c:if test="${list.get(21).close==0}">	
 							<div class="pc tablename" onclick="tableName(21)">pc22</div>
+						</c:if>	
+						<c:if test="${list.get(21).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc22</div>
+						</c:if>	
+						<c:if test="${list.get(22).close==0}">	
 							<div class="pc tablename" onclick="tableName(22)">pc23</div>
+						</c:if>	
+						<c:if test="${list.get(22).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc23</div>
+						</c:if>	
+						<c:if test="${list.get(23).close==0}">	
 							<div class="pc tablename" onclick="tableName(23)">pc24</div>
+						</c:if>	
+						<c:if test="${list.get(23).close==1}">	
+							<div class="pc tablename" style="background:gray;color:white;" disabled>pc24</div>
+						</c:if>	
 						</div>
 					</div>
 					<div class="pc_right_line">
 						<div class="pc_line_two">
+						<c:if test="${list.get(24).close==0}">
 							<div class="nomal tablename" onclick="tableName(24)">N1</div>
+						</c:if>	
+						<c:if test="${list.get(24).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N1</div>
+						</c:if>	
+						<c:if test="${list.get(25).close==0}">	
 							<div class="nomal tablename" onclick="tableName(25)">N2</div>
+						</c:if>	
+						<c:if test="${list.get(25).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N2</div>
+						</c:if>	
+						<c:if test="${list.get(26).close==0}">	
 							<div class="nomal tablename" onclick="tableName(26)">N3</div>
+						</c:if>	
+						<c:if test="${list.get(26).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N3</div>
+						</c:if>	
+						<c:if test="${list.get(27).close==0}">	
 							<div class="nomal tablename" onclick="tableName(27)">N4</div>
+						</c:if>	
+						<c:if test="${list.get(27).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N4</div>
+						</c:if>	
+						<c:if test="${list.get(28).close==0}">	
 							<div class="nomal tablename" onclick="tableName(28)">N5</div>
+						</c:if>	
+						<c:if test="${list.get(28).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N5</div>
+						</c:if>	
+						<c:if test="${list.get(29).close==0}">	
 							<div class="nomal tablename" onclick="tableName(29)">N6</div>
+						</c:if>	
+						<c:if test="${list.get(29).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N6</div>
+						</c:if>	
+						<c:if test="${list.get(30).close==0}">	
 							<div class="nomal tablename" onclick="tableName(30)">N7</div>
+						</c:if>	
+						<c:if test="${list.get(30).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N7</div>
+						</c:if>	
+						<c:if test="${list.get(31).close==0}">	
 							<div class="nomal tablename" onclick="tableName(31)">N8</div>
+						</c:if>	
+						<c:if test="${list.get(31).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N8</div>
+						</c:if>	
+						<c:if test="${list.get(32).close==0}">	
 							<div class="nomal tablename" onclick="tableName(32)">N9</div>
+						</c:if>	
+						<c:if test="${list.get(32).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N9</div>
+						</c:if>	
+						<c:if test="${list.get(33).close==0}">	
 							<div class="nomal tablename" onclick="tableName(33)">N10</div>
+						</c:if>	
+						<c:if test="${list.get(33).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N10</div>
+						</c:if>	
+						<c:if test="${list.get(34).close==0}">	
 							<div class="nomal tablename" onclick="tableName(34)">N11</div>
+						</c:if>	
+						<c:if test="${list.get(34).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N11</div>
+						</c:if>	
+						<c:if test="${list.get(35).close==0}">	
 							<div class="nomal tablename" onclick="tableName(35)">N12</div>
+						</c:if>	
+						<c:if test="${list.get(35).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N12</div>
+						</c:if>	
+						<c:if test="${list.get(36).close==0}">	
 							<div class="nomal tablename" onclick="tableName(36)">N13</div>
+						</c:if>	
+						<c:if test="${list.get(36).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N13</div>
+						</c:if>	
+						<c:if test="${list.get(37).close==0}">	
 							<div class="nomal tablename" onclick="tableName(37)">N14</div>
+						</c:if>	
+						<c:if test="${list.get(37).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N14</div>
+						</c:if>	
+						<c:if test="${list.get(38).close==0}">	
 							<div class="nomal tablename" onclick="tableName(38)">N15</div>
+						</c:if>	
+						<c:if test="${list.get(38).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N15</div>
+						</c:if>	
+						<c:if test="${list.get(39).close==0}">	
 							<div class="nomal tablename" onclick="tableName(39)">N16</div>
+						</c:if>	
+						<c:if test="${list.get(39).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N16</div>
+						</c:if>	
+						<c:if test="${list.get(40).close==0}">	
 							<div class="nomal tablename" onclick="tableName(40)">N17</div>
+						</c:if>	
+						<c:if test="${list.get(40).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N17</div>
+						</c:if>	
+						<c:if test="${list.get(41).close==0}">	
 							<div class="nomal tablename" onclick="tableName(41)">N18</div>
+						</c:if>	
+						<c:if test="${list.get(41).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N18</div>
+						</c:if>	
+						<c:if test="${list.get(42).close==0}">	
 							<div class="nomal tablename" onclick="tableName(42)">N19</div>
+						</c:if>	
+						<c:if test="${list.get(42).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N19</div>
+						</c:if>	
+						<c:if test="${list.get(43).close==0}">	
 							<div class="nomal tablename" onclick="tableName(43)">N20</div>
+						</c:if>	
+						<c:if test="${list.get(43).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N20</div>
+						</c:if>	
 						</div>
 					</div>
 					<div class="pc_right_line_two">
 						<div class="pc_line_three">
+						<c:if test="${list.get(44).close==0}">
 							<div class="nomal tablename" onclick="tableName(44)">N21</div>
+						</c:if>	
+						<c:if test="${list.get(44).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N21</div>
+						</c:if>	
+						<c:if test="${list.get(45).close==0}">	
 							<div class="nomal tablename" onclick="tableName(45)">N22</div>
+						</c:if>	
+						<c:if test="${list.get(45).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N22</div>
+						</c:if>	
+						<c:if test="${list.get(46).close==0}">	
 							<div class="nomal tablename" onclick="tableName(46)">N23</div>
+						</c:if>	
+						<c:if test="${list.get(46).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N23</div>
+						</c:if>	
+						<c:if test="${list.get(47).close==0}">	
 							<div class="nomal tablename" onclick="tableName(47)">N24</div>
+						</c:if>	
+						<c:if test="${list.get(47).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N24</div>
+						</c:if>	
+						<c:if test="${list.get(48).close==0}">	
 							<div class="nomal tablename" onclick="tableName(48)">N25</div>
+						</c:if>	
+						<c:if test="${list.get(48).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N25</div>
+						</c:if>	
+						<c:if test="${list.get(49).close==0}">	
 							<div class="nomal tablename" onclick="tableName(49)">N26</div>
+						</c:if>	
+						<c:if test="${list.get(49).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N26</div>
+						</c:if>	
+						<c:if test="${list.get(50).close==0}">	
 							<div class="nomal tablename" onclick="tableName(50)">N27</div>
+						</c:if>	
+						<c:if test="${list.get(50).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N27</div>
+						</c:if>	
+						<c:if test="${list.get(51).close==0}">	
 							<div class="nomal tablename" onclick="tableName(51)">N28</div>
+						</c:if>	
+						<c:if test="${list.get(51).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N28</div>
+						</c:if>	
+						<c:if test="${list.get(52).close==0}">	
 							<div class="nomal tablename" onclick="tableName(52)">N29</div>
+						</c:if>	
+						<c:if test="${list.get(52).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N29</div>
+						</c:if>	
+						<c:if test="${list.get(53).close==0}">	
 							<div class="nomal tablename" onclick="tableName(53)">N30</div>
+						</c:if>	
+						<c:if test="${list.get(53).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N30</div>
+						</c:if>	
+						<c:if test="${list.get(54).close==0}">	
 							<div class="nomal tablename" onclick="tableName(54)">N31</div>
+						</c:if>	
+						<c:if test="${list.get(54).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N31</div>
+						</c:if>	
+						<c:if test="${list.get(55).close==0}">	
 							<div class="nomal tablename" onclick="tableName(55)">N32</div>
+						</c:if>	
+						<c:if test="${list.get(55).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N32</div>
+						</c:if>	
+						<c:if test="${list.get(56).close==0}">	
 							<div class="nomal tablename" onclick="tableName(56)">N33</div>
+						</c:if>	
+						<c:if test="${list.get(56).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N33</div>
+						</c:if>	
+						<c:if test="${list.get(57).close==0}">	
 							<div class="nomal tablename" onclick="tableName(57)">N34</div>
+						</c:if>	
+						<c:if test="${list.get(57).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N34</div>
+						</c:if>	
+						<c:if test="${list.get(58).close==0}">	
 							<div class="nomal tablename" onclick="tableName(58)">N35</div>
+						</c:if>	
+						<c:if test="${list.get(58).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N35</div>
+						</c:if>	
+						<c:if test="${list.get(59).close==0}">	
 							<div class="nomal tablename" onclick="tableName(59)">N36</div>
+						</c:if>	
+						<c:if test="${list.get(59).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N36</div>
+						</c:if>	
+						<c:if test="${list.get(60).close==0}">	
 							<div class="nomal tablename" onclick="tableName(60)">N37</div>
+						</c:if>	
+						<c:if test="${list.get(60).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N37</div>
+						</c:if>	
+						<c:if test="${list.get(61).close==0}">	
 							<div class="nomal tablename" onclick="tableName(61)">N38</div>
+						</c:if>	
+						<c:if test="${list.get(61).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N38</div>
+						</c:if>	
+						<c:if test="${list.get(62).close==0}">	
 							<div class="nomal tablename" onclick="tableName(62)">N39</div>
+						</c:if>	
+						<c:if test="${list.get(62).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N39</div>
+						</c:if>	
+						<c:if test="${list.get(63).close==0}">	
 							<div class="nomal tablename" onclick="tableName(63)">N40</div>
+						</c:if>	
+						<c:if test="${list.get(63).close==1}">	
+							<div class="nomal tablename" style="background:gray;color:white;" disabled>N40</div>
+						</c:if>	
 						</div>
 					</div>
 			</div>
