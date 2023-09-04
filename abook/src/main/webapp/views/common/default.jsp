@@ -199,7 +199,7 @@
 				<a href="#">도서관 이용</a>
 				<ul>
 					<li><a href="/breserve/list">도서 예약</a></li>
-					<li><a href="#">도서 신청</a></li>
+					<li><a href="/bookrequest/rlist">도서 신청</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
