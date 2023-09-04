@@ -61,4 +61,13 @@ public class BookRequestController {
 	{
 		return service.delete(request,session,brvo);
 	}
+	
+	@RequestMapping("/bookrequest/search")
+	public String search(HttpServletRequest request)
+	{
+		return service.search(request);
+	}
+	
+	
+	
 }

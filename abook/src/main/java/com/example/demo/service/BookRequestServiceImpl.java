@@ -58,6 +58,17 @@ public class BookRequestServiceImpl implements BookRequestService {
 		int chong=mapper.getChong();
 		if(pend>chong)
 			pend=chong;
+		
+		/*
+		 * String field=request.getParameter("field"); String
+		 * sword=request.getParameter("sword");
+		 * 
+		 * String sql; if(sword==null || sword.length()==0) { // 리스트를 처음요청하면 sword가 처음에
+		 * 없으니까 null이 나온다. null이나올경우와 빈칸일경우.
+		 * sql="select * from bookrequest order by no desc"; } else
+		 * sql="select * from bookrequest where"+field+"like '%"
+		 * +sword+"%' order by no desc";
+		 */
 		String userid=session.getAttribute("userid").toString();
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
@@ -110,6 +121,11 @@ public class BookRequestServiceImpl implements BookRequestService {
 		return "redirect:/bookrequest/rlist?page="+page;
 	}
 
-	
-	
+	public String search(HttpServletRequest request) {
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		
+		mapper.search(type, keyword);
+		return "redirect:/bookrequest/rlist";
+	}
 }

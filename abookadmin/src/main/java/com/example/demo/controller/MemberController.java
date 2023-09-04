@@ -18,11 +18,6 @@ public class MemberController {
 	@Qualifier("ms")
 	private MemberService service;
 	
-	@RequestMapping("/")
-	public String home() {
-		return "redirect:/member/mlist";
-	}
-	
 	@RequestMapping("/member/mlist")
 	public String mlist(HttpServletRequest request,Model model,MemberVo mvo) {
 		return service.mlist(request,model,mvo);

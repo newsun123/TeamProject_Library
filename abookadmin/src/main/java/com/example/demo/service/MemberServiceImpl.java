@@ -40,9 +40,9 @@ public class MemberServiceImpl implements MemberService {
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
-		model.addAttribute("mvo",mapper.mlist(start,mvo));
+		model.addAttribute("mlist",mapper.mlist(start,mvo));
 		
-		return "/member/list";
+		return "/member/mlist";
 	}
 	
 }

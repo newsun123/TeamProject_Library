@@ -17,6 +17,24 @@
 		select * from bookrequest order by no desc limit #{start},10
 	</select>
 	
+	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
+		select * from bookrequest
+		
+		<if test='type.equals("")'>
+			where bname like concat('%',#{keyword},'%')
+		</if>
+		
+		<if test='type.equals("writer")'>
+			where writer like concat('%',#{keyword},'%')
+		</if>
+		
+		<if test="type.equals('publisher')">
+			where publisher like concat('%',#{keyword},'%')
+		</if>
+		
+		order by no desc limit #{start},10
+	</select>
+	
 	<select id="rcontent" resultType="com.example.demo.vo.BookRequestVo">
 		select * from bookrequest where no=#{no}
 	</select>
@@ -33,4 +51,5 @@
 	<delete id="delete">
 		delete from bookrequest where no=#{no}
 	</delete>
+	
 </mapper>

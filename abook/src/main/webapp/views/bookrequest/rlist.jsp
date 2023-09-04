@@ -99,8 +99,15 @@
 							신청하기
 						</div>
 						<div id=searchCon>
-							<input type="text" class="searchtext" maxlength="100" placeholder="검색어 입력">
-							<input type="button" id="search" class="searchtext" value="검색" onclick="search()">
+						<form method="post" action="rlist">
+							<select name="type">
+								<option value="bname">도서명</option>
+								<option value="writer">저자</option>
+								<option value="publisher">출판사</option>
+							</select>
+							<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력">
+							<input type="submit" id="search" class="searchtext" value="검색">
+						</form>
 						</div>
 						<table align="center">
 							<tr>

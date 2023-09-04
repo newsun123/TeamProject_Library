@@ -16,4 +16,5 @@ public interface BookRequestMapper {
 	public BookRequestVo rupdate(String no);
 	public void rupdate_ok(BookRequestVo brvo);
 	public void delete(BookRequestVo brvo);
+	public ArrayList<BookRequestVo> search(String type,String keyword);
 }
