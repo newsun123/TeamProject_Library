@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,8 +23,10 @@ public class BreserveServiceImpl implements BreserveService{
 	
 	@Override
 	public String list(Model model,BookregiVo bvo,HttpServletRequest request) {
+		
 		int page;
-		if(request.getParameter("page") == null)
+		
+		if(request.getParameter("page")==null)
 			page=1;
 		else
 			page=Integer.parseInt(request.getParameter("page"));
@@ -51,12 +56,15 @@ public class BreserveServiceImpl implements BreserveService{
 
 	@Override
 	public String content(BookregiVo bvo, HttpServletRequest request, Model model) {
+		
 		String page=request.getParameter("page");
 		String bcode=request.getParameter("bcode");
 		
 		bcode=bcode.substring(0,4);
 		model.addAttribute("page",page);
-		model.addAttribute("blist",mapper.content(bcode));
+		
+		ArrayList<HashMap> mapall=mapper.content(bcode);
+		model.addAttribute("mapall",mapall);
 		
 		return "/breserve/content";
 	}
@@ -64,12 +72,22 @@ public class BreserveServiceImpl implements BreserveService{
 	@Override
 	public String bresOk(HttpSession session,HttpServletRequest request) {
 		
-		String userid=session.getAttribute("userid").toString();
-		String bcode=request.getParameter("bcode");
 		
-		mapper.bresOk(userid,bcode);
-		mapper.bresUpdate(bcode);
-		return "redirect:/breserve/content?bcode="+bcode;
+		
+		if(session.getAttribute("userid")==null) {
+			String page=request.getParameter("page");
+			String bcode=request.getParameter("bcode");
+			
+			return "redirect:/member/login?page="+page+"&bcode="+bcode;
+		}else{	
+			String bcode=request.getParameter("bcode");
+			String userid=session.getAttribute("userid").toString();
+			
+			mapper.bresOk(userid,bcode);
+			mapper.bresUpdate(bcode);
+			return "redirect:/breserve/content?bcode="+bcode;
+		}
+		
 	}
 
 }

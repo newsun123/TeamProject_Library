@@ -140,8 +140,7 @@
 		var parent=my.parentNode.parentNode;
 	    var inputbocde=parent.getElementsByClassName('bcode');
 	    var bcode=inputbocde[0].value;
-		location="bresOk?bcode="+bcode;
-		my.add
+		location="bresOk?bcode="+bcode+"&page="+${page};
 	}
 </script>
 </head>
@@ -169,16 +168,16 @@
 							<tr>
 								<td>
 									<div>
-										<img src="/static/img/breserve/${blist.get(0).bimg}">					
+										<img src="/static/img/breserve/${mapall.get(0).bimg}">					
 									</div>
 								</td>
 								<td>
 									<div id="conBox">
-										<div class="aa">${blist.get(0).title}</div>
-										<div class="bb">${blist.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>
-										<div class="cc">${blist.get(0).writeyear}</div>
+										<div class="aa">${mapall.get(0).title}</div>
+										<div class="bb">${mapall.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>
+										<div class="cc">${mapall.get(0).writeyear}</div>
 										<div class="dd">소장도서관 : 작은 도서관</div>
-										<div class="ee">${blist.get(0).ect}</div>
+										<div class="ee">${mapall.get(0).ect}</div>
 									</div>
 								</td>
 							</tr>
@@ -193,31 +192,31 @@
 								<td>반납예정일</td>
 								<td>도서예약</td>
 							</tr>
-						<c:forEach items="${blist}" var="bvo">
+						<c:forEach items="${mapall}" var="map">
 							<tr>
 								<td>작은도서관</td>
 								<td>
-									${fn:substring(bvo.bcode,4,2)}
+									${fn:substring(map.bcode,4,6)}
 								</td>
 								<td>
-								<c:if test="${bvo.state==0}">
+								<c:if test="${map.state==0}">
 									대출가능
 								</c:if>
-								<c:if test="${bvo.state==1}">
+								<c:if test="${map.state==1}">
 									대출불가(예약중)
 								</c:if>
-								<c:if test="${bvo.state==2}">
+								<c:if test="${map.state==2}">
 									대출불가(대출중)
 								</c:if>
 								</td>
 								<td>
-								<c:if test="${bvo.state==0}">
+								<c:if test="${map.state==0}">
 									0
 								</c:if>
-								<c:if test="${bvo.state==1}">
+								<c:if test="${map.state==1}">
 									1
 								</c:if>
-								<c:if test="${bvo.state==2}">
+								<c:if test="${map.state==2}">
 									1
 								</c:if>
 								</td>
@@ -225,14 +224,14 @@
 								</td>
 
 								<td>
-								<c:if test="${bvo.state==0}">
-									<input type="hidden" value="${bvo.bcode}" name="bocde" class="bcode">
+								<c:if test="${map.state==0}">
+									<input type="hidden" value="${map.bcode}" name="bocde" class="bcode">
 									<input type="button" value="도서예약" class="resBtn" onclick="bresCheck(this)">
 								</c:if>
-								<c:if test="${bvo.state==1}">
+								<c:if test="${map.state==1}">
 									<input type="button" value="예약중" class="resBtn dis">
 								</c:if>
-								<c:if test="${bvo.state==2}">
+								<c:if test="${map.state==2}">
 									<input type="button" value="대출중" class="resBtn dis">
 								</c:if>									
 								</td>

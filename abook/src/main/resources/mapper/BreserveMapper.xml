@@ -9,8 +9,11 @@
 	<select id="getChong" resultType="int">
 		select ceil(count(*)/10) from bookregi
 	</select>
-	<select id="content" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where bcode like concat(#{bcode},'%')
+	<select id="content" resultType="HashMap">
+		select * ,(select rental from bookreserve where bcode=b.bcode) as rental from bookregi as b where bcode like concat(#{bcode},'%')
+	</select>
+	<select id="content2" resultType="HashMap">
+		select * from bookregi g where bcode like concat(#{bcode},'%')
 	</select>
 	<insert id="bresOk">
 		insert into bookreserve(userid,bcode,state)
