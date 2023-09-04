@@ -145,6 +145,7 @@
 	}
 </script>
 </head>
+
 <body>
 	<div id="secWrap">
 		<div class="sImg"></div>
@@ -189,14 +190,14 @@
 								<td>번호</td>
 								<td>대출상태</td>
 								<td>예약상태</td>
-								<td></td>
+								<td>반납예정일</td>
 								<td>도서예약</td>
 							</tr>
 						<c:forEach items="${blist}" var="bvo">
 							<tr>
 								<td>작은도서관</td>
 								<td>
-									${fn:substring(bvo.bcode,fn:length(bvo.bcode)-2, fn:length(bvo.bcode))}
+									${fn:substring(bvo.bcode,4,2)}
 								</td>
 								<td>
 								<c:if test="${bvo.state==0}">
@@ -222,16 +223,17 @@
 								</td>
 								<td>
 								</td>
+
 								<td>
 								<c:if test="${bvo.state==0}">
 									<input type="hidden" value="${bvo.bcode}" name="bocde" class="bcode">
 									<input type="button" value="도서예약" class="resBtn" onclick="bresCheck(this)">
 								</c:if>
 								<c:if test="${bvo.state==1}">
-									<input type="button" value="예약불가" class="resBtn dis">
+									<input type="button" value="예약중" class="resBtn dis">
 								</c:if>
 								<c:if test="${bvo.state==2}">
-									<input type="button" value="예약불가" class="resBtn dis">
+									<input type="button" value="대출중" class="resBtn dis">
 								</c:if>									
 								</td>
 							</tr>
