@@ -12,5 +12,11 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 
 	@Autowired
 	private ReserveSeatMapper mapper;
+
+	@Override
+	public String reserveseat() {
+		// TODO Auto-generated method stub
+		return "/rsvseat/reserveseat";
+	}
 	
 }

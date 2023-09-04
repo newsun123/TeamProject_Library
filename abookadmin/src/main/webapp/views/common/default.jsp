@@ -211,7 +211,7 @@
 					<a href="../rsvseat/reserveseat">좌석 관리</a>
 					<ul>
 						<li><a href="../rsvseat/reserveseat">사용불가 지정</a></li>
-						<li><a href="#">퇴실 처리</a></li>
+						<li><a href="../rsvseat/cancelseat">퇴실 처리</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">
