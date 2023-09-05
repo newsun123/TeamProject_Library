@@ -15,4 +15,5 @@ public interface BreserveMapper {
 	public ArrayList<HashMap> content(String bcode);
 	public void bresOk(String userid,String bcode);
 	public void bresUpdate(String bcode);
+	public int cntCheck(String userid);
 }

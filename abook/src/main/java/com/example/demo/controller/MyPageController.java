@@ -21,4 +21,9 @@ public class MyPageController {
 	public String checkReserveSeat(HttpSession ss,Model model ) {
 		return service.checkReserveSeat(ss,model);
 	}
+	
+	@RequestMapping("/mypage/bookReserve")
+	public String bookReserve(Model model,HttpSession session) {
+		return service.bookReserve(model,session);
+	}
 }

@@ -136,12 +136,21 @@
 	}
 </style>
 <script>
+	window.onload=function(){
+		if(${chk==1}){
+			alert("더 이상 예약할 수 없습니다.\n1인 최대 3번 예약 가능하며 추가 예약을 원할 시 마이페이지에서,\n 기존 예약을 취소해주세요.")
+		}
+	}
 	function bresCheck(my){
+		
 		var parent=my.parentNode.parentNode;
 	    var inputbocde=parent.getElementsByClassName('bcode');
 	    var bcode=inputbocde[0].value;
-		location="bresOk?bcode="+bcode+"&page="+${page};
+		
+	    location="bresOk?bcode="+bcode+"&page=${page}";
+		
 	}
+
 </script>
 </head>
 
@@ -163,6 +172,7 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
+					
 						<a href="/breserve/list" class="rbtn">목록으로</a>
 						<table id="table1">
 							<tr>
@@ -221,6 +231,12 @@
 								</c:if>
 								</td>
 								<td>
+								<c:if test="${map.rental==null}">
+									-
+								</c:if>
+								<c:if test="${map.rental!=null}">
+									${map.rental}
+								</c:if>
 								</td>
 
 								<td>
