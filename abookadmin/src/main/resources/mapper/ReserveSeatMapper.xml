@@ -10,4 +10,7 @@
 <update id="startTable">
 	update tablename set close=0 where tname=#{tname}
 </update>
+<select id="searchReserve" resultType="com.example.demo.vo.ReserveSeatVo">
+	select * from reserveseat where reserveday=#{date}
+</select>
 </mapper>

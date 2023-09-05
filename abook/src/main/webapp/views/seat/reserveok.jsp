@@ -16,28 +16,26 @@
     height: 430px; /* 들어갈 내용이 적어 height 적용 */
     
 	}
-#rsvouter {
-	position: absolute;
-    width: 633px;
-    height: 210px;
-    left: 264px;
-    top: 102px;
-}
-#inner {
-	margin-top: 40px;
-}
-#inner div {
-	margin-bottom:10px;
-	font-family: NotoSansM;
-	font-size: 16px;
-}
-input[type=button] {
-	width:100px;
-	height:50px;
-	border: 2px solid #f3ede3;
-	background:#f3ede3;
-	border-radius: 6px;
-}
+	#outer {
+		width:1000px;
+		margin:auto;
+	}
+	table h3 {
+		font-size:20px;
+		font-weight: 600;
+		margin-bottom:20px;
+	}
+	table {
+		margin-top:40px;
+		text-align: center;
+	}
+	table tr {
+		height:35px;
+
+	}
+	table tr td {
+		align:center;
+	}
 </style>
 </head>
 <body>
@@ -57,16 +55,25 @@ input[type=button] {
 					<p>열람실 이용&nbsp;&nbsp;>&nbsp;&nbsp;좌석 당일 예약&nbsp;&nbsp;>&nbsp;&nbsp;예약 완료</p>
 				</div>
 				<div id="contents">
-					<div id="rsvOkWrap">
-						<h2 style="font-size:20px; margin-top:30px;font-family: NotoSansM;"> 좌석 예약 완료</h2>
-						<div id="rsvouter">
-							<div id="inner">
-							<div>${userid} 님의 예약내역입니다. </div>
-							<c:forEach items="${rlist}" var="rvo" varStatus="status">
-							<div>예약 테이블 ${rvo.tname} 예약시간: ${rvo.reserveday} / ${timelist.get(status.index)} <input type="button" value="예약취소하기"></div>
-							<div></div>
-							</c:forEach>
-							</div>
+						<div id="rsvOkWrap">
+							<div id="outer">
+								<table width="1000">
+								<caption><h3>예약이 완료 되었습니다.</h3></caption>
+									<tr>
+										<td>예약자명</td>
+										<td>예약 좌석</td>
+										<td>예약 시간</td>
+									</tr>
+									<c:forEach items="${rlist}" var="rvo" varStatus="status">
+									<tr>
+										<td>${rvo.userid}</td>
+										<td>${rvo.tname}</td>
+										<td>${timelist.get(status.index)}</td>
+									</tr>
+									</c:forEach>
+								</table>
+								<div style="margin-top:30px;">예약취소는 <b style="font-weight:600;"> 마이페이지 > 좌석예약</b> 에서 가능하십니다.</div>
+							</div>	
 						</div>
 					</div>
 				</div>

@@ -6,11 +6,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#loginWrap{
+	#cancelWrap{
 		position: relative;
 		border:4px solid #f1f1f1;
 	    padding: 7px;
 	    text-align: center;
+	}
+	#outer {
+		width:1000px;
+		margin:auto;
+	}
+	table h3 {
+		font-size:20px;
+		font-weight: 600;
+		margin-bottom:20px;
+	}
+	table {
+		margin-top:40px;
 	}
 </style>
 </head>
@@ -31,17 +43,28 @@
 					<p>좌석 관리&nbsp;&nbsp;>&nbsp;&nbsp;퇴실 처리</p>
 				</div>
 				<div id="contents">
-					<div id="loginWrap">
-						
-						<!-- 여기에 시작 -->
-						<!-- li값 다 바꾸기 -->
-						<!-- 위에 loginWrap은 사용할 이름으로 바꾸고 위에 css이름 수정 확인 -->
-						<!-- 
-							24번째 줄<li class="on"><a href=""><span>로그인</span></a></li>
-							해당 페이지에 class="on"추가 나머지는 삭제 
-						 -->
-						 <!-- 링크 잘 확인해서 수정 -->
-						
+					<div id="cancelWrap">
+						<div id="outer">
+							<table width="1000" align="center">
+							<caption><h3>예약자 명단</h3></caption>
+								<tr>
+									<td>예약자 명</td>
+									<td>예약 좌석</td>
+									<td>예약일</td>
+									<td>예약 시간</td>
+									<td>퇴실 처리</td>
+								</tr>
+								<c:forEach items="${rlist}" var="rvo" varStatus="status">
+								<tr>
+									<td>${rvo.userid}</td>
+									<td>${rvo.tname}</td>
+									<td>${rvo.reserveday}</td>
+									<td>${timelist.get(status.index)}</td>
+									<td>s</td>
+								</tr>
+								</c:forEach>
+							</table>
+						</div>					
 					</div>
 				</div>
 			</div>		

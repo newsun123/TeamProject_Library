@@ -33,7 +33,7 @@ public class ReserveSeatController {
 	}
 	
 	@RequestMapping("/rsvseat/cancelseat")
-	public String cancelseat() {
-		return service.cancelseat();
+	public String cancelseat(Model model) {
+		return service.cancelseat(model);
 	}
 }
