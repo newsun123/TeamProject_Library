@@ -38,7 +38,8 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	@Override
 	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
-		
+		ArrayList<TableNameVo> list =mapper.searchTable();
+		model.addAttribute("list",list);
 		String total = req.getParameter("total");
 		
 		if (session.getAttribute("userid") == null) {
