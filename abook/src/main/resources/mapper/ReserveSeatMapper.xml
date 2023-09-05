@@ -17,6 +17,9 @@
 	select * from reserveseat where userid=#{userid}
 </select>
 <select id="totalTime" resultType="int">
-	select sum(time9+time10+time11+time12+time13+time14+time15+time16+time17+time18) from reserveseat where userid=#{userid} and reserveday=#{time}
+	select ifnull(sum(time9+time10+time11+time12+time13+time14+time15+time16+time17+time18),0) from reserveseat where userid=#{userid} and reserveday=#{time}
+</select>
+<select id="searchTable" resultType="com.example.demo.vo.TableNameVo">
+	select close from tablename
 </select>
 </mapper>

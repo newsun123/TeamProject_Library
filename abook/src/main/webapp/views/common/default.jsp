@@ -181,8 +181,8 @@
 		</c:if>
 		<c:if test="${userid!=null}">
 			<span class="mr13">${name}님</span>
-			<a href="../member/logout">로그아웃ㅋ</a>
-			<a href="../mypage/mypage">마이페이지ㅋ</a>
+			<a href="../member/logout">로그아웃</a>
+			<a href="../mypage/mypage">마이페이지</a>
 		</c:if>
 		</div>
 	</header>
