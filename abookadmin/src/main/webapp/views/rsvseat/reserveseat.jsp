@@ -132,12 +132,12 @@ function starttable(n) {
 		</div>
 		<div id="contentCore">
 				<div class="naviTit">
-					<h3>사용불가 지정zz</h3>
+					<h3>사용불가 지정</h3>
 					<p>좌석 관리&nbsp;&nbsp;>&nbsp;&nbsp;사용불가 지정</p>
 				</div>
 				<div id="contents">
 				<div id="reserveWrap">
-					<h3> 사용불가 지정</h3>
+					<h3>사용불가 지정</h3>
 					<div class="ruletab">
 					<div class="inner_right">
 					<div class="pc_left_line">
