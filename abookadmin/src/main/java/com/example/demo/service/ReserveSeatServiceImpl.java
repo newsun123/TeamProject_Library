@@ -39,5 +39,11 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		mapper.startTable(tname);
 		return "redirect:/rsvseat/reserveseat";
 	}
+
+	@Override
+	public String cancelseat() {
+		// TODO Auto-generated method stub
+		return "rsvseat/cancelseat";
+	}
 	
 }

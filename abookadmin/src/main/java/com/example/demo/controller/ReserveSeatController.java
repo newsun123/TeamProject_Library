@@ -31,4 +31,9 @@ public class ReserveSeatController {
 	public String startTable(HttpServletRequest req, Model model) {
 		return service.startTable(req,model);
 	}
+	
+	@RequestMapping("/rsvseat/cancelseat")
+	public String cancelseat() {
+		return service.cancelseat();
+	}
 }
