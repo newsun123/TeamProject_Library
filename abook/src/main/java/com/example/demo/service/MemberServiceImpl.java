@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MemberMapper;
+import com.example.demo.vo.BookRequestVo;
 import com.example.demo.vo.MemberVo;
 
 @Service
@@ -43,6 +44,10 @@ public class MemberServiceImpl implements MemberService {
 		return "/member/login";
 	}
 
+	public String login2() {
+		return "/member/login2";
+	}
+	
 	@Override
 	public String loginOk(MemberVo mvo, HttpSession session) {
 		
@@ -53,9 +58,30 @@ public class MemberServiceImpl implements MemberService {
 		}else{
 			session.setAttribute("userid", mvo.getUserid());
 			session.setAttribute("name", name);
-
 			return "/main/main";
 		}
+
+	}
+	
+	public String loginOk2(MemberVo mvo,HttpSession session,BookRequestVo brvo,HttpServletRequest request,Model model) { // rlist에서 비밀글 로그인후 바로 rcontent로 보내려고 쓴것.
+		String name=mapper.loginOk(mvo);
+		String page=request.getParameter("page");
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		
+		if(name==null) {
+			return "redirect:/member/login?chk=1";
+		}
+		else {
+			session.setAttribute("name", name);
+			session.setAttribute("userid", mvo.getUserid());
+			}
+		if(session.getAttribute("userid")!=null) {
+			model.addAttribute("type", type);
+            model.addAttribute("keyword", keyword);
+            model.addAttribute("page", page);
+		}
+		return "redirect:/bookrequest/rcontent?no=" + brvo.getNo() + "&page=" + page + "&type=" + type + "&keyword=" + keyword;
 
 	}
 	

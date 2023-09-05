@@ -90,7 +90,7 @@
 <script>
 	function check(my)
 	{
-		if(my.bname.value.trim()=="")
+		if(my.title.value.trim()=="")
 		{
 			document.getElementById("msg2").style.visibility="visible";
 			document.getElementById("msg2").style.color="red";
@@ -102,13 +102,13 @@
 				document.getElementById("msg3").style.color="red";
 				my.writer.focus();
 			}
-				if(my.publisher.value.trim()=="")
+				if(my.publi.value.trim()=="")
 				{
 					document.getElementById("msg4").style.visibility="visible";
 					document.getElementById("msg4").style.color="red";
 					my.publisher.focus();
 				}
-					if(my.writetime.value.trim()=="")
+					if(my.writeyear.value.trim()=="")
 					{
 						document.getElementById("msg5").style.visibility="visible";
 						document.getElementById("msg5").style.color="red";
@@ -126,13 +126,13 @@
 	}
 	function returnchk()
 	{
-		var bname=document.rform.bname.value;
+		var title=document.rform.title.value;
 		var writer=document.rform.writer.value;
-		var publisher=document.rform.publisher.value;
-		var writetime=document.rform.writetime.value;
+		var publi=document.rform.publi.value;
+		var writeyear=document.rform.writeyear.value;
 		var ect=document.rform.ect.value;
 		
-		if(bname.trim().length>0)
+		if(title.trim().length>0)
 		{
 			document.getElementById("msg2").style.visibility="hidden";
 		}
@@ -140,11 +140,11 @@
 		{
 			document.getElementById("msg3").style.visibility="hidden";
 		}
-		if(publisher.trim().length>0)
+		if(publi.trim().length>0)
 		{
 			document.getElementById("msg4").style.visibility="hidden";
 		}
-		if(writetime.trim().length>0)
+		if(writeyear.trim().length>0)
 		{
 			document.getElementById("msg5").style.visibility="hidden";
 		}
@@ -178,13 +178,13 @@
 						</div>						
 						<div class="request">
 						<form name="rform" method="post" action="requestwrite_ok" onsubmit="return check(this)">
-							<div class="all"><span class="mark">책제목</span><input type="text" name="bname" oninput="returnchk()"></div>
+							<div class="all"><span class="mark">책제목</span><input type="text" name="title" oninput="returnchk()"></div>
 							<span id="msg2" name="msg2"> 책제목을 입력하세요</span>
 							<div class="all"><span class="mark">저자</span><input type="text" name="writer" oninput="returnchk()"></div>
 							<span id="msg3" name="msg3"> 저자를 입력하세요</span>
-							<div class="all"><span class="mark">출판사</span><input type="text" name="publisher" oninput="returnchk()"></div>
+							<div class="all"><span class="mark">출판사</span><input type="text" name="publi" oninput="returnchk()"></div>
 							<span id="msg4" name="msg4"> 출판사를 입력하세요</span>
-							<div class="all"><span class="mark">출판년도</span><input type="text" name="writetime" oninput="returnchk()"></div>
+							<div class="all"><span class="mark">출판년도</span><input type="text" name="writeyear" oninput="returnchk()"></div>
 							<span id="msg5" name="msg5"> 출판년도를 입력하세요</span>
 							<div class="all2">
 								<div class="all3"><span class="mark">*비공개*</span>

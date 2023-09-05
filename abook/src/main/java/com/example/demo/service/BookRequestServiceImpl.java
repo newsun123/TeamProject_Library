@@ -45,7 +45,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	public String rlist(Model model, HttpServletRequest request,BookRequestVo brvo,HttpSession session) {
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
-		String bname=request.getParameter("bname");
+		String title=request.getParameter("title");
 		
 		int page;
 		if(request.getParameter("page")==null)
@@ -64,14 +64,28 @@ public class BookRequestServiceImpl implements BookRequestService {
 			pend=chong;
 		
 		if(keyword==null || keyword.length()==0) {
-			type="bname";
+			type="title";
 			keyword="";
 		}
+		if(session.getAttribute("userid")==null) // userid가 null이 아닐경우 리스트가 model을 안넣으면 안떠서 넣어줌.
+		{
+			model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("chong",chong);
+			model.addAttribute("start",start);
+			model.addAttribute("rlist",mapper.search(type, keyword));
+			return "/bookrequest/rlist";
+			
+		}
+		
 		System.out.println(type+" "+keyword);
 		model.addAttribute("rlist",mapper.search(type, keyword));
 		System.out.println(keyword);
-		String userid=session.getAttribute("userid").toString();
 
+		String userid=session.getAttribute("userid").toString();
 		model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
@@ -79,6 +93,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
 		model.addAttribute("userid",userid);
+		model.addAttribute("start",start);
 		//model.addAttribute("rlist",mapper.rlist(start, brvo));
 		
 		return "/bookrequest/rlist";
@@ -87,9 +102,22 @@ public class BookRequestServiceImpl implements BookRequestService {
 	@Override
 	public String rcontent(Model model, HttpServletRequest request, BookRequestVo brvo,HttpSession session) {
 		String page=request.getParameter("page");
-		String userid=session.getAttribute("userid").toString();
 		String gonge=request.getParameter("gonge");
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+
+		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("page",page);
+			model.addAttribute("brvo",mapper.rcontent(brvo));
+			return "/bookrequest/rcontent";
+		}
+		
+		String userid=session.getAttribute("userid").toString();
 		brvo.setGonge(brvo.getGonge());
+		model.addAttribute("type",type);
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("userid",userid);
 		model.addAttribute("brvo",mapper.rcontent(brvo));

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MemberService;
+import com.example.demo.vo.BookRequestVo;
 import com.example.demo.vo.MemberVo;
 
 @Controller
@@ -42,9 +43,19 @@ public class MemberController {
 	    return service.login();
 	 }
 	 
+	 @RequestMapping("/member/login2")
+	 public String login2() {
+		 return service.login2();
+	 }
+	 
 	 @RequestMapping("/member/loginOk")
 	 public String loginOk(MemberVo mvo,HttpSession session) {
 		 return service.loginOk(mvo,session);
+	 }
+	 
+	 @RequestMapping("/member/loginOk2")
+	 public String loginOk2(MemberVo mvo,HttpSession session,BookRequestVo brvo,HttpServletRequest request,Model model) {
+		 return service.loginOk2(mvo,session,brvo,request,model);
 	 }
 	 
 	 @RequestMapping("/member/logout")

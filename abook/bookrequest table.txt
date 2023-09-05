@@ -1,11 +1,11 @@
 create table bookrequest(
 no int auto_increment primary key,
-bname varchar(20),
+title varchar(20),
 writer varchar(20),
-writetime date,
-publisher varchar(20),
+writeyear date,
+publi varchar(20),
 gonge int default 0,
 ect text,
 userid varchar(20),
-bwriteday date,
+writeday date,
 state int default 0);

@@ -5,8 +5,8 @@
 <mapper namespace="com.example.demo.mapper.BookRequestMapper">
 	
 	<insert id="requestwrite_ok">
-		insert into bookrequest(bname,writer,writetime,publisher,gonge,ect,userid,bwriteday)
-		values(#{bname},#{writer},#{writetime},#{publisher},#{gonge},#{ect},#{userid},now())
+		insert into bookrequest(title,writer,writeyear,publi,gonge,ect,userid,writeday)
+		values(#{title},#{writer},#{writeyear},#{publi},#{gonge},#{ect},#{userid},now())
 	</insert>
 
 	<select id="getChong" resultType="int">
@@ -30,7 +30,7 @@
 	</select>
 	
 	<update id="rupdate_ok">
-		update bookrequest set bname=#{bname},writer=#{writer},writetime=#{writetime},publisher=#{publisher}
+		update bookrequest set title=#{title},writer=#{writer},writeyear=#{writeyear},publi=#{publi}
 		,userid=#{userid},ect=#{ect},gonge=#{gonge} where no=#{no}
 	</update>
 	
