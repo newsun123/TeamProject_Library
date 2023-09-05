@@ -99,7 +99,7 @@
 							신청하기
 						</div>
 						<div id=searchCon>
-						<form method="post" action="rlist">
+						<form method="post" action="search">
 							<select name="type">
 								<option value="bname">도서명</option>
 								<option value="writer">저자</option>

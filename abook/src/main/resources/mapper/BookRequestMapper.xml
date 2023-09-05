@@ -20,7 +20,7 @@
 	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
 		select * from bookrequest
 		
-		<if test='type.equals("")'>
+		<if test='type.equals("bname")'>
 			where bname like concat('%',#{keyword},'%')
 		</if>
 		

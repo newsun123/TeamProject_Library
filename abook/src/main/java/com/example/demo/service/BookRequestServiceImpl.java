@@ -125,7 +125,9 @@ public class BookRequestServiceImpl implements BookRequestService {
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
 		
-		mapper.search(type, keyword);
+		mapper.search(type, keyword); // 심부름을 시켰다.
+		System.out.println(type);
+		System.out.println(keyword);
 		return "redirect:/bookrequest/rlist";
 	}
 }
