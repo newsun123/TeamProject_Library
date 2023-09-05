@@ -43,6 +43,10 @@ public class BookRequestServiceImpl implements BookRequestService {
 
 	@Override
 	public String rlist(Model model, HttpServletRequest request,BookRequestVo brvo,HttpSession session) {
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		String bname=request.getParameter("bname");
+		
 		int page;
 		if(request.getParameter("page")==null)
 			page=1;
@@ -59,23 +63,23 @@ public class BookRequestServiceImpl implements BookRequestService {
 		if(pend>chong)
 			pend=chong;
 		
-		/*
-		 * String field=request.getParameter("field"); String
-		 * sword=request.getParameter("sword");
-		 * 
-		 * String sql; if(sword==null || sword.length()==0) { // 리스트를 처음요청하면 sword가 처음에
-		 * 없으니까 null이 나온다. null이나올경우와 빈칸일경우.
-		 * sql="select * from bookrequest order by no desc"; } else
-		 * sql="select * from bookrequest where"+field+"like '%"
-		 * +sword+"%' order by no desc";
-		 */
+		if(keyword==null || keyword.length()==0) {
+			type="bname";
+			keyword="";
+		}
+		System.out.println(type+" "+keyword);
+		model.addAttribute("rlist",mapper.search(type, keyword));
+		System.out.println(keyword);
 		String userid=session.getAttribute("userid").toString();
+
+		model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
 		model.addAttribute("userid",userid);
-		model.addAttribute("rlist",mapper.rlist(start, brvo));
+		//model.addAttribute("rlist",mapper.rlist(start, brvo));
 		
 		return "/bookrequest/rlist";
 	}

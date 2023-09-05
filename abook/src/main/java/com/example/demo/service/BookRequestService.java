@@ -15,5 +15,4 @@ public interface BookRequestService {
 	public String rupdate(HttpServletRequest request,Model model,BookRequestVo brvo,HttpSession session);
 	public String rupdate_ok(HttpServletRequest request,BookRequestVo brvo,HttpSession session);
 	public String delete(HttpServletRequest request,HttpSession session,BookRequestVo brvo);
-	public String search(HttpServletRequest request);
 }

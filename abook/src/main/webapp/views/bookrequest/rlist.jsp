@@ -94,12 +94,13 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-				<form name="rform" method="post" cellspancing="0">
 						<div class="nameTop">
 							신청하기
 						</div>
 						<div id=searchCon>
-						<form method="post" action="search">
+						<form method="post" action="rlist">
+						<input type="hidden" value="${brvo.type}">
+						<input type="hidden" value="${brvo.keyword}">
 							<select name="type">
 								<option value="bname">도서명</option>
 								<option value="writer">저자</option>
@@ -199,7 +200,6 @@
 								<td colspan="8"> <a href="requestwrite"> 신청하기 </a> </td>
 							</tr>	
 						</table>
-					</form>
 					</div>
 				</div>
 			</div>		

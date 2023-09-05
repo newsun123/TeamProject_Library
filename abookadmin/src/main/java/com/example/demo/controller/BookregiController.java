@@ -42,4 +42,5 @@ public class BookregiController {
 	public String content(BookregiVo bvo,HttpServletRequest request,Model model){
 		return service.content(bvo,request,model);
 	}
+	
 }
