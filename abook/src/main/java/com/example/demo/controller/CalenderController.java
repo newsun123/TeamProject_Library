@@ -34,9 +34,9 @@ public class CalenderController {
 		return service.cal2(request,model);
 	}
 	
-	@RequestMapping("/calender/cal4")
-	public String cal4()
+	@RequestMapping("/calender/calenderMain")
+	public String calenderMain()
 	{
-		return "/calender/cal4";
+		return "/calender/calenderMain";
 	}
 }

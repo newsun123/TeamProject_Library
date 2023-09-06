@@ -40,9 +40,9 @@ public class CalenderServiceImpl implements CalenderService {
 	}
 
 	@Override
-	public String cal4() {
+	public String calenderMain() {
 		
-		return "/calender/cal4";
+		return "/calender/calenderMain";
 	}
 
 	

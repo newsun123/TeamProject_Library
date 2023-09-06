@@ -12,5 +12,5 @@ public interface CalenderService {
 
 	public String cal1();
 	public ArrayList<HashMap> cal2(HttpServletRequest request,Model model);
-	public String cal4();
+	public String calenderMain();
 }
