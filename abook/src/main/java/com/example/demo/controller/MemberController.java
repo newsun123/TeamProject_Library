@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.net.http.HttpRequest;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -38,13 +40,13 @@ public class MemberController {
 	 }
 
 	 @RequestMapping("/member/login") 
-	 public String login() {
-	    return service.login();
+	 public String login(Model model,HttpServletRequest request) {
+	    return service.login(model,request);
 	 }
 	 
 	 @RequestMapping("/member/loginOk")
-	 public String loginOk(MemberVo mvo,HttpSession session) {
-		 return service.loginOk(mvo,session);
+	 public String loginOk(MemberVo mvo,HttpSession session,HttpServletRequest request) {
+		 return service.loginOk(mvo,session,request);
 	 }
 	 
 	 @RequestMapping("/member/logout")

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
+	#bookregiWrap{
 		padding-bottom: 30px;
 	}
 	form{
@@ -116,7 +116,7 @@
 				<ul id="lnb">
 					<li class="on"><a><span>도서등록</span></a></li>
 					<li><a href="#"><span>대출현황</span></a></li>
-					<li><a href="#"><span>예약현황</span></a></li>
+					<li><a href="/reservestatus/rslist"><span>예약현황</span></a></li>
 					<li><a href="#"><span>신청현황</span></a></li>
 					<li><a href="#"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>

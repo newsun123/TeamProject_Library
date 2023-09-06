@@ -92,6 +92,8 @@
 						<div id="login">
 							<h3>로그인</h3>
 							<form method="post" action="loginOk">
+								 <input type="hidden" name="page" value="${page}">
+								 <input type="hidden" name="bcode" value="${bcode}">
 						         <div><input type="text" name="userid" id="userid" placeholder="아이디"></div>
 						         <div><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></div>
 						         <div><input type="submit" value="로그인"></div> 

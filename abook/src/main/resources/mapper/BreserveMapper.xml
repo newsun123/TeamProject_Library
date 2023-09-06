@@ -9,14 +9,17 @@
 	<select id="getChong" resultType="int">
 		select ceil(count(*)/10) from bookregi
 	</select>
-	<select id="content" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where bcode like concat(#{bcode},'%')
+	<select id="content" resultType="HashMap">
+		select * ,(select rental from bookreserve where bcode=b.bcode) as rental from bookregi as b where bcode like concat(#{bcode},'%')
 	</select>
 	<insert id="bresOk">
-		insert into bookreserve(userid,bcode,state)
-		values(#{userid},#{bcode},1)
+		insert into bookreserve(userid,bcode,state,writeday)
+		values(#{userid},#{bcode},1,now())
 	</insert>
 	<update id="bresUpdate">
 		update bookregi set state=1 where bcode=#{bcode}
 	</update>
+	<select id="cntCheck" resultType="int">
+		select count(*) from bookreserve where userid=#{userid} and state in(1,2)
+	</select>
 </mapper>

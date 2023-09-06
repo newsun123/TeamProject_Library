@@ -6,4 +6,5 @@ import org.springframework.ui.Model;
 
 public interface MypageService {
 	public String checkReserveSeat(HttpSession ss,Model model);
+	public String bookReserve(Model model,HttpSession session);
 }

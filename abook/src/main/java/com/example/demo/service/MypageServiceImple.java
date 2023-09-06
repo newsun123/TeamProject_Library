@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -75,6 +76,16 @@ public class MypageServiceImple implements MypageService {
 		
 
 		return "/mypage/checkReserveSeat";
+	}
+	
+	@Override
+	public String bookReserve(Model model,HttpSession session) {
+		
+		String userid=session.getAttribute("userid").toString();
+		
+		ArrayList<HashMap> mapall=mapper.bookReserve(userid);
+		model.addAttribute("mapall",mapall);
+		return "/mypage/bookreserve";
 	}
 
 	
