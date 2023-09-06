@@ -4,4 +4,13 @@
 <select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
 	select * from reserveseat where userid=#{userid}
 </select>
+<select id="reserveToday" resultType="HashMap">
+	select * from reserveseat where userid=#{userid} and reserveday=#{today}
+</select>
+<delete id="cancelSeat">
+	delete from reserveseat where no=#{no}
+</delete>
+<select id="searchReserveSeat" resultType="com.example.demo.vo.TableNameVo">
+	select * from reserveseat where userid=#{userid} and no=#{no}
+</select>
 </mapper>

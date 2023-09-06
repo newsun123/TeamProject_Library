@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class MyPageController {
 	@RequestMapping("/mypage/checkReserveSeat")
 	public String checkReserveSeat(HttpSession ss,Model model ) {
 		return service.checkReserveSeat(ss,model);
+	}
+	
+	@RequestMapping("/mypage/cancelSeat")
+	public String cancelSeat(HttpServletRequest req,HttpSession ss) {
+		return service.cancelSeat(req,ss);
 	}
 }

@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MypageMapper;
 import com.example.demo.vo.ReserveSeatVo;
+import com.example.demo.vo.TableNameVo;
 
 @Service
 @Qualifier("ms")
@@ -22,11 +26,14 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public String checkReserveSeat(HttpSession ss,Model model) {
 		
+		//전체 예약 현황 mapper 만들어 보내기
 		String userid = ss.getAttribute("userid").toString();
+		model.addAttribute("userid",userid); 
 		
-		model.addAttribute("userid",userid);
-		ArrayList<ReserveSeatVo> rlist = mapper.reserveok(userid);
-		System.out.println(rlist.get(1).getTname());
+		//System.out.println(userid);
+		
+		ArrayList<ReserveSeatVo> rlist = mapper.reserveok(userid); 
+		
 		model.addAttribute("rlist",rlist);
 		
 		//시간 값이 int로 들어가서 값을 스트링으로 들여보내려고 노가다함.
@@ -73,9 +80,35 @@ public class MypageServiceImple implements MypageService {
 		
 		model.addAttribute("timelist",timelist);
 		
+		// 당일 예약현황 만들기
+		
+		String today = LocalDate.now().toString(); // 당일 날짜 가져오기
+		
+		ArrayList<HashMap> mapall = mapper.reserveToday(userid,today);
+		
+		model.addAttribute("mapall",mapall);
+		
 
 		return "/mypage/checkReserveSeat";
 	}
 
+	@Override
+	public String cancelSeat(HttpServletRequest req,HttpSession ss) {
+		String no = req.getParameter("no");
+		String userid = ss.getAttribute("userid").toString();
+		// tablename의 time 찾아서 0으로 만들기
+		TableNameVo tvo = mapper.searchReserveSeat(userid,no);
+		//지울 값은 가져왔는데, 이제 이거에서 1이 체크된 것을 골라서 0으로 바꿔야하는데
+		//그걸 어떻게 할지 생각을 해야댐
+		// reserveday 삭제
+		mapper.cancelSeat(no);
+		
+		
+		
+		return null;
+	}
+
+	
+	
 	
 }
