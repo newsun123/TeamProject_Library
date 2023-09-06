@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.BreserveService;
 import com.example.demo.vo.BookregiVo;
@@ -25,12 +26,17 @@ public class BreserveController {
 	}
 	
 	@RequestMapping("/breserve/content")
-	public String content(BookregiVo bvo,HttpServletRequest request,Model model){
-		return service.content(bvo,request,model);
+	public String content(HttpServletRequest request,Model model){
+		return service.content(request,model);
 	}
 	
 	@RequestMapping("/breserve/bresOk")
-	public String bresOk(HttpSession session,HttpServletRequest request) {
-		return service.bresOk(session,request);
+	public String bresOk(HttpSession session,HttpServletRequest request,Model model) {
+		return service.bresOk(session,request,model);
+	}
+	
+	@RequestMapping("/breserve/cntCheck")
+	public @ResponseBody int cntCheck(HttpSession session){
+		return service.cntCheck(session);
 	}
 }

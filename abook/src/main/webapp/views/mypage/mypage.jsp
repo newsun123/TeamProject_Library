@@ -6,148 +6,148 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#MypageWrap{
-	position: relative;
-	border:4px solid #f1f1f1;
-    padding: 7px;
-    text-align: center;
-}
-#mypage {
-	padding: 50px 0;
-}
-#mypage h3{
-	color:#333;
-	font-size:25px;
-	font-family: NotoSansM;
-	margin-bottom: 20px;
-}
-form{
-	width: 500px;
-   	margin: auto;
-}
-form > div{
-	width: 500px;
-   	margin: auto;
-   	margin-bottom: 20px;
-   	height: 48px;
-}
-form input{
-	width: 100%;
-    border: 1px solid #e2e2e2;
-    border-radius: 3px;
-    position: relative;
-    height: 48px!important;
-}
-form input[type=submit]{
-	height: 48px!important;
-	line-height: 48px;
-	color:#fff;
-	background: #967759; 
-	font-size: 17px;
-}
-form input.email1{
-	width: 166px;
-	vertical-align: top;
-}
-form input.email2{
-	width: 148px;
-	vertical-align: top;
-}
-#select{
-	display: inline-block;
-    width: 148px;
-    position: relative;
-    height: 48px;
-    border: 1px solid #e2e2e2;
-    margin-left: 11px;
-    background-color: #fff;
-}
-#select .selected{
-	display: flex;
-    justify-content: space-between;
-    padding: 0;
-    cursor: pointer;
-}
-#select .selected_value{
-	display: inline-block;
-    font-size: 16px;
-    width: calc(100% - 60px);
-    line-height: 44px;
-    text-align: left;
-    margin-left: 18px;
-}
-#select .arrow{
-	width: 42px;
-  		background: url(/static/img/common/ic_arrow.png) no-repeat 50% 50%;
-}
-#select ul{
-    width: 148px;
-    border: 1px solid #d6dae6;
-    position: absolute;
-    left: -1px;
-    z-index: 999;
-    background: #fff;
-    border-top: none;
-    
-    top: 47px;	
-    display: none;
-}
-#select ul li{
-    font-size: 16px;
-    padding: 0 20px;
-    line-height: 38px;
-    height: 38px;
-    border-bottom: 1px solid #eee;
-    cursor:pointer;
-}
-#select ul li:last-child{
-	border:none;
-}
-#select ul li:hover{
-	display: block;
-	background-color:#ebeef7;
-}
-#zip{
-	width: 120px;
-	vertical-align: top;
-}
-#addr{
-	width: 365px;
-   	margin-left: 10px;
-   	margin-bottom: 20px;
-}
-#addrDtl{
-	vertical-align: top;
-	width: 337px;
-}
-form > div#addrDiv{
-	height: 116px;
-	margin-bottom: 20px;	
-}
-#addBtn{
-	width: 148px;
-   	margin-left: 10px;
-   	color: #fff;
-    background: #967759;
-    font-size: 15px;
-}
-
-#idBtn{
-	width: 148px;
-   	margin-left: 10px;
-   	color: #fff;
-    background: #967759;
-    font-size: 15px;
-}
-.msg{
-	font-size: 14px;
-   	color: #e52528;
-    position: relative;
-    top: -11px;
-    text-align: left;
-    margin-left: 20px;
-    display: none;
-}
+	#MypageWrap{
+		position: relative;
+		border:4px solid #f1f1f1;
+	    padding: 7px;
+	    text-align: center;
+	}
+	#mypage {
+		padding: 50px 0;
+	}
+	#mypage h3{
+		color:#333;
+		font-size:25px;
+		font-family: NotoSansM;
+		margin-bottom: 20px;
+	}
+	form{
+		width: 500px;
+	   	margin: auto;
+	}
+	form > div{
+		width: 500px;
+	   	margin: auto;
+	   	margin-bottom: 20px;
+	   	height: 48px;
+	}
+	form input{
+		width: 100%;
+	    border: 1px solid #e2e2e2;
+	    border-radius: 3px;
+	    position: relative;
+	    height: 48px!important;
+	}
+	form input[type=submit]{
+		height: 48px!important;
+		line-height: 48px;
+		color:#fff;
+		background: #967759; 
+		font-size: 17px;
+	}
+	form input.email1{
+		width: 166px;
+		vertical-align: top;
+	}
+	form input.email2{
+		width: 148px;
+		vertical-align: top;
+	}
+	#select{
+		display: inline-block;
+	    width: 148px;
+	    position: relative;
+	    height: 48px;
+	    border: 1px solid #e2e2e2;
+	    margin-left: 11px;
+	    background-color: #fff;
+	}
+	#select .selected{
+		display: flex;
+	    justify-content: space-between;
+	    padding: 0;
+	    cursor: pointer;
+	}
+	#select .selected_value{
+		display: inline-block;
+	    font-size: 16px;
+	    width: calc(100% - 60px);
+	    line-height: 44px;
+	    text-align: left;
+	    margin-left: 18px;
+	}
+	#select .arrow{
+		width: 42px;
+	  		background: url(/static/img/common/ic_arrow.png) no-repeat 50% 50%;
+	}
+	#select ul{
+	    width: 148px;
+	    border: 1px solid #d6dae6;
+	    position: absolute;
+	    left: -1px;
+	    z-index: 999;
+	    background: #fff;
+	    border-top: none;
+	    
+	    top: 47px;	
+	    display: none;
+	}
+	#select ul li{
+	    font-size: 16px;
+	    padding: 0 20px;
+	    line-height: 38px;
+	    height: 38px;
+	    border-bottom: 1px solid #eee;
+	    cursor:pointer;
+	}
+	#select ul li:last-child{
+		border:none;
+	}
+	#select ul li:hover{
+		display: block;
+		background-color:#ebeef7;
+	}
+	#zip{
+		width: 120px;
+		vertical-align: top;
+	}
+	#addr{
+		width: 365px;
+	   	margin-left: 10px;
+	   	margin-bottom: 20px;
+	}
+	#addrDtl{
+		vertical-align: top;
+		width: 337px;
+	}
+	form > div#addrDiv{
+		height: 116px;
+		margin-bottom: 20px;	
+	}
+	#addBtn{
+		width: 148px;
+	   	margin-left: 10px;
+	   	color: #fff;
+	    background: #967759;
+	    font-size: 15px;
+	}
+	
+	#idBtn{
+		width: 148px;
+	   	margin-left: 10px;
+	   	color: #fff;
+	    background: #967759;
+	    font-size: 15px;
+	}
+	.msg{
+		font-size: 14px;
+	   	color: #e52528;
+	    position: relative;
+	    top: -11px;
+	    text-align: left;
+	    margin-left: 20px;
+	    display: none;
+	}
 </style>
 <script>
 	/* 이메일 select,input */
@@ -377,16 +377,16 @@ form > div#addrDiv{
 			<div id="labNav">
 				<h2><span>마이페이지</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href="/mypage/mypage"><span>회원정보 수정</span></a></li>
-					<li><a href="/mypage/checkReserveSeat"><span>좌석 예약현황</span></a></li>
-					<li><a href=""><span>도서 예약현황</span></a></li>
-					<li><a href=""><span>1:1 문의 현황</span></a></li>
+					<li class="on"><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
+					<li><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
+					<li><a href="/mypage/bookReserve"><span>도서예약현황</span></a></li>
+					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>회원정보 수정</h3>
-					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;회원정보 수정</p>
+					<h3>회원정보수정</h3>
+					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;회원정보수정</p>
 				</div>
 				<div id="contents">
 					<div id="MypageWrap">
