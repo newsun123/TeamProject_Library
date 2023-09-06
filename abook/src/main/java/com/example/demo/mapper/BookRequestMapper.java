@@ -11,10 +11,10 @@ import com.example.demo.vo.BookRequestVo;
 public interface BookRequestMapper {
 	public void requestwrite_ok(BookRequestVo brvo);
 	public int getChong();
-	public ArrayList<BookRequestVo> rlist(@Param("start") int start,BookRequestVo brvo);
+	// public ArrayList<BookRequestVo> rlist(@Param("start") int start,BookRequestVo brvo);
 	public BookRequestVo rcontent(BookRequestVo brvo);
 	public BookRequestVo rupdate(String no);
 	public void rupdate_ok(BookRequestVo brvo);
 	public void delete(BookRequestVo brvo);
-	public ArrayList<BookRequestVo> search(String type,String keyword);
+	public ArrayList<BookRequestVo> search(String type,String keyword,int start);
 }

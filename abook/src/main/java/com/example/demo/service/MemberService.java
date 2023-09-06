@@ -13,9 +13,14 @@ public interface MemberService {
     public int useridCheck(MemberVo mvo);
     public String memberOk(MemberVo mvo,HttpServletRequest request);
     public String login();
-    public String login2();
+
+	/* public String login2(); */
     public String loginOk(MemberVo mvo, HttpSession session);
-    public String loginOk2(MemberVo mvo,HttpSession session,BookRequestVo brvo,HttpServletRequest request,Model model);
+
+	/*
+	 * public String loginOk2(MemberVo mvo,HttpSession session,BookRequestVo
+	 * brvo,HttpServletRequest request,Model model);
+	 */
     public String logout(HttpSession session);
     public String idfind();
     public String idcheck(HttpServletRequest request);

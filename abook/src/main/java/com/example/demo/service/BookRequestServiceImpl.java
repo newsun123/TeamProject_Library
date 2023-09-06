@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.mapper.BookRequestMapper;
 import com.example.demo.vo.BookRequestVo;
+import com.example.demo.vo.MemberVo;
 
 @Service
 @Qualifier("brs")
@@ -53,6 +54,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		else
 			page=Integer.parseInt(request.getParameter("page"));
 		int start=(page-1)*10;
+		System.out.println(start);
 		int pstart=page/10;
 		if(page%10==0)
 			pstart--;
@@ -76,16 +78,16 @@ public class BookRequestServiceImpl implements BookRequestService {
 			model.addAttribute("pend",pend);
 			model.addAttribute("chong",chong);
 			model.addAttribute("start",start);
-			model.addAttribute("rlist",mapper.search(type, keyword));
+			model.addAttribute("rlist",mapper.search(type, keyword,start));
 			return "/bookrequest/rlist";
 			
 		}
-		
 		System.out.println(type+" "+keyword);
-		model.addAttribute("rlist",mapper.search(type, keyword));
+		model.addAttribute("rlist",mapper.search(type, keyword,start));
 		System.out.println(keyword);
-
 		String userid=session.getAttribute("userid").toString();
+	
+
 		model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
@@ -105,7 +107,6 @@ public class BookRequestServiceImpl implements BookRequestService {
 		String gonge=request.getParameter("gonge");
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
-
 		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
 			model.addAttribute("type",type);
 			model.addAttribute("keyword",keyword);
@@ -152,14 +153,12 @@ public class BookRequestServiceImpl implements BookRequestService {
 		mapper.delete(brvo);
 		return "redirect:/bookrequest/rlist?page="+page;
 	}
-
-	public String search(HttpServletRequest request) {
-		String type=request.getParameter("type");
-		String keyword=request.getParameter("keyword");
-		
-		mapper.search(type, keyword); // 심부름을 시켰다.
-		System.out.println(type);
-		System.out.println(keyword);
-		return "redirect:/bookrequest/rlist";
-	}
+	/*
+	 * public String search(HttpServletRequest request) { String
+	 * type=request.getParameter("type"); String
+	 * keyword=request.getParameter("keyword");
+	 * 
+	 * mapper.search(type, keyword); // 심부름을 시켰다. System.out.println(type);
+	 * System.out.println(keyword); return "redirect:/bookrequest/rlist"; }
+	 */
 }

@@ -13,12 +13,12 @@
 		select ceil(count(*)/10) from bookrequest
 	</select>
 
-	<select id="rlist" resultType="com.example.demo.vo.BookRequestVo">
+	<!-- <select id="rlist" resultType="com.example.demo.vo.BookRequestVo">
 		select * from bookrequest order by no desc limit #{start},10
-	</select>
+	</select> -->
 	
  	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
-		select * from bookrequest where ${type} like concat('%',#{keyword},'%')
+		select * from bookrequest where title like concat('%',"",'%') order by no desc limit #{start},10
 	</select> 
 	
 	<select id="rcontent" resultType="com.example.demo.vo.BookRequestVo">

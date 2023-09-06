@@ -68,16 +68,15 @@
 	}
 </style>
 <script>
-	function init()
+	window.onload=function()
 	{
-		var type=document.kjh.type.value;
-		if(type.length>0){
-			document.getElementById("type").value=type;
-		}
+		<c:if test="${type!=null}">
+			document.getElementById("type").value="${type}";
+		</c:if>
 	}
 </script>
 </head>
-<body onload="init()">
+<body >
 	<div id="secWrap">
 		<div class="sImg"></div>
 		<div id="section">
@@ -144,7 +143,7 @@
 									
 									<c:if test="${userid == null && brvo.gonge == 1}"><!-- 로그인 안했을경우 비공개글 -->
 										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a href="/member/login2" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
+										<a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
 									</c:if>
 									<c:if test="${userid == null && brvo.gonge == 0}"><!-- 로그인 안했을경우 공개글 -->
 										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
@@ -208,7 +207,12 @@
 								</td>
 							</tr>
 							<tr>
+							<c:if test="${userid == null}">
+								<td colspan="8"> <a href="/member/login" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')"> 신청하기 </a> </td>
+							</c:if>
+							<c:if test="${userid != null}">
 								<td colspan="8"> <a href="requestwrite"> 신청하기 </a> </td>
+							</c:if>
 							</tr>	
 						</table>
 					</div>
