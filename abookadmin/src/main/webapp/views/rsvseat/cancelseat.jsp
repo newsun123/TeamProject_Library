@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,17 @@
 	}
 	table {
 		margin-top:40px;
+		text-align: center;
+	}
+	table tr {
+		height:35px;
+
+	}
+	table tr td {
+		align:center;
+	}
+	#end {
+		margin-bottom:50px;
 	}
 </style>
 </head>
@@ -45,26 +57,52 @@
 				<div id="contents">
 					<div id="cancelWrap">
 						<div id="outer">
-							<table width="1000" align="center">
-							<caption><h3>예약자 명단</h3></caption>
-								<tr>
-									<td>예약자 명</td>
-									<td>예약 좌석</td>
-									<td>예약일</td>
-									<td>예약 시간</td>
-									<td>퇴실 처리</td>
-								</tr>
-								<c:forEach items="${rlist}" var="rvo" varStatus="status">
-								<tr>
-									<td>${rvo.userid}</td>
-									<td>${rvo.tname}</td>
-									<td>${rvo.reserveday}</td>
-									<td>${timelist.get(status.index)}</td>
-									<td>s</td>
-								</tr>
-								</c:forEach>
-							</table>
-						</div>					
+						<table width="800"> <!-- 금일 예약 테이블 -->
+							<caption><h3>금일 예약현황 </h3></caption>
+							<tr>
+								<td>예약자명</td>
+								<td>예약 좌석</td>
+								<td>예약 시간</td>
+								<td>예약 취소</td>
+							</tr>
+							<c:if test="${mapall.size()==0}">
+							<tr>
+								<td colspan="4">
+									금일 예약 내역이 없습니다.
+								</td>
+							</tr>
+							</c:if>
+							<c:if test="${mapall.size()!=0}">
+							<c:forEach items="${mapall}" var="map" varStatus="sts">
+							<tr>
+								<td>${map.userid }</td>
+								<td>${map.tname }</td>
+								<td>${timelist.get(sts.index)}</td>
+								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime.get(sts.index)}&tname=${map.tname}'"></td>
+							</tr>
+							</c:forEach>
+							</c:if>
+							
+						</table>
+						<table width="800"> <!-- 전체 예약 테이블 -->
+								<caption><h3>전체 예약현황</h3></caption>
+									<tr>
+										<td>예약자명</td>
+										<td>예약 좌석</td>
+										<td>예약일</td>
+										<td>예약 시간</td>
+									</tr>
+									<c:forEach items="${rlist}" var="rvo" varStatus="status">
+									<tr>
+										<td>${rvo.userid}</td>
+										<td>${rvo.tname}</td>
+										<td>${rvo.reserveday}</td>
+										<td> ${timelist.get(status.index)}</td>
+									</tr>
+									</c:forEach>
+								</table>
+							<div id="end"></div>
+						</div>				
 					</div>
 				</div>
 			</div>		

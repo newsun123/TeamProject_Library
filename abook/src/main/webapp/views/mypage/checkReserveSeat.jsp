@@ -60,7 +60,7 @@
 					<div id="rsvOkWrap">
 					<div id="outer">
 						<table width="800"> <!-- 금일 예약 테이블 -->
-							<caption><h3>금일 예약현황</h3></caption>
+							<caption><h3>금일 예약현황 </h3></caption>
 							<tr>
 								<td>예약자명</td>
 								<td>예약 좌석</td>
@@ -80,7 +80,7 @@
 								<td>${map.userid }</td>
 								<td>${map.tname }</td>
 								<td>${timelist.get(sts.index)}</td>
-								<td><input type="button" value="예약취소" onclick="cancelSeat?no=${map.no}"></td>
+								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime.get(sts.index)}&tname=${map.tname}'"></td>
 							</tr>
 							</c:forEach>
 							</c:if>

@@ -13,5 +13,5 @@ public interface MypageMapper {
 	public ArrayList<ReserveSeatVo> reserveok(String userid);
 	public ArrayList<HashMap> reserveToday(String userid, String today);
 	public void cancelSeat(String no);
-	public TableNameVo searchReserveSeat(String userid,String no);
+	public void resetTablename(String time,String tname);
 }

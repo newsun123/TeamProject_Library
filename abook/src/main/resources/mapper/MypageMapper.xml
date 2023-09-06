@@ -10,7 +10,7 @@
 <delete id="cancelSeat">
 	delete from reserveseat where no=#{no}
 </delete>
-<select id="searchReserveSeat" resultType="com.example.demo.vo.TableNameVo">
-	select * from reserveseat where userid=#{userid} and no=#{no}
-</select>
+<update id="resetTablename">
+	update tablename set ${time}=0 where tname=#{tname}
+</update>
 </mapper>
