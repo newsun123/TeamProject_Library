@@ -22,4 +22,7 @@
 <select id="searchTable" resultType="com.example.demo.vo.TableNameVo">
 	select close from tablename
 </select>
+<update id="closeTable">
+	update tablename set ${time}=1 
+</update>
 </mapper>

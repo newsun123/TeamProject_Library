@@ -47,7 +47,7 @@ public class MainServiceImpl  implements MainService{
 	    // 현재 시간에 좌석이 몇개 남았는지 확인할 쿼리문 작성
 	    int pc = mapper.checkSeatPc(time);
 	    int nomal = mapper.checkSeatNomal(time);
-		System.out.println(nomal+"/"+pc); 
+		//System.out.println(nomal+"/"+pc); 
 		// 총 좌석 - 가져온 값
 		int setPc = 24 - pc;
 		int setN = 40 - nomal;

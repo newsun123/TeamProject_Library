@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,13 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	@Override
 	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
+		// 현재 시간에 맞춰 예약 안된 테이블은 전부 1로 바꾸자 0908
+		int now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
+		int change = now-1; // 현재 전 시간이니까 -1 함
+		String time = "time"+change;
+		//System.out.println(time);
+		mapper.closeTable(time); // 정해진 시간대 닫기 완료
+		
 		ArrayList<TableNameVo> list =mapper.searchTable();
 		model.addAttribute("list",list);
 		String total = req.getParameter("total");
