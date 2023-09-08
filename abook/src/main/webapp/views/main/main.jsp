@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -420,14 +421,14 @@
 				<tr>
 					<td>일반좌석</td>
 					<td>40</td>
-					<td class="blue">20</td>
-					<td class="red">30</td>
+					<td class="blue">${nomal}</td>
+					<td class="red">${setN}</td>
 				</tr>
 				<tr>
 					<td>PC좌석</td>
 					<td>24</td>
-					<td class="blue">20</td>
-					<td class="red">30</td>
+					<td class="blue">${pc}</td>
+					<td class="red">${setPc}</td>
 				</tr>
 			</table>
 			<div class="tt">
