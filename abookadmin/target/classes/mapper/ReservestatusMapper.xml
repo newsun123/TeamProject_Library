@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ReservestatusMapper">
+	<select id="rslist" resultType="HashMap">
+		select *,(select title from bookregi where bcode=b.bcode) as title from bookreserve as b;
+	</select>
+	<update id="rcheck">
+		update bookregi set state=2 where bcode=#{bcode}
+	</update>
+	<update id="rcheck2">
+		update bookreserve set state=2 where bcode=#{bcode}
+	</update>
+
+</mapper>

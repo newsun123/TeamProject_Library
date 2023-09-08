@@ -14,4 +14,6 @@ public interface MypageMapper {
 	public ArrayList<HashMap> reserveToday(String userid, String today);
 	public void cancelSeat(String no);
 	public void resetTablename(String time,String tname);
+	public ArrayList<HashMap> bookReserve(String userid);
+
 }

@@ -136,15 +136,24 @@
 	}
 </style>
 <script>
+	window.onload=function(){
+		if(${chk==1}){
+			alert("더 이상 예약할 수 없습니다.\n1인 최대 3번 예약 가능하며 추가 예약을 원할 시 마이페이지에서,\n 기존 예약을 취소해주세요.")
+		}
+	}
 	function bresCheck(my){
+		
 		var parent=my.parentNode.parentNode;
 	    var inputbocde=parent.getElementsByClassName('bcode');
 	    var bcode=inputbocde[0].value;
-		location="bresOk?bcode="+bcode;
-		my.add
+		
+	    location="bresOk?bcode="+bcode+"&page=${page}";
+		
 	}
+
 </script>
 </head>
+
 <body>
 	<div id="secWrap">
 		<div class="sImg"></div>
@@ -163,21 +172,22 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
+					
 						<a href="/breserve/list" class="rbtn">목록으로</a>
 						<table id="table1">
 							<tr>
 								<td>
 									<div>
-										<img src="/static/img/breserve/${blist.get(0).bimg}">					
+										<img src="/static/img/breserve/${mapall.get(0).bimg}">					
 									</div>
 								</td>
 								<td>
 									<div id="conBox">
-										<div class="aa">${blist.get(0).title}</div>
-										<div class="bb">${blist.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>
-										<div class="cc">${blist.get(0).writeyear}</div>
+										<div class="aa">${mapall.get(0).title}</div>
+										<div class="bb">${mapall.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>
+										<div class="cc">${mapall.get(0).writeyear}</div>
 										<div class="dd">소장도서관 : 작은 도서관</div>
-										<div class="ee">${blist.get(0).ect}</div>
+										<div class="ee">${mapall.get(0).ect}</div>
 									</div>
 								</td>
 							</tr>
@@ -189,49 +199,56 @@
 								<td>번호</td>
 								<td>대출상태</td>
 								<td>예약상태</td>
-								<td></td>
+								<td>반납예정일</td>
 								<td>도서예약</td>
 							</tr>
-						<c:forEach items="${blist}" var="bvo">
+						<c:forEach items="${mapall}" var="map">
 							<tr>
 								<td>작은도서관</td>
 								<td>
-									${fn:substring(bvo.bcode,fn:length(bvo.bcode)-2, fn:length(bvo.bcode))}
+									${fn:substring(map.bcode,4,6)}
 								</td>
 								<td>
-								<c:if test="${bvo.state==0}">
+								<c:if test="${map.state==0}">
 									대출가능
 								</c:if>
-								<c:if test="${bvo.state==1}">
+								<c:if test="${map.state==1}">
 									대출불가(예약중)
 								</c:if>
-								<c:if test="${bvo.state==2}">
+								<c:if test="${map.state==2}">
 									대출불가(대출중)
 								</c:if>
 								</td>
 								<td>
-								<c:if test="${bvo.state==0}">
+								<c:if test="${map.state==0}">
 									0
 								</c:if>
-								<c:if test="${bvo.state==1}">
+								<c:if test="${map.state==1}">
 									1
 								</c:if>
-								<c:if test="${bvo.state==2}">
+								<c:if test="${map.state==2}">
 									1
 								</c:if>
 								</td>
 								<td>
+								<c:if test="${map.rental==null}">
+									-
+								</c:if>
+								<c:if test="${map.rental!=null}">
+									${map.rental}
+								</c:if>
 								</td>
+
 								<td>
-								<c:if test="${bvo.state==0}">
-									<input type="hidden" value="${bvo.bcode}" name="bocde" class="bcode">
+								<c:if test="${map.state==0}">
+									<input type="hidden" value="${map.bcode}" name="bocde" class="bcode">
 									<input type="button" value="도서예약" class="resBtn" onclick="bresCheck(this)">
 								</c:if>
-								<c:if test="${bvo.state==1}">
-									<input type="button" value="예약불가" class="resBtn dis">
+								<c:if test="${map.state==1}">
+									<input type="button" value="예약중" class="resBtn dis">
 								</c:if>
-								<c:if test="${bvo.state==2}">
-									<input type="button" value="예약불가" class="resBtn dis">
+								<c:if test="${map.state==2}">
+									<input type="button" value="대출중" class="resBtn dis">
 								</c:if>									
 								</td>
 							</tr>
