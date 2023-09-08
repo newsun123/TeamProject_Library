@@ -13,11 +13,8 @@
 <update id="resetTablename">
 	update tablename set ${time}=0 where tname=#{tname}
 </update>
-	<select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
-		select * from reserveseat where userid=#{userid}
-	</select>
-	<select id="bookReserve" resultType="HashMap">
-		select * from bookreserve where userid=#{userid}
-	</select>
+<select id="bookReserve" resultType="HashMap">
+	select * from bookreserve where userid=#{userid}
+</select>
 
 </mapper>
