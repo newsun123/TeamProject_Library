@@ -26,6 +26,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/cancelSeat")
 	public String cancelSeat(HttpServletRequest req,HttpSession ss) {
 		return service.cancelSeat(req,ss);
+	}
 
 	@RequestMapping("/mypage/bookReserve")
 	public String bookReserve(Model model,HttpSession session) {
