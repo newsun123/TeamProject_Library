@@ -182,14 +182,18 @@ input[type=button] {
 		
 		var chk = new XMLHttpRequest();
 		chk.onload = function() {
-			//alert(chk.responseText);
-			//var aa = "";
+			//alert(chk.responseText); // 값 잘 받아오는지 확인용 알람
 			var aa = JSON.parse(chk.responseText); // JSON으로 tablename DB가져오기
 			document.getElementById("layer_background").style.display = "inline-block"; //레이어 표시
 			document.getElementById("tn").innerText = aa.tname; // 레이어창 tname 표시
 			
 			document.cf.tname.value= aa.tname; //input type hideen의 tname값 입력
-			
+			for(i=9; i<19; i++) { // time 숫자 맞추려고 9부터 ~ 18까지의 값을 잡음
+					//alert("예약된 테이블: "+"aa.time"+i); //DB 예약확인
+					eval("document.getElementById('time"+i+"').style.background='white'");
+					eval("document.getElementById('time"+i+"').style.pointerEvents='auto'");
+
+			}
 			//document.getElementById("chkaa").innerText = aa.time9+"/"+aa.time10+"/"+aa.time11+"/"+aa.time12+"/"+aa.time13+"/"+aa.time14+"/"+aa.time15+"/"+aa.time16+"/"+aa.time17+"/"+aa.time18;
 			for(i=9; i<19; i++) { // time 숫자 맞추려고 9부터 ~ 18까지의 값을 잡음
 				
@@ -205,13 +209,12 @@ input[type=button] {
 	}
 	function hideLayer() { //레이어 닫기
 		document.getElementById("layer_background").style.display = "none";
+		var t = document.getElementsByClassName("time");
 		var chk = document.getElementsByClassName("chktime").length;
 		for (i = 0; i <= chk; i++) {
 			if (document.getElementsByClassName("chktime")[i].checked) {
 				document.getElementsByClassName("chktime")[i].checked = false;
 				document.getElementsByClassName("time")[i].style.background = "white";
-				document.getElementById("userid").innerText = "";
-
 			}
 		}
 	}

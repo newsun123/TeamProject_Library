@@ -137,7 +137,7 @@ function starttable(n) {
 				</div>
 				<div id="contents">
 				<div id="reserveWrap">
-					<h3> 사용불가 지정</h3>
+					<h3>사용불가 지정</h3>
 					<div class="ruletab">
 					<div class="inner_right">
 					<div class="pc_left_line">

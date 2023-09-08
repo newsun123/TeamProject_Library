@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.MypageMapper">
+<select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
+	select * from reserveseat where userid=#{userid}
+</select>
+<select id="reserveToday" resultType="HashMap">
+	select * from reserveseat where userid=#{userid} and reserveday=#{today}
+</select>
+<delete id="cancelSeat">
+	delete from reserveseat where no=#{no}
+</delete>
+<update id="resetTablename">
+	update tablename set ${time}=0 where tname=#{tname}
+</update>
 	<select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
 		select * from reserveseat where userid=#{userid}
 	</select>
 	<select id="bookReserve" resultType="HashMap">
 		select * from bookreserve where userid=#{userid}
 	</select>
+
 </mapper>

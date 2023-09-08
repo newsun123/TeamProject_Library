@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#rsvOkWrap{
+	#cancelWrap{
 		position: relative;
 		border:4px solid #f1f1f1;
 	    padding: 7px;
@@ -39,26 +39,24 @@
 </style>
 </head>
 <body>
-	<div id="secWrap">
-		<div class="sImg"></div>
-		<div id="section">
-			<div id="labNav">
-				<h2><span>마이페이지</span></h2>
-				<ul id="lnb">
-					<li><a href="/mypage/mypage"><span>회원정보 수정</span></a></li>
-					<li class="on"><a><span>좌석 예약현황</span></a></li>
-					<li><a href=""><span>도서 예약현황</span></a></li>
-					<li><a href=""><span>1:1 문의 현황</span></a></li>
-				</ul>
-			</div>
-			<div id="contentCore">
+<div id="secWrap">
+	<div class="sImg"></div>
+	<div id="section">
+		<div id="labNav">
+			<h2><span>좌석 관리</span></h2>
+			<ul id="lnb">
+				<li><a href="reserveseat"><span>사용불가 지정</span></a></li>
+				<li class="on"><a><span>퇴실 처리</span></a></li>
+			</ul>
+		</div>
+		<div id="contentCore">
 				<div class="naviTit">
-					<h3>좌석 예약현황</h3>
-					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;좌석 예약현황</p>
+					<h3>퇴실 처리</h3>
+					<p>좌석 관리&nbsp;&nbsp;>&nbsp;&nbsp;퇴실 처리</p>
 				</div>
 				<div id="contents">
-					<div id="rsvOkWrap">
-					<div id="outer">
+					<div id="cancelWrap">
+						<div id="outer">
 						<table width="800"> <!-- 금일 예약 테이블 -->
 							<caption><h3>금일 예약현황 </h3></caption>
 							<tr>
@@ -104,7 +102,7 @@
 									</c:forEach>
 								</table>
 							<div id="end"></div>
-						</div>
+						</div>				
 					</div>
 				</div>
 			</div>		
