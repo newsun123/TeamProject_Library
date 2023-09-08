@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.net.http.HttpRequest;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,7 +42,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String login() {
+	public String login(Model model,HttpServletRequest request) {
+		
+		String page=request.getParameter("page");
+		String bcode=request.getParameter("bcode");
+		model.addAttribute("page",page);
+		model.addAttribute("bcode",bcode);
+		
 		return "/member/login";
 	}
 
@@ -48,16 +56,36 @@ public class MemberServiceImpl implements MemberService {
 	 * public String login2() { return "/member/login2"; }
 	 */
 	@Override
-	public String loginOk(MemberVo mvo, HttpSession session) {
+	public String loginOk(MemberVo mvo, HttpSession session,HttpServletRequest request) {
+		
 		String name=mapper.loginOk(mvo);
-		if(name==null){
-			return "redirect:/member/login?chk=1";
-		}else{
+		String page=request.getParameter("page");	
+		String bcode=request.getParameter("bcode");	
+		
+		System.out.println(bcode);
+		if(bcode==null || bcode == "") { //그냥 로그인할때
 			
-			session.setAttribute("userid", mvo.getUserid());
-			session.setAttribute("name", name);
-			return "/main/main";
+			if(name==null){
+				return "redirect:/member/login?chk=1";
+			}else{
+		
+				session.setAttribute("userid", mvo.getUserid());
+				session.setAttribute("name", name);
+
+				return "/main/main";
+			}
+		
+		}else{ //도서예약에서 넘어올때
+			if(name==null){
+				return "redirect:/member/login?chk=1&page="+page+"&bcode="+bcode;
 			
+			}else{
+		
+				session.setAttribute("userid", mvo.getUserid());
+				session.setAttribute("name", name);
+
+				return "redirect:/breserve/content?page="+page+"&bcode="+bcode;
+			}
 		}
 	}
 	

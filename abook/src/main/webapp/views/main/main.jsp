@@ -255,7 +255,7 @@
 	#rightB > p{
 		text-align: center;
 	    font-size: 19px;
-	    margin-bottom: 30px;
+	    margin-bottom: 15px;
 	    margin-top: 15px;
 	}
 	#rightB table{
@@ -292,7 +292,6 @@
 	}
 	#rightB .tt{
 		font-size: 12px;
-   		margin-top: 20px;
    		line-height: 30px;
 	}
 	#rightB .reBtn{
@@ -420,7 +419,13 @@
 				</tr>
 				<tr>
 					<td>일반좌석</td>
-					<td>50</td>
+					<td>40</td>
+					<td class="blue">20</td>
+					<td class="red">30</td>
+				</tr>
+				<tr>
+					<td>PC좌석</td>
+					<td>24</td>
 					<td class="blue">20</td>
 					<td class="red">30</td>
 				</tr>
