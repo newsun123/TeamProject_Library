@@ -28,9 +28,28 @@ public class MyPageController {
 		return service.cancelSeat(req,ss);
 	}
 
-	@RequestMapping("/mypage/bookReserve")
-	public String bookReserve(Model model,HttpSession session) {
-		return service.bookReserve(model,session);
-
+	@RequestMapping("/mypage/bookreserve")
+	public String bookreserve(Model model,HttpSession session) {
+		return service.bookreserve(model,session);
+	}
+	
+	@RequestMapping("/mypage/brsvCancel")
+	public String brsvCancel(HttpServletRequest request) {
+		return service.brsvCancel(request);
+	}
+	
+	@RequestMapping("/mypage/giganUpdate")
+	public String giganUpdate(HttpServletRequest request) {
+		return service.giganUpdate(request);
+	}
+	
+	@RequestMapping("/mypage/returnOk")
+	public String returnOk(HttpServletRequest request) {
+		return service.returnOk(request);
+	}
+	
+	@RequestMapping("/mypage/loanlist")
+	public String loanlist(HttpSession session,Model model) {
+		return service.loanlist(session,model);
 	}
 }

@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class BreserveVo {
 	private int no,state;
-	private String userid,bcode,rental,returnday;
+	private String userid,bcode,writeday;
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +66,16 @@
 		color: #555;
 	}
 	.ee{
-		color:#444;
+		color: #444;
+	    line-height: 29px!important;
+	    width: 100%;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    word-break: break-word;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+	    height: auto!important;
 	}
 	.rbtn{
 		display: inline-block;
@@ -98,19 +107,22 @@
 	    text-align: center;
 	}
 	table#table2 tr td:nth-child(1) {
-		width: 170px;
-	}
-	table#table2 tr td:nth-child(2) {
-		width: 140px;
-	}
-	table#table2 tr td:nth-child(3) {
-		width: 190px;
-	}
-	table#table2 tr td:nth-child(4) {
 		width: 150px;
 	}
+	table#table2 tr td:nth-child(2) {
+		width: 160px;
+	}
+	table#table2 tr td:nth-child(3) {
+		width: 200px;
+	}
+	table#table2 tr td:nth-child(4) {
+		width: 170px;
+	}
 	table#table2 tr td:nth-child(5) {
-		width: 330px;
+		width: 190px;
+	}
+	table#table2 tr td:last-child{
+		width: 160px;
 	}
 	table#table2 tr {
 		height: 60px;
@@ -138,7 +150,7 @@
 <script>
 	window.onload=function(){
 		if(${chk==1}){
-			alert("더 이상 예약할 수 없습니다.\n1인 최대 3번 예약 가능하며 추가 예약을 원할 시 마이페이지에서,\n 기존 예약을 취소해주세요.")
+			alert("1인 최대 4회 예약/대출 가능하며 추가 예약을 원할 시\n마이페이지 > 도서예약현황에서 기존 예약 취소 또는 대출 반납을\n해주세요.")
 		}
 	}
 	function bresCheck(my){
@@ -188,6 +200,7 @@
 										<div class="cc">${mapall.get(0).writeyear}</div>
 										<div class="dd">소장도서관 : 작은 도서관</div>
 										<div class="ee">${mapall.get(0).ect}</div>
+										<div class="ff">대출횟수 : ${mapall.get(0).cnt}번</div>
 									</div>
 								</td>
 							</tr>
@@ -200,13 +213,14 @@
 								<td>대출상태</td>
 								<td>예약상태</td>
 								<td>반납예정일</td>
+								<td></td>
 								<td>도서예약</td>
 							</tr>
-						<c:forEach items="${mapall}" var="map">
+						<c:forEach items="${mapall}" var="map" varStatus="i">
 							<tr>
 								<td>작은도서관</td>
 								<td>
-									${fn:substring(map.bcode,4,6)}
+									<fmt:formatNumber value="${i.index+1}" type="number" minIntegerDigits="2" />
 								</td>
 								<td>
 								<c:if test="${map.state==0}">
@@ -231,14 +245,14 @@
 								</c:if>
 								</td>
 								<td>
-								<c:if test="${map.rental==null}">
+								<c:if test="${map.returnday==null}">
 									-
 								</c:if>
-								<c:if test="${map.rental!=null}">
-									${map.rental}
+								<c:if test="${map.returnday!=null}">
+									${map.returnday}
 								</c:if>
 								</td>
-
+								<td></td>
 								<td>
 								<c:if test="${map.state==0}">
 									<input type="hidden" value="${map.bcode}" name="bocde" class="bcode">

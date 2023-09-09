@@ -13,8 +13,33 @@
 <update id="resetTablename">
 	update tablename set ${time}=0 where tname=#{tname}
 </update>
-<select id="bookReserve" resultType="HashMap">
-	select * from bookreserve where userid=#{userid}
-</select>
+<!-- 0909 강서영 백업 -->
+<select id="bookreserve" resultType="HashMap">
+		 select b1.title, b1.publi, b1.writer, b1.bcode, b1.state, b2.userid, b2.writeday from
+		 bookregi as b1 inner join bookreserve as b2 on b1.bcode=b2.bcode
+		 where userid=#{userid}
+	</select>
+	<select id="bookloan" resultType="HashMap">
+		 select * from bookloan
+		 where userid=#{userid} and state=0
+	</select>
+	<select id="bookrefuse" resultType="HashMap">
+		select * from brefuse where userid=#{userid}
+	</select>
+	<delete id="brsvCancel">
+		delete from bookreserve where bcode=#{bocde}
+	</delete>
+	<update id="changeState">
+		update bookregi set state=0 where bcode=#{bcode}
+	</update>
+	<update id="giganUpdate">
+		update bookloan set gigan=1,returnday=date_add(returnday,interval 3 day) where no=#{no}
+	</update>
+	<update id="returnOk">
+		update bookloan set state=1,writeday=now() where no=#{no}
+	</update>
+	<select id="loanlist" resultType="HashMap">
+		select * from bookloan where userid=#{userid} and state=1 
+	</select>
 
 </mapper>

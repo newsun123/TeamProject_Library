@@ -379,7 +379,7 @@
 				<ul id="lnb">
 					<li class="on"><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
 					<li><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
-					<li><a href="/mypage/bookReserve"><span>도서예약현황</span></a></li>
+					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
 			</div>

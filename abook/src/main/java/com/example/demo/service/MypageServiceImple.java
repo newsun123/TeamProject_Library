@@ -116,12 +116,18 @@ public class MypageServiceImple implements MypageService {
 	}
 	
 	@Override
-	public String bookReserve(Model model,HttpSession session) {
+	public String bookreserve(Model model,HttpSession session) {
 		
 		String userid=session.getAttribute("userid").toString();
 		
-		ArrayList<HashMap> mapall=mapper.bookReserve(userid);
+		ArrayList<HashMap> mapall=mapper.bookreserve(userid);
 		model.addAttribute("mapall",mapall);
+		
+		ArrayList<HashMap> mapall2=mapper.bookrefuse(userid);
+		model.addAttribute("mapall2",mapall2);
+		
+		ArrayList<HashMap> mapall3= mapper.bookloan(userid);
+		model.addAttribute("mapall3",mapall3);
 		return "/mypage/bookreserve";
 	}
 
@@ -149,7 +155,37 @@ public class MypageServiceImple implements MypageService {
 		return "redirect:/mypage/checkReserveSeat";
 	}
 
-	
+	@Override
+	public String brsvCancel(HttpServletRequest request) {
+		String bcode=request.getParameter("bcode");
+		mapper.brsvCancel(bcode);
+		mapper.changeState(bcode);
+		return "redirect:/mypage/bookreserve";
+	}
+
+	@Override
+	public String giganUpdate(HttpServletRequest request) {
+		String no=request.getParameter("no");
+		mapper.giganUpdate(no);
+		return "redirect:/mypage/bookreserve";
+	}
+
+	@Override
+	public String returnOk(HttpServletRequest request) {
+		String no=request.getParameter("no");
+		mapper.returnOk(no);
+		return "redirect:/mypage/bookreserve";
+	}
+
+	@Override
+	public String loanlist(HttpSession session,Model model) {
+		
+		String userid=session.getAttribute("userid").toString();
+		ArrayList<HashMap> mapall=mapper.loanlist(userid);
+		model.addAttribute("mapall",mapall);
+		
+		return "/mypage/loanlist";
+	}
 	
 	
 }

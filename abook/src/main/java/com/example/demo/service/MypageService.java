@@ -8,6 +8,12 @@ import org.springframework.ui.Model;
 public interface MypageService {
 	public String checkReserveSeat(HttpSession ss,Model model);
 	public String cancelSeat(HttpServletRequest req,HttpSession ss);
-	public String bookReserve(Model model,HttpSession session);
+	//0909 강서영 백업
+	
+	public String bookreserve(Model model,HttpSession session);
+	public String brsvCancel(HttpServletRequest request);
+	public String giganUpdate(HttpServletRequest request);
+	public String returnOk(HttpServletRequest request);
+	public String loanlist(HttpSession session,Model model);
 
 }

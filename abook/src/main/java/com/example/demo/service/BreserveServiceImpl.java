@@ -88,7 +88,7 @@ public class BreserveServiceImpl implements BreserveService{
 			String bcode=request.getParameter("bcode");
 			String userid=session.getAttribute("userid").toString();
 			
-			if(mapper.cntCheck(userid)>2) {
+			if(mapper.cntCheck(userid)>3) {
 				return "redirect:/breserve/content?bcode="+bcode+"&chk=1";
 				
 			}else {
