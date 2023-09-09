@@ -394,7 +394,7 @@
 			<div id="noticList"> 
 				<ul>
 				<c:forEach items="${glist}" var="glist">
-					<li onclick="location='/gongji/list'">
+					<li onclick="location='../gongji/content?no=${glist.no}'">
 						<a>${glist.title}</a>
 						<span class="date">${glist.writeday}</span>
 					</li>

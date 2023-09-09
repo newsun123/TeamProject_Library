@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,9 @@ public class MainServiceImpl  implements MainService{
 	private MainMapper mapper;
 
 	@Override
-	public String main(GongjiVo gvo,Model model) {
+	public String main(GongjiVo gvo,Model model,HttpServletRequest req) {
 		
+		//String page=req.getParameter("page");
 		
 		LocalDate day = LocalDate.now();
 
@@ -39,7 +42,7 @@ public class MainServiceImpl  implements MainService{
 		}
 		
 		ArrayList<GongjiVo> glist=mapper.gongji(gvo);
-		model.addAttribute("glist",glist); 
+		model.addAttribute("glist",glist);
 		
 		return "/main/main";
 	}

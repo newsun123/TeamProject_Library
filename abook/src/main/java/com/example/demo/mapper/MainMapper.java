@@ -10,4 +10,5 @@ import com.example.demo.vo.GongjiVo;
 public interface MainMapper {
 	
 	public ArrayList<GongjiVo> gongji(GongjiVo gvo);
+
 }

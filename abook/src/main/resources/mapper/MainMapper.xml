@@ -6,5 +6,9 @@
 	<select id="gongji" resultType="com.example.demo.vo.GongjiVo">
 		select * from gongji order by no desc limit 5
 	</select>
-
+	
+   <select id="getChong" resultType="int">
+      select ceil( count(*)/10 ) from gongji
+   </select>
+	
 </mapper>

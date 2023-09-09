@@ -21,7 +21,7 @@ public class GongjiServiceImpl implements GongjiService {
 	public String list(Model model, HttpServletRequest req, GongjiVo gvo) {
 		
 		int page = 1;
-		if (req.getParameter("page") == null)
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
 			page = 1;
 		else
 			page = Integer.parseInt(req.getParameter("page"));

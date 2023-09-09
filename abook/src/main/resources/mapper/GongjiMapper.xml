@@ -10,8 +10,7 @@
    </update>
    	
    <select id="content" resultType="com.example.demo.vo.GongjiVo">
-      select * from go
-      ngji where no=#{no}
+      select * from gongji where no=#{no}
    </select>
    
    <select id="getChong" resultType="int">

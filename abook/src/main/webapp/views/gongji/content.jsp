@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,14 +91,12 @@
 							</tr>
 							<tr>
 								<td>등록일</td>
-								<td class="tl">${gvo.writeday}</td>
+								<td class="tl">${gvo2.writeday}</td>
 							</tr>
 						</table>
 						<div id="btn">
 							<a href="list?page=${page}" class="dis">목록</a>
-							<a href="update?no=${gvo.no}&page=${page}">수정하기</a>
-							<a href="delete?no=${gvo.no}&page=${page}">삭제하기</a>
-						</div> 
+						</div>
 					</div>
 				</div>
 			</div>		
