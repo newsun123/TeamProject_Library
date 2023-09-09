@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BookRequestMapper">
+	
+	<insert id="requestwrite_ok">
+		insert into bookrequest(bname,writer,writetime,publisher,gonge,ect,userid,bwriteday)
+		values(#{bname},#{writer},#{writetime},#{publisher},#{gonge},#{ect},#{userid},now())
+	</insert>
+
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from bookrequest
+	</select>
+
+	<select id="rlist" resultType="com.example.demo.vo.BookRequestVo">
+		select * from bookrequest order by no desc limit #{start},10
+	</select>
+	
+	<select id="rcontent" resultType="com.example.demo.vo.BookRequestVo">
+		select * from bookrequest where no=#{no}
+	</select>
+	
+	<select id="rupdate" resultType="com.example.demo.vo.BookRequestVo">
+		select * from bookrequest where no=#{no}
+	</select>
+	
+	<update id="rupdate_ok">
+		update bookrequest set bname=#{bname},writer=#{writer},writetime=#{writetime},publisher=#{publisher}
+		,userid=#{userid},ect=#{ect},gonge=#{gonge} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from bookrequest where no=#{no}
+	</delete>
+</mapper>
