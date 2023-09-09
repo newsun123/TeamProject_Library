@@ -11,4 +11,6 @@ public interface BookregiService {
 	public String write();
 	public String write_ok(BookregiVo bvo,HttpServletRequest request);
 	public String content(BookregiVo bvo,HttpServletRequest request,Model model);
+	public String add(HttpServletRequest request);
+	public String del(HttpServletRequest request);
 }

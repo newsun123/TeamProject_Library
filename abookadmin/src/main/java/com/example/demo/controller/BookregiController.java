@@ -42,4 +42,14 @@ public class BookregiController {
 	public String content(BookregiVo bvo,HttpServletRequest request,Model model){
 		return service.content(bvo,request,model);
 	}
+	//강서영 0909
+	@RequestMapping("/bookregi/add")
+	public String add(HttpServletRequest request) {
+		return service.add(request);
+	}
+	
+	@RequestMapping("/bookregi/del")
+	public String del(HttpServletRequest request) {
+		return service.del(request);
+	}
 }

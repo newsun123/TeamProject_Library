@@ -66,6 +66,7 @@ public class BookregiServiceImpl implements BookregiService{
 		
 		//String path2 = request.getRealPath("classpath:/static/img/bookregi");
 		try {
+			
 			int size=1024*1024*100;
 			String path=ResourceUtils.getFile("classpath:static/img/bookregi").toPath().toString();
 			MultipartRequest multi=new MultipartRequest(request,path,size,"utf-8",new DefaultFileRenamePolicy());
@@ -75,7 +76,7 @@ public class BookregiServiceImpl implements BookregiService{
 			bvo.setWriter(multi.getParameter("writer"));
 			bvo.setPubli(multi.getParameter("publi"));
 			bvo.setWriteyear(multi.getParameter("writeyear"));
-			bvo.setBea(multi.getParameter("bea"));
+			bvo.setBea(Integer.parseInt(multi.getParameter("bea")));
 			bvo.setEct(multi.getParameter("ect"));
 			
 			// bvo 이미지 값 넣기
@@ -86,7 +87,7 @@ public class BookregiServiceImpl implements BookregiService{
 				bimg="";
 			
 			bvo.setBimg(bimg);
-			//System.out.println(bvo.getBimg());
+			
 			// bcode 값 만들어 넣기
 			String bcode=mapper.getCode();
 			
@@ -99,7 +100,7 @@ public class BookregiServiceImpl implements BookregiService{
 			}
 			
 			//갯수 만들기 (갯수만큼 bcode 수량 증가)
-			int n=Integer.parseInt(bvo.getBea());
+			int n=bvo.getBea();
 			for(int i=1;i<=n;i++) {
 				
 				if(i < 10){
@@ -134,6 +135,52 @@ public class BookregiServiceImpl implements BookregiService{
 		model.addAttribute("blist",mapper.content(bcode));
 		
 		return "/bookregi/content";
+	}
+	
+	@Override
+	public String add(HttpServletRequest request) {
+		
+		String bcode=request.getParameter("bcode");
+		String page=request.getParameter("page");
+		String bcode2=bcode.substring(0,4); //'b001'
+		
+		BookregiVo bvo=mapper.getlist(bcode2);
+		
+		String bcode3=bvo.getBcode().substring(4,6); //'01'
+		
+		int bcode4=Integer.parseInt(bcode3)+1; //bcode증가
+		String bb="";
+		
+		if(bcode4>9) {
+			bb=bcode2+Integer.toString(bcode4);
+		}else {
+			bb=bcode2+"0"+Integer.toString(bcode4);
+		}
+		
+		bvo.setBcode(bb);
+		int n=bvo.getBea()+1;
+		bvo.setBea(n);
+		mapper.add(bvo);
+		mapper.beaUpdate(bcode2,n);
+		return "redirect:/bookregi/content?page="+page+"&bcode="+bcode;
+	}
+
+	@Override
+	public String del(HttpServletRequest request) {
+		
+		String bcode=request.getParameter("bcode");
+		String page=request.getParameter("page");
+		String bcode2=bcode.substring(0,4); //'b001'
+		
+		mapper.del(bcode);
+		int n=mapper.getcnt(bcode2);
+		
+		if(n==0) { //전부 삭제 되었을때
+			return "redirect:/bookregi/list?page="+page;
+		}
+		
+		mapper.beaUpdate(bcode2,n);
+		return "redirect:/bookregi/content?page="+page+"&bcode="+bcode;
 	}
 
 }

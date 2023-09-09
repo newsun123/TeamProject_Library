@@ -4,19 +4,45 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.BookregiMapper">
 	<insert id="write_ok">
-		insert into bookregi(title,publi,writer,writeyear,bimg,bea,bcode,ect,writeday)
+		insert into
+		bookregi(title,publi,writer,writeyear,bimg,bea,bcode,ect,writeday)
 		values(#{title},#{publi},#{writer},#{writeyear},#{bimg},#{bea},#{bcode},#{ect},now())
 	</insert>
 	<select id="getCode" resultType="String">
-		select ifnull(max(substring(bcode,2,3)),0)+1 from bookregi
+		select
+		ifnull(max(substring(bcode,2,3)),0)+1 from bookregi
 	</select>
 	<select id="getChong" resultType="int">
-		select ceil(count(*)/10) from bookregi
+		select ceil(count(*)/10) from
+		bookregi
 	</select>
 	<select id="list" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi group by substr(bcode,1,4) limit #{start},10;
+		select * from bookregi group by
+		substr(bcode,1,4) limit #{start},10;
 	</select>
-	<select id="content" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where bcode like concat(#{bcode},'%')
+	<select id="content" resultType="HashMap">
+		select *,(select returnday from
+		bookloan where bcode=b.bcode) as returnday from bookregi as b where
+		bcode like concat(#{bcode},'%')
+	</select>
+	<select id="getlist" resultType="com.example.demo.vo.BookregiVo">
+		select * from bookregi where
+		bcode like concat(#{bcode},'%') order by no desc limit 1
+	</select>
+	<insert id="add">
+		insert into
+		bookregi(title,publi,writer,writeyear,bimg,bea,bcode,ect,writeday)
+		values(#{title},#{publi},#{writer},#{writeyear},#{bimg},#{bea},#{bcode},#{ect},now())
+	</insert>
+	<update id="beaUpdate">
+		update bookregi set bea=${n} where bcode like
+		concat(#{bcode},'%')
+	</update>
+	<delete id="del">
+		delete from bookregi where bcode=#{bcode}
+	</delete>
+	<select id="getcnt" resultType="int">
+		select count(*) from bookregi
+		where bcode like concat(#{bcode},'%')
 	</select>
 </mapper>

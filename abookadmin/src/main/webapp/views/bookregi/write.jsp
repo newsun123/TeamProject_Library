@@ -133,19 +133,19 @@
 							<table>
 								<tr>
 									<td>도서명</td>
-									<td><input type="text" id="title" name="title" value="${title}"></td>
+									<td><input type="text" id="title" name="title"></td>
 								</tr>
 								<tr>
 									<td>출판사</td>
-									<td><input type="text" id="publi" name="publi" value="${publi}"></td>
+									<td><input type="text" id="publi" name="publi"></td>
 								</tr>
 								<tr>
 									<td>저자</td>
-									<td><input type="text" id="writer" name="writer" value="${writer}"></td>
+									<td><input type="text" id="writer" name="writer"></td>
 								</tr>
 								<tr>
 									<td>출판년도</td>
-									<td><input type="text" id="writeyear" name="writeyear" value="${writeyear}"></td>
+									<td><input type="text" id="writeyear" name="writeyear"></td>
 								</tr>
 								<tr>
 									<td>갯수</td>
