@@ -18,7 +18,7 @@
 	</select> -->
 	
  	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
-		select * from bookrequest where ${type} like concat('%',"${keyword}",'%') order by no desc limit #{start},10
+		select * from bookrequest where #{type} like concat('%',"#{keyword}",'%') order by no desc limit #{start},10
 	</select> 
 	
 	<select id="rcontent" resultType="com.example.demo.vo.BookRequestVo">
