@@ -115,8 +115,8 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li class="on"><a><span>도서등록</span></a></li>
-					<li><a href="#"><span>대출현황</span></a></li>
-					<li><a href="/reservestatus/rslist"><span>예약현황</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
 					<li><a href="#"><span>신청현황</span></a></li>
 					<li><a href="#"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>

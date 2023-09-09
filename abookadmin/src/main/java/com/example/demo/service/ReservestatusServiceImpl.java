@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.ReservestatusMapper;
+import com.example.demo.vo.BookregiVo;
 
 @Service
 @Qualifier("rsvs")
@@ -20,18 +21,53 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 	private ReservestatusMapper mapper;
 
 	@Override
-	public String rslist(Model model) {
-		ArrayList<HashMap> mapall=mapper.rslist();
+	public String list(Model model) {
+		
+		ArrayList<HashMap> mapall=mapper.list();
 		model.addAttribute("mapall",mapall);
-		return "/reservestatus/rslist";
+		
+		return "/reservestatus/list";
 	}
 
 	@Override
 	public String rcheck(HttpServletRequest request) {
+		
 		String bcode=request.getParameter("bcode");
+		String userid=request.getParameter("userid");
 		mapper.rcheck(bcode);
 		mapper.rcheck2(bcode);
-		return "redirect:/reservestatus/rslist";
+		String bcode2=bcode.substring(0,4);
+		mapper.cntupdate(bcode2);
+		
+		BookregiVo bvo=mapper.getbook(bcode);
+		String title=bvo.getTitle();
+		String publi=bvo.getPubli();
+		String writer=bvo.getWriter();
+		
+		mapper.setloan(bcode,userid,title,publi,writer);
+		mapper.delbreserve(bcode,userid);
+		
+		return "redirect:/reservestatus/list";
+	}
+
+	@Override
+	public String dcheck(HttpServletRequest request) {
+		
+		String bcode=request.getParameter("bcode");
+		String userid=request.getParameter("userid");
+		String writeday=request.getParameter("writeday");
+		
+		mapper.dcheck(bcode);
+		
+		mapper.delbreserve(bcode,userid);
+		
+		BookregiVo bvo=mapper.getbook(bcode);
+		String title=bvo.getTitle();
+		String publi=bvo.getPubli();
+		String writer=bvo.getWriter();
+		
+		mapper.setbrefuse(bcode,userid,writeday,title,publi,writer);
+		return "redirect:/reservestatus/list";
 	}
 
 

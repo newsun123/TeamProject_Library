@@ -19,14 +19,19 @@ public class ReservestatusController {
 	@Qualifier("rsvs")
 	private ReservestatusService service;
 	
-	@RequestMapping("/reservestatus/rslist")
-	public String rslist(Model model) {
-		return service.rslist(model);
+	@RequestMapping("/reservestatus/list")
+	public String list(Model model) {
+		return service.list(model);
 	}
 	
 	@RequestMapping("/reservestatus/rcheck")
 	public String rcheck(HttpServletRequest request) {
 		return service.rcheck(request);
+	}
+	
+	@RequestMapping("/reservestatus/dcheck")
+	public String dcheck(HttpServletRequest request) {
+		return service.dcheck(request);
 	}
 	
 }

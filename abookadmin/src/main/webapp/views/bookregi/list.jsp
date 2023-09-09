@@ -56,9 +56,8 @@
 		text-align: center!important;
 	}
 	#btnCon{    
-		position: absolute;
-		top:0;
-		right:0;
+		height: 60px;
+    	text-align: right;
 	}
 	#btnCon a{
 		color: #fff;
@@ -144,8 +143,8 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li class="on"><a><span>도서등록</span></a></li>
-					<li><a href="#"><span>대출현황</span></a></li>
-					<li><a href="/reservestatus/rslist"><span>예약현황</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
 					<li><a href="#"><span>신청현황</span></a></li>
 					<li><a href="#"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>
@@ -158,6 +157,9 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
+						<div id="btnCon">
+							<a href="/bookregi/write">도서등록</a>
+						</div>
 						<table>						
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
@@ -216,9 +218,7 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
-							<div id="btnCon">
-								<a href="/bookregi/write">도서등록</a>
-							</div>			
+										
 						</div>							
 					</div>
 				</div>

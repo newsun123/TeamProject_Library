@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.BookRequestService;
 import com.example.demo.vo.BookRequestVo;
+import com.example.demo.vo.MemberVo;
 
 @Controller
 public class BookRequestController {

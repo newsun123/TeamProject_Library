@@ -5,11 +5,18 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.vo.BookregiVo;
 import com.example.demo.vo.ReservestatusVo;
 
 @Mapper
 public interface ReservestatusMapper {
-	public ArrayList<HashMap> rslist();
+	public ArrayList<HashMap> list();
 	public void rcheck(String bcode);
-	public void rcheck2(String bcode); 
+	public void rcheck2(String bcode);
+	public BookregiVo getbook(String bcode);
+	public void setloan(String bcode,String userid,String title,String publi,String writer);
+	public void delbreserve(String bcode,String userid);
+	public void dcheck(String bcode);
+	public void setbrefuse(String bcode,String userid,String writeday,String title,String publi,String writer);
+	public void cntupdate(String bcode);
 }

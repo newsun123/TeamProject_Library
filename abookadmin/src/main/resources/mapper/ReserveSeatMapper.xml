@@ -10,4 +10,16 @@
 <update id="startTable">
 	update tablename set close=0 where tname=#{tname}
 </update>
+<select id="searchReserve1" resultType="com.example.demo.vo.ReserveSeatVo">
+	select * from reserveseat order by no desc
+</select>
+<select id="searchReserve2" resultType="HashMap">
+	select * from reserveseat where reserveday=#{today}
+</select>
+<update id="resetTablename">
+	update tablename set ${time}=0 where tname=#{tname}
+</update>
+<delete id="cancelSeat">
+	delete from reserveseat where no=#{no}
+</delete>
 </mapper>

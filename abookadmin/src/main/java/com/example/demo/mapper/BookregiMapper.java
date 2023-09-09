@@ -14,4 +14,10 @@ public interface BookregiMapper {
 	public ArrayList<BookregiVo> list(BookregiVo bvo,@Param("start") int start);
 	public int getChong();
 	public ArrayList<BookregiVo> content(String bcode);
+	// 0909 강서영
+	public BookregiVo getlist(String bcode);
+	public void add(BookregiVo bvo);
+	public void beaUpdate(String bcode,int n);
+	public void del(String bcode);
+	public int getcnt(String bcode);
 }

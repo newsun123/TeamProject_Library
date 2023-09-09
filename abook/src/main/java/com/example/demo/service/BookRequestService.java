@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.example.demo.vo.BookRequestVo;
+import com.example.demo.vo.MemberVo;
 
 public interface BookRequestService {
 	public String requestwrite();
