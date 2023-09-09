@@ -21,9 +21,9 @@ public class CalenderServiceImpl implements CalenderService {
 	private CalenderMapper mapper;
 
 	@Override
-	public String cal1() {
+	public String calenderTab() {
 		
-		return "calender/cal1";
+		return "calender/calenderTab";
 	}
 
 	@Override

@@ -18,102 +18,119 @@ public class GongjiServiceImpl implements GongjiService {
 	private GongjiMapper mapper;
 
 	@Override
-	public String list(Model model, HttpServletRequest request,GongjiVo gvo) {
-		
-		int page=1;
-		if(request.getParameter("page") == null)
-			page=1;
+	public String list(Model model, HttpServletRequest request, GongjiVo gvo) {
+
+		int page = 1;
+		if (request.getParameter("page") == null)
+			page = 1;
 		else
-			page=Integer.parseInt(request.getParameter("page"));
-		
-		int start=(page-1)*10;
-		
-		int pstart=page/10;
-		if(page%10 == 0)
+			page = Integer.parseInt(request.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
 			pstart--;
-		pstart=pstart*10+1;
-		
-		int pend=pstart+9;
-		
-		int chong=mapper.getChong();
-		
-		if(pend > chong)
-			pend=chong;
-		
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+
+		int chong = mapper.getChong();
+
+		if (pend > chong)
+			pend = chong;
+
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
-		
-		model.addAttribute("glist",mapper.list(start));
-		
+
+		model.addAttribute("glist", mapper.list(start));
+
 		return "/gongji/list";
 	}
 
 	@Override
 	public String write() {
-		
+
 		return "/gongji/write";
 	}
 
 	@Override
 	public String writeOk(GongjiVo gvo) {
-			
+
 		mapper.writeOk(gvo);
 
 		/*
-		for(int i=1;i<200;i++) {
-			
-			String title="공지사항 페이징 테스트 - 제목입니다. "+i;
-			String content="공지사항 페이징 테스트 - 내용입니다. "+i;
-			gvo.setTitle(title);
-			gvo.setContent(content);
-			mapper.writeOk(gvo);
-		}
-		*/
+		 * for(int i=1;i<200;i++) {
+		 * 
+		 * String title="공지사항 페이징 테스트 - 제목입니다. "+i; String
+		 * content="공지사항 페이징 테스트 - 내용입니다. "+i; gvo.setTitle(title);
+		 * gvo.setContent(content); mapper.writeOk(gvo); }
+		 */
 		return "redirect:/gongji/list";
 	}
 
 	@Override
-	public String content(GongjiVo gvo,Model model,HttpServletRequest request) {
+	public String content(GongjiVo gvo, Model model, HttpServletRequest request) {
+
+		String page = request.getParameter("page");
 		
-		String page=request.getParameter("page");
+		String replaceBr=mapper.content(gvo).getContent();
+		String resultBr=replaceBr.replaceAll("\\n","<br>");
+
+		GongjiVo gvo2=mapper.content(gvo);
+		String content=gvo2.getContent().replaceAll("//n", "<br>");
+		gvo.setContent(resultBr);
 		
-		mapper.content(gvo);
-		model.addAttribute("gvo",mapper.content(gvo));
-		model.addAttribute("page",page);
+		gvo2.setContent(content);
+		
+		model.addAttribute("gvo",gvo);
+		model.addAttribute("gvo2",gvo2);
+		model.addAttribute("page", page);
 		
 		return "/gongji/content";
 	}
 
 	@Override
-	public String delete(GongjiVo gvo,HttpServletRequest request) {
-		
-		String page=request.getParameter("page");
+	public String delete(GongjiVo gvo, HttpServletRequest request) {
+
+		String page = request.getParameter("page");
 		mapper.delete(gvo);
-		
-		return "redirect:/gongji/list?page="+page;
+
+		return "redirect:/gongji/list?page=" + page;
 	}
 
 	@Override
-	public String update(GongjiVo gvo,Model model,HttpServletRequest request) {
-		
-		String page=request.getParameter("page");
+	public String update(GongjiVo gvo, Model model, HttpServletRequest request) {
+
+		String page = request.getParameter("page");
 		mapper.update(gvo);
-		
-		model.addAttribute("gvo",mapper.content(gvo));
+
+		model.addAttribute("gvo", mapper.content(gvo));
 		model.addAttribute("page", page);
-		
+
 		return "/gongji/update";
 	}
 
 	@Override
-	public String updateOk(GongjiVo gvo,HttpServletRequest request) {
-		
-		String page=request.getParameter("page");
-		
+	public String updateOk(GongjiVo gvo, HttpServletRequest request) {
+
+		String page = request.getParameter("page");
+
 		mapper.updateOk(gvo);
-		return "redirect:/gongji/content?no="+gvo.getNo()+"&page="+page;
+		return "redirect:/gongji/content?no=" + gvo.getNo() + "&page=" + page;
+	}
+
+	@Override
+	public String readnum(HttpServletRequest req) {
+		
+		String page=req.getParameter("page");
+		String no=req.getParameter("no");
+		
+		mapper.readnum(no);
+		
+		return "redirect:/gongji/content?no="+no+"&page="+page;
 	}
 
 }

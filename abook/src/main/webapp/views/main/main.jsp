@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -392,22 +393,12 @@
 			<div class="imore"><a href="#"></a></div>
 			<div id="noticList"> 
 				<ul>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트1</a>
-						<span class="date">2023.08.07</span>
+				<c:forEach items="${glist}" var="glist">
+					<li onclick="location='/gongji/list'">
+						<a>${glist.title}</a>
+						<span class="date">${glist.writeday}</span>
 					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트2</a>
-						<span class="date">2023.08.07</span>
-					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트3</a>
-						<span class="date">2023.08.07</span>
-					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트4</a>
-						<span class="date">2023.08.07</span>
-					</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>

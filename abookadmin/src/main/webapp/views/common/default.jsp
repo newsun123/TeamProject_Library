@@ -217,7 +217,7 @@
 				<li class="gnbMenu">
 					<a href="#">게시판 관리</a>
 					<ul>
-						<li><a href="/gongji/list">공지사항</a></li>
+						<li><a href="../gongji/list">공지사항</a></li>
 						<li><a href="#">문의사항</a></li>
 					</ul>
 				</li>

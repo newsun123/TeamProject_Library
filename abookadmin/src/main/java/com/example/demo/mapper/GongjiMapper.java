@@ -16,4 +16,5 @@ public interface GongjiMapper {
 	public void update(GongjiVo gvo);
 	public void updateOk(GongjiVo gvo);
 	public int getChong();
+	public void readnum(String id);
 }

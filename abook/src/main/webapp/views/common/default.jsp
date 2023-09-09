@@ -212,8 +212,9 @@
 			<li class="gnbMenu">
 				<a href="#">열린 공간</a>
 				<ul>
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">문의 게시판</a></li>
+					<li><a href="/gongji/list">공지사항 </a></li>
+					<li><a href="#">문의 게시판 </a></li>
+					<li><a href="/calender/calenderTab">도서관 일정 </a></li>					
 				</ul>
 			</li>
 		</ul>

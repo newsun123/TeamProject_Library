@@ -154,7 +154,7 @@
 									</c:if>
 								</td>		
 								<td>
-									<a href="content?no=${gvo.no}&page=${page}">${gvo.title}</a> 
+									<a href="readnum?no=${gvo.no}&page=${page}">${gvo.title}</a> 
 								</td>
 								<td>${gvo.writeday}</td>  
 								<td>${gvo.readnum}</td>  

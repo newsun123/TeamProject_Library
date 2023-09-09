@@ -164,7 +164,6 @@
 		익명함수를 통해 함수를 호출한다.
 	-->
 	<div id="calender">
-		안녕!
 	</div>
 </body>
 </html>

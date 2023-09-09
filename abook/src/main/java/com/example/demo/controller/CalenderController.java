@@ -22,10 +22,10 @@ public class CalenderController {
 	private CalenderService service;
 	
 
-	@RequestMapping("/calender/cal1")
-	public String cal1()
+	@RequestMapping("/calender/calenderTab")
+	public String CalenderTab()
 	{
-		return "/calender/cal1";
+		return "/calender/calenderTab";
 	}
 	
 	@RequestMapping("/calender/cal2")
