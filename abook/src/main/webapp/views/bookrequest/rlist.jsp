@@ -68,15 +68,15 @@
 	}
 </style>
 <script>
-
-/* function checkgonge(my){
-	
-	 var sessionuserid=document.getElementById("sessionuserid").value;
-		window.location.href="content?no="+no+"&page="+page;
-} */
+	window.onload=function()
+	{
+		<c:if test="${type!=null}">
+			document.getElementById("type").value="${type}";
+		</c:if>
+	}
 </script>
 </head>
-<body>
+<body >
 	<div id="secWrap">
 		<div class="sImg"></div>
 		<div id="section">
@@ -94,13 +94,21 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-				<form name="rform" method="post" cellspancing="0">
 						<div class="nameTop">
 							신청하기
 						</div>
 						<div id=searchCon>
-							<input type="text" class="searchtext" maxlength="100" placeholder="검색어 입력">
-							<input type="button" id="search" class="searchtext" value="검색" onclick="search()">
+						<form name="kjh" method="post" action="rlist">
+						<input type="hidden" value="${type}">
+						<input type="hidden" value="${keyword}">
+							<select name="type" id="type">
+								<option value="title">도서명</option>
+								<option value="writer">저자</option>
+								<option value="publi">출판사</option>
+							</select>
+							<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+							<input type="submit" id="search" class="searchtext" value="검색">
+						</form>
 						</div>
 						<table align="center">
 							<tr>
@@ -118,21 +126,31 @@
 									<%-- <td>${userid},${brvo.userid}</td> --%>
 									<td> ${brvo.no} </td>
 									<td>
-									<c:if test="${brvo.gonge == 1 && userid == brvo.userid}"> <!-- 1비공개면.. -->
+									<c:if test="${userid != brvo.userid && brvo.gonge == 1 && userid != null}"><!-- 유저아이디는 다른데 비공개글일경우 -->
 										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a href="rcontent?no=${brvo.no}&page=${page}">${brvo.bname}</a>
+										<a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
+									</c:if>
+									<c:if test="${userid != brvo.userid && brvo.gonge == 0 && userid != null}"><!-- 유저아이디는 다른데 공개글일경우 -->
+										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+									</c:if>
+									<c:if test="${userid == brvo.userid && brvo.gonge == 0}"><!-- 유저아이디가 같을경우 공개글 -->
+										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+									</c:if>
+									<c:if test="${userid == brvo.userid && brvo.gonge == 1}"><!-- 유저아이디가 같을경우 비공개글 -->
+										<img src="/static/img/bookrequest/locked.png" class="rimg">
+										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
 									</c:if>
 									
-									<c:if test="${userid != brvo.userid && brvo.gonge==1}">
+									<c:if test="${userid == null && brvo.gonge == 1}"><!-- 로그인 안했을경우 비공개글 -->
 										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.bname}</a>
+										<a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
 									</c:if>
-									<c:if test="${brvo.gonge==0}">
-										<a href="rcontent?no=${brvo.no}&page=${page}">${brvo.bname}</a>
+									<c:if test="${userid == null && brvo.gonge == 0}"><!-- 로그인 안했을경우 공개글 -->
+										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
 									</c:if>
 									</td>
 									<td> ${brvo.userid} </td>
-									<td> ${brvo.bwriteday} </td>
+									<td> ${brvo.writeday} </td>
 									<td> 
 										<c:if test="${brvo.state == 0}">
 											대기중
@@ -189,10 +207,14 @@
 								</td>
 							</tr>
 							<tr>
+							<c:if test="${userid == null}">
+								<td colspan="8"> <a href="/member/login" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')"> 신청하기 </a> </td>
+							</c:if>
+							<c:if test="${userid != null}">
 								<td colspan="8"> <a href="requestwrite"> 신청하기 </a> </td>
+							</c:if>
 							</tr>	
 						</table>
-					</form>
 					</div>
 				</div>
 			</div>		

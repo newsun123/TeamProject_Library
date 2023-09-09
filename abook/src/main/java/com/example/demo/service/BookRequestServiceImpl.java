@@ -5,12 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.BookRequestMapper;
 import com.example.demo.vo.BookRequestVo;
+import com.example.demo.vo.MemberVo;
 
 @Service
 @Qualifier("brs")
@@ -44,12 +44,17 @@ public class BookRequestServiceImpl implements BookRequestService {
 
 	@Override
 	public String rlist(Model model, HttpServletRequest request,BookRequestVo brvo,HttpSession session) {
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		String title=request.getParameter("title");
+		System.out.println(keyword+" "+type);
 		int page;
 		if(request.getParameter("page")==null)
 			page=1;
 		else
 			page=Integer.parseInt(request.getParameter("page"));
 		int start=(page-1)*10;
+		//System.out.println(start);
 		int pstart=page/10;
 		if(page%10==0)
 			pstart--;
@@ -59,23 +64,56 @@ public class BookRequestServiceImpl implements BookRequestService {
 		int chong=mapper.getChong();
 		if(pend>chong)
 			pend=chong;
-		String userid=session.getAttribute("userid").toString();
+		
+		if(keyword==null || keyword.length()==0) {
+			type="title";
+			keyword="";
+		}
+		
+	
+
+		//model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
+		//model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
-		model.addAttribute("userid",userid);
-		model.addAttribute("rlist",mapper.rlist(start, brvo));
+		model.addAttribute("type",type);
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("start",start);
+		model.addAttribute("rlist",mapper.search(type, keyword,start));
+		//model.addAttribute("rlist",mapper.rlist(start, brvo));
+		//System.out.println(type+" "+keyword);
 		
-		return "/bookrequest/rlist";
+		if(session.getAttribute("userid")==null) // userid가 null이 아닐경우 리스트가 model을 안넣으면 안떠서 넣어줌.
+		{
+			return "/bookrequest/rlist";
+		}
+		else {
+			String userid=session.getAttribute("userid").toString();
+			model.addAttribute("userid",userid);
+			return "/bookrequest/rlist";
+		}
 	}
 
 	@Override
 	public String rcontent(Model model, HttpServletRequest request, BookRequestVo brvo,HttpSession session) {
 		String page=request.getParameter("page");
-		String userid=session.getAttribute("userid").toString();
 		String gonge=request.getParameter("gonge");
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("page",page);
+			model.addAttribute("brvo",mapper.rcontent(brvo));
+			return "/bookrequest/rcontent";
+		}
+		
+		String userid=session.getAttribute("userid").toString();
 		brvo.setGonge(brvo.getGonge());
+		model.addAttribute("type",type);
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("userid",userid);
 		model.addAttribute("brvo",mapper.rcontent(brvo));
@@ -110,7 +148,12 @@ public class BookRequestServiceImpl implements BookRequestService {
 		mapper.delete(brvo);
 		return "redirect:/bookrequest/rlist?page="+page;
 	}
-
-	
-	
+	/*
+	 * public String search(HttpServletRequest request) { String
+	 * type=request.getParameter("type"); String
+	 * keyword=request.getParameter("keyword");
+	 * 
+	 * mapper.search(type, keyword); // 심부름을 시켰다. System.out.println(type);
+	 * System.out.println(keyword); return "redirect:/bookrequest/rlist"; }
+	 */
 }

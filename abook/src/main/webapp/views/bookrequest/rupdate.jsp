@@ -90,11 +90,11 @@
 <script>
 	function check(my)
 	{
-		if(my.bname.value.trim()=="")
+		if(my.title.value.trim()=="")
 		{
 			document.getElementById("msg2").style.visibility="visible";
 			document.getElementById("msg2").style.color="red";
-			my.bname.focus();
+			my.title.focus();
 		}
 			if(my.writer.value.trim()=="")
 			{
@@ -102,17 +102,17 @@
 				document.getElementById("msg3").style.color="red";
 				my.writer.focus();
 			}
-				if(my.publisher.value.trim()=="")
+				if(my.publi.value.trim()=="")
 				{
 					document.getElementById("msg4").style.visibility="visible";
 					document.getElementById("msg4").style.color="red";
-					my.publisher.focus();
+					my.publi.focus();
 				}
-					if(my.writetime.value.trim()=="")
+					if(my.writeyear.value.trim()=="")
 					{
 						document.getElementById("msg5").style.visibility="visible";
 						document.getElementById("msg5").style.color="red";
-						my.writetime.focus();
+						my.writeyear.focus();
 					}
 						if(my.ect.value.trim()=="")
 						{
@@ -126,13 +126,13 @@
 	}
 	function returnchk()
 	{
-		var bname=document.rform.bname.value;
+		var title=document.rform.title.value;
 		var writer=document.rform.writer.value;
-		var publisher=document.rform.publisher.value;
-		var writetime=document.rform.writetime.value;
+		var publi=document.rform.publi.value;
+		var writeyear=document.rform.writeyear.value;
 		var ect=document.rform.ect.value;
 		
-		if(bname.trim().length>0)
+		if(title.trim().length>0)
 		{
 			document.getElementById("msg2").style.visibility="hidden";
 		}
@@ -140,11 +140,11 @@
 		{
 			document.getElementById("msg3").style.visibility="hidden";
 		}
-		if(publisher.trim().length>0)
+		if(publi.trim().length>0)
 		{
 			document.getElementById("msg4").style.visibility="hidden";
 		}
-		if(writetime.trim().length>0)
+		if(writeyear.trim().length>0)
 		{
 			document.getElementById("msg5").style.visibility="hidden";
 		}
@@ -191,13 +191,13 @@
 						<input type="hidden" name="page" value="${page}">
 						<input type="hidden" name="no" value="${brvo.no}">
 						<input type="hidden" id="checkgonge" name="checkgonge" value="${brvo.gonge}">
-							<div class="all"><span class="mark">책제목</span><input type="text" name="bname" oninput="returnchk()" value="${brvo.bname}"></div>
+							<div class="all"><span class="mark">책제목</span><input type="text" name="title" oninput="returnchk()" value="${brvo.title}"></div>
 							<span id="msg2" name="msg2"> 책제목을 입력하세요</span>
 							<div class="all"><span class="mark">저자</span><input type="text" name="writer" oninput="returnchk()" value="${brvo.writer}"></div>
 							<span id="msg3" name="msg3"> 저자를 입력하세요</span>
-							<div class="all"><span class="mark">출판사</span><input type="text" name="publisher" oninput="returnchk()" value="${brvo.publisher}"></div>
+							<div class="all"><span class="mark">출판사</span><input type="text" name="publi" oninput="returnchk()" value="${brvo.publi}"></div>
 							<span id="msg4" name="msg4"> 출판사를 입력하세요</span>
-							<div class="all"><span class="mark">출판년도</span><input type="text" name="writetime" oninput="returnchk()" value="${brvo.writetime}"></div>
+							<div class="all"><span class="mark">출판년도</span><input type="text" name="writeyear" oninput="returnchk()" value="${brvo.writeyear}"></div>
 							<span id="msg5" name="msg5"> 출판년도를 입력하세요</span>
 							<div class="all2">
 								<div class="all3"><span class="mark">*비공개*</span>
