@@ -325,7 +325,7 @@
 		var y=today.getFullYear();
 		var m=today.getMonth();
 		
-		var xday=new Date(y,11,1); // 해당 달(월)
+		var xday=new Date(y,m,1); // 해당 달(월)
 		var yoil=xday.getDay();
 		
 		var month=[31,28,31,30,31,30,31,31,30,31,30,31];
@@ -390,7 +390,7 @@
 	<div id="sectionGroup">
 		<div id="leftBox">
 			<p>공지사항</p>
-			<div class="imore"><a href="#"></a></div>
+			<div class="imore"><a href="/gongji/list"></a></div>
 			<div id="noticList"> 
 				<ul>
 				<c:forEach items="${glist}" var="glist">
@@ -426,7 +426,9 @@
 		<div id="rigthBox">
 			<p>이달의 휴관일 안내</p>
 			<div>
-				<div id="calenderMain"> </div>	
+				<div id="calenderMain"> 
+					
+				</div>	
 			</div>
 		</div>
 	</div>
