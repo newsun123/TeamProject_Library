@@ -10,7 +10,7 @@
 		select ceil(count(*)/10) from bookregi
 	</select>
 	<select id="content" resultType="HashMap">
-		select * ,(select rental from bookreserve where bcode=b.bcode) as rental from bookregi as b where bcode like concat(#{bcode},'%')
+		select * ,(select returnday from bookloan where bcode=b.bcode) as returnday from bookregi as b where bcode like concat(#{bcode},'%')
 	</select>
 	<insert id="bresOk">
 		insert into bookreserve(userid,bcode,state,writeday)

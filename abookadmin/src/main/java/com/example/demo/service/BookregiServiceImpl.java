@@ -132,7 +132,7 @@ public class BookregiServiceImpl implements BookregiService{
 		
 		bcode=bcode.substring(0,4);
 		model.addAttribute("page",page);
-		model.addAttribute("blist",mapper.content(bcode));
+		model.addAttribute("mapall",mapper.content(bcode));
 		
 		return "/bookregi/content";
 	}
