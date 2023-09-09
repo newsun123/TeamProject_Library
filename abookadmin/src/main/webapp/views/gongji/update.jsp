@@ -90,15 +90,16 @@
 	}
 </style>
 <script>
-	window.onload=function()
-	{
-		var step=document.gform.step.value;
-		if(step == "1")
-		{
-			document.gform.step.checked = true ;
-		}else {
-			document.gform.step.checked = false;
+	function stepchk(my)
+	{	
+		if(my.step.checked)
+		{	
+			my.step.value=1;	
 		}
+		else 
+		{
+			my.step.value=0;
+		}		
 	}
 </script>
 </head>
@@ -120,7 +121,7 @@
 				</div>
 				<div id="contents">
 					<div id="gongiWrap">
-						<form name="gform" method="post" id="form" action="updateOk?">
+						<form name="gform" method="post" id="form" action="updateOk" onsubmit="return stepchk(this)">
 							<input type="hidden" name="no" value="${gvo.no}">
 							<input type="hidden" name="page" value="${page}">
 							<table>

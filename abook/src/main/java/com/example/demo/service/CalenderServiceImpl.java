@@ -21,9 +21,9 @@ public class CalenderServiceImpl implements CalenderService {
 	private CalenderMapper mapper;
 
 	@Override
-	public String cal1() {
+	public String calenderTab() {
 		
-		return "calender/cal1";
+		return "calender/calenderTab";
 	}
 
 	@Override
@@ -40,9 +40,9 @@ public class CalenderServiceImpl implements CalenderService {
 	}
 
 	@Override
-	public String cal4() {
+	public String calenderMain() {
 		
-		return "/calender/cal4";
+		return "/calender/calenderMain";
 	}
 
 	

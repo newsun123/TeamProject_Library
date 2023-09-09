@@ -13,44 +13,50 @@ import com.example.demo.vo.GongjiVo;
 
 @Controller
 public class GongjiController {
-	
+
 	@Autowired
 	@Qualifier("gs")
 	private GongjiService service;
-	
+
 	@RequestMapping("/gongji/list")
-	public String list(Model model,HttpServletRequest request,GongjiVo gvo){
-		return service.list(model,request,gvo);
+	public String list(Model model, HttpServletRequest request, GongjiVo gvo) {
+		return service.list(model, request, gvo);
 	}
-	
+
 	@RequestMapping("/gongji/write")
-	public String write(){
+	public String write() {
 		return service.write();
 	}
-	
+
 	@RequestMapping("/gongji/writeOk")
-	public String writeOk(GongjiVo gvo){
+	public String writeOk(GongjiVo gvo) {
 		return service.writeOk(gvo);
 	}
 	
+	@RequestMapping("/gongji/readnum")
+	public String readnum(HttpServletRequest req)
+	{
+		return service.readnum(req);
+	}
 	@RequestMapping("/gongji/content")
-	public String content(GongjiVo gvo,Model model,HttpServletRequest request){
-		return service.content(gvo,model,request);
-	}
+	public String content(GongjiVo gvo, Model model, HttpServletRequest request) {
+		
+		return service.content(gvo, model, request);
 	
+	}
+
 	@RequestMapping("/gongji/delete")
-	public String delete(GongjiVo gvo,HttpServletRequest request){
-		return service.delete(gvo,request);
+	public String delete(GongjiVo gvo, HttpServletRequest request) {
+		return service.delete(gvo, request);
 	}
-	
+
 	@RequestMapping("/gongji/update")
-	public String update(GongjiVo gvo,Model model,HttpServletRequest request){
-		return service.update(gvo,model,request);
+	public String update(GongjiVo gvo, Model model, HttpServletRequest request) {
+		return service.update(gvo, model, request);
 	}
-	
+
 	@RequestMapping("/gongji/updateOk")
-	public String updateOk(GongjiVo gvo,HttpServletRequest request){
-		return service.updateOk(gvo,request);
+	public String updateOk(GongjiVo gvo, HttpServletRequest request) {
+		return service.updateOk(gvo, request);
 	}
 }
-	

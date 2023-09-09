@@ -1,10 +1,14 @@
 package com.example.demo.service;
 
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 
-public interface MainService {
+import com.example.demo.vo.GongjiVo;
 
-	public String main(Model model);
+public interface MainService {
+	public String main(GongjiVo gvo,Model model,HttpServletRequest req);
 	public String intro();
 	public String location();
 }

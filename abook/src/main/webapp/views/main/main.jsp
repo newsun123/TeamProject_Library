@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -317,6 +317,65 @@
 		});
 		
 	});
+	
+	function calView2(d)
+	{
+		var today=new Date();
+		var y=today.getFullYear();
+		var m=today.getMonth();
+		
+		var xday=new Date(y,m,1); // 해당 달(월)
+		var yoil=xday.getDay();
+		
+		var month=[31,28,31,30,31,30,31,31,30,31,30,31];
+		var chong=month[m];
+		
+		if( (y%4 == 0 && y%100 !=0) || y%400 ==0 )
+		{
+			if( m == 1)	
+				chong=chong+1;
+		}
+		
+		var ju=Math.ceil( (chong+yoil)/7 );
+		
+		var calData="<table width='200' height='50' border='0' id='cal'>";
+		
+		calData=calData+y+"년 "+(m+1)+"월";
+		
+		calData=calData+"<tr align='center'>";
+
+		var n=yoil-5;
+		if(n == 1)
+			n == 6;
+		
+		var chk=Math.abs(n)+1;
+		var str=chk+",";
+		
+		while(chk+7 <= chong)
+		{
+			var friday = chk + 7;
+			
+			if(friday > chong)
+			{
+				friday = friday - chong;
+			}
+			
+			str=str+friday+",";
+			chk=chk+7;
+			str=str.replace(/,/g,"일 "); 
+		}
+		 
+		 
+		calData=calData+"</tr>";
+		calData=calData+"<tr><td colspan='7'>" +str+ "</td></tr>";
+
+		document.getElementById("calenderMain").innerHTML=calData;
+	}
+	
+	window.onload=function()
+	{
+		calView2();
+	}
 </script>
 </head>
 <body>
@@ -330,25 +389,15 @@
 	<div id="sectionGroup">
 		<div id="leftBox">
 			<p>공지사항</p>
-			<div class="imore"><a href="#"></a></div>
+			<div class="imore"><a href="/gongji/list"></a></div>
 			<div id="noticList"> 
 				<ul>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트1</a>
-						<span class="date">2023.08.07</span>
+				<c:forEach items="${glist}" var="glist">
+					<li onclick="location='../gongji/content?no=${glist.no}'">
+						<a>${glist.title}</a>
+						<span class="date">${glist.writeday}</span>
 					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트2</a>
-						<span class="date">2023.08.07</span>
-					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트3</a>
-						<span class="date">2023.08.07</span>
-					</li>
-					<li>
-						<a href="#">대한민국 독서대전 소문내기 이벤트4</a>
-						<span class="date">2023.08.07</span>
-					</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>
@@ -375,7 +424,11 @@
 		</div>
 		<div id="rigthBox">
 			<p>이달의 휴관일 안내</p>
-			<div ></div>
+			<div>
+				<div id="calenderMain"> 
+					
+				</div>	
+			</div>
 		</div>
 	</div>
 	<div id="sectionGroup2">

@@ -80,11 +80,13 @@
 						<table>
 							<tr>
 								<td>제목</td>
-								<td>${gvo.title}</td>
+								<td>${gvo2.title}</td>
 							</tr>
 							<tr>
 								<td>내용</td>
-								<td class="tl" id="cont">${gvo.content}</td>
+								<td class="tl" id="cont"> 
+									${gvo.content}
+								</td>	
 							</tr>
 							<tr>
 								<td>등록일</td>

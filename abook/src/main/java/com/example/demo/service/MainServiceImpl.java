@@ -1,14 +1,15 @@
 package com.example.demo.service;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MainMapper;
+import com.example.demo.vo.GongjiVo;
 
 @Service
 @Qualifier("main")
@@ -17,8 +18,10 @@ public class MainServiceImpl  implements MainService{
 	private MainMapper mapper;
 
 	@Override
-	public String main(Model model) {
+
+	public String main(GongjiVo gvo,Model model,HttpServletRequest req) {
 		
+		//String page=req.getParameter("page");
 		
 		LocalDate day = LocalDate.now();
 
@@ -35,6 +38,10 @@ public class MainServiceImpl  implements MainService{
 		    }
 		    //System.out.println(imsi);  
 		}
+		
+
+		ArrayList<GongjiVo> glist=mapper.gongji(gvo);
+		model.addAttribute("glist",glist);
 		
 		 // 09월 08일 최윤도 작성- 메인 페이지 내 좌석 체크
 	    String allTime = LocalTime.now().toString();
@@ -57,6 +64,7 @@ public class MainServiceImpl  implements MainService{
 		model.addAttribute("nomal",nomal);
 		model.addAttribute("setN",setN);
 		model.addAttribute("setPc",setPc);
+
 		return "/main/main";
 	}
 

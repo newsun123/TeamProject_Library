@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.MainService;
+import com.example.demo.vo.GongjiVo;
 
 @Controller
 public class MainController {
@@ -21,8 +24,8 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main/main")
-	public String main(Model model){
-		return service.main(model);
+	public String main(GongjiVo gvo,Model model,HttpServletRequest req){
+		return service.main(gvo,model,req);
 	}	
 	
 	@RequestMapping("/introduce/intro")
