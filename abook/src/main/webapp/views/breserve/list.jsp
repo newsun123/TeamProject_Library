@@ -134,6 +134,26 @@
 		pointer-event:none;
 		cursor:default;
 	}
+	.searchtext{
+		margin-top:20px;
+	}
+	#search{
+		padding:10px 20px;
+		border-radius:5px;
+		color:white;
+		margin-left:10px;
+		margin-bottom:20px;
+		width:100px;
+		background:#007bff;
+	}
+	#searchCon{
+		width:630px;
+		position:relative;
+		right:0;
+		display:flex;
+		justify-content:space-between;
+		align-items:center;
+	}
 </style>
 </head>
 <body>
@@ -154,9 +174,20 @@
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">
+					<form name="kjh" method="post" action="list">
+					<input type="hidden" value="${type}">
+					<input type="hidden" value="${keyword}">
+						<select name="type" id="type">
+							<option value="title">도서명</option>
+							<option value="writer">저자</option>
+							<option value="publi">출판사</option>
+						</select>
+						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+						<input type="submit" class="search" class="searchtext" value="검색">
+					</form>
 						<table>						
 						<c:forEach items="${blist}" var="bvo">
-							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}'"> 
+							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
 								<td> 
 									<div>
 										<img src="/static/img/breserve/${bvo.bimg}">					
