@@ -15,5 +15,7 @@ public interface MypageService {
 	public String giganUpdate(HttpServletRequest request);
 	public String returnOk(HttpServletRequest request);
 	public String loanlist(HttpSession session,Model model);
+	//jjim 추가 0911
+	public String myjjim(HttpSession ss,Model model);
 
 }

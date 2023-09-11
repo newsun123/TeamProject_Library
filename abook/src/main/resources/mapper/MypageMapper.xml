@@ -41,5 +41,10 @@
 	<select id="loanlist" resultType="HashMap">
 		select * from bookloan where userid=#{userid} and state=1 
 	</select>
-
+	<!-- jjim 추가 0911 -->
+	<select id="myjjim" resultType="HashMap">
+		select j.writeday, j.bcode, b.title, b.publi, b.writer, b.writeyear, b.ect, b.bimg 
+		from jjim as j inner join bookregi as b on b.bcode=j.bcode
+		where userid=#{userid}
+	</select>
 </mapper>

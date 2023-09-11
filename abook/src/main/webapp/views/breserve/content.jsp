@@ -212,8 +212,12 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-					
+						<c:if test="${mj!=1}">
 						<a href="/breserve/list" class="rbtn">목록으로</a>
+						</c:if>
+						<c:if test="${mj==1}">
+						<a href="/mypage/myjjim" class="rbtn">목록으로</a>
+						</c:if>
 						<table id="table1">
 							<tr>
 								<td>

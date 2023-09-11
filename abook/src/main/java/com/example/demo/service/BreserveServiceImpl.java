@@ -80,6 +80,9 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("img","jjim1.png");
 		}
 
+		//mypage jjim 관련 mj 값 줌
+		String mj = request.getParameter("mj");
+		model.addAttribute("mj",mj);
 		return "/breserve/content";
 	}
 
