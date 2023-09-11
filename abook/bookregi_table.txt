@@ -1,0 +1,15 @@
+create table bookregi(
+no int auto_increment primary key,
+title varchar(40),
+publi varchar(20),
+writer varchar(20),
+writeyear varchar(12),
+bimg varchar(100),
+bea int(11) default 0,
+bcode char(6),
+ect text,
+writeday date,
+cnt int(11) default 0,
+state int(11) default 0,
+type char(20),
+keyword char(50));

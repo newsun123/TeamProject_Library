@@ -23,7 +23,9 @@ public class BreserveServiceImpl implements BreserveService{
 	
 	@Override
 	public String list(Model model,BookregiVo bvo,HttpServletRequest request) {
-		
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+		String title=request.getParameter("title");
 		int page;
 		
 		if(request.getParameter("page")==null)
@@ -45,11 +47,17 @@ public class BreserveServiceImpl implements BreserveService{
 		if(pend > chong)
 			pend=chong;
 		
+		if(keyword==null || keyword.length()==0) {
+			type="title";
+			keyword="";
+		}
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
-		model.addAttribute("blist",mapper.list(bvo,start));
+		model.addAttribute("type",type);
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("blist",mapper.list(type,keyword,start));
 		
 		return "/breserve/list";
 	}
