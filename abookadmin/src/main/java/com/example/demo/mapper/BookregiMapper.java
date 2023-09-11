@@ -11,7 +11,7 @@ import com.example.demo.vo.BookregiVo;
 public interface BookregiMapper {
 	public void write_ok(BookregiVo bvo);
 	public String getCode();
-	public ArrayList<BookregiVo> list(BookregiVo bvo,@Param("start") int start);
+	public ArrayList<BookregiVo> list(BookregiVo bvo, int start);
 	public int getChong();
 	public ArrayList<BookregiVo> content(String bcode);
 }

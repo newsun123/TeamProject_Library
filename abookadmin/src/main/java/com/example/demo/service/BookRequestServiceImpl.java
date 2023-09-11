@@ -42,6 +42,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong);
+		model.addAttribute("start",start);
 		model.addAttribute("hlist",mapper.hopelist(brvo,start));
 		
 		return "bookrequest/hopelist";

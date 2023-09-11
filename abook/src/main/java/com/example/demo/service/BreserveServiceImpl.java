@@ -57,6 +57,7 @@ public class BreserveServiceImpl implements BreserveService{
 		model.addAttribute("chong",chong);
 		model.addAttribute("type",type);
 		model.addAttribute("keyword",keyword);
+		model.addAttribute("start",start);
 		model.addAttribute("blist",mapper.list(type,keyword,start));
 		
 		return "/breserve/list";
