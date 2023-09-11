@@ -73,7 +73,7 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		// jjim 체크해서 모델 보내기
 		String userid= ss.getAttribute("userid").toString();
-		System.out.println(userid+"/"+bcode); //체크용
+		//System.out.println(userid+"/"+bcode); //체크용
 		if(mapper.jjimCheck(userid, bcode)) {
 			model.addAttribute("img","jjim2.png");
 		}else {
