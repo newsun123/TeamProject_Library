@@ -26,8 +26,8 @@ public class BreserveController {
 	}
 	
 	@RequestMapping("/breserve/content")
-	public String content(HttpServletRequest request,Model model){
-		return service.content(request,model);
+	public String content(HttpServletRequest request,Model model,HttpSession ss){
+		return service.content(request,model,ss);
 	}
 	
 	@RequestMapping("/breserve/bresOk")
@@ -38,5 +38,15 @@ public class BreserveController {
 	@RequestMapping("/breserve/cntCheck")
 	public @ResponseBody int cntCheck(HttpSession session){
 		return service.cntCheck(session);
+	}
+	
+	@RequestMapping("/breserve/addjjim")
+	public @ResponseBody String addjjim(HttpServletRequest req,HttpSession ss) {
+		return service.addjjim(req,ss);
+	}
+	
+	@RequestMapping("/breserve/deljjim")
+	public @ResponseBody String deljjim(HttpServletRequest req,HttpSession ss) {
+		return service.deljjim(req,ss);
 	}
 }
