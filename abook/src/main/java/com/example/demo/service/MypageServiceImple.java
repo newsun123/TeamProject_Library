@@ -186,6 +186,14 @@ public class MypageServiceImple implements MypageService {
 		
 		return "/mypage/loanlist";
 	}
+
+	@Override
+	public String myjjim(HttpSession ss,Model model) {
+		String userid = ss.getAttribute("userid").toString();
+		ArrayList<HashMap> mapall = mapper.myjjim(userid);
+		model.addAttribute("mapall",mapall);
+		return "/mypage/myjjim";
+	}
 	
 	
 }

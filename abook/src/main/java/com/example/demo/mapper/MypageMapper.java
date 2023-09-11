@@ -23,5 +23,7 @@ public interface MypageMapper {
 	public void giganUpdate(String no);
 	public void returnOk(String no);
 	public ArrayList<HashMap> loanlist(String userid);
+	// jjim추가 0911
+	public ArrayList<HashMap> myjjim(String userid);
 
 }

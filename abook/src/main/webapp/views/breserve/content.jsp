@@ -52,6 +52,10 @@
 	.aa{
 		font-family: 'NotoSansM';
 		font-size: 20px;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 	.bb{
 		color:#777;
@@ -163,6 +167,30 @@
 		
 	}
 
+	function jjim(src) {
+		// alert(src.indexOf("jjim1.png"));
+		 if(src.indexOf("jjim1.png")==-1)  {
+    		var url="deljjim?bcode=${mapall.get(0).bcode}";
+    		var img="/static/img/breserve/jjim1.png";
+    	}else {
+    		var url="addjjim?bcode=${mapall.get(0).bcode}";
+    		var img="/static/img/breserve/jjim2.png";
+    	}	
+		
+		var chk = new XMLHttpRequest();
+		
+		chk.onload = function() {
+			// alert(chk.responseText);
+			if(chk.responseText == "0") {
+				document.getElementById("jjim").src = img;
+			}else {
+				alert("오류! 오류! 장비를 점검하세요");
+				
+			}
+		}
+		chk.open("GET", url);
+		chk.send(); 
+	}
 </script>
 </head>
 
@@ -184,8 +212,12 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-					
+						<c:if test="${mj!=1}">
 						<a href="/breserve/list" class="rbtn">목록으로</a>
+						</c:if>
+						<c:if test="${mj==1}">
+						<a href="/mypage/myjjim" class="rbtn">목록으로</a>
+						</c:if>
 						<table id="table1">
 							<tr>
 								<td>
@@ -195,7 +227,12 @@
 								</td>
 								<td>
 									<div id="conBox">
-										<div class="aa">${mapall.get(0).title}</div>
+										<div class="aa">
+											${mapall.get(0).title}
+											<span> <!-- 도서 찜하기 -->
+												<img src="/static/img/breserve/${img}" style="width:31px;height:29px;border:none;cursor:pointer;" id="jjim" onclick="jjim(this.src)">
+											</span>
+										</div>
 										<div class="bb">${mapall.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>
 										<div class="cc">${mapall.get(0).writeyear}</div>
 										<div class="dd">소장도서관 : 작은 도서관</div>

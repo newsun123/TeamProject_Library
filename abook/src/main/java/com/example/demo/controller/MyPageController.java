@@ -52,4 +52,9 @@ public class MyPageController {
 	public String loanlist(HttpSession session,Model model) {
 		return service.loanlist(session,model);
 	}
+	
+	@RequestMapping("/mypage/myjjim")
+	public String myjjim(HttpSession ss,Model model) {
+		return service.myjjim(ss,model);
+	}
 }

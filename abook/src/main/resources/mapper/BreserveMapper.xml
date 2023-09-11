@@ -22,4 +22,14 @@
 	<select id="cntCheck" resultType="int">
 		select count(*) from bookreserve where userid=#{userid} and state in(1,2)
 	</select>
+	<insert id="addjjim">
+		insert into jjim(userid,bcode,writeday)
+		values(#{userid},#{bcode},now())
+	</insert>
+	<delete id="deljjim">
+		delete from jjim where userid=#{userid} and bcode=#{bcode}
+	</delete>
+	<select id="jjimCheck" resultType="boolean">
+		select count(*) from jjim where userid=#{userid} and bcode like concat(#{bcode},'%')
+	</select>
 </mapper>
