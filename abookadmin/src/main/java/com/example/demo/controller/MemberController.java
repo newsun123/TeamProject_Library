@@ -19,4 +19,9 @@ public class MemberController {
 	public String memeber(Model model) {
 		return service.member(model);
 	}
+	
+	@RequestMapping("/member/memberBan")
+	public String memberBan(Model model) {
+		return service.memberBan(model);
+	}
 }

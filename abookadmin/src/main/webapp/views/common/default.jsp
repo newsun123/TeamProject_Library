@@ -204,7 +204,7 @@
 					<a href="#">회원 관리</a>
 					<ul>
 						<li><a href="/member/member">회원조회</a></li>
-						<li><a href="#">임시정지/삭제</a></li>
+						<li><a href="/member/memberBan">임시정지/삭제</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">

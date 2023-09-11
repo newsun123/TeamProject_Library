@@ -23,6 +23,13 @@ public class MemberServiceImpl implements MemberService {
 		model.addAttribute("mlist",mlist);
 		return "/member/member";
 	}
+
+	@Override
+	public String memberBan(Model model) {
+		ArrayList<MemberVo> mlist = mapper.memberAll();
+		model.addAttribute("mlist",mlist);
+		return "member/memberBan";
+	}
 	
 	
 }

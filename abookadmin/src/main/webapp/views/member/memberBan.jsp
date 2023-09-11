@@ -22,14 +22,14 @@
 			<div id="labNav">
 				<h2><span>회원 정보</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href=""><span>회원 조회</span></a></li>
-					<li><a href="/member/memberBan"><span>임시정지/삭제</span></a></li>
+					<li><a href="/member/member"><span>회원 조회</span></a></li>
+					<li class="on"><a href=""><span>임시정지/삭제</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>회원 조회</h3>
-					<p>회원 관리&nbsp;&nbsp;>&nbsp;&nbsp;회원 조회</p>
+					<h3>임시정지/삭제</h3>
+					<p>회원 관리&nbsp;&nbsp;>&nbsp;&nbsp;임시정지/삭제</p>
 				</div>
 				<div id="contents">
 					<div id="MemberWrap">
@@ -38,21 +38,19 @@
 								<tr>
 									<td>아이디</td>
 									<td>이름</td>
-									<td>전화번호</td>
-									<td>주소</td>
 									<td>이메일</td>
 									<td>가입일</td>
-									<td>상세정보</td>
+									<td>임시 정지</td>
+									<td>삭제</td>
 								</tr>
 								<c:forEach items="${mlist}" var="mvo">
 								<tr>
 									<td>${mvo.userid}</td>
 									<td>${mvo.name}</td>
-									<td>${mvo.phone}</td>
-									<td>${mvo.addr} ${mvo.addrDtl }</td>
 									<td>${mvo.email1}@${mvo.email2}</td>
 									<td>${mvo.writeday}</td>
-									<td>상세정보 보기</td>
+									<td><input type="button" value="임시 정지" onclick="openBanForm()"></td>
+									<td><input type="button" value="삭제" onclick="openDelForm()"></td>
 								</tr>
 								</c:forEach>
 						</table>
