@@ -19,7 +19,6 @@ public class MainServiceImpl  implements MainService{
 	private MainMapper mapper;
 
 	@Override
-
 	public String main(GongjiVo gvo,Model model,HttpServletRequest req) {
 		
 		//String page=req.getParameter("page");

@@ -8,7 +8,7 @@ import com.example.demo.vo.MemberVo;
 public interface MemberMapper {	
 	 public int useridCheck(MemberVo mvo);
 	 public void memberOk(MemberVo mvo);
-	 public String loginOk(MemberVo mvo);
+	 public MemberVo loginOk(MemberVo mvo);
 	 public String idcheck(String name,String phone);
 	 public String pwdcheck(String userid,String name,String phone);
 	 public String newPwdCheck(String userid);
