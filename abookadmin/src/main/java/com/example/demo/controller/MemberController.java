@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,5 +25,10 @@ public class MemberController {
 	@RequestMapping("/member/memberBan")
 	public String memberBan(Model model) {
 		return service.memberBan(model);
+	}
+	
+	@RequestMapping("/member/detail")
+	public String detail(Model model,HttpServletRequest req) {
+		return service.detail(model,req);
 	}
 }

@@ -34,21 +34,38 @@
 				<div id="contents">
 					<div id="MemberWrap">
 						<table style="padding-bottom:20px;">
-							<h3 style="font-size:20px;padding-bottom:20px;padding-top:20px;">회원 정보</h3>
+							<h3 style="font-size:20px;padding-bottom:20px;padding-top:20px;">${map.name}님의 상세 정보</h3>
 								<tr>
 									<td>아이디</td>
-									<td>이름</td>
-									<td>가입일</td>
-									<td>상세정보</td>
+									<td>${map.userid}</td>
 								</tr>
-								<c:forEach items="${mlist}" var="mvo">
 								<tr>
-									<td>${mvo.userid}</td>
-									<td>${mvo.name}</td>
-									<td>${mvo.writeday}</td>
-									<td><a href="/member/detail?userid=${mvo.userid}">상세정보 보기</a></td>
+									<td>이름</td>
+									<td>${map.name}</td>
 								</tr>
-								</c:forEach>
+								<tr>
+									<td>전화번호</td>
+									<td>${map.phone}</td>
+								</tr>
+								<tr>
+									<td>이메일</td>
+									<td>${map.email1}@${map.email2}</td>
+								</tr>
+								<tr>
+									<td>주소</td>
+									<td>${map.addr} ${map.addtDtl}</td>
+								</tr>
+								<tr>
+									<td>가입일</td>
+									<td>${map.writeday}</td>
+								</tr>
+								<tr>
+									<td>도서 대출 횟수</td>
+									<td>${map.writeday}</td>
+								</tr>
+								<tr>
+									<td colspan="2"><a href="/member/member">뒤로가기</a></td>
+								</tr>
 						</table>
 					</div>
 				</div>
