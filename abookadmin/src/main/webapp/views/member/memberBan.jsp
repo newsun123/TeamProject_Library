@@ -81,11 +81,16 @@ function check(my) {
 									<td>${mvo.email1}@${mvo.email2}</td>
 									<td>${mvo.writeday}</td>
 									<td>
-										<input type="button" value="임시 정지" class="bformbtn" onclick="openBanForm(${sts.index})" >
+										<c:if test="${mvo.ban==0}">
+											<input type="button" value="임시 정지" class="bformbtn" onclick="openBanForm(${sts.index})" >
+										</c:if>
+										<c:if test="${mvo.ban==1}">
+											<input type="button" value="정지 해제" class="bformbtn" onclick="openBanForm(${sts.index})" >
+										</c:if>
 										<div class="bForm">
 										<form method="post" action="banOk" name="bForm" onsubmit="return check(this)">
 										<input type="hidden" name="userid" value="${mvo.userid}">
-											<input type="text" name="bReason" placeholder="사유">
+											<input type="text" name="breason" placeholder="사유">
 											<input type="submit" value="정지"> <input type="button" value="취소" onclick="closeForm(${sts.index})">
 										</form>
 										</div>

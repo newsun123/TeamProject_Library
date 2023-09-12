@@ -109,8 +109,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String banOk(HttpServletRequest req) {
 		String userid = req.getParameter("userid");
-		String bReason = req.getParameter("bReason");
-		return null;
+		String breason = req.getParameter("breason");
+		
+		mapper.banOk(userid,breason);
+		return "redirect:/member/memberBan";
 	}
 
 }
