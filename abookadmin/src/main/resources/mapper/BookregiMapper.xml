@@ -11,7 +11,7 @@
 		select ifnull(max(substring(bcode,2,3)),0)+1 from bookregi
 	</select>
 	<select id="getChong" resultType="int">
-		select ceil(count(*)/10) from bookregi group by substr(bcode,1,4)
+		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
 	</select>
 	<select id="list" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi group by substr(bcode,1,4) order by no desc limit #{start},10;

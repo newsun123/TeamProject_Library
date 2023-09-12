@@ -8,7 +8,7 @@
 		 group by substr(bcode,1,4) order by no desc limit #{start},10;
 	</select>
 	<select id="getChong" resultType="int">
-		select ceil(count(*)/10) from bookregi
+		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
 	</select>
 	<select id="content" resultType="HashMap">
 		select * ,(select rental from bookreserve where bcode=b.bcode) as rental from bookregi as b where bcode like concat(#{bcode},'%')
