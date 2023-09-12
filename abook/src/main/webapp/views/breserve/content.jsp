@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
-		padding-bottom: 30px;
-	}
 	form{
 		width: 100%;
 	    display: block;
@@ -28,7 +25,7 @@
 	}
 	table#table1 tr td:nth-child(1){
 	    width: 220px;
-	    padding: 30px 0;
+	    padding: 20px 0;
 	}
 	table#table1 tr td:nth-child(1) > div{
 		width: 220px;
@@ -42,12 +39,12 @@
 	}
 	#conBox{
 		margin-left: 30px;
-		padding: 30px 0;
-		height: 370px;
+		padding: 20px 0;
+		height: 340px;
 	}
 	#conBox > div{
-		height: 45px;
-    	line-height: 45px;
+		height: 47px;
+    	line-height: 47px;
 	}
 	.aa{
 		font-family: 'NotoSansM';
@@ -79,7 +76,11 @@
 	    display: -webkit-box;
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
-	    height: auto!important;
+	    height: 60px!important;
+	}
+	.ff{
+		font-size: 15px;
+    	color: #333;
 	}
 	.rbtn{
 		display: inline-block;
