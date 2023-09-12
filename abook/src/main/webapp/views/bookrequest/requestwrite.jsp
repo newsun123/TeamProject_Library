@@ -160,16 +160,16 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>도서관 이용</span></h2>
+				<h2><span>도서관이용</span></h2>
 				<ul id="lnb">
-					<li><a href=""><span>도서예약</span></a></li>
-					<li class="on"><a><span>도서신청</span></a></li>
+					<li><a href="/breserve/list"><span>도서예약</span></a></li>
+					<li class="on"><a href="/bookrequest/rlist"><span>도서신청</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>도서신청</h3>
-					<p>도서관이용&nbsp;&nbsp;>&nbsp;&nbsp;도서신청</p>
+					<p>도서관 이용&nbsp;&nbsp;>&nbsp;&nbsp;도서신청</p>
 				</div>
 				<div id="contents">
 					<div id="requestWrap">

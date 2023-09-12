@@ -44,7 +44,7 @@
 		background: #171d33;
 	}
 	nav > ul{
-		width: 1100px;
+		width: 1300px;
 		height: 80px;
 		display: flex;
     	justify-content: space-between;
@@ -211,11 +211,13 @@
 			</li>
 			<li class="gnbMenu">
 				<a href="/gongji/list">열린 공간</a>
-				<ul>
-					<li><a href="/calender/calenderTab">도서관 일정</a></li>					
+				<ul>					
 					<li><a href="/gongji/list">공지사항</a></li>
 					<li><a href="#">문의 게시판</a></li>
 				</ul>
+			</li>
+			<li class="gnbMenu">
+				<a href="/calender/calenderTab">도서관 일정</a>
 			</li>
 		</ul>
 	</nav>

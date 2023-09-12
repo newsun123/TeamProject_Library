@@ -51,9 +51,9 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>열람실 이용</span></h2>
+				<h2><span>열람실이용</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>이용규칙</span></a></li>
+					<li class="on"><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
 					<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
 				</ul>
 			</div>
