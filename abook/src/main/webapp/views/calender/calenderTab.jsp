@@ -5,28 +5,104 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <style>
-    #cal { /* table태그 */
+<style>
+	#calenderWrap{
+	
+	}
+    #cal { 
       border-spacing:0px;
-      border:2px solid green;
-      margin-top:50px;
+      box-sizing: border-box;
+    }
+    #cal tr{
+    	height: 125px;
+    }
+    #cal tr:nth-child(1){
+    	height: 50px;
+	    background: #f6f6f6;
+    }
+    #cal tr:nth-child(1) td{
+    	border-top:1px solid #5e6062;
     }
     #cal td {
-      border:1px solid #eeeeee;
-      text-align:center;
+		border-bottom: 1px solid #e5e8eb;
+		border-right: 1px solid #e5e8eb;
+		text-align:center;
+		font-size: 14px;
+		font-family: 'NotoSansM';
+		padding: 20px;
+	    vertical-align: top;
+	    text-align: left;
+    }
+    #cal tr:first-child td{
+    	padding: 0;
+	    vertical-align: middle;
+	    text-align: center;
     }
     #cal tr td:first-child {
-      color:red;
+		color:#ec2626;
+		border-left: 1px solid #e5e8eb;
     }
     #cal tr td:last-child {
-      color:blue;
+      color:#00679d;
     }
     #cal .inner {
-    	font-size:12px;
-    	width:50px;
-    	height:20px; 
-    }
- </style>
+	    font-size: 13px;
+	    width: 100px;
+	    height: 20px;
+	    margin-top: 8px;
+	    color: #555;
+	}
+	#cal .inner:after{
+		display:block;
+		content: "";
+		position: absolute;
+		left: 0;
+		
+	}
+	caption{
+		height: 66px;
+	    font-size: 25px;
+	    font-family: 'NotoSansM';
+	    color: #333;
+	    letter-spacing: 1px;
+	}
+	#prev{
+		width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #ddd;
+	    background: url(/static/img/common/arr_sp.png) 50% 0 no-repeat;
+	    display: inline-block;
+	    background-position-y: -27px;
+	    vertical-align: middle;
+	    margin-right: 15px;
+	    cursor: pointer;
+	    position: relative;
+	    top: -2px;
+	}
+	#next{
+		width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #ddd;
+	    background: url(/static/img/common/arr_sp.png) 50% 0 no-repeat;
+	    display: inline-block;
+	    background-position-y: -52px;
+	    vertical-align: middle;
+	    margin-left: 15px;
+	    cursor: pointer;
+	    position: relative;
+	    top: -2px;
+	}
+	.inner i{
+		background: url(/static/img/calender/icon_schedule_r.gif) 0 0 no-repeat;
+	    display: inline-block;
+	    width: 13px;
+	    height: 13px;
+	    vertical-align: middle;
+	    margin-right: 2px;
+	}
+</style>
 <script>
 	function calView(y,m)
 	{
@@ -63,25 +139,25 @@
 		
 		var ju=Math.ceil( (chong+yoil)/7 );
 		
-		var calData="<table width='200' height='150' border='0' id='cal'>";
+		var calData="<table id='cal'>";
 	
 		calData=calData+"<caption>";
 		
-		calData=calData+" <span onclick='calView("+y+","+(m-1)+")'> << </span>";
+		calData=calData+"<span onclick='calView("+y+","+(m-1)+")' id='prev'></span>";
 		
 		calData=calData+y+"년 "+(m+1)+"월";
 		
-		calData=calData+" <span onclick='calView("+y+","+(m+1)+")'> >> </span>";
+		calData=calData+"<span onclick='calView("+y+","+(m+1)+")' id='next'></span>";
 		
 		calData=calData+" </caption>";
 		calData=calData+"<tr>";
-		calData=calData+"<td> 일 </td>";
-		calData=calData+"<td> 월 </td>";
-		calData=calData+"<td> 화 </td>";
-		calData=calData+"<td> 수 </td>";
-		calData=calData+"<td> 목 </td>";
-		calData=calData+"<td> 금 </td>";
-		calData=calData+"<td> 토 </td>";
+		calData=calData+"<td>일</td>";
+		calData=calData+"<td>월</td>";
+		calData=calData+"<td>화</td>";
+		calData=calData+"<td>수</td>";
+		calData=calData+"<td>목</td>";
+		calData=calData+"<td>금</td>";
+		calData=calData+"<td>토</td>";
 		calData=calData+"</tr>";
 		
 		var day=1;
@@ -106,9 +182,12 @@
 					if( j == 5 )
 					{
 						insertText="휴관일";
+						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						"<div class='inner'><i></i>"+insertText+"</div></td>";
+					}else{
+						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						"<div class='inner'>"+insertText+"</div></td>";
 					}
-					calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
-					" <div class='inner'> "+insertText+" </div></td>";
 					
 					day++;
 				}
@@ -131,8 +210,7 @@
 			var str=data.str;
 			for(i=0; i<data.length; i++)
 			{
-				document.getElementsByClassName("chktd")[data[i].xday-1].style.background="#eeeeee";
-				
+				document.getElementsByClassName("chktd")[data[i].xday-1].querySelector('.inner').style.color="#a50000 ";
 				document.getElementsByClassName("inner")[data[i].xday-1].innerText=data[i].str;
 			}
 		}
@@ -163,7 +241,28 @@
 		sitemesh에 제이쿼리 onload가 있어서 , 충돌이 생김 그래서
 		익명함수를 통해 함수를 호출한다.
 	-->
-	<div id="calender">
+	<div id="secWrap">
+		<div class="sImg"></div>
+		<div id="section">
+			<div id="labNav">
+				<h2><span>도서관일정</span></h2>
+				<ul id="lnb">
+					<li class="on"><a href="/calender/calenderTab"><span>도서관일정</span></a></li>
+				</ul>
+			</div>
+			<div id="contentCore">
+				<div class="naviTit">
+					<h3>도서관일정</h3>
+					<p>도서관 일정</p>
+				</div>
+				<div id="contents">
+					<div id="calenderWrap">
+						<div id="calender">
+						</div>		
+					</div>
+				</div>
+			</div>		
+		</div>
 	</div>
 </body>
 </html>

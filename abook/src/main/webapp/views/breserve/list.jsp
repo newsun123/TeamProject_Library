@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
-		padding-bottom: 30px;
-	}
 	form{
 		width: 100%;
 	    display: block;
@@ -134,17 +131,13 @@
 		pointer-event:none;
 		cursor:default;
 	}
-	.searchtext{
-		margin-top:20px;
-	}
 	#search{
 		padding:10px 20px;
 		border-radius:5px;
-		color:white;
-		margin-left:10px;
-		margin-bottom:20px;
+		color:#fff;
+		margin-bottom:40px;
 		width:100px;
-		background:#007bff;
+		background:#93765a;
 	}
 	#searchCon{
 		width:630px;
@@ -207,6 +200,12 @@
 	#select ul li:hover{
 		display: block;
 		background-color:#ebeef7;
+	}
+	input.searchtext{
+		border-radius: 0!important;
+	    height: 48px!important;
+	    vertical-align: top!important;
+	    width: 500px;
 	}
 </style>
 <script>
@@ -273,7 +272,7 @@
 					<p>도서관 이용&nbsp;&nbsp;>&nbsp;&nbsp;도서예약</p>
 				</div>
 				<div id="contents">
-					<div id="gongjiWrap">
+					<div id="bookregiWrap">
 					<form name="kjh" method="post" action="list">
 					<input type="hidden" value="${type}" name="type" id="seltype">
 					<input type="hidden" value="${keyword}">
@@ -282,7 +281,7 @@
 								<div class="selected_value" id="sv">도서명</div>
 								<div class="arrow"></div>
 							</div>
-								<ul id="type" name="type">
+								<ul id="type">
 									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
 									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
 									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
