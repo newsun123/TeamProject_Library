@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -43,57 +45,52 @@ public class BookRequestServiceImpl implements BookRequestService {
 	}
 
 	@Override
-	public String rlist(Model model, HttpServletRequest request,BookRequestVo brvo,HttpSession session) {
-		String type=request.getParameter("type");
-		String keyword=request.getParameter("keyword");
-		String title=request.getParameter("title");
-		System.out.println(keyword+" "+type);
-		int page;
-		if(request.getParameter("page")==null)
-			page=1;
-		else
-			page=Integer.parseInt(request.getParameter("page"));
-		int start=(page-1)*10;
-		//System.out.println(start);
-		int pstart=page/10;
-		if(page%10==0)
-			pstart--;
-		pstart=pstart*10+1;
-		
-		int pend=pstart+9;
-		int chong=mapper.getChong();
-		if(pend>chong)
-			pend=chong;
-		
-		if(keyword==null || keyword.length()==0) {
-			type="title";
-			keyword="";
-		}
-		
-	
+	public String rlist(Model model, HttpServletRequest request, BookRequestVo brvo, HttpSession session) {
+	    String type = request.getParameter("type");
+	    String keyword = request.getParameter("keyword");
+	    String title = request.getParameter("title");
+	    System.out.println(keyword + " " + type);
+	    int page;
+	    if (request.getParameter("page")==null)
+	        page=1;
+	    else
+	        page=Integer.parseInt(request.getParameter("page"));
+	    int start=(page-1)*10;
 
-		//model.addAttribute("type",type); // model은 return으로 자기자신한테 뿌려주는것.
-		//model.addAttribute("keyword",keyword);
-		model.addAttribute("page",page);
-		model.addAttribute("pstart",pstart);
-		model.addAttribute("pend",pend);
-		model.addAttribute("chong",chong);
-		model.addAttribute("type",type);
-		model.addAttribute("keyword",keyword);
-		model.addAttribute("start",start);
-		model.addAttribute("rlist",mapper.search(type, keyword,start));
-		//model.addAttribute("rlist",mapper.rlist(start, brvo));
-		//System.out.println(type+" "+keyword);
-		
-		if(session.getAttribute("userid")==null) // userid가 null이 아닐경우 리스트가 model을 안넣으면 안떠서 넣어줌.
-		{
-			return "/bookrequest/rlist";
-		}
-		else {
-			String userid=session.getAttribute("userid").toString();
-			model.addAttribute("userid",userid);
-			return "/bookrequest/rlist";
-		}
+	    int pstart=page/10;
+	    if (page%10==0)
+	        pstart--;
+	    pstart=pstart*10+1;
+
+	    int pend=pstart+9;
+	    int chong=mapper.getChong();
+	    if (pend>chong)
+	        pend=chong;
+
+	    if (keyword==null || keyword.length()==0) {
+	        type="title";
+	        keyword = "";
+	    }
+
+	    model.addAttribute("page", page);
+	    model.addAttribute("pstart", pstart);
+	    model.addAttribute("pend", pend);
+	    model.addAttribute("chong", chong);
+	    model.addAttribute("type", type);
+	    model.addAttribute("keyword", keyword);
+	    model.addAttribute("start", start);
+
+	    System.out.println(start);
+	    // 한 번만 모델에 추가
+	    ArrayList<BookRequestVo> rlist = mapper.search(type, keyword, start);
+	    model.addAttribute("rlist", rlist);
+
+	    if (session.getAttribute("userid") != null) {
+	        String userid = session.getAttribute("userid").toString();
+	        model.addAttribute("userid", userid);
+	    }
+
+	    return "bookrequest/rlist";
 	}
 
 	@Override

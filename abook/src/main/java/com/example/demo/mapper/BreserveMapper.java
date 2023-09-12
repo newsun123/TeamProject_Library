@@ -10,7 +10,7 @@ import com.example.demo.vo.BookregiVo;
 
 @Mapper
 public interface BreserveMapper {
-	public ArrayList<BookregiVo> list(BookregiVo bvo,@Param("start") int start);
+	public ArrayList<BookregiVo> list(String type,String keyword,int start);
 	public int getChong();
 	public ArrayList<HashMap> content(String bcode);
 	public void bresOk(String userid,String bcode);

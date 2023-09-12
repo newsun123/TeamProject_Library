@@ -43,10 +43,12 @@ public class BookregiServiceImpl implements BookregiService{
 		int pend=pstart+9;
 		
 		int chong=mapper.getChong();
-		
+		System.out.println(chong);
 		if(pend > chong)
 			pend=chong;
 		
+		System.out.println(pend);
+		model.addAttribute("start",start);
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
