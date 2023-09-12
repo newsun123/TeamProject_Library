@@ -58,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
 		String page=request.getParameter("page");	
 		String bcode=request.getParameter("bcode");	
 		
-		System.out.println(bcode);
+		//System.out.println(bcode);
 		if(bcode==null || bcode == "") { //그냥 로그인할때
 			
 			if(name==null){
