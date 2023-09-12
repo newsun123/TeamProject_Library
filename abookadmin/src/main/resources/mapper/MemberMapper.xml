@@ -7,4 +7,7 @@
 <select id="detail" resultType="HashMap"> 
 	select * from member where userid=#{userid}
 </select>
+<select id="rSeat" resultType="com.example.demo.vo.ReserveSeatVo">
+	select * from reserveseat where userid=#{userid}
+</select>
 </mapper>

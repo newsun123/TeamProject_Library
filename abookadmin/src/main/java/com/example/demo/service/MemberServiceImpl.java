@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MemberMapper;
 import com.example.demo.vo.MemberVo;
+import com.example.demo.vo.ReserveSeatVo;
 
 @Service
 @Qualifier("ms")
@@ -36,10 +37,15 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String detail(Model model,HttpServletRequest req) {
+		// 상세정보 불러오기
 		String userid = req.getParameter("userid");
 		HashMap map = mapper.detail(userid);
-		model.addAttribute("map",map);
-		return null;
+		model.addAttribute("map",map); 
+		// 좌석정보 불러오기
+		ReserveSeatVo rvo = mapper.rSeat(userid);
+		model.addAttribute("rvo",rvo);
+		
+		return "/member/detail";
 	}
 	
 	
