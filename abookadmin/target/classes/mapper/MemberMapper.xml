@@ -4,4 +4,7 @@
 <select id="memberAll" resultType="com.example.demo.vo.MemberVo">
 	select * from member order by no desc
 </select>
+<select id="detail" resultType="HashMap"> 
+	select * from member where userid=#{userid}
+</select>
 </mapper>

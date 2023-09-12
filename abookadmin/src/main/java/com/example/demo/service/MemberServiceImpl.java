@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,6 +32,14 @@ public class MemberServiceImpl implements MemberService {
 		ArrayList<MemberVo> mlist = mapper.memberAll();
 		model.addAttribute("mlist",mlist);
 		return "member/memberBan";
+	}
+
+	@Override
+	public String detail(Model model,HttpServletRequest req) {
+		String userid = req.getParameter("userid");
+		HashMap map = mapper.detail(userid);
+		model.addAttribute("map",map);
+		return null;
 	}
 	
 	
