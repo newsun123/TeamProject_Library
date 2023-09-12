@@ -12,5 +12,5 @@ import com.example.demo.vo.ReserveSeatVo;
 public interface MemberMapper {
 	public ArrayList<MemberVo> memberAll();
 	public HashMap detail(String userid);
-	public ReserveSeatVo rSeat(String userid);
+	public ArrayList<ReserveSeatVo> rSeat(String userid);
 }

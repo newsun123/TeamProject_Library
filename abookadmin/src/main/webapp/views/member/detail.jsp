@@ -92,7 +92,7 @@
 										<td>${rvo.userid}</td>
 										<td>${rvo.tname}</td>
 										<td>${rvo.reserveday}</td>
-										<td> ${timelist.get(status.index)}</td>
+										<td>${timelist.get(status.index)}</td>
 									</tr>
 									</c:forEach>
 						</table>
