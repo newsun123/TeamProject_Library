@@ -63,51 +63,48 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String loginOk(MemberVo mvo, HttpSession session,HttpServletRequest request) {
-		
-		// String name=mapper.loginOk(mvo); mvo 사용이 필요해서 새로 짬
+	public String loginOk(MemberVo mvo, HttpSession session, HttpServletRequest request) {
+
 		String name = mapper.loginOk(mvo);
-				
-		String page=request.getParameter("page");	
-		String bcode=request.getParameter("bcode");	
-		
+
+		String page = request.getParameter("page");
+		String bcode = request.getParameter("bcode");
+
 		mvo = mapper.getMvo(mvo);
+		int ban = mvo.getBan();
 		// 임시정지 된 아이디 로그인 못하게 막기
-		if(mvo.getBan() == 1) {
-			String userid=mvo.getUserid();
+		if (ban == 1) {
+			String userid = mvo.getUserid();
 			session.invalidate(); // 밴 됐으니까 로그인 해제
-			return "redirect:/member/login?bchk=1&userid="+userid;
-		}
-		
-		//System.out.println(breason);
-		
-		if(bcode==null || bcode == "") { //그냥 로그인할때
-			
-			if(name==null){
-				return "redirect:/member/login?chk=1";
-			}else {
-		
-				session.setAttribute("userid", mvo.getUserid());
-				session.setAttribute("name", name);
+			return "redirect:/member/login?bchk=1&userid=" + userid;
+		} else {
 
-				return "redirect:/main/main";
+			if (bcode == null || bcode == "") { // 그냥 로그인할때
+
+				if (name == null) {
+					return "redirect:/member/login?chk=1";
+				} else {
+
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+
+					return "redirect:/main/main";
+				}
+
+			} else { // 도서예약에서 넘어올때
+				if (name == null) {
+					return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
+
+				} else {
+
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+
+					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
+				}
 			}
-			
-		
-		}else{ //도서예약에서 넘어올때
-			if(name==null){
-				return "redirect:/member/login?chk=1&page="+page+"&bcode="+bcode;
-			
-			}else{
-		
-				session.setAttribute("userid", mvo.getUserid());
-				session.setAttribute("name", name);
 
-				return "redirect:/breserve/content?page="+page+"&bcode="+bcode;
-			}
 		}
-		
-
 	}
 	
 	@Override
