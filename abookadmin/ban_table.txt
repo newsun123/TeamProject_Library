@@ -1,0 +1,5 @@
+create table ban(
+no int auto_increment primary key,
+userid char(20),
+bReason varchar(100),
+ban int default 0);

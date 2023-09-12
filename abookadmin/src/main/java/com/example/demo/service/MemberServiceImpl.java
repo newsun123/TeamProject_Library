@@ -106,4 +106,11 @@ public class MemberServiceImpl implements MemberService {
 		return "/member/detail";
 	}
 
+	@Override
+	public String banOk(HttpServletRequest req) {
+		String userid = req.getParameter("userid");
+		String bReason = req.getParameter("bReason");
+		return null;
+	}
+
 }

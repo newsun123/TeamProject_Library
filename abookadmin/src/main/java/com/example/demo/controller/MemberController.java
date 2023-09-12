@@ -31,4 +31,9 @@ public class MemberController {
 	public String detail(Model model,HttpServletRequest req) {
 		return service.detail(model,req);
 	}
+	
+	@RequestMapping("/member/banOk")
+	public String banOk(HttpServletRequest req) {
+		return service.banOk(req);
+	}
 }
