@@ -45,19 +45,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String login(Model model,HttpServletRequest request) {
 		//밴 된 사유 체크용 bchk 받기
-		String bchk = request.getParameter("bchk");
-		model.addAttribute("bchk",bchk);
-		String userid=request.getParameter("userid");
-		String breason="";	
-		if(bchk!=null) {
-			breason=mapper.getBan(userid);
-			model.addAttribute("breason",breason);
-		}else {
+		
 			String page=request.getParameter("page");
 			String bcode=request.getParameter("bcode");
+			String chk = request.getParameter("chk");
+			model.addAttribute("chk",chk);
 			model.addAttribute("page",page);
 			model.addAttribute("bcode",bcode);
-		}
+			
+
+			String bchk = request.getParameter("bchk");
+			model.addAttribute("bchk",bchk);
+			String userid=request.getParameter("userid");
+			String breason=mapper.getBan(userid);
+			model.addAttribute("breason",breason);	
 			
 		return "/member/login";
 	}
@@ -66,45 +67,48 @@ public class MemberServiceImpl implements MemberService {
 	public String loginOk(MemberVo mvo, HttpSession session, HttpServletRequest request) {
 
 		String name = mapper.loginOk(mvo);
-
+		String userid =request.getParameter("userid");
+		String usrid = mvo.getUserid();
 		String page = request.getParameter("page");
 		String bcode = request.getParameter("bcode");
-
+		
 		mvo = mapper.getMvo(mvo);
-		int ban = mvo.getBan();
-		// 임시정지 된 아이디 로그인 못하게 막기
-		if (ban == 1) {
-			String userid = mvo.getUserid();
-			session.invalidate(); // 밴 됐으니까 로그인 해제
-			return "redirect:/member/login?bchk=1&userid=" + userid;
-		} else {
+		int imsi = mvo.getBan();
+		String ban = Integer.toString(imsi);
+		if (bcode == null || bcode == "") { // 그냥 로그인할때
 
-			if (bcode == null || bcode == "") { // 그냥 로그인할때
+			if (name == null) {
+				return "redirect:/member/login?chk=1";
+				
+			} else if(ban.equals("1")) { // 임시정지 된 아이디 로그인 못하게 막기
 
-				if (name == null) {
-					return "redirect:/member/login?chk=1";
-				} else {
+				userid = mvo.getUserid();
+				session.invalidate(); // 밴 됐으니까 로그인 해제
+				request.getSession(true); // 이거 해줘야 깨끗하단다
+				return "redirect:/member/login?bchk=1&userid=" + userid;
+				
+			}else {
+				session.setAttribute("userid", mvo.getUserid());
+				session.setAttribute("name", name);
 
-					session.setAttribute("userid", mvo.getUserid());
-					session.setAttribute("name", name);
+				return "redirect:/main/main";
 
-					return "redirect:/main/main";
-				}
-
-			} else { // 도서예약에서 넘어올때
-				if (name == null) {
-					return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
-
-				} else {
-
-					session.setAttribute("userid", mvo.getUserid());
-					session.setAttribute("name", name);
-
-					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
-				}
 			}
 
+		} else { // 도서예약에서 넘어올때
+			
+			if (name == null) {
+				return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
+
+			} else {
+
+				session.setAttribute("userid", mvo.getUserid());
+				session.setAttribute("name", name);
+
+				return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
+			}
 		}
+
 	}
 	
 	@Override

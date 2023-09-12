@@ -62,7 +62,6 @@
 	#failmsg{
 		font-size: 14px;
 	    color: #e52528;
-	    display:none;
 	    position: relative;
     	top: -30px;
 	}
