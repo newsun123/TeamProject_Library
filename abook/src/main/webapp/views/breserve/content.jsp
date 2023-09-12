@@ -201,8 +201,8 @@
 			<div id="labNav">
 				<h2><span>도서관이용</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>도서예약</span></a></li>
-					<li><a href="#"><span>도서신청</span></a></li>
+					<li class="on"><a href="/breserve/list"><span>도서예약</span></a></li>
+					<li><a href="/bookrequest/rlist"><span>도서신청</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

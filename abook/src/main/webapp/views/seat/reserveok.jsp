@@ -8,13 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#rsvOkWrap{
-	position: relative;
-	border:4px solid #f1f1f1;
-    padding: 7px;
-    text-align: center;
-    height: 430px; /* 들어갈 내용이 적어 height 적용 */
-    
+	#rsvOkWrap{
+		position: relative;
+		border:4px solid #f1f1f1;
+	    padding: 7px;
+	    text-align: center;
+	    height: 430px; 
 	}
 	#outer {
 		width:1000px;
@@ -43,7 +42,7 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>열람실 이용</span></h2>
+				<h2><span>열람실이용</span></h2>
 				<ul id="lnb">
 					<li><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
 					<li><a href="/seat/chkReserveSeat"><span>좌석예약</span></a></li>
@@ -51,8 +50,8 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>좌석 당일 예약</h3>
-					<p>열람실 이용&nbsp;&nbsp;>&nbsp;&nbsp;좌석 당일 예약&nbsp;&nbsp;>&nbsp;&nbsp;예약 완료</p>
+					<h3>좌석예약</h3>
+					<p>열람실 이용&nbsp;&nbsp;>&nbsp;&nbsp;좌석예약&nbsp;&nbsp;>&nbsp;&nbsp;예약완료</p>
 				</div>
 				<div id="contents">
 						<div id="rsvOkWrap">

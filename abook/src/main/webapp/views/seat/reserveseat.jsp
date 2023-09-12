@@ -8,171 +8,171 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#reserveWrap{
-   position: relative;
-   border: 4px solid #f1f1f1;
-   padding: 7px;
-   text-align: center;
-}
-#reserveWrap h3{
-	color:#333;
-	font-size:25px;
-	font-family: NotoSansM;
-	text-align:center;
-	margin-bottom: 65px;
-    margin-top: 30px;
-}
-.inner_right {
-    width: 1000px;
-    border: 2px solid #ccc;
-    position: relative;
-    height: 650px;
-    margin:auto;
-}
-#notice1 {
-	text-align: center;
-	font-size:25px;
-	margin-bottom:15px;
-}
-.pc_left_line {
-	position: absolute;
-    left: 60px;
-    top: 65px;
-}
-.pc_right_line {
-    position: absolute;
-    left: 350px;
-    top: 65px;
-}
-.pc_right_line_two {
-	position: absolute;
-	left: 350px;
-    top: 490px;
-}
-.pc {
-	width:40px;
-	height:40px;
-	border: 1px solid black;
-	margin-left:2px;
-	line-height:40px;
-	margin-bottom:2px;
-	text-align: center;
-	cursor: pointer;
-}
-.nomal {
-	width:40px;
-	height:40px;
-	border: 1px solid black;
-	margin-left:2px;
-	line-height:40px;
-	margin-bottom:2px;
-	text-align: center;
-	cursor: pointer;
-}
-.pc_line {
-	display:inline-block;
-}
-.pc_line_two {
-	display:flex;	
-	flex-direction: row;
-	width: 452px;
-    flex-wrap: wrap;
-}
-
-.pc_line_three {
-	display:flex;	
-	flex-direction: row;
-	width: 452px;
-    flex-wrap: wrap;	
-}
-.our {
-	width:80px;
-	height:30px;
-	border:1px solid black;
-}
-#layer_background {
-	position: fixed;
-	top:0; left: 0; bottom: 0; right: 0;
-	background: rgba(0, 0, 0, 0.8);
-	display:none;
-	z-index:100;
-}
-#layer {
-    position: fixed;
-    width: 50%;
-    left: 46%;
-    margin-left: -21%;
-    height: 515px;
-    top: 50%;
-    margin-top: -220px;
-    overflow: auto;
-    border: 1px solid #000;
-    background-color: white;
-    padding: 1em;
-    box-sizing: border-box;
-}
-.head {
-	width:900px;
-	height:50px;
-	line-height:50px;
-	text-align:center;
-	font-size: 30px;
-	margin-top:10px;	
-}
-.touter {
-    width: 880px;
-    position: absolute;
-    left: 67px;
-    top: 210px;
-    display: flex;
-    flex-wrap: wrap;
-}
-.time {
-	width: 150px;
-    height: 60px;
-    border: 1px solid black;
-    margin-left: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
-    text-align:center;
-    line-height:60px;
-	cursor:pointer;
-}
-#notice {
-	margin-top: 4px;
-    margin-left: 20px;
-}
-p {
-	margin-top:2px;
-	margin-bottom:0;
-}
-.sbouter {
-	position:absolute;
-    left: 354px;
-    top: 432px;
-}
-input[type=submit] {	
-	width:100px;
-	height:30px;
-	border:2px solid #93765a;
-	border-radius: 6px;
-	background: #93765a;
-	color:white;
-}
-input[type=button] {
-	width:100px;
-	height:30px;
-	border:2px solid #93765a;
-	border-radius: 6px;
-	background: #93765a;
-	color:white;
-}
-#end {
-	clear: both;
-}
-.chktime {
-	display:none;
-}
+	#reserveWrap{
+	   position: relative;
+	   border: 4px solid #f1f1f1;
+	   padding: 7px;
+	   text-align: center;
+	}
+	#reserveWrap h3{
+		color:#333;
+		font-size:25px;
+		font-family: NotoSansM;
+		text-align:center;
+		margin-bottom: 65px;
+	    margin-top: 30px;
+	}
+	.inner_right {
+	    width: 1000px;
+	    border: 2px solid #ccc;
+	    position: relative;
+	    height: 650px;
+	    margin:auto;
+	}
+	#notice1 {
+		text-align: center;
+		font-size:25px;
+		margin-bottom:15px;
+	}
+	.pc_left_line {
+		position: absolute;
+	    left: 60px;
+	    top: 65px;
+	}
+	.pc_right_line {
+	    position: absolute;
+	    left: 350px;
+	    top: 65px;
+	}
+	.pc_right_line_two {
+		position: absolute;
+		left: 350px;
+	    top: 490px;
+	}
+	.pc {
+		width:40px;
+		height:40px;
+		border: 1px solid black;
+		margin-left:2px;
+		line-height:40px;
+		margin-bottom:2px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.nomal {
+		width:40px;
+		height:40px;
+		border: 1px solid black;
+		margin-left:2px;
+		line-height:40px;
+		margin-bottom:2px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.pc_line {
+		display:inline-block;
+	}
+	.pc_line_two {
+		display:flex;	
+		flex-direction: row;
+		width: 452px;
+	    flex-wrap: wrap;
+	}
+	
+	.pc_line_three {
+		display:flex;	
+		flex-direction: row;
+		width: 452px;
+	    flex-wrap: wrap;	
+	}
+	.our {
+		width:80px;
+		height:30px;
+		border:1px solid black;
+	}
+	#layer_background {
+		position: fixed;
+		top:0; left: 0; bottom: 0; right: 0;
+		background: rgba(0, 0, 0, 0.8);
+		display:none;
+		z-index:100;
+	}
+	#layer {
+	    position: fixed;
+	    width: 50%;
+	    left: 46%;
+	    margin-left: -21%;
+	    height: 515px;
+	    top: 50%;
+	    margin-top: -220px;
+	    overflow: auto;
+	    border: 1px solid #000;
+	    background-color: white;
+	    padding: 1em;
+	    box-sizing: border-box;
+	}
+	.head {
+		width:900px;
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		font-size: 30px;
+		margin-top:10px;	
+	}
+	.touter {
+	    width: 880px;
+	    position: absolute;
+	    left: 67px;
+	    top: 210px;
+	    display: flex;
+	    flex-wrap: wrap;
+	}
+	.time {
+		width: 150px;
+	    height: 60px;
+	    border: 1px solid black;
+	    margin-left: 10px;
+	    margin-top: 20px;
+	    border-radius: 5px;
+	    text-align:center;
+	    line-height:60px;
+		cursor:pointer;
+	}
+	#notice {
+		margin-top: 4px;
+	    margin-left: 20px;
+	}
+	p {
+		margin-top:2px;
+		margin-bottom:0;
+	}
+	.sbouter {
+		position:absolute;
+	    left: 354px;
+	    top: 432px;
+	}
+	input[type=submit] {	
+		width:100px;
+		height:30px;
+		border:2px solid #93765a;
+		border-radius: 6px;
+		background: #93765a;
+		color:white;
+	}
+	input[type=button] {
+		width:100px;
+		height:30px;
+		border:2px solid #93765a;
+		border-radius: 6px;
+		background: #93765a;
+		color:white;
+	}
+	#end {
+		clear: both;
+	}
+	.chktime {
+		display:none;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -274,16 +274,16 @@ input[type=button] {
 	<div class="sImg"></div>
 	<div id="section">
 		<div id="labNav">
-			<h2><span>열람실 이용 </span></h2>
+			<h2><span>열람실이용</span></h2>
 			<ul id="lnb">
 				<li><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
-				<li class="on"><a><span>좌석예약</span></a></li>
+				<li class="on"><a href="/seat/chkReserveSeat"><span>좌석예약</span></a></li>
 			</ul>
 		</div>
 		<div id="contentCore">
 				<div class="naviTit">
-					<h3>좌석 당일 예약</h3>
-					<p>열람실 이용&nbsp;&nbsp;>&nbsp;&nbsp;좌석 당일 예약</p>
+					<h3>좌석예약</h3>
+					<p>열람실 이용&nbsp;&nbsp;>&nbsp;&nbsp;좌석예약</p>
 				</div>
 				<div id="contents">
 				<div id="reserveWrap">
