@@ -59,13 +59,13 @@
 				<h2><span>도서관소개</span></h2>
 				<ul id="lnb">
 					<li><a href="/introduce/intro"><span>인사말</span></a></li>
-					<li class="on"><a><span>오시는길</span></a></li>
+					<li class="on"><a href="/introduce/location"><span>오시는길</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>오시는길</h3>
-					<p>도서관소개&nbsp;&nbsp;>&nbsp;&nbsp;오시는길</p>
+					<p>도서관 소개&nbsp;&nbsp;>&nbsp;&nbsp;오시는길</p>
 				</div>
 				<div id="contents">
 					<div id="locationWrap">

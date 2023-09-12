@@ -189,32 +189,32 @@
 	<nav>
 		<ul>
 			<li class="gnbMenu">
-				<a href="#">도서관 소개</a>
+				<a href="/introduce/intro">도서관 소개</a>
 				<ul>
 					<li><a href="/introduce/intro">인사말</a></li>
 					<li><a href="/introduce/location">오시는 길</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">도서관 이용</a>
+				<a href="/breserve/list">도서관 이용</a>
 				<ul>
 					<li><a href="/breserve/list">도서 예약</a></li>
 					<li><a href="/bookrequest/rlist">도서 신청</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">열람실 이용</a>
+				<a href="/seat/rulelibrary">열람실 이용</a>
 				<ul>
 					<li><a href="/seat/rulelibrary">이용 규칙</a></li>
 					<li><a href="/seat/chkReserveSeat">좌석 예약</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
-				<a href="#">열린 공간</a>
+				<a href="/gongji/list">열린 공간</a>
 				<ul>
-					<li><a href="/gongji/list">공지사항 </a></li>
-					<li><a href="#">문의 게시판 </a></li>
-					<li><a href="/calender/calenderTab">도서관 일정 </a></li>					
+					<li><a href="/calender/calenderTab">도서관 일정</a></li>					
+					<li><a href="/gongji/list">공지사항</a></li>
+					<li><a href="#">문의 게시판</a></li>
 				</ul>
 			</li>
 		</ul>
