@@ -10,8 +10,8 @@
 	    insert into member(userid,name,pwd,phone,email1,email2,zip,addr,addrDtl,writeday)
 	    values(#{userid},#{name},#{pwd},#{phone},#{email1},#{email2},#{zip},#{addr},#{addrDtl},now())
     </insert>
-    <select id="loginOk" resultType="com.example.demo.vo.MemberVo">
-        select * from member 
+    <select id="loginOk" resultType="String">
+        select name from member 
         where userid=#{userid} and pwd=#{pwd}
     </select>
     <select id="idcheck" resultType="String">
@@ -35,5 +35,10 @@
     <update id="mypageUpdateOk2">
     	update member set name=#{name},phone=#{phone},email1=#{email1},email2=#{email2},zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid} and no=#{no}
     </update>
-    
+    <select id="getBan" resultType="String">
+    	select breason from member where userid=#{userid}
+    </select>
+    <select id="getMvo" resultType="com.example.demo.vo.MemberVo">
+    	select * from member where userid=#{userid}
+    </select>
 </mapper>

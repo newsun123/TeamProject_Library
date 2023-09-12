@@ -111,7 +111,9 @@
 								<a href="/member/member">회원가입</a>
 							</span>
 						</div>
+						<c:if test="${chk==1}">
 						<p id="failmsg">일치하는 회원정보가 없습니다. 다시 입력하세요.</p>
+						</c:if>
 						<c:if test="${bchk==1}">
 						<p id="banmsg">본 계정은 임시정지 되었습니다. 사유 : ${breason}</p>
 						</c:if>

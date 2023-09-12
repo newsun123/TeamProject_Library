@@ -44,53 +44,55 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String login(Model model,HttpServletRequest request) {
-		
-		String page=request.getParameter("page");
-		String bcode=request.getParameter("bcode");
-		model.addAttribute("page",page);
-		model.addAttribute("bcode",bcode);
-		
 		//밴 된 사유 체크용 bchk 받기
 		String bchk = request.getParameter("bchk");
 		model.addAttribute("bchk",bchk);
-		
-		String breason = request.getParameter("breason");
-		model.addAttribute("breason",breason);
-		System.out.println(breason);
+		String userid=request.getParameter("userid");
+		String breason="";	
+		if(bchk!=null) {
+			breason=mapper.getBan(userid);
+			model.addAttribute("breason",breason);
+		}else {
+			String page=request.getParameter("page");
+			String bcode=request.getParameter("bcode");
+			model.addAttribute("page",page);
+			model.addAttribute("bcode",bcode);
+		}
+			
 		return "/member/login";
 	}
 
 	@Override
-	public String loginOk(MemberVo mvo, HttpSession session,HttpServletRequest request,Model model) {
+	public String loginOk(MemberVo mvo, HttpSession session,HttpServletRequest request) {
 		
 		// String name=mapper.loginOk(mvo); mvo 사용이 필요해서 새로 짬
-		mvo = mapper.loginOk(mvo);
-		String name = mvo.getName(); // 2개로 분할 수정 완료
+		String name = mapper.loginOk(mvo);
 				
 		String page=request.getParameter("page");	
 		String bcode=request.getParameter("bcode");	
 		
-		//System.out.println(bcode);
-		System.out.println(mvo.getBan());
-		
+		mvo = mapper.getMvo(mvo);
 		// 임시정지 된 아이디 로그인 못하게 막기
 		if(mvo.getBan() == 1) {
+			String userid=mvo.getUserid();
 			session.invalidate(); // 밴 됐으니까 로그인 해제
-			model.addAttribute("breason",mvo.getBreason());
-			return "redirect:/member/login?bchk=1";
+			return "redirect:/member/login?bchk=1&userid="+userid;
 		}
+		
+		//System.out.println(breason);
 		
 		if(bcode==null || bcode == "") { //그냥 로그인할때
 			
 			if(name==null){
 				return "redirect:/member/login?chk=1";
-			}else{
+			}else {
 		
 				session.setAttribute("userid", mvo.getUserid());
 				session.setAttribute("name", name);
 
-				return "/main/main";
+				return "redirect:/main/main";
 			}
+			
 		
 		}else{ //도서예약에서 넘어올때
 			if(name==null){

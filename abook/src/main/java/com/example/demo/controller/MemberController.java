@@ -45,8 +45,8 @@ public class MemberController {
 	 }
 	 
 	 @RequestMapping("/member/loginOk")
-	 public String loginOk(MemberVo mvo,HttpSession session,HttpServletRequest request,Model model) {
-		 return service.loginOk(mvo,session,request,model);
+	 public String loginOk(MemberVo mvo,HttpSession session,HttpServletRequest request) {
+		 return service.loginOk(mvo,session,request);
 	 }
 	 
 	 @RequestMapping("/member/logout")
