@@ -254,12 +254,17 @@
 									<td> ${brvo.userid} </td>
 									<td> ${brvo.writeday} </td>
 									<td> 
-										<c:if test="${brvo.state == 0}">
-											대기중
-										</c:if>	
-										<c:if test="${brvo.state == 1}">
-											취소중
-										</c:if>								
+										<c:choose>
+											<c:when test="${brvo.state==0}">
+												신청중
+											</c:when>
+											<c:when test="${brvo.state==1}">
+												신청완료
+											</c:when>
+											<c:when test="${brvo.state==2}">
+												취소됨
+											</c:when>
+										</c:choose>							
 									 </td>
 								</tr>
 							</c:forEach>

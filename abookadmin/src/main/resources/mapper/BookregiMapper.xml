@@ -19,4 +19,8 @@
 	<select id="content" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi where bcode like concat(#{bcode},'%')
 	</select>
+	
+	<update id="statechange">
+		update bookrequest set state=2 where no=#{no}
+	</update>
 </mapper>

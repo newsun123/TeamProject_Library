@@ -49,6 +49,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
 	    String title = request.getParameter("title");
+	    String state=request.getParameter("state");
 	    System.out.println(keyword + " " + type);
 	    int page;
 	    if (request.getParameter("page")==null)
@@ -72,6 +73,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	        keyword = "";
 	    }
 
+	    model.addAttribute("state",state);
 	    model.addAttribute("page", page);
 	    model.addAttribute("pstart", pstart);
 	    model.addAttribute("pend", pend);
