@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 			String bchk = request.getParameter("bchk");
 			model.addAttribute("bchk",bchk);
 			String userid=request.getParameter("userid");
-			String breason=mapper.getBan(userid);
+			String breason=mapper.getBreason(userid);
 			model.addAttribute("breason",breason);	
 			
 		return "/member/login";
@@ -66,49 +66,53 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String loginOk(MemberVo mvo, HttpSession session, HttpServletRequest request) {
 
-		String name = mapper.loginOk(mvo);
-		String userid =request.getParameter("userid");
-		String usrid = mvo.getUserid();
-		String page = request.getParameter("page");
-		String bcode = request.getParameter("bcode");
-		
-		mvo = mapper.getMvo(mvo);
-		int imsi = mvo.getBan();
-		String ban = Integer.toString(imsi);
-		if (bcode == null || bcode == "") { // 그냥 로그인할때
+		String userid = request.getParameter("userid");
+		String checkuserid = mapper.checkUserid(userid);
 
-			if (name == null) {
-				return "redirect:/member/login?chk=1";
-				
-			} else if(ban.equals("1")) { // 임시정지 된 아이디 로그인 못하게 막기
+		if (checkuserid == null) {
+			return "redirect:/member/login?chk=1";
+		} else {
 
+			String name = mapper.loginOk(mvo);
+			String ban = mapper.getBan(userid);
+			System.out.println(ban);
+			String page = request.getParameter("page");
+			String bcode = request.getParameter("bcode");
+
+			if (ban.equals("1")) {
 				userid = mvo.getUserid();
 				session.invalidate(); // 밴 됐으니까 로그인 해제
 				request.getSession(true); // 이거 해줘야 깨끗하단다
+
 				return "redirect:/member/login?bchk=1&userid=" + userid;
-				
-			}else {
-				session.setAttribute("userid", mvo.getUserid());
-				session.setAttribute("name", name);
-
-				return "redirect:/main/main";
-
 			}
 
-		} else { // 도서예약에서 넘어올때
-			
-			if (name == null) {
-				return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
+			if (bcode == null || bcode == "") { // 그냥 로그인할때
+				if (name == null) {
 
-			} else {
+					return "redirect:/member/login?chk=1";
 
-				session.setAttribute("userid", mvo.getUserid());
-				session.setAttribute("name", name);
+				} else {
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
 
-				return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
+					return "redirect:/main/main";
+				}
+
+			} else { // 도서예약에서 넘어올때 , 임시정지 아이디일때
+
+				if (name == null) {
+					return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
+
+				} else {
+
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+
+					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
+				}
 			}
 		}
-
 	}
 	
 	@Override

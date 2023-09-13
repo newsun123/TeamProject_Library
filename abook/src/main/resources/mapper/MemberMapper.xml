@@ -35,10 +35,13 @@
     <update id="mypageUpdateOk2">
     	update member set name=#{name},phone=#{phone},email1=#{email1},email2=#{email2},zip=#{zip},addr=#{addr},addrDtl=#{addrDtl} where userid=#{userid} and no=#{no}
     </update>
-    <select id="getBan" resultType="String">
+    <select id="getBreason" resultType="String">
     	select breason from member where userid=#{userid}
     </select>
-    <select id="getMvo" resultType="com.example.demo.vo.MemberVo">
-    	select * from member where userid=#{userid}
+    <select id="getBan" resultType="String">
+    	select ban from member where userid=#{userid}
+    </select>
+    <select id="checkUserid" resultType="String">
+    	select userid from member where userid=#{userid}
     </select>
 </mapper>

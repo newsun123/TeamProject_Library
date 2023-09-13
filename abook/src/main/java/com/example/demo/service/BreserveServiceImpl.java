@@ -83,17 +83,22 @@ public class BreserveServiceImpl implements BreserveService {
 		model.addAttribute("mapall", mapall);
 		
 		// jjim 체크해서 모델 보내기
-		String userid= ss.getAttribute("userid").toString();
-		System.out.println(userid+"/"+bcode); //체크용
-		if(mapper.jjimCheck(userid, bcode)) {
-			model.addAttribute("img","jjim2.png");
-		}else {
-			model.addAttribute("img","jjim1.png");
-		}
+		String userid="";
+		if(ss.getAttribute("userid")!=null) {
+			userid= ss.getAttribute("userid").toString();
+			
+			if(mapper.jjimCheck(userid, bcode)) {
+				model.addAttribute("img","jjim2.png");
+			}else {
+				model.addAttribute("img","jjim1.png");
+			}
 
-		//mypage jjim 관련 mj 값 줌
-		String mj = request.getParameter("mj");
-		model.addAttribute("mj",mj);
+			//mypage jjim 관련 mj 값 줌
+			String mj = request.getParameter("mj");
+			model.addAttribute("mj",mj);
+		}
+		model.addAttribute("img","jjim1.png"); //로그인 안했을때 파일 안깨지게
+		
 		return "/breserve/content";
 	}
 
@@ -135,27 +140,36 @@ public class BreserveServiceImpl implements BreserveService {
 
 	@Override
 	public String addjjim(HttpServletRequest req, HttpSession ss) {
-		String userid = ss.getAttribute("userid").toString(); 
-		String bcode = req.getParameter("bcode");
-		//System.out.println(userid+"/"+bcode);
-		try {
-			mapper.addjjim(userid,bcode);
-			return "0";
-		}catch (Exception e) {
-			return "1";
+		if (ss.getAttribute("userid") != null) {
+
+			String userid = ss.getAttribute("userid").toString();
+			String bcode = req.getParameter("bcode");
+			// System.out.println(userid+"/"+bcode);
+			try {
+				mapper.addjjim(userid, bcode);
+				return "0";
+			} catch (Exception e) {
+				return "1";
+			}
+		} else {
+			return "2";
 		}
 	}
 
 	@Override
 	public String deljjim(HttpServletRequest req, HttpSession ss) {
-		String userid = ss.getAttribute("userid").toString();
-		String bcode = req.getParameter("bcode");
-		try {
-			mapper.deljjim(userid, bcode);
-			
-			return "0";			
-		}catch (Exception e) {
-			return "1";
+		if (ss.getAttribute("userid") != null) {
+			String userid = ss.getAttribute("userid").toString();
+			String bcode = req.getParameter("bcode");
+			try {
+				mapper.deljjim(userid, bcode);
+
+				return "0";
+			} catch (Exception e) {
+				return "1";
+			}
+		} else {
+			return "2";
 		}
 	}
 
