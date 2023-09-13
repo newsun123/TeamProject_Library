@@ -180,9 +180,9 @@ public class MemberServiceImpl implements MemberService {
 		String userid=ss.getAttribute("userid").toString();
 		mvo.setUserid(userid);
 		String pwd = mvo.getPwd();
-		System.out.println(mvo.getUserid());
-		System.out.println(pwd);
-		System.out.println(mvo.getEmail1());
+		//System.out.println(mvo.getUserid());
+		//System.out.println(pwd);
+		//System.out.println(mvo.getEmail1());
 		if(pwd =="" || pwd == null) {
 			mapper.mypageUpdateOk2(mvo);
 		}else {

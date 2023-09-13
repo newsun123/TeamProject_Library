@@ -30,7 +30,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	public String chkReserveSeat(HttpSession session, Model model) {
 		String userid = session.getAttribute("userid").toString();
 		String time = LocalDate.now().toString();
-		System.out.println(time);
+		//System.out.println(time);
 		int total = mapper.totalTime(userid,time);
 		model.addAttribute("total",total);
 		return "redirect:/seat/reserveseat?total="+total;

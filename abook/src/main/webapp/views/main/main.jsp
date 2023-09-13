@@ -233,6 +233,7 @@
 	.bcon ul li{
 		width: 160px;
 		height: 230px;
+		box-shadow: 6px 6px 7px rgba(0, 0, 0, .15);
 	}
 	.bcon ul li a{
 		width: 100%;
@@ -424,6 +425,7 @@
 		</div>
 		<div id="rigthBox">
 			<p>이달의 휴관일 안내</p>
+			<p>매주 금요일, 법정 공휴일</p>
 			<div>
 				<div id="calenderMain"> 
 					

@@ -151,6 +151,14 @@
     	cursor:default;
     	pointer-events:none;
 	}
+	#jjim{
+		width: 41px;
+	    height: 41px;
+	    border: none!important;
+	    cursor: pointer;
+	    position: relative;
+	    left: -10px;
+	}
 </style>
 <script>
 	window.onload=function(){
@@ -231,7 +239,7 @@
 										<div class="aa">
 											${mapall.get(0).title}
 											<span> <!-- 도서 찜하기 -->
-												<img src="/static/img/breserve/${img}" style="width:31px;height:29px;border:none;cursor:pointer;" id="jjim" onclick="jjim(this.src)">
+												<img src="/static/img/breserve/${img}" id="jjim" onclick="jjim(this.src)">
 											</span>
 										</div>
 										<div class="bb">${mapall.get(0).publi}<span>${blist.get(0).writer} 지음</span></div>

@@ -49,7 +49,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
 	    String title = request.getParameter("title");
-	    System.out.println(keyword + " " + type);
+	    //System.out.println(keyword + " " + type);
 	    int page;
 	    if (request.getParameter("page")==null)
 	        page=1;
@@ -80,7 +80,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    model.addAttribute("keyword", keyword);
 	    model.addAttribute("start", start);
 
-	    System.out.println(start);
+	    //System.out.println(start);
 	    // 한 번만 모델에 추가
 	    ArrayList<BookRequestVo> rlist = mapper.search(type, keyword, start);
 	    model.addAttribute("rlist", rlist);
