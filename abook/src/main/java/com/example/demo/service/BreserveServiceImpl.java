@@ -96,9 +96,11 @@ public class BreserveServiceImpl implements BreserveService {
 
 			//mypage jjim 관련 mj 값 줌
 			String mj = request.getParameter("mj");
-			model.addAttribute("mj",mj);
+			if(mj=="1") {
+				model.addAttribute("mj",mj);				
+				model.addAttribute("img","jjim1.png"); //로그인 안했을때 파일 안깨지게
+			}
 		}
-		model.addAttribute("img","jjim1.png"); //로그인 안했을때 파일 안깨지게
 		
 		return "/breserve/content";
 	}
