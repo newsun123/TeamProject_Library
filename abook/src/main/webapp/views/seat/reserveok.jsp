@@ -16,13 +16,14 @@
 	    height: 430px; 
 	}
 	#outer {
-		width:1000px;
-		margin:auto;
+		width: 100%;
+    	height: 100%;
 	}
 	table h3 {
-		font-size:20px;
-		font-weight: 600;
-		margin-bottom:20px;
+		font-size: 25px;
+	    margin-bottom: 20px;
+	    font-family: 'NotoSansM';
+	    color: #444;
 	}
 	table {
 		margin-top:40px;

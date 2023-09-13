@@ -82,6 +82,7 @@ public class BreserveServiceImpl implements BreserveService {
 		model.addAttribute("mapall", mapall);
 		
 		// jjim 체크해서 모델 보내기
+
 		String userid="";
 		if(ss.getAttribute("userid")!=null) {
 			userid= ss.getAttribute("userid").toString();
@@ -91,6 +92,7 @@ public class BreserveServiceImpl implements BreserveService {
 			}else {
 				model.addAttribute("img","jjim1.png");
 			}
+
 
 			//mypage jjim 관련 mj 값 줌
 			String mj = request.getParameter("mj");

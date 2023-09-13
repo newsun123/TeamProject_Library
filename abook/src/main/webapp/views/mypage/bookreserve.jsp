@@ -45,6 +45,50 @@
 		color: #666;
     	font-size: 14px;
 	}
+	.tb1_tt{
+		width: 350px;
+		padding:0 20px;
+		box-sizing: border-box;
+		height: 100%;
+		line-height: 55px;
+		text-align: left;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.tb2_tt{
+		width: 500px;
+		padding:0 20px;
+		box-sizing: border-box;
+		height: 100%;
+		line-height: 55px;
+		text-align: left;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.tb3_tt{
+		width: 340px;
+		padding:0 20px;
+		box-sizing: border-box;
+		height: 100%;
+		line-height: 55px;
+		text-align: left;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	#btn,
+	#rebtn,
+	#giganbtn{
+		background: #fff;
+	    border: 1px solid #967759;
+	    color: #967759;
+	    font-size: 14px;
+	    width: 110px;
+	    height: 41px;
+	    border-radius: 3px;
+	}
 </style>
 </head>
 <body>
@@ -72,16 +116,22 @@
 						<h4>예약현황</h4>
 						<table id="table1">
 							<tr>
-								<td>도서명</td>
-								<td>출판사</td>
-								<td>저자</td>
-								<td>예약일</td>
-								<td>처리상태</td>
-								<td>예약취소</td>
+								<td width="350">도서명</td>
+								<td width="190">출판사</td>
+								<td width="160">저자</td>
+								<td width="170">예약일</td>
+								<td width="150">처리상태</td>
+								<td width="150">예약취소</td>
 							</tr>
+						<c:if test="${mapall.size()==0}">
+							<tr>
+								<td colspan="6" class="no">※ 예약중인 도서가 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${mapall.size()!=0}">
 						<c:forEach items="${mapall}" var="map">
 							<tr>
-								<td>${map.title}</td>
+								<td><div class="tb1_tt">${map.title}</div></td>
 								<td>${map.publi}</td>
 								<td>${map.writer}</td>
 								<td>${map.writeday}</td>
@@ -91,57 +141,70 @@
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</table>
-						<h4>예약승인현황</h4>
+						<h4>예약승인거절</h4>
 						<table id="table2">
 							<tr>
-								<td>도서명</td>
-								<td>출판사</td>
-								<td>저자</td>
-								<td>예약일</td>
-								<td>처리상태</td>
+								<td width="500">도서명</td>
+								<td width="190">출판사</td>
+								<td width="160">저자</td>
+								<td width="170">예약일</td>
+								<td width="150">처리상태</td>
 							</tr>
-							<c:forEach items="${mapall2}" var="map2">
+						<c:if test="${mapall2.size()==0}">
 							<tr>
-								<td>${map2.title}</td>
-								<td>${map2.publi}</td>
-								<td>${map2.writer}</td>
-								<td>${map2.writeday}</td>
+								<td colspan="6" class="no">※ 예약승인 거절된 도서가 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${mapall2.size()!=0}">
+							<c:forEach items="${mapall2}" var="map">
+							<tr>
+								<td><div class="tb2_tt">${map.title}</div></td>
+								<td>${map.publi}</td>
+								<td>${map.writer}</td>
+								<td>${map.writeday}</td>
 								<td>승인거절</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</table>
 						<h4>대출현황</h4>
 						<table id="table3">
 							<tr>
 								<td>도서명</td>
 								<td>출판사</td>
-								<td>저자</td>
 								<td>대출일</td>
 								<td>반납일</td>
 								<td>도서반납</td>
 								<td>대출연장</td>
 							</tr>
-						<c:forEach items="${mapall3}" var="map3">
+						<c:if test="${mapall3.size()==0}">
 							<tr>
-								<td>${map3.title}</td>
-								<td>${map3.publi}</td>
-								<td>${map3.writer}</td>
-						 		<td>${map3.rental}</td>
-								<td>${map3.returnday}</td>
-								<td>
-									<input type="button" value="반납하기" id="rebtn" onclick="location='returnOk?no=${map3.no}'">									
+								<td colspan="7" class="no">※ 대출중인 도서가 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${mapall3.size()!=0}">
+						<c:forEach items="${mapall3}" var="map">
+							<tr>
+								<td width="340"><div class="tb3_tt">${map.title}</div></td>
+								<td width="190">${map.publi}</td>
+						 		<td width="170">${map.rental}</td>
+								<td width="170">${map.returnday}</td>
+								<td width="150">
+									<input type="button" value="반납하기" id="rebtn" onclick="location='returnOk?no=${map.no}'">									
 								</td>
-								<td>
-								<c:if test="${map3.gigan==0}">
-									<input type="button" value="대출연장" id="giganbtn" onclick="location='giganUpdate?no=${map3.no}'">						
+								<td width="150">
+								<c:if test="${map.gigan==0}">
+									<input type="button" value="대출연장" id="giganbtn" onclick="location='giganUpdate?no=${map.no}'">						
 								</c:if>
-								<c:if test="${map3.gigan!=0}">
+								<c:if test="${map.gigan!=0}">
 									대출연장불가						
 								</c:if>
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</table>
 					</div>
 				</div>
