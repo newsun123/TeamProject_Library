@@ -66,7 +66,7 @@
 	}
 	#sucessform a{
 	    font-size: 14px;
-	    margin-top: 59px;
+	    margin-top: 40px;
 	    width: 120px;
 	    display: inline-block;
 	    height: 40px;
@@ -89,6 +89,11 @@
 	}
 	.aBox a:last-child {
 		margin-right: 0;
+	}
+	#idmsg{
+		font-size: 25px;
+	    margin-top: 20px;
+	    font-family: 'NotoSansM';
 	}
 </style>
 <script>

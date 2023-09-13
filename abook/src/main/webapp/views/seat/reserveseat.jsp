@@ -237,6 +237,7 @@
 	    color: #93765a;
 	    line-height: 113px;
 	    font-size: 14px;
+	    background: #f3ede3;
 	}
 	.tb2{
 		top:150px;
@@ -789,9 +790,9 @@
 						</c:if>	
 						</div>
 					</div>
-					<div class="tb tb1">※ 책 공간 입니다 (B23/B24)</div>
-					<div class="tb tb2">※ 책 공간 입니다 (C21/C22)</div>
-					<div class="tb tb3">※ 책 공간 입니다 (A26/A28)</div>
+					<div class="tb tb1">※ 도서 공간 입니다 (B23/B24)</div>
+					<div class="tb tb2">※ 도서 공간 입니다 (C21/C22)</div>
+					<div class="tb tb3">※ 도서 공간 입니다 (A26/A28)</div>
 					<div class="tb tb4">※ 공용 자유 테이블 입니다</div>
 			</div>
 		</div>
