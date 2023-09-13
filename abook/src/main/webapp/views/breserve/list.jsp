@@ -290,7 +290,11 @@
 						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
 						<input type="submit" id="search" class="searchtext" value="검색">
 					</form>
-						<table>						
+						<table>	
+						<div> <!-- 인기도서 신착도서 버튼 만들기 0913최윤도 -->
+							<input type="button" value="신착도서" onclick="location='/breserve/list'">
+							<input type="button" value="인기도서" onclick="location='bestbook?type=${type}&keywored=${keyword}&start=${start}'">
+						</div>					
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
 								<td> 

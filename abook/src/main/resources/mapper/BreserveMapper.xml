@@ -33,4 +33,8 @@
 	<select id="jjimCheck" resultType="boolean">
 		select count(*) from jjim where userid=#{userid} and bcode like concat(#{bcode},'%')
 	</select>
+	<select id="bestBookList" resultType="com.example.demo.vo.BookregiVo">
+		select * from bookregi where ${type} like concat('%',"${keyword}",'%')
+		 group by substr(bcode,1,4) order by cnt desc limit #{start},10;
+	</select>
 </mapper>

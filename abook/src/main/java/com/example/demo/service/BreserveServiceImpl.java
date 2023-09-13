@@ -61,7 +61,6 @@ public class BreserveServiceImpl implements BreserveService {
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("start",start);
 		model.addAttribute("blist",mapper.list(type,keyword,start));
-
 		return "/breserve/list";
 	}
 
@@ -171,6 +170,15 @@ public class BreserveServiceImpl implements BreserveService {
 		} else {
 			return "2";
 		}
+	}
+
+	@Override
+	public String bestbook(HttpServletRequest req, Model model) {
+		String type=req.getParameter("type");
+		String keyword=req.getParameter("keyword");
+		int start= Integer.parseInt(req.getParameter("start"));
+		mapper.bestBookList(type,keyword,start);
+		return "redirect:/breserve/list";
 	}
 
 }
