@@ -25,7 +25,6 @@ public class BreserveServiceImpl implements BreserveService {
 	public String list(Model model,BookregiVo bvo,HttpServletRequest request) {
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
-		String title=request.getParameter("title");
 
 		int page;
 
@@ -69,6 +68,7 @@ public class BreserveServiceImpl implements BreserveService {
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("start",start);
 		model.addAttribute("blist",mapper.list(type,keyword,start));
+		}
 		return "/breserve/list";
 	}
 
