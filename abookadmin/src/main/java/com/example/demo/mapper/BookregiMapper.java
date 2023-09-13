@@ -23,4 +23,6 @@ public interface BookregiMapper {
 	public void del(String bcode);
 	public int getcnt(String bcode);
 	public void statechange(BookRequestVo brvo);
+	public BookRequestVo getValueBrvo(String brno);
+	public void chgStateBrequest(String brno);
 }

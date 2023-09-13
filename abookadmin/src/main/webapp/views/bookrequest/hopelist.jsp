@@ -171,7 +171,14 @@
 							<td>${brvo.writer}</td>
 							<td>${brvo.userid}</td>
 							<td>${brvo.writeday}</td>
-							<td><a href="/bookregi/write?chk=1&brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a></td>
+							<td>
+								<c:if test="${brvo.state==0}"> <!-- state 수로 버튼 변경 -->
+									<a href="/bookregi/write?brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a>
+								</c:if>
+								<c:if test="${brvo.state==1}">
+									<a href=""><input type="button" value="등록완료" class="rbtn" disabled></a>
+								</c:if>
+							</td>
 							<td><a href="location='cancelBookRequest?brno=${brvo.no}'"><input type="button" value="도서반려" class="rbtn"></a></td>
 						</tr>
 					</c:forEach>						

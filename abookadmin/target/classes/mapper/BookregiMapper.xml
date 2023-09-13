@@ -35,8 +35,13 @@
 	<select id="getcnt" resultType="int">
 		select count(*) from bookregi where bcode like concat(#{bcode},'%')
 	</select>
-	
-	<update id="statechange">
+	<update id="statechange"> <!-- 이거 어디서 씀? -->
 		update bookrequest set state=2 where no=#{no}
+	</update>
+	<select id="getValueBrvo" resultType="HashMap">
+		select * from bookrequest where no=#{param}
+	</select>
+	<update id="chgStateBrequest">
+		update state=1 from bookrequest where no=#{param}
 	</update>
 </mapper>

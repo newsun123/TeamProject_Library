@@ -63,13 +63,21 @@ public class BookregiServiceImpl implements BookregiService{
 	
 	@Override
 	public String write(HttpServletRequest request,Model model){
-		return "/bookregi/write";
+		String brno = request.getParameter("brno"); // hopelist에서 값 가져옴.
+		if (brno == null) {
+			return "/bookregi/write";
+		} else {
+			BookRequestVo bvo = mapper.getValueBrvo(brno);
+			model.addAttribute("bvo",bvo);
+			return "/bookregi/write";
+		}
 	}
 
 	@Override
 	public String write_ok(BookregiVo bvo, HttpServletRequest request,BookRequestVo brvo) {
 		
-		//String path2 = request.getRealPath("classpath:/static/img/bookregi");
+		String brno = request.getParameter("brno"); // 도서희망에서 가져오는 no값임.
+		
 		try {
 			
 			int size=1024*1024*100;
@@ -83,7 +91,7 @@ public class BookregiServiceImpl implements BookregiService{
 			bvo.setWriteyear(multi.getParameter("writeyear"));
 			bvo.setBea(Integer.parseInt(multi.getParameter("bea")));
 			bvo.setEct(multi.getParameter("ect"));
-			
+			System.out.println(bvo.getTitle());
 			// bvo 이미지 값 넣기
 			String bimg=multi.getFilesystemName("bimg");
 			
@@ -119,6 +127,9 @@ public class BookregiServiceImpl implements BookregiService{
 					mapper.write_ok(bvo,brvo);
 					bvo.setBcode(bcode);
 				}
+				
+				if(brno!=null)
+					mapper.chgStateBrequest(brno);
 			}
 			return "redirect:/bookregi/list";
 		}catch(Exception e) {

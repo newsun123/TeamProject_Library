@@ -23,4 +23,5 @@ public class BookRequestController {
 	public String hopelist(HttpServletRequest request,BookRequestVo brvo,Model model,BookregiVo bvo) {
 		return service.hopelist(request,brvo,model,bvo);
 	}
+	
 }
