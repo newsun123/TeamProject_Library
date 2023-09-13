@@ -49,8 +49,8 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypage/loanlist")
-	public String loanlist(HttpSession session,Model model) {
-		return service.loanlist(session,model);
+	public String loanlist(HttpSession session,Model model,HttpServletRequest request) {
+		return service.loanlist(session,model,request);
 	}
 	
 	@RequestMapping("/mypage/myjjim")
