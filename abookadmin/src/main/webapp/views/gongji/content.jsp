@@ -35,6 +35,7 @@
 	table tr td#cont{
 		vertical-align: top;
     	padding: 13px 10px;
+    	height: 400px;
 	}
 	#btn{
 		text-align: center;
