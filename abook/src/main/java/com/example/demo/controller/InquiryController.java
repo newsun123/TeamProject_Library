@@ -37,4 +37,10 @@ public class InquiryController {
 	{
 		return service.writeOk(ivo);
 	}
+	
+	@RequestMapping("/inquiry/readnum")
+	public String readnum(InquiryVo ivo)
+	{
+		return service.readnum(ivo);
+	}
 }

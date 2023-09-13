@@ -40,6 +40,10 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		if(pend > chong)
 			pend=chong;
+		
+		int r=(page-1)*10;
+		mapper.setRownum(r);
+		
 		String userid=ss.getAttribute("userid").toString();
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
@@ -64,6 +68,14 @@ public class InquiryServiceImpl implements InquiryService {
 		mapper.writeOk(ivo);
 		
 		return "redirect:/inquiry/list";
+	}
+
+	@Override
+	public String readnum(InquiryVo ivo) {
+		
+		mapper.readnum(ivo);
+		
+		return "redirect:/inquiry/content?no=${no}";
 	}
 	
 	

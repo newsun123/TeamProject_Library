@@ -12,4 +12,5 @@ public interface InquiryService {
 	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss);
 	public String write();
 	public String writeOk(InquiryVo ivo);
+	public String readnum(InquiryVo ivo);
 }

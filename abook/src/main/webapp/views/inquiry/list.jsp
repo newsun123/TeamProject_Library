@@ -34,7 +34,7 @@
 		border-bottom: 1px solid #e4e4e4;
 	}
 	table tr td:nth-child(2){
-	
+		width:150px;
 	}
 	table tr td:nth-child(4){
 		width: 130px;
@@ -47,7 +47,7 @@
 		text-overflow: ellipsis;
     	white-space: nowrap;
     	overflow: hidden;
-    	width:150px;
+ 
 	}
 	.tc{
 		text-align: center!important;
@@ -135,6 +135,7 @@
 					<div id="gongjiWrap">
 						<table>
 							<tr>
+								<td> 번호 </td>
 								<td>작성자</td>
 								<td class="tc">제목</td>
 								<td>등록일</td>
@@ -142,6 +143,7 @@
 							</tr>						
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
+								<td> ${ivo.rnum} </td>
 								<td> ${userid} </td>	
 								<td>
 									<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> 
