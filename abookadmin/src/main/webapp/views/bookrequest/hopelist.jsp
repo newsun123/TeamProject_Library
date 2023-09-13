@@ -150,7 +150,7 @@
 				<div id="contents">
 					<div id="requestWrap">
 					<table id="table2">
-						<caption>희망도서</caption>
+						<caption>희망도서 </caption>
 						<tr>
 							<td>번호</td>
 							<td>제목</td>
@@ -159,6 +159,7 @@
 							<td>신청자</td>
 							<td>신청일</td>
 							<td>도서등록</td>
+							<td>반려</td>
 						</tr>
 					<c:forEach items="${hlist}" var="brvo" varStatus="i">
 						<tr>
@@ -170,7 +171,8 @@
 							<td>${brvo.writer}</td>
 							<td>${brvo.userid}</td>
 							<td>${brvo.writeday}</td>
-							<td><a href="/bookregi/write?chk=1&title=${brvo.title}&publi=${brvo.publi}&writer=${brvo.writer}&userid=${brvo.userid}&writeday=${brvo.writeday}&writeyear=${brvo.writeyear}&state=1"><input type="button" value="도서등록" class="rbtn"></a></td>
+							<td><a href="/bookregi/write?chk=1&brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a></td>
+							<td><a href="location='cancelBookRequest?brno=${brvo.no}'"><input type="button" value="도서반려" class="rbtn"></a></td>
 						</tr>
 					</c:forEach>						
 					</table>
