@@ -75,24 +75,23 @@
 						<table style="padding-bottom:20px;" class="table3">
 							<h3 style="font-size:20px;padding-bottom:20px;padding-top:20px;">대출이력</h3>
 							<tr>
-								<td></td>
-								<td></td>
+								<td>도서명</td>
+								<td>북코드</td>
+								<td>대출일</td>
 							</tr>
 						</table>
 						<table style="padding-bottom:20px;" class="table4">
 							<h3 style="font-size:20px;padding-bottom:20px;padding-top:20px;">좌석 예약 이력</h3>
 								<tr>
-										<td>예약자명</td>
 										<td>예약 좌석</td>
 										<td>예약일</td>
 										<td>예약 시간</td>
 									</tr>
 									<c:forEach items="${rlist}" var="rvo" varStatus="status">
 									<tr>
-										<td>${rvo.userid}</td>
 										<td>${rvo.tname}</td>
 										<td>${rvo.reserveday}</td>
-										<td> ${timelist.get(status.index)}</td>
+										<td>${timelist.get(status.index)}</td>
 									</tr>
 									</c:forEach>
 						</table>
