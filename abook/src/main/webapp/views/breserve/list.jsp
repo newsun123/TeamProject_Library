@@ -220,6 +220,18 @@
 		   <c:if test="${type=='publi'}">
 		     <c:set var="aa" value="출판사"/>
 		   </c:if>
+			<c:if test="${type=='notype'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
+		    <c:if test="${type=='title'}">
+		     	<c:set var="aa" value="도서명"/>
+		    </c:if>
+		    <c:if test="${type=='writer'}">
+		     	<c:set var="aa" value="저자"/>
+		    </c:if>
+		    <c:if test="${type=='publi'}">
+		    	<c:set var="aa" value="출판사"/>
+		    </c:if>
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
 	}
@@ -238,6 +250,10 @@
 	}
 	function inputWr(txt){
 		
+		if(txt="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="title"+"writer"+"publi";
+		}
 		if(txt=="도서명"){
 			document.getElementsByClassName("selected_value")[0].innerText="도서명";
 			document.getElementById("seltype").value="title";
@@ -279,9 +295,14 @@
 						<div id="select">
 							<div class="selected" onclick="selectView()">
 								<div class="selected_value" id="sv">도서명</div>
+								<div class="selected_value" id="sv">전체</div>
 								<div class="arrow"></div>
 							</div>
 								<ul id="type">
+<<<<<<< HEAD
+=======
+									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+>>>>>>> origin/kjh
 									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
 									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
 									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>

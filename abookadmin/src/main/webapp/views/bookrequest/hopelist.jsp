@@ -170,7 +170,7 @@
 							<td>${brvo.writer}</td>
 							<td>${brvo.userid}</td>
 							<td>${brvo.writeday}</td>
-							<td><a href="/bookregi/write?chk=1&title=${brvo.title}&publi=${brvo.publi}&writer=${brvo.writer}&userid=${brvo.userid}&writeday=${brvo.writeday}&writeyear=${brvo.writeyear}"><input type="button" value="도서등록" class="rbtn"></a></td>
+							<td><a href="/bookregi/write?chk=1&title=${brvo.title}&publi=${brvo.publi}&writer=${brvo.writer}&userid=${brvo.userid}&writeday=${brvo.writeday}&writeyear=${brvo.writeyear}&state=1"><input type="button" value="도서등록" class="rbtn"></a></td>
 						</tr>
 					</c:forEach>						
 					</table>

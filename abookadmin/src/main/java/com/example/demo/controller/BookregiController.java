@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.BookregiService;
+import com.example.demo.vo.BookRequestVo;
 import com.example.demo.vo.BookregiVo;
 
 @Controller
@@ -29,13 +30,13 @@ public class BookregiController {
 	}
 	
 	@RequestMapping("/bookregi/write")
-	public String write() {
-		return service.write();
+	public String write(HttpServletRequest request,Model model) {
+		return service.write(request,model);
 	}
 	
 	@RequestMapping("/bookregi/write_ok")
-	public String write_ok(BookregiVo bvo,HttpServletRequest request){
-		return service.write_ok(bvo,request);
+	public String write_ok(BookregiVo bvo,HttpServletRequest request,BookRequestVo brvo){
+		return service.write_ok(bvo,request,brvo);
 	}
 	
 	@RequestMapping("/bookregi/content")

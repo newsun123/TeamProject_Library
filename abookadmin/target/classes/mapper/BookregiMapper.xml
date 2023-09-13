@@ -35,4 +35,8 @@
 	<select id="getcnt" resultType="int">
 		select count(*) from bookregi where bcode like concat(#{bcode},'%')
 	</select>
+	
+	<update id="statechange">
+		update bookrequest set state=2 where no=#{no}
+	</update>
 </mapper>

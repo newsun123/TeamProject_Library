@@ -51,7 +51,15 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		if(keyword==null || keyword.length()==0) {
 			type="title";
+		if(type==null || keyword==null || keyword.length()==0) {
+			String title="title";
+			String publi="publi";
+			String writer="writer";
 			keyword="";
+			model.addAttribute("blist",mapper.list2(title,publi,writer,keyword,start));
+			
+		}else {
+			model.addAttribute("blist",mapper.list(type,keyword,start));
 		}
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);

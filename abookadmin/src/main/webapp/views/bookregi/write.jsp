@@ -105,6 +105,9 @@
 			return true;
 		}
 	}
+	function statechange(){
+		
+	}
 </script>
 </head>
 <body>

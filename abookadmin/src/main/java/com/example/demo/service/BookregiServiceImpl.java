@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 
 import com.example.demo.mapper.BookregiMapper;
+import com.example.demo.vo.BookRequestVo;
 import com.example.demo.vo.BookregiVo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -26,7 +27,7 @@ public class BookregiServiceImpl implements BookregiService{
 	
 	@Override
 	public String list(Model model,BookregiVo bvo,HttpServletRequest request){
-		
+		String state=request.getParameter("state");
 		int page;
 		if(request.getParameter("page") == null)
 			page=1;
@@ -48,6 +49,8 @@ public class BookregiServiceImpl implements BookregiService{
 			pend=chong;
 		
 		System.out.println(pend);
+		
+		model.addAttribute("state",state);
 		model.addAttribute("start",start);
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
@@ -59,12 +62,12 @@ public class BookregiServiceImpl implements BookregiService{
 	}
 	
 	@Override
-	public String write(){
+	public String write(HttpServletRequest request,Model model){
 		return "/bookregi/write";
 	}
 
 	@Override
-	public String write_ok(BookregiVo bvo, HttpServletRequest request) {
+	public String write_ok(BookregiVo bvo, HttpServletRequest request,BookRequestVo brvo) {
 		
 		//String path2 = request.getRealPath("classpath:/static/img/bookregi");
 		try {
@@ -92,7 +95,7 @@ public class BookregiServiceImpl implements BookregiService{
 			
 			// bcode 값 만들어 넣기
 			String bcode=mapper.getCode();
-			
+			mapper.statechange(brvo);
 			if(bcode.length()==1){
 				bcode="b00"+bcode;
 			}else if(bcode.length()==2){
@@ -108,12 +111,12 @@ public class BookregiServiceImpl implements BookregiService{
 				if(i < 10){
 					String bcode2=bcode+"0"+i;
 					bvo.setBcode(bcode2); //진짜 bcode
-					mapper.write_ok(bvo);
+					mapper.write_ok(bvo,brvo);
 					bvo.setBcode(bcode); // b코드 초기화
 				}else{
 					String bcode2=bcode+i;
 					bvo.setBcode(bcode2);
-					mapper.write_ok(bvo);
+					mapper.write_ok(bvo,brvo);
 					bvo.setBcode(bcode);
 				}
 			}
