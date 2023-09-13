@@ -114,7 +114,9 @@
 		width: 356px;
 	    height: 100%;
 	    line-height: 50px;
-		
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 	#leftBox .date{
 		color: #999;
