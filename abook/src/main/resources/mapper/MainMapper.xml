@@ -14,5 +14,14 @@
 	<select id="checkSeatPc" resultType="int">
 		select count(*) from tablename where ${time}=1 and tname like 'pc%'
 	</select>
+	
+	<select id="bookList" resultType="com.example.demo.vo.BookregiVo">
+		select * from bookregi group by substr(bcode,1,4)
+		order by no desc limit 6
+	</select>
+	<select id="bestBookList" resultType="com.example.demo.vo.BookregiVo">
+		select * from bookregi group by substr(bcode,1,4)
+		order by cnt desc limit 6
+	</select>
  
 </mapper>

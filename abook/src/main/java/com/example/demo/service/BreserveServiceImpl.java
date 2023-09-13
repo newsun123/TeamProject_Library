@@ -175,10 +175,11 @@ public class BreserveServiceImpl implements BreserveService {
 	@Override
 	public String bestbook(HttpServletRequest req, Model model) {
 		String type=req.getParameter("type");
-		String keyword=req.getParameter("keyword");
-		int start= Integer.parseInt(req.getParameter("start"));
-		mapper.bestBookList(type,keyword,start);
-		return "redirect:/breserve/list";
+		String keyword="";
+		int start=Integer.parseInt(req.getParameter("start"));
+		ArrayList<BookregiVo> blist = mapper.bestBookList(type,keyword,start);
+		model.addAttribute("blist",blist);
+		return "/breserve/list";
 	}
 
 }
