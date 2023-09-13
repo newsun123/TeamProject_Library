@@ -14,7 +14,7 @@
 </update>
 
 <select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
-	select * from reserveseat where userid=#{userid}
+	select * from reserveseat where userid=#{userid} order by no desc limit 1
 </select>
 <select id="totalTime" resultType="int">
 	select ifnull(sum(time9+time10+time11+time12+time13+time14+time15+time16+time17+time18),0) from reserveseat where userid=#{userid} and reserveday=#{time}
