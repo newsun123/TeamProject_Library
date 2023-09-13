@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.MainMapper">
 	<select id="gongji" resultType="com.example.demo.vo.GongjiVo">
-		select * from gongji order by no desc limit 5
+		select * from gongji order by no desc limit 4
 	</select>
 <select id="checkSeatNomal" resultType="int">
 	select count(*) from tablename where ${time}=1 and tname like 'n%'

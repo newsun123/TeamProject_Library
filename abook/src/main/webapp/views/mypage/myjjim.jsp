@@ -109,14 +109,15 @@
 					<li><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
 					<li><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
-					<li class="on"><a href="/mypage/myjjim">도서 찜 목록<span></span></a></li>
+					<li><a href="/mypage/loanlist"><span>도서대출리스트</span></a></li>
+					<li class="on"><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
 					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>도서 찜 목록 </h3>
-					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;도서 찜 목록</p>
+					<h3>도서찜리스트</h3>
+					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;도서 찜리스트</p>
 				</div>
 				<div id="contents">
 					<div id="MyjjimWrap">

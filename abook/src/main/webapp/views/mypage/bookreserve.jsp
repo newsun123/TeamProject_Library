@@ -8,7 +8,42 @@
 <title>Insert title here</title>
 <style>
 	#MypageWrap{
-		padding-bottom:80px; 
+		padding-bottom:30px; 
+	}
+	h4{
+		font-size: 20px;
+    	font-family: 'NotoSansM';
+	}
+	table{
+		border-bottom: 1px solid #ddd;
+    	border-top: 2px solid #cecece;
+    	margin-top:30px;
+		text-align: center;
+	}
+	table tr {
+		height:35px;
+	}
+	table tr td {
+		align:center;
+	}
+	table#table1,
+	table#table2{
+		margin-bottom: 110px;
+	}
+	table tr:first-child td {
+	    background-color: #f9f9fb;
+	    border-bottom: 1px solid #ddd;
+	    height: 55px;
+	    color: #333;
+	    font-family: 'NotoSansM';
+	    text-align: center;
+	} 
+	table tr td{
+		height: 55px;
+	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
 	}
 </style>
 </head>
@@ -23,13 +58,14 @@
 					<li><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
 					<li class="on"><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="/mypage/loanlist"><span>도서대출리스트</span></a></li>
+					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
 					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>도서예약현황</h3>
-					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;도서예약현황</p>
+					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;도서 예약현황</p>
 				</div>
 				<div id="contents">
 					<div id="MypageWrap">
@@ -57,7 +93,7 @@
 						</c:forEach>
 						</table>
 						<h4>예약승인현황</h4>
-						<table>
+						<table id="table2">
 							<tr>
 								<td>도서명</td>
 								<td>출판사</td>

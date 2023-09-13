@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
-		padding-bottom: 30px;
-	}
 	table{
 		border-top: 2px solid #cecece;
 	}
@@ -36,27 +33,21 @@
 	table tr td#cont{
 		vertical-align: top;
     	padding: 13px 10px;
+		height: 400px;
 	}
 	#btn{
 		text-align: center;
 		padding: 30px 0;
 	}
-	#btn a{
-		color: #fff;
-	    text-align: center;
-	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
-	    line-height:50px;
-	    cursor: pointer;
-	    margin: 0 2px;
+	.dis{
+		display: inline-block;
+	    border: 1px solid #e2e2e2;
 	    border-radius: 3px;
-	    display:inline-block;
-	}
-	#btn a.dis{
-		background: #e0e3e6;
-	    color: #6e7277;
+	    color: #71757b;
+	    padding: 0 20px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
 	}
 </style>
 </head>
@@ -78,6 +69,7 @@
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">	
+						<a href="list?page=${page}" class="dis">목록으로</a>
 						<table>
 							<tr>
 								<td>제목</td>
@@ -94,9 +86,6 @@
 								<td class="tl">${gvo2.writeday}</td>
 							</tr>
 						</table>
-						<div id="btn">
-							<a href="list?page=${page}" class="dis">목록</a>
-						</div>
 					</div>
 				</div>
 			</div>		

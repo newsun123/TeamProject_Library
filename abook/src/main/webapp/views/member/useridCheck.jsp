@@ -6,17 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-section input[type=text] {
-	width: 407px;
-	height: 43px;
-}
-
-section input[type=button] {
-	width: 407px;
-	height: 43px;
-	background: #E4F7BA;
-	border-style: none;
-}
+	section input[type=text] {
+		width: 407px;
+		height: 43px;
+	}
+	
+	section input[type=button] {
+		width: 407px;
+		height: 43px;
+		background: #E4F7BA;
+		border-style: none;
+	}
 </style>
 <script>
 		function {

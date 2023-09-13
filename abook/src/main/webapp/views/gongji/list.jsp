@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap {
-		padding-bottom: 30px;
-	}	
 	form {
 		width: 100%;
 		display: block;
