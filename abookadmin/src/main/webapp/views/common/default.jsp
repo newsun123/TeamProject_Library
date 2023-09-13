@@ -193,7 +193,7 @@
 					<a href="/bookregi/list">도서 관리</a>
 					<ul>
 						<li><a href="/bookregi/list">도서등록</a></li>
-						<li><a href="#">대출현황</a></li>
+						<li><a href="/loanstatus/list">대출현황</a></li>
 						<li><a href="/reservestatus/rslist">예약현황</a></li>
 						<li><a href="#">신청현황</a></li>
 						<li><a href="#">희망도서</a></li>
@@ -201,23 +201,23 @@
 					</ul>
 				</li>
 				<li class="gnbMenu">
-					<a href="#">회원 관리</a>
+					<a href="/member/member">회원 관리</a>
 					<ul>
 						<li><a href="/member/member">회원조회</a></li>
 						<li><a href="/member/memberBan">임시정지/삭제</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">
-					<a href="../rsvseat/reserveseat">좌석 관리</a>
+					<a href="/rsvseat/reserveseat">좌석 관리</a>
 					<ul>
-						<li><a href="../rsvseat/reserveseat">사용불가 지정</a></li>
-						<li><a href="../rsvseat/cancelseat">퇴실 처리</a></li>
+						<li><a href="/rsvseat/reserveseat">사용불가 지정</a></li>
+						<li><a href="/rsvseat/cancelseat">퇴실 처리</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">
-					<a href="#">게시판 관리</a>
+					<a href="/gongji/list">게시판 관리</a>
 					<ul>
-						<li><a href="../gongji/list">공지사항</a></li>
+						<li><a href="/gongji/list">공지사항</a></li>
 						<li><a href="#">문의사항</a></li>
 					</ul>
 				</li>

@@ -8,33 +8,41 @@
 <title>Insert title here</title>
 <style>
 	#rsvOkWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
-	    text-align: center;
+		padding-bottom: 30px;
 	}
-	#outer {
-		width:1000px;
-		margin:auto;
+	h4{
+		font-size: 20px;
+    	font-family: 'NotoSansM';
 	}
-	table h3 {
-		font-size:20px;
-		font-weight: 600;
-		margin-bottom:20px;
-	}
-	table {
-		margin-top:40px;
+	table{
+		border-bottom: 1px solid #ddd;
+    	border-top: 2px solid #cecece;
+    	margin-top:30px;
 		text-align: center;
 	}
 	table tr {
 		height:35px;
-
 	}
 	table tr td {
 		align:center;
 	}
-	#end {
-		margin-bottom:50px;
+	table#table1{
+		margin-bottom: 110px;
+	}
+	table tr:first-child td {
+	    background-color: #f9f9fb;
+	    border-bottom: 1px solid #ddd;
+	    height: 55px;
+	    color: #333;
+	    font-family: 'NotoSansM';
+	    text-align: center;
+	} 
+	table tr td{
+		height: 55px;
+	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
 	}
 </style>
 </head>
@@ -45,22 +53,23 @@
 			<div id="labNav">
 				<h2><span>마이페이지</span></h2>
 				<ul id="lnb">
-					<li><a href="/mypage/mypage"><span>회원정보 수정</span></a></li>
-					<li class="on"><a><span>좌석 예약현황</span></a></li>
-					<li><a href=""><span>도서 예약현황</span></a></li>
-					<li><a href=""><span>1:1 문의 현황</span></a></li>
+					<li><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
+					<li class="on"><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
+					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
+					<li><a href="/mypage/loanlist"><span>도서대출리스트</span></a></li>
+					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
+					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>좌석 예약현황</h3>
+					<h3>좌석예약현황</h3>
 					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;좌석 예약현황</p>
 				</div>
 				<div id="contents">
 					<div id="rsvOkWrap">
-					<div id="outer">
-						<table width="800"> <!-- 금일 예약 테이블 -->
-							<caption><h3>금일 예약현황 </h3></caption>
+						<h4>금일 예약현황</h4>
+						<table id="table1"> <!-- 금일 예약 테이블 -->
 							<tr>
 								<td>예약자명</td>
 								<td>예약 좌석</td>
@@ -69,42 +78,42 @@
 							</tr>
 							<c:if test="${mapall.size()==0}">
 							<tr>
-								<td colspan="4">
-									금일 예약 내역이 없습니다.
-								</td>
+								<td colspan="4" class="no">※ 금일 예약된 좌석이 없습니다.</td>
 							</tr>
 							</c:if>
 							<c:if test="${mapall.size()!=0}">
 							<c:forEach items="${mapall}" var="map" varStatus="sts">
 							<tr>
-								<td>${map.userid }</td>
-								<td>${map.tname }</td>
+								<td>${map.userid}</td>
+								<td>${map.tname}</td>
 								<td>${timelist.get(sts.index)}</td>
 								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime.get(sts.index)}&tname=${map.tname}'"></td>
 							</tr>
 							</c:forEach>
-							</c:if>
-							
+							</c:if>	
 						</table>
-						<table width="800"> <!-- 전체 예약 테이블 -->
-								<caption><h3>전체 예약현황</h3></caption>
-									<tr>
-										<td>예약자명</td>
-										<td>예약 좌석</td>
-										<td>예약일</td>
-										<td>예약 시간</td>
-									</tr>
-									<c:forEach items="${rlist}" var="rvo" varStatus="status">
-									<tr>
-										<td>${rvo.userid}</td>
-										<td>${rvo.tname}</td>
-										<td>${rvo.reserveday}</td>
-										<td> ${timelist.get(status.index)}</td>
-									</tr>
-									</c:forEach>
-								</table>
-							<div id="end"></div>
-						</div>
+						<h4>전체 예약현황</h4>
+						<table id="table2"> <!-- 전체 예약 테이블 -->
+							<tr>
+								<td>예약자명</td>
+								<td>예약 좌석</td>
+								<td>예약일</td>
+								<td>예약 시간</td>
+							</tr>
+						<c:if test="${rlist.size()==0}">
+							<tr>
+								<td colspan="4" class="no">※ 예약된 좌석이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:forEach items="${rlist}" var="rvo" varStatus="status">
+							<tr>
+								<td>${rvo.userid}</td>
+								<td>${rvo.tname}</td>
+								<td>${rvo.reserveday}</td>
+								<td> ${timelist.get(status.index)}</td>
+							</tr>
+						</c:forEach>
+						</table>
 					</div>
 				</div>
 			</div>		
