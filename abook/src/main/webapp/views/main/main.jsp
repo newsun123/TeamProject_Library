@@ -444,24 +444,18 @@
 				</ul>
 			</div>
 			<div id="bconWrap">
-				<div class="bcon act">
+				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->
 					<ul>
-						<li><a href=""><img src="/static/img/main/b1_1.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b1_2.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b1_3.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b1_4.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b1_5.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b1_6.jpg"></a></li>
+						<c:forEach items="${blist}" var="bvo">
+						<li><a href="/breserve/content?bcode=${bvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bvo.bimg}"></a></li>
+						</c:forEach>
 					</ul>
 				</div>
-				<div class="bcon">
+				<div class="bcon"> <!-- 신착도서(이거 리스트) -->
 					<ul>
-						<li><a href=""><img src="/static/img/main/b2_1.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b2_2.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b2_3.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b2_4.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b2_5.jpg"></a></li>
-						<li><a href=""><img src="/static/img/main/b2_6.jpg"></a></li>
+						<c:forEach items="${bblist}" var="bbvo">
+						<li><a href="/breserve/content?bcode=${bbvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bbvo.bimg}"></a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

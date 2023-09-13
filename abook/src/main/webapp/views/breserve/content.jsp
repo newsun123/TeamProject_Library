@@ -190,13 +190,13 @@
 		
 		chk.onload = function() {
 			// alert(chk.responseText);
-			if(chk.responseText == "0") {
-				document.getElementById("jjim").src = img;
-			}else {
-				alert("오류! 오류! 장비를 점검하세요");
-				
+			if(chk.responseText=="1")
+        		alert("잘못된 동작이 발생했습니다");
+        	else if(chk.responseText=="0")
+        		document.getElementById("jjim").src=img;
+        	else if(chk.responseText=="2")
+        		location="/member/login?bcode=${bcode}";
 			}
-		}
 		chk.open("GET", url);
 		chk.send(); 
 	}
