@@ -20,13 +20,10 @@
     	margin-top:30px;
 		text-align: center;
 	}
-	table tr {
-		height:35px;
-	}
 	table tr td {
     	border-bottom: 1px solid #ddd;
 	}
-	table tr td:last-child{
+	table tr:last-child td{
 		border-bottom: none;
 	}
 	table#table1,
@@ -91,6 +88,9 @@
 	    width: 110px;
 	    height: 41px;
 	    border-radius: 3px;
+	}
+	.fs14{
+		font-size: 14px;
 	}
 </style>
 </head>
@@ -202,7 +202,7 @@
 									<input type="button" value="대출연장" id="giganbtn" onclick="location='giganUpdate?no=${map.no}'">						
 								</c:if>
 								<c:if test="${map.gigan!=0}">
-									대출연장불가						
+									<div class="fs14">대출연장불가</div>						
 								</c:if>
 								</td>
 							</tr>

@@ -16,12 +16,6 @@
     	margin-top:30px;
 		text-align: center;
 	}
-	table tr {
-		height:35px;
-	}
-	table tr td {
-		align:center;
-	}
 	table#table1,
 	table#table2{
 		margin-bottom: 110px;
@@ -34,8 +28,14 @@
 	    font-family: 'NotoSansM';
 	    text-align: center;
 	} 
+	table tr td {
+    	border-bottom: 1px solid #ddd;
+	}
+	table tr:last-child td{
+		border-bottom: none;
+	}
 	table tr td{
-		height: 55px;
+		height: 60px;
 	}
 	table tr td.no{
 		color: #666;
@@ -51,6 +51,18 @@
 	    border-radius: 3px;
 	    display: inline-block;
 	    line-height: 41px;
+	}
+	.tt1{
+		width: 430px;
+		padding-left: 30px;
+    	padding-right: 10px;
+		box-sizing: border-box;
+		height: 100%;
+		line-height: 55px;
+		text-align: left;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 </style>
 </head>
@@ -78,11 +90,11 @@
 					<div id="MyjjimWrap">
 						<table id="table">
 								<tr>
-									<td>도서명</td>
-									<td>출판사</td>
-									<td>출판일</td>
-									<td>찜한일자</td>
-									<td>예약하기</td>
+									<td width="430">도서명</td>
+									<td width="200">출판사</td>
+									<td width="180">출판일</td>
+									<td width="180">찜한일자</td>
+									<td width="180">예약하기</td>
 								</tr>
 							<c:if test="${mapall.size()==0}">
 								<tr>
@@ -92,7 +104,7 @@
 							<c:if test="${mapall.size()!=0}">
 							<c:forEach items="${mapall}" var="map">
 								<tr>
-									<td>${map.title}</td>
+									<td><div class="tt1">${map.title}</div></td>
 									<td>${map.publi}</td>
 									<td>${map.writeyear}</td>
 									<td>${map.writeday}</td>
