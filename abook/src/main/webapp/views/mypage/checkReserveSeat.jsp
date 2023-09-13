@@ -23,9 +23,6 @@
 	table tr {
 		height:35px;
 	}
-	table tr td {
-		align:center;
-	}
 	table#table1{
 		margin-bottom: 110px;
 	}
@@ -56,7 +53,7 @@
 					<li><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
 					<li class="on"><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
-					<li><a href="/mypage/loanlist"><span>도서대출리스트</span></a></li>
+					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
 					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
@@ -72,9 +69,9 @@
 						<table id="table1"> <!-- 금일 예약 테이블 -->
 							<tr>
 								<td>예약자명</td>
-								<td>예약 좌석</td>
-								<td>예약 시간</td>
-								<td>예약 취소</td>
+								<td>예약좌석</td>
+								<td>예약시간</td>
+								<td>예약취소</td>
 							</tr>
 							<c:if test="${mapall.size()==0}">
 							<tr>
@@ -110,7 +107,7 @@
 								<td>${rvo.userid}</td>
 								<td>${rvo.tname}</td>
 								<td>${rvo.reserveday}</td>
-								<td> ${timelist.get(status.index)}</td>
+								<td>${timelist.get(status.index)}</td>
 							</tr>
 						</c:forEach>
 						</table>

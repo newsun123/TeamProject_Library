@@ -178,10 +178,35 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public String loanlist(HttpSession session,Model model) {
+	public String loanlist(HttpSession session,Model model,HttpServletRequest request) {
+		
+		int page = 1;
+		if (request.getParameter("page") == null || request.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(request.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+
+		int chong = mapper.getChong();
+
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
 		
 		String userid=session.getAttribute("userid").toString();
-		ArrayList<HashMap> mapall=mapper.loanlist(userid);
+		ArrayList<HashMap> mapall=mapper.loanlist(userid,start);
 		model.addAttribute("mapall",mapall);
 		
 		return "/mypage/loanlist";
