@@ -16,4 +16,6 @@ public interface MemberMapper {
 	 public MemberVo mypage(String userid);
 	 public void mypageUpdateOk(MemberVo mvo);
 	 public void mypageUpdateOk2(MemberVo mvo);
+	 public String getBan(String userid);
+	 public MemberVo getMvo(MemberVo mvo);
 }

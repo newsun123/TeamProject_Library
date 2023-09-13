@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,12 @@
 	#failmsg{
 		font-size: 14px;
 	    color: #e52528;
-	    display:none;
+	    position: relative;
+    	top: -30px;
+	}
+	#banmsg{
+		font-size: 14px;
+	    color: #e52528;
 	    position: relative;
     	top: -30px;
 	}
@@ -104,7 +110,12 @@
 								<a href="/member/member">회원가입</a>
 							</span>
 						</div>
+						<c:if test="${chk==1}">
 						<p id="failmsg">일치하는 회원정보가 없습니다. 다시 입력하세요.</p>
+						</c:if>
+						<c:if test="${bchk==1}">
+						<p id="banmsg">본 계정은 임시정지 되었습니다. 사유 : ${breason}</p>
+						</c:if>
 						<p class="txt">※로그인이 안되시는 경우 한/영 키와 Caps Lock 키가 눌러져 있지 않은지 확인하세요.</p>
 					</div>
 				</div>

@@ -13,7 +13,39 @@
 	    padding: 7px;
 	    text-align: center;
 	}
+	.bForm {
+		display:none;
+	}
 </style>
+<script>
+function openBanForm(n) {
+	var bForm = document.getElementsByClassName("bForm");
+	var bformbtn = document.getElementsByClassName("bformbtn");
+	
+	bForm[n].style.display="block";
+	bformbtn[n].style.display="none";
+	
+}
+
+function closeForm(n) {
+	
+	var bForm = document.getElementsByClassName("bForm");
+	var bformbtn = document.getElementsByClassName("bformbtn");
+	
+	bForm[n].style.display="none";
+	bformbtn[n].style.display="inline-block";
+}
+
+function check(my) {
+	
+	var reason = my.bReason.value;
+	if(reason == null || reason.length == 0 || reason == " ") {
+		alert("사유를 다시 적어주세요")
+		return false;
+	}
+	return true;
+}
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -41,16 +73,28 @@
 									<td>이메일</td>
 									<td>가입일</td>
 									<td>임시 정지</td>
-									<td>삭제</td>
 								</tr>
-								<c:forEach items="${mlist}" var="mvo">
+								<c:forEach items="${mlist}" var="mvo" varStatus="sts">
 								<tr>
 									<td>${mvo.userid}</td>
 									<td>${mvo.name}</td>
 									<td>${mvo.email1}@${mvo.email2}</td>
 									<td>${mvo.writeday}</td>
-									<td><input type="button" value="임시 정지" onclick="openBanForm()"></td>
-									<td><input type="button" value="삭제" onclick="openDelForm()"></td>
+									<td>
+										<c:if test="${mvo.ban==0}">
+											<input type="button" value="임시 정지" class="bformbtn" onclick="openBanForm(${sts.index})" >
+										</c:if>
+										<c:if test="${mvo.ban==1}">
+											<input type="button" value="정지 해제" class="bformbtn" onclick="openBanForm(${sts.index})" >
+										</c:if>
+										<div class="bForm">
+										<form method="post" action="banOk" name="bForm" onsubmit="return check(this)">
+										<input type="hidden" name="userid" value="${mvo.userid}">
+											<input type="text" name="breason" placeholder="사유">
+											<input type="submit" value="정지"> <input type="button" value="취소" onclick="closeForm(${sts.index})">
+										</form>
+										</div>
+									</td>
 								</tr>
 								</c:forEach>
 						</table>

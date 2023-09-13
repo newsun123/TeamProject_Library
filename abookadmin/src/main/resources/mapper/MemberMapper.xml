@@ -10,4 +10,7 @@
 <select id="rSeat" resultType="com.example.demo.vo.ReserveSeatVo">
 	select * from reserveseat where userid=#{userid}
 </select>
+<insert id="banOk">
+	update member set breason=#{breason}, ban=1 where userid=#{userid}
+</insert>
 </mapper>

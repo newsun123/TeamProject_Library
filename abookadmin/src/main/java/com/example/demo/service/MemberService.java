@@ -9,5 +9,6 @@ public interface MemberService {
 	public String member(Model model);
 	public String memberBan(Model model);
 	public String detail(Model model, HttpServletRequest req);
+	public String banOk(HttpServletRequest req);
 	
 }

@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import com.example.demo.mapper.MemberMapper;
 import com.example.demo.vo.MemberVo;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+
 @Service
 @Qualifier("mems")
 public class MemberServiceImpl implements MemberService {
@@ -42,48 +44,70 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String login(Model model,HttpServletRequest request) {
+		//밴 된 사유 체크용 bchk 받기
 		
-		String page=request.getParameter("page");
-		String bcode=request.getParameter("bcode");
-		model.addAttribute("page",page);
-		model.addAttribute("bcode",bcode);
-		
+			String page=request.getParameter("page");
+			String bcode=request.getParameter("bcode");
+			String chk = request.getParameter("chk");
+			model.addAttribute("chk",chk);
+			model.addAttribute("page",page);
+			model.addAttribute("bcode",bcode);
+			
+
+			String bchk = request.getParameter("bchk");
+			model.addAttribute("bchk",bchk);
+			String userid=request.getParameter("userid");
+			String breason=mapper.getBan(userid);
+			model.addAttribute("breason",breason);	
+			
 		return "/member/login";
 	}
 
 	@Override
-	public String loginOk(MemberVo mvo, HttpSession session,HttpServletRequest request) {
+	public String loginOk(MemberVo mvo, HttpSession session, HttpServletRequest request) {
+
+		String name = mapper.loginOk(mvo);
+		String userid =request.getParameter("userid");
+		String usrid = mvo.getUserid();
+		String page = request.getParameter("page");
+		String bcode = request.getParameter("bcode");
 		
-		String name=mapper.loginOk(mvo);
-		String page=request.getParameter("page");	
-		String bcode=request.getParameter("bcode");	
-		
-		System.out.println(bcode);
-		if(bcode==null || bcode == "") { //그냥 로그인할때
-			
-			if(name==null){
+		mvo = mapper.getMvo(mvo);
+		int imsi = mvo.getBan();
+		String ban = Integer.toString(imsi);
+		if (bcode == null || bcode == "") { // 그냥 로그인할때
+
+			if (name == null) {
 				return "redirect:/member/login?chk=1";
-			}else{
-		
+				
+			} else if(ban.equals("1")) { // 임시정지 된 아이디 로그인 못하게 막기
+
+				userid = mvo.getUserid();
+				session.invalidate(); // 밴 됐으니까 로그인 해제
+				request.getSession(true); // 이거 해줘야 깨끗하단다
+				return "redirect:/member/login?bchk=1&userid=" + userid;
+				
+			}else {
 				session.setAttribute("userid", mvo.getUserid());
 				session.setAttribute("name", name);
 
-				return "/main/main";
+				return "redirect:/main/main";
+
 			}
-		
-		}else{ //도서예약에서 넘어올때
-			if(name==null){
-				return "redirect:/member/login?chk=1&page="+page+"&bcode="+bcode;
+
+		} else { // 도서예약에서 넘어올때
 			
-			}else{
-		
+			if (name == null) {
+				return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
+
+			} else {
+
 				session.setAttribute("userid", mvo.getUserid());
 				session.setAttribute("name", name);
 
-				return "redirect:/breserve/content?page="+page+"&bcode="+bcode;
+				return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
 			}
 		}
-		
 
 	}
 	
