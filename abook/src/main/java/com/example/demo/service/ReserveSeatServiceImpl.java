@@ -29,9 +29,10 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	@Override
 	public String chkReserveSeat(HttpSession session, Model model) {
+		//지금 총 예약이 몇개인지 확인하는 쿼리
 		String userid = session.getAttribute("userid").toString();
 		String time = LocalDate.now().toString();
-		//System.out.println(time);
+		System.out.println(time);
 		int total = mapper.totalTime(userid,time);
 		model.addAttribute("total",total);
 		return "redirect:/seat/reserveseat?total="+total;
@@ -39,24 +40,31 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	
 	@Override
-	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
+	public String reserveseat(HttpSession session, Model model, HttpServletRequest req) {
 		// 현재 시간에 맞춰 예약 안된 테이블은 전부 1로 바꾸자 0908
-		int now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
-		int change = now-1; // 현재 전 시간이니까 -1 함
-		String time = "time"+change;
-		//System.out.println(time);
-		mapper.closeTable(time); // 정해진 시간대 닫기 완료
-		
-		ArrayList<TableNameVo> list =mapper.searchTable();
-		model.addAttribute("list",list);
-		String total = req.getParameter("total");
-		
-		if (session.getAttribute("userid") == null) {
-			return "redirect:/member/login";
+		int now = Integer.parseInt(LocalTime.now().toString().substring(0, 2));
+		int change = now - 1; // 현재 전 시간이니까 -1 함
+		String time = "time" + change;
+		// System.out.println(time);
+		if (time == "time9" || time == "time10" || time == "time11" || time == "time12" || time == "time13"
+				|| time == "time14" || time == "time15" || time == "time16" || time == "time17" || time == "time18") {
+			mapper.closeTable(time); // 정해진 시간대 닫기 완료
+
+			ArrayList<TableNameVo> list = mapper.searchTable();
+			model.addAttribute("list", list);
+			String total = req.getParameter("total");
+
+			if (session.getAttribute("userid") == null) {
+				return "redirect:/member/login";
+			} else {
+				String name = session.getAttribute("name").toString();
+				model.addAttribute(name);
+				model.addAttribute("total", total);
+				 return "/seat/reserveseat";
+			}
+
 		} else {
-			String name = session.getAttribute("name").toString();
-			model.addAttribute(name);
-			model.addAttribute("total",total);
+			mapper.closeAllTable();
 			return "/seat/reserveseat";
 		}
 	}

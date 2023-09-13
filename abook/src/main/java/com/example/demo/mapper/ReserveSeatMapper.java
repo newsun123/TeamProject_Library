@@ -18,4 +18,5 @@ public interface ReserveSeatMapper {
 	public int totalTime(String userid,String time);
 	public ArrayList<TableNameVo> searchTable();
 	public void closeTable(String time);
+	public void closeAllTable();
 }

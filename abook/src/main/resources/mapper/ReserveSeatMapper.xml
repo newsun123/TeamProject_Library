@@ -25,4 +25,7 @@
 <update id="closeTable">
 	update tablename set ${time}=1 
 </update>
+<update id="closeAllTable">
+	update tablename set time9=1,time10=1,time11=1,time12=1,time13=1,time14=1,time15=1,time16=1,time17=1,time18=1; 
+</update>
 </mapper>
