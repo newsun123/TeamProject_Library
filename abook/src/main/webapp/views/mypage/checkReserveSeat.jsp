@@ -41,6 +41,18 @@
 		color: #666;
     	font-size: 14px;
 	}
+	.btn1{
+		background: #fff;
+	    border: 1px solid #967759;
+	    color: #967759;
+	    font-size: 14px;
+	    width: 110px;
+	    height: 41px;
+	    border-radius: 3px;
+	}
+	.ls{
+		letter-spacing: 0.5px;	
+	}
 </style>
 </head>
 <body>
@@ -68,11 +80,12 @@
 						<h4>금일 예약현황</h4>
 						<table id="table1"> <!-- 금일 예약 테이블 -->
 							<tr>
-								<td>예약자명</td>
-								<td>예약 좌석</td>
-								<td>예약 시간</td>
-								<td>총 예약시간</td>
-								<td>예약 취소</td>
+								<td width="100">번호</td>
+								<td width="190">예약자명</td>
+								<td width="190">예약좌석</td>
+								<td>예약시간</td>
+								<td width="180">총예약시간</td>
+								<td width="180">예약취소</td>
 							</tr>
 							<c:if test="${rtoday.size()==0}">
 							<tr>
@@ -82,11 +95,12 @@
 							<c:if test="${rtoday.size()!=0}">
 							<c:forEach items="${rtoday}" var="map" varStatus="sts">
 							<tr>
+								<td>${sts.index+1}</td>
 								<td>${map.userid}</td>
-								<td>${map.tname}</td>
-								<td>${timelist2.get(sts.index)}</td>
+								<td>${map.tname} 좌석</td>
+								<td class="ls">${timelist2.get(sts.index)}</td>
 								<td>${chongtimes2.get(sts.index)}시간</td>
-								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'"></td>
+								<td><input type="button" value="예약취소" class="btn1" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'"></td>
 							</tr>
 							</c:forEach>
 							</c:if>	
@@ -94,11 +108,12 @@
 						<h4>전체 예약현황</h4>
 						<table id="table2"> <!-- 전체 예약 테이블 -->
 							<tr>
-								<td>예약자명</td>
-								<td>예약 좌석</td>
-								<td>예약일</td>
-								<td>예약 시간</td>
-								<td>총 예약시간</td>
+								<td width="100">번호</td>
+								<td width="190">예약자명</td>
+								<td width="190">예약좌석</td>
+								<td width="170">예약일</td>
+								<td>예약시간</td>
+								<td width="150">총예약시간</td>
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<tr>
@@ -107,11 +122,11 @@
 						</c:if>
 						<c:forEach items="${rlist}" var="rvo" varStatus="status">
 							<tr>
+								<td>${status.index+1}</td>
 								<td>${rvo.userid}</td>
-								<td>${rvo.tname}</td>
+								<td>${rvo.tname} 좌석</td>
 								<td>${rvo.reserveday}</td>
-
-								<td> ${timelist.get(status.index)}</td>
+								<td class="ls"> ${timelist.get(status.index)}</td>
 								<td>${chongtimes.get(status.index)}시간</td>
 							</tr>
 						</c:forEach>

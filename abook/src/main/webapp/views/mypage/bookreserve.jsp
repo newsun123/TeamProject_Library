@@ -24,7 +24,10 @@
 		height:35px;
 	}
 	table tr td {
-		align:center;
+    	border-bottom: 1px solid #ddd;
+	}
+	table tr td:last-child{
+		border-bottom: none;
 	}
 	table#table1,
 	table#table2{
@@ -39,7 +42,7 @@
 	    text-align: center;
 	} 
 	table tr td{
-		height: 55px;
+		height: 60px;
 	}
 	table tr td.no{
 		color: #666;

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 	#MypageWrap{
-		padding-bottom:80px; 
+		padding-bottom:30px; 
 	}
 	table{
 		border-bottom: 1px solid #ddd;

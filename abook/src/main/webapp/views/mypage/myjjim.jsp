@@ -8,94 +8,49 @@
 <title>Insert title here</title>
 <style>
 	#MyjjimWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
-	    text-align: center;
+		padding-bottom:30px; 
 	}
-	form{
-		width: 100%;
-	    display: block;
-	}
-	table#table1{
+	table{
 		border-bottom: 1px solid #ddd;
-    	border-top: 2px solid #666;
+    	border-top: 2px solid #cecece;
+    	margin-top:30px;
+		text-align: center;
 	}
-	table#table1 tr{
-		height: 300px;
+	table tr {
+		height:35px;
 	}
-	table#table tr td{
-		border-bottom: 1px solid #e4e4e4;
-		padding:0 10px;
+	table tr td {
+		align:center;
 	}
-	table#table1 tr td:nth-child(1){
-	    width: 220px;
-	    padding: 30px 0;
+	table#table1,
+	table#table2{
+		margin-bottom: 110px;
 	}
-	table#table1 tr td:nth-child(1) > div{
-		width: 220px;
-		height: 300px;
+	table tr:first-child td {
+	    background-color: #f9f9fb;
+	    border-bottom: 1px solid #ddd;
+	    height: 55px;
+	    color: #333;
+	    font-family: 'NotoSansM';
+	    text-align: center;
+	} 
+	table tr td{
+		height: 55px;
 	}
-	table#table1 img{
-	    width: 100%;
-	    height:100%;
-	    box-sizing: border-box;
-    	border: 1px solid #e2e2e2;   	   
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
 	}
-	#conBox{
-		margin-left: 30px;
-		padding: 30px 0;
-		height: 370px;
-		text-align: left;
-	}
-	#conBox > div{
-		height: 45px;
-    	line-height: 45px;
-	}
-	#conBox .btn {
-		border:1px solid black;
-	}
-	.aa{
-		font-family: 'NotoSansM';
-		font-size: 20px;
-		display: flex;
-		align-items: center;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.bb{
-		color:#777;
-	}
-	.bb span{
-		margin-left: 20px;
-	}
-	.cc{
-		color:#777;
-	}
-	.dd{
-		color: #555;
-	}
-	.ee{
-		color: #444;
-	    line-height: 29px!important;
-	    width: 100%;
-	    text-overflow: ellipsis;
-	    overflow: hidden;
-	    word-break: break-word;
-	    display: -webkit-box;
-	    -webkit-line-clamp: 2;
-	    -webkit-box-orient: vertical;
-	    height: auto!important;
-	}
-	.rbtn{
-		display: inline-block;
-	    border: 1px solid #e2e2e2;
+	.btn1{
+		background: #fff;
+	    border: 1px solid #967759;
+	    color: #967759;
+	    font-size: 14px;
+	    width: 110px;
+	    height: 41px;
 	    border-radius: 3px;
-	    color: #71757b;
-	    padding: 0 20px;
-	    line-height: 43px;
-	    height: 45px;
-	    margin-bottom: 30px;
+	    display: inline-block;
+	    line-height: 41px;
 	}
 </style>
 </head>
@@ -123,19 +78,28 @@
 					<div id="MyjjimWrap">
 						<table id="table">
 								<tr>
-									<td>제목</td>
+									<td>도서명</td>
 									<td>출판사</td>
 									<td>출판일</td>
-									<td>찜한 일자</td>
+									<td>찜한일자</td>
+									<td>예약하기</td>
 								</tr>
+							<c:if test="${mapall.size()==0}">
+								<tr>
+									<td colspan="6" class="no">※ 찜한 도서가 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${mapall.size()!=0}">
 							<c:forEach items="${mapall}" var="map">
-								<tr onclick="location='/breserve/content?bcode=${map.bcode.substring(0,4)}&mj=1&userid=${map.userid}'">
+								<tr>
 									<td>${map.title}</td>
 									<td>${map.publi}</td>
 									<td>${map.writeyear}</td>
 									<td>${map.writeday}</td>
+									<td><a href="/breserve/content?bcode=${map.bcode.substring(0,4)}&mj=1&userid=${map.userid}" class="btn1">예약하기</a></td>
 								</tr>
 							</c:forEach>	
+							</c:if>
 						</table>	
 					</div>
 				</div>
