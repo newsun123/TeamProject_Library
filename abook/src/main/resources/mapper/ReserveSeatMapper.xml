@@ -14,7 +14,7 @@
 </update>
 
 <select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
-	select * from reserveseat where userid=#{userid}
+	select * from reserveseat where userid=#{userid} order by no desc limit 1
 </select>
 <select id="totalTime" resultType="int">
 	select ifnull(sum(time9+time10+time11+time12+time13+time14+time15+time16+time17+time18),0) from reserveseat where userid=#{userid} and reserveday=#{time}
@@ -24,5 +24,8 @@
 </select>
 <update id="closeTable">
 	update tablename set ${time}=1 
+</update>
+<update id="closeAllTable">
+	update tablename set time9=1,time10=1,time11=1,time12=1,time13=1,time14=1,time15=1,time16=1,time17=1,time18=1; 
 </update>
 </mapper>

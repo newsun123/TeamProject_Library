@@ -4,7 +4,7 @@
 <select id="reserveok" resultType="com.example.demo.vo.ReserveSeatVo">
 	select * from reserveseat where userid=#{userid}
 </select>
-<select id="reserveToday" resultType="HashMap">
+<select id="reserveToday" resultType="com.example.demo.vo.ReserveSeatVo">
 	select * from reserveseat where userid=#{userid} and reserveday=#{today}
 </select>
 <delete id="cancelSeat">
@@ -46,7 +46,7 @@
 	</select>
 	<!-- jjim 추가 0911 -->
 	<select id="myjjim" resultType="HashMap">
-		select j.writeday, j.bcode, b.title, b.publi, b.writer, b.writeyear, b.ect, b.bimg 
+		select j.writeday, j.bcode,j.userid, b.title, b.publi, b.writer, b.writeyear, b.ect, b.bimg 
 		from jjim as j inner join bookregi as b on b.bcode=j.bcode
 		where userid=#{userid}
 	</select>

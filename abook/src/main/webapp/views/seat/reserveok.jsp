@@ -64,13 +64,11 @@
 										<td>예약 좌석</td>
 										<td>예약 시간</td>
 									</tr>
-									<c:forEach items="${rlist}" var="rvo" varStatus="status">
 									<tr>
 										<td>${rvo.userid}</td>
 										<td>${rvo.tname}</td>
-										<td>${timelist.get(status.index)}</td>
+										<td>${timelist.time}</td>
 									</tr>
-									</c:forEach>
 								</table>
 								<div style="margin-top:30px;">예약취소는 <b style="font-weight:600;"> 마이페이지 > 좌석예약</b> 에서 가능하십니다.</div>
 							</div>	

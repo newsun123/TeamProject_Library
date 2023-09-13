@@ -12,7 +12,7 @@ import com.example.demo.vo.TableNameVo;
 @Mapper
 public interface MypageMapper {
 	public ArrayList<ReserveSeatVo> reserveok(String userid);
-	public ArrayList<HashMap> reserveToday(String userid, String today);
+	public ArrayList<ReserveSeatVo> reserveToday(String userid, String today);
 	public void cancelSeat(String no);
 	public void resetTablename(String time,String tname);
 	// 0909 강서영 백업

@@ -69,22 +69,24 @@
 						<table id="table1"> <!-- 금일 예약 테이블 -->
 							<tr>
 								<td>예약자명</td>
-								<td>예약좌석</td>
-								<td>예약시간</td>
-								<td>예약취소</td>
+								<td>예약 좌석</td>
+								<td>예약 시간</td>
+								<td>총 예약시간</td>
+								<td>예약 취소</td>
 							</tr>
-							<c:if test="${mapall.size()==0}">
+							<c:if test="${rtoday.size()==0}">
 							<tr>
 								<td colspan="4" class="no">※ 금일 예약된 좌석이 없습니다.</td>
 							</tr>
 							</c:if>
-							<c:if test="${mapall.size()!=0}">
-							<c:forEach items="${mapall}" var="map" varStatus="sts">
+							<c:if test="${rtoday.size()!=0}">
+							<c:forEach items="${rtoday}" var="map" varStatus="sts">
 							<tr>
 								<td>${map.userid}</td>
 								<td>${map.tname}</td>
-								<td>${timelist.get(sts.index)}</td>
-								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime.get(sts.index)}&tname=${map.tname}'"></td>
+								<td>${timelist2.get(sts.index)}</td>
+								<td>${chongtimes2.get(sts.index)}시간</td>
+								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'"></td>
 							</tr>
 							</c:forEach>
 							</c:if>	
@@ -96,6 +98,7 @@
 								<td>예약 좌석</td>
 								<td>예약일</td>
 								<td>예약 시간</td>
+								<td>총 예약시간</td>
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<tr>
@@ -107,7 +110,9 @@
 								<td>${rvo.userid}</td>
 								<td>${rvo.tname}</td>
 								<td>${rvo.reserveday}</td>
-								<td>${timelist.get(status.index)}</td>
+
+								<td> ${timelist.get(status.index)}</td>
+								<td>${chongtimes.get(status.index)}시간</td>
 							</tr>
 						</c:forEach>
 						</table>

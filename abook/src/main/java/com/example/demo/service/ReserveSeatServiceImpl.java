@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,9 +29,10 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	@Override
 	public String chkReserveSeat(HttpSession session, Model model) {
+		//지금 총 예약이 몇개인지 확인하는 쿼리
 		String userid = session.getAttribute("userid").toString();
 		String time = LocalDate.now().toString();
-		//System.out.println(time);
+		System.out.println(time);
 		int total = mapper.totalTime(userid,time);
 		model.addAttribute("total",total);
 		return "redirect:/seat/reserveseat?total="+total;
@@ -38,24 +40,31 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	
 	
 	@Override
-	public String reserveseat(HttpSession session, Model model,HttpServletRequest req) {
+	public String reserveseat(HttpSession session, Model model, HttpServletRequest req) {
 		// 현재 시간에 맞춰 예약 안된 테이블은 전부 1로 바꾸자 0908
-		int now = Integer.parseInt(LocalTime.now().toString().substring(0,2));
-		int change = now-1; // 현재 전 시간이니까 -1 함
-		String time = "time"+change;
-		//System.out.println(time);
-		mapper.closeTable(time); // 정해진 시간대 닫기 완료
-		
-		ArrayList<TableNameVo> list =mapper.searchTable();
-		model.addAttribute("list",list);
-		String total = req.getParameter("total");
-		
-		if (session.getAttribute("userid") == null) {
-			return "redirect:/member/login";
+		int now = Integer.parseInt(LocalTime.now().toString().substring(0, 2));
+		int change = now - 1; // 현재 전 시간이니까 -1 함
+		String time = "time" + change;
+		// System.out.println(time);
+		if (time == "time9" || time == "time10" || time == "time11" || time == "time12" || time == "time13"
+				|| time == "time14" || time == "time15" || time == "time16" || time == "time17" || time == "time18") {
+			mapper.closeTable(time); // 정해진 시간대 닫기 완료
+
+			ArrayList<TableNameVo> list = mapper.searchTable();
+			model.addAttribute("list", list);
+			String total = req.getParameter("total");
+
+			if (session.getAttribute("userid") == null) {
+				return "redirect:/member/login";
+			} else {
+				String name = session.getAttribute("name").toString();
+				model.addAttribute(name);
+				model.addAttribute("total", total);
+				 return "/seat/reserveseat";
+			}
+
 		} else {
-			String name = session.getAttribute("name").toString();
-			model.addAttribute(name);
-			model.addAttribute("total",total);
+			mapper.closeAllTable();
 			return "/seat/reserveseat";
 		}
 	}
@@ -96,63 +105,58 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 			return "redirect:/seat/reserveok?userid="+userid;
 		}
 
-	@Override
-	public String reserveok(HttpServletRequest req, Model model) {
-		String userid=req.getParameter("userid");
-		
-		
-		model.addAttribute("userid",userid);
-		ArrayList<ReserveSeatVo> rlist = mapper.reserveok(userid);
-		model.addAttribute("rlist",rlist);
-		
-		//시간 값이 int로 들어가서 값을 스트링으로 들여보내려고 노가다함.
-		ArrayList<String> timelist = new ArrayList<String>();
-		
-		for (int i = 0; i < rlist.size(); i++) {
+		@Override
+		public String reserveok(HttpServletRequest req, Model model) {
+			String userid = req.getParameter("userid");
+
+			model.addAttribute("userid", userid);
+			ReserveSeatVo rvo = mapper.reserveok(userid);
+			model.addAttribute("rvo", rvo);
+
+			// 시간 값이 int로 들어가서 값을 스트링으로 들여보내려고 노가다함.
+			HashMap<String, String> timelist = new HashMap<String, String>();
+
 			String time = "";
-			int time9 = rlist.get(i).getTime9();
-			int time10 = rlist.get(i).getTime10();
-			int time11 = rlist.get(i).getTime11();
-			int time12 = rlist.get(i).getTime12();
-			int time13 = rlist.get(i).getTime13();
-			int time14 = rlist.get(i).getTime14();
-			int time15 = rlist.get(i).getTime15();
-			int time16 = rlist.get(i).getTime16();
-			int time17 = rlist.get(i).getTime17();
-			int time18 = rlist.get(i).getTime18();
-			
-			if(time9 == 1)
+			int time9 = rvo.getTime9();
+			int time10 = rvo.getTime10();
+			int time11 = rvo.getTime11();
+			int time12 = rvo.getTime12();
+			int time13 = rvo.getTime13();
+			int time14 = rvo.getTime14();
+			int time15 = rvo.getTime15();
+			int time16 = rvo.getTime16();
+			int time17 = rvo.getTime17();
+			int time18 = rvo.getTime18();
+
+			if (time9 == 1)
 				time = time + "9시~10시,";
-			if(time10 == 1)
+			if (time10 == 1)
 				time = time + "10시~11시,";
-			if(time11 == 1)
+			if (time11 == 1)
 				time = time + "11시~12시,";
-			if(time12 == 1)
+			if (time12 == 1)
 				time = time + "12시~13시,";
-			if(time13 == 1)
+			if (time13 == 1)
 				time = time + "13시~14시,";
-			if(time14 == 1) 
+			if (time14 == 1)
 				time = time + "14시~15시,";
-			if(time15 == 1) 
+			if (time15 == 1)
 				time = time + "15시~16시,";
-			if(time16 == 1) 
-				time = time + "16시~17시,";			
-			if(time17 == 1) 
-				time= time + "17시~18시,";			
-			if(time18 == 1) 
-				time = time + "18시~19시,";	
-			
-			time=time.substring(0, time.length()-1); // 마지막 ,를 자르기 위해 사용
-		    //System.out.println(time.length());
-			timelist.add(time);
+			if (time16 == 1)
+				time = time + "16시~17시,";
+			if (time17 == 1)
+				time = time + "17시~18시,";
+			if (time18 == 1)
+				time = time + "18시~19시,";
+
+			time = time.substring(0, time.length() - 1); // 마지막 ,를 자르기 위해 사용
+			// System.out.println(time.length());
+			timelist.put("time", time);
+
+			model.addAttribute("timelist", timelist);
+
+			return "/seat/reserveok";
 		}
-		
-		
-		
-		model.addAttribute("timelist",timelist);
-		
-		return "/seat/reserveok";
-	}
 
 	
 
