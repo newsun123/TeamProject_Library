@@ -122,23 +122,18 @@
 				<div id="contents">
 					<div id="MyjjimWrap">
 						<table id="table">
-							<c:forEach items="${mapall}" var="map">
 								<tr>
-									<td>
-										<div>
-											<img src="/static/img/breserve/${map.bimg}">				
-										</div>
-									</td>
-									<td>
-										<div id="conBox">
-											<div class="aa">${map.title}</div>
-											<div class="bb">${map.publi}<span>${map.writer} 지음</span></div>
-											<div class="cc">${map.writeyear}</div>
-											<div class="dd">소장도서관 : 작은 도서관</div>
-											<div class="ee">${map.ect}</div>
-											<div class="move"><input type="button" class="btn" value="바로가기" onclick="location='/breserve/content?bcode=${map.bcode}&mj=1'"></div>
-										</div>
-									</td>
+									<td>제목</td>
+									<td>출판사</td>
+									<td>출판일</td>
+									<td>찜한 일자</td>
+								</tr>
+							<c:forEach items="${mapall}" var="map">
+								<tr onclick="location='/breserve/content?bcode=${map.bcode.substring(0,4)}&mj=1&userid=${map.userid}'">
+									<td>${map.title}</td>
+									<td>${map.publi}</td>
+									<td>${map.writeyear}</td>
+									<td>${map.writeday}</td>
 								</tr>
 							</c:forEach>	
 						</table>	
