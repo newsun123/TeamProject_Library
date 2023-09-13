@@ -23,9 +23,6 @@
 	table tr {
 		height:35px;
 	}
-	table tr td {
-		align:center;
-	}
 	table#table1{
 		margin-bottom: 110px;
 	}
@@ -56,7 +53,7 @@
 					<li><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
 					<li class="on"><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
-					<li><a href="/mypage/loanlist"><span>도서대출리스트</span></a></li>
+					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
 					<li><a href="#"><span>1:1문의현황</span></a></li>
 				</ul>
@@ -113,6 +110,7 @@
 								<td>${rvo.userid}</td>
 								<td>${rvo.tname}</td>
 								<td>${rvo.reserveday}</td>
+
 								<td> ${timelist.get(status.index)}</td>
 								<td>${chongtimes.get(status.index)}시간</td>
 							</tr>

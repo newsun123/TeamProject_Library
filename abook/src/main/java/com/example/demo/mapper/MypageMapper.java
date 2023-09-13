@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.vo.ReserveSeatVo;
 import com.example.demo.vo.TableNameVo;
@@ -22,7 +23,8 @@ public interface MypageMapper {
 	public void changeState(String bcode);
 	public void giganUpdate(String no);
 	public void returnOk(String no);
-	public ArrayList<HashMap> loanlist(String userid);
+	public int getChong();
+	public ArrayList<HashMap> loanlist(String userid,@Param("start") int start);
 	// jjim추가 0911
 	public ArrayList<HashMap> myjjim(String userid);
 
