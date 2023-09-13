@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -71,12 +73,60 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String readnum(InquiryVo ivo) {
+	public String readnum(InquiryVo ivo,HttpServletRequest req) {
 		
+		String no=req.getParameter("no");
+		String page=req.getParameter("page");
 		mapper.readnum(ivo);
 		
-		return "redirect:/inquiry/content?no=${no}";
+		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
-	
-	
+
+	@Override
+	public String content(InquiryVo ivo, HttpServletRequest req, Model model) {
+		
+		String no=req.getParameter("no");
+		String page=req.getParameter("page");
+		
+		// 줄바꿈 처리 => ivo 재활용
+		ivo=mapper.content(ivo);
+		String imsi=ivo.getContent().replace("\r\n", "<br>");
+		ivo.setContent(imsi);
+	 
+		model.addAttribute("ivo",ivo);
+		model.addAttribute("page",page);
+		
+		return "/inquiry/content";
+	}
+
+	@Override
+	public String delete(InquiryVo ivo,HttpServletRequest req) {
+		
+		String page=req.getParameter("page");
+		mapper.delete(ivo);
+		
+		return "redirect:/inquiry/list?page="+page;
+	}
+
+	@Override
+	public String update(InquiryVo ivo,Model model,HttpServletRequest req) {
+		
+		String no=req.getParameter("no");
+		String page=req.getParameter("page");
+		mapper.update(ivo);
+		
+		model.addAttribute("ivo",mapper.content(ivo));
+		model.addAttribute("page","page");
+		
+		return "/inquiry/update";
+	}
+
+	@Override
+	public String updateOk(InquiryVo ivo, HttpServletRequest req) {
+		
+		String page=req.getParameter("page");
+		String no=req.getParameter("no");
+		mapper.updateOk(ivo);
+		return "redirect:/inquiry/content?no="+no+"&page="+page;
+	}
 }

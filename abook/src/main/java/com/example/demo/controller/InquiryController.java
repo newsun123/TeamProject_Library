@@ -26,21 +26,45 @@ public class InquiryController {
 		// 1234 1234
 	}
 	
-	@RequestMapping("inquiry/write")
+	@RequestMapping("/inquiry/write")
 	public String write()
 	{
 		return service.write();
 	}
 	
-	@RequestMapping("inquiry/writeOk")
+	@RequestMapping("/inquiry/writeOk")
 	public String writeOk(InquiryVo ivo)
 	{
 		return service.writeOk(ivo);
 	}
 	
 	@RequestMapping("/inquiry/readnum")
-	public String readnum(InquiryVo ivo)
+	public String readnum(InquiryVo ivo,HttpServletRequest req)
 	{
-		return service.readnum(ivo);
+		return service.readnum(ivo,req);
+	}
+	
+	@RequestMapping("/inquiry/content")
+	public String content(InquiryVo ivo,HttpServletRequest req,Model model)
+	{
+		return service.content(ivo,req,model);
+	}
+	
+	@RequestMapping("/inquiry/delete")
+	public String delete(InquiryVo ivo,HttpServletRequest req)
+	{
+		return service.delete(ivo,req);
+	}
+	
+	@RequestMapping("/inquiry/update")
+	public String update(InquiryVo ivo,Model model,HttpServletRequest req)
+	{
+		return service.update(ivo,model,req);
+	}
+	
+	@RequestMapping("/inquiry/updateOk")
+	public String updateOk(InquiryVo ivo,HttpServletRequest req)
+	{
+		return service.updateOk(ivo,req);
 	}
 }

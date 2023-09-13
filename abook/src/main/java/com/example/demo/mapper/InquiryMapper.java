@@ -15,4 +15,8 @@ public interface InquiryMapper {
 	public void writeOk(InquiryVo ivo);
 	public void setRownum(int r);
 	public void readnum(InquiryVo ivo);
+	public InquiryVo content(InquiryVo ivo);
+	public void delete(InquiryVo ivo);
+	public void update(InquiryVo ivo);
+	public void updateOk(InquiryVo ivo);
 }
