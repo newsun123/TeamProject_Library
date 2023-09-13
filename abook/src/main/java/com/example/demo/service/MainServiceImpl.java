@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MainMapper;
+import com.example.demo.vo.BookregiVo;
 import com.example.demo.vo.GongjiVo;
 
 @Service
@@ -84,6 +85,14 @@ public class MainServiceImpl  implements MainService{
 			model.addAttribute("setN",setN);
 			model.addAttribute("setPc",setPc);
 		}
+		
+		// 메인페이지 인기도서 신착도서 꺼내오기
+		ArrayList<BookregiVo> blist = mapper.bookList();
+		ArrayList<BookregiVo> bblist = mapper.bestBookList();
+		
+		model.addAttribute("blist",blist);
+		model.addAttribute("bblist",bblist);
+		
 
 
 		return "/main/main";

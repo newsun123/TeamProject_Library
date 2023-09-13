@@ -49,4 +49,9 @@ public class BreserveController {
 	public @ResponseBody String deljjim(HttpServletRequest req,HttpSession ss) {
 		return service.deljjim(req,ss);
 	}
+	
+	@RequestMapping("/breserve/bestbook")
+	public String bestbook(HttpServletRequest req,Model model) {
+		return service.bestbook(req,model);
+	}
 }
