@@ -118,11 +118,8 @@ public class BreserveServiceImpl implements BreserveService{
 
 	@Override
 	public int cntCheck(HttpSession session) {
-		
-		String userid=session.getAttribute("userid").toString();
-		
-		int cnt=mapper.cntCheck(userid);
-		return cnt;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
