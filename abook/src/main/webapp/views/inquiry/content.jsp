@@ -94,7 +94,7 @@
 								<td> ${mvo.content} </td>
 							</tr>
 							<tr>
-								<td>등록일111</td>
+								<td>등록일</td>
 								<td class="tl">${ivo.writeday}</td>
 							</tr>
 						 </table>
