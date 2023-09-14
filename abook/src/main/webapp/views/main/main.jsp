@@ -203,6 +203,7 @@
 	#bTxt{
 		width: 100%;
 		height: 100px;
+		position: relative;
 	}
 	#bTxt ul{
 		display: flex;
@@ -309,6 +310,9 @@
 	    position: relative;
 	    left: 15px;
 	    top: 18px;
+	}
+	.imore2{
+		left: 250px;
 	}
 </style>
 <script>
@@ -442,6 +446,7 @@
 					<li class="act">인기도서</li>
 					<li>신착도서</li>
 				</ul>
+				<div class="imore imore2"><a href=""></a></div>
 			</div>
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->

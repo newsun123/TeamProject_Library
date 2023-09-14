@@ -131,6 +131,7 @@
 		pointer-event:none;
 		cursor:default;
 	}
+	/*page버튼처리끝*/
 	#search{
 		padding:10px 20px;
 		border-radius:5px;
@@ -153,7 +154,6 @@
 	    position: relative;
 	    height: 48px;
 	    border: 1px solid #e2e2e2;
-	    margin-left: 11px;
 	    background-color: #fff;
 	}
 	#select .selected{
@@ -207,6 +207,15 @@
 	    vertical-align: top!important;
 	    width: 500px;
 	}
+	.num_a{
+		margin-bottom: 17px;
+   	 	font-size: 18px;
+   	 	color: #666;
+    	font-family: 'NotoSansM';
+	}
+	.num_a .lst1{
+		margin-right: 10px;
+	}
 </style>
 <script>
 	window.onload=function(){
@@ -226,7 +235,7 @@
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
 		
-		document.getElementsByClassName("lst")[${num}].style.color="blue";
+		document.getElementsByClassName("lst")[${num}].style.color="#c5425a";
 	}
 	var schk=0;
 	function selectView(){
@@ -288,29 +297,28 @@
 				<div id="contents">
 					<div id="bookregiWrap">
 					<form name="kjh" method="post" action="list">
-					<input type="hidden" value="${type}" name="type" id="seltype">
-					<input type="hidden" value="${keyword}">
+						<input type="hidden" value="${type}" name="type" id="seltype">
+						<input type="hidden" value="${keyword}">
 						<div id="select">
 							<div class="selected" onclick="selectView()">
-								<div class="selected_value" id="sv">전체</div>
-								
+								<div class="selected_value" id="sv">전체</div>								
 								<div class="arrow"></div>
 							</div>
-								<ul id="type">
-									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
-									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
-									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
-									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
-								</ul>
+							<ul id="type">
+								<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+								<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
+								<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
+								<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
+							</ul>
 						</div>
 						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
 						<input type="submit" id="search" class="searchtext" value="검색">
-					</form>
-						<table>	
-						<div> <!-- 인기도서 신착도서 버튼 만들기 0913최윤도 -->
-							<input type="button" value="신착도서" class="lst" onclick="listChange(0)">
+						<div class="num_a"> <!-- 인기도서 신착도서 버튼 만들기 0913최윤도 -->
+							<input type="button" value="신착도서" class="lst lst1" onclick="listChange(0)">
 							<input type="button" value="인기도서" class="lst" onclick="listChange(1)">
 						</div>					
+					</form>
+						<table>	
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
 								<td> 

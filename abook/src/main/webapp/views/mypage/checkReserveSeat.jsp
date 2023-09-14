@@ -91,7 +91,7 @@
 							</tr>
 							<c:if test="${rtoday.size()==0}">
 							<tr>
-								<td colspan="4" class="no">※ 금일 예약된 좌석이 없습니다.</td>
+								<td colspan="5" class="no">※ 금일 예약된 좌석이 없습니다.</td>
 							</tr>
 							</c:if>
 							<c:if test="${rtoday.size()!=0}">
@@ -117,7 +117,7 @@
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<tr>
-								<td colspan="4" class="no">※ 예약된 좌석이 없습니다.</td>
+								<td colspan="5" class="no">※ 예약된 좌석이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:forEach items="${rlist}" var="rvo" varStatus="status">
