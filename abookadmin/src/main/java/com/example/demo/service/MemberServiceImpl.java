@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MemberMapper;
+import com.example.demo.vo.BookLoanVo;
 import com.example.demo.vo.MemberVo;
 import com.example.demo.vo.ReserveSeatVo;
 
@@ -42,6 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		HashMap map = mapper.detail(userid);
 		model.addAttribute("map", map);
 		
+		// 작성글 불러오기 + 아직 안됌 기다리기
+		
+		// 대출이력 불러오기
+		ArrayList<BookLoanVo> blist = mapper.bLoan(userid);
+		model.addAttribute("blist",blist);
 		// 좌석정보 불러오기
 		ArrayList<ReserveSeatVo> rlist = mapper.rSeat(userid);
 		model.addAttribute("rlist", rlist);
