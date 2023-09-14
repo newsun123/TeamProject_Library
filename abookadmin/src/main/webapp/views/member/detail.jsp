@@ -113,6 +113,15 @@
 								<td>대출일</td>
 								<td>반납일</td>
 							</tr>
+							<c:forEach items="${blist}" var="bvo">
+							<tr>
+								<td>${bvo.title}</td>
+								<td>${bvo.publi}</td>
+								<td>${bvo.writer}</td>
+								<td>${bvo.rental}</td>
+								<td>${bvo.writeday}</td>
+							</tr>
+							</c:forEach>
 						</table>
 						<h4>좌석예약이력</h4>
 						<table id="table4">

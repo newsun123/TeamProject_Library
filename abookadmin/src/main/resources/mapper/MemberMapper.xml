@@ -16,4 +16,7 @@
 <update id="unsusBan">
 	update member set ban=0, breason="" where userid=#{usreid}
 </update>
+<select id="bLoan" resultType="com.example.demo.vo.BookLoanVo">
+	select * from bookloan where userid=#{userid}
+</select>
 </mapper>
