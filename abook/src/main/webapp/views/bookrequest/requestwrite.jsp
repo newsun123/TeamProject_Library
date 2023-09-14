@@ -8,38 +8,71 @@
 <title>Insert title here</title>
 <style>
 	#requestWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
+		padding-bottom: 30px;
+	}
+	form{
+		width: 100%;
+	    display: block;
+	}
+	table{
+		border-top: 2px solid #cecece;
+	}
+	table tr{
+		height: 55px;
+	}
+	table tr td{
+		border-bottom: 1px solid #e4e4e4;
+		padding:0 10px;
+	}
+	table tr td:first-child {
+		padding-left: 10px;
+	    background: #f8f8fa;
+	    width: 112px;
+	    border-right: 1px solid #e4e4e4;
+	    font-size: 15px;
+	    font-family: 'NotoSansM';
+	    color: #555;
+	    letter-spacing: 1px;
+	}
+	table input{
+		width: 100%;
+		font-size: 15px;
+		border:none!important;
+		padding:0!important;	
+	}
+	#btn{
+		text-align: center;
+		padding: 30px 0;
+	}
+	input[type=submit]{
+	    color: #fff;
 	    text-align: center;
+	    background: #4e68b9;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
 	}
-	.nameTop{
-		height:60px;
-		border-bottom:solid 2px #000;
-		font-size:25px;
-		font-weight:bold;
-		text-align:left;
+	input[type=button]{
+		text-align: center;
+	    background: #e0e3e6;
+	    color: #6e7277;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
 	}
-	.request{
-		border-bottom:1px solid #ddd;
-		box-sizing:border-box;
-		padding:50px 0;
-		text-align:center;
-		flex-direction: column;
-		justify-content:center;
-	}
-	.request input[type=submit]{
-		margin-top:20px;
-		margin-right:20px;
-	}
-	form > div{
-		width:450px;
-		margin:auto;
-		margin-bottom:20px;
-		height:48px;
-	}
-	form input{
-		width:80%;
+	textarea{
+		width: 100%;
+	    height: 100%;
+	    display: block;
+	    padding: 10px 0;
+	    font-size: 15px;
+	    overflow:hidden;
 	}
 	.mark{
 		display:inline-block;		
@@ -88,41 +121,49 @@
 		
 </style>
 <script>
-	function check(my)
-	{
-		if(my.title.value.trim()=="")
-		{
+	function check(my){
+		
+		var chk=6;
+		
+		if(my.title.value.trim()==""){
 			document.getElementById("msg2").style.visibility="visible";
 			document.getElementById("msg2").style.color="red";
-			my.bname.focus();
+			return false;
+		}else{
+			
 		}
-			if(my.writer.value.trim()=="")
-			{
-				document.getElementById("msg3").style.visibility="visible";
-				document.getElementById("msg3").style.color="red";
-				my.writer.focus();
-			}
-				if(my.publi.value.trim()=="")
-				{
-					document.getElementById("msg4").style.visibility="visible";
-					document.getElementById("msg4").style.color="red";
-					my.publisher.focus();
-				}
-					if(my.writeyear.value.trim()=="")
-					{
-						document.getElementById("msg5").style.visibility="visible";
-						document.getElementById("msg5").style.color="red";
-						my.writetime.focus();
-					}
-						if(my.ect.value.trim()=="")
-						{
-							document.getElementById("msg6").style.visibility="visible";
-							document.getElementById("msg6").style.color="red";
-							my.ect.focus();
-							return false;
-						}
-							else
-								return true;
+		
+		if(my.writer.value.trim()==""){
+			document.getElementById("msg3").style.visibility="visible";
+			document.getElementById("msg3").style.color="red";
+			return false;
+		}else{
+			
+		}
+		
+		if(my.publi.value.trim()==""){
+			document.getElementById("msg4").style.visibility="visible";
+			document.getElementById("msg4").style.color="red";
+			return false;
+		}else{
+			
+		}
+		
+		if(my.writeyear.value.trim()==""){
+			document.getElementById("msg5").style.visibility="visible";
+			document.getElementById("msg5").style.color="red";
+			return false;
+		}else{
+			
+		}
+		if(my.ect.value.trim()==""){
+			document.getElementById("msg6").style.visibility="visible";
+			document.getElementById("msg6").style.color="red";
+			return false;
+		}else{
+			return true;		
+		}
+								
 	}
 	function returnchk()
 	{
@@ -172,12 +213,14 @@
 					<p>도서관 이용&nbsp;&nbsp;>&nbsp;&nbsp;도서신청</p>
 				</div>
 				<div id="contents">
-					<div id="requestWrap">
-						<div class="nameTop">
-							도서신청
-						</div>						
+					<div id="requestWrap">				
 						<div class="request">
 						<form name="rform" method="post" action="requestwrite_ok" onsubmit="return check(this)">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
 							<div class="all"><span class="mark">책제목</span><input type="text" name="title" oninput="returnchk()"></div>
 							<span id="msg2" name="msg2"> 책제목을 입력하세요</span>
 							<div class="all"><span class="mark">저자</span><input type="text" name="writer" oninput="returnchk()"></div>
