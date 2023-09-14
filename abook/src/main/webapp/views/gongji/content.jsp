@@ -17,22 +17,15 @@
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
 	}
-	table tr td:first-child {
-		padding-left: 10px;
+	table tr:first-child td {
 	    background: #f8f8fa;
-	    width: 121px;
-	    border-right: 1px solid #e4e4e4;
-	    font-size: 15px;
+	    font-size: 16px;
 	    font-family: 'NotoSansM';
 	    color: #555;
 	    letter-spacing: 1px;
+	    text-align:center;
 	}
-	table tr:nth-child(2){
-		height: 300px;
-	}
-	table tr td#cont{
-		vertical-align: top;
-    	padding: 13px 10px;
+	table tr:nth-child(3){
 		height: 400px;
 	}
 	#btn{
@@ -48,6 +41,27 @@
 	    line-height: 43px;
 	    height: 45px;
 	    margin-bottom: 30px;
+	}
+	#flex{
+		display: flex;
+	    justify-content: space-between;
+	    height: 55px;
+	    padding: 0 30px;
+	}
+	#flex > div{
+		width: 210px;
+   		line-height: 55px;
+	}
+	.sp{
+		color: #666;
+    	margin-left: 20px;
+	}
+	.tar{
+		text-align: right;
+	}
+	.p3{
+		vertical-align: top;
+    	padding: 20px 30px;
 	}
 </style>
 </head>
@@ -72,18 +86,16 @@
 						<a href="list?page=${page}" class="dis">목록으로</a>
 						<table>
 							<tr>
-								<td>제목</td>
 								<td>${gvo2.title}</td>
 							</tr>
 							<tr>
-								<td>내용</td>
-								<td class="tl" id="cont"> 
-									${gvo.content}
+								<td id="flex">
+									<div>작성일<span class="sp">${gvo2.writeday}</span></div>
+									<div class="tar">조회수<span class="sp">${gvo2.readnum}</span></div>
 								</td>	
 							</tr>
 							<tr>
-								<td>등록일</td>
-								<td class="tl">${gvo2.writeday}</td>
+								<td class="p3">${gvo2.content}</td>
 							</tr>
 						</table>
 					</div>
