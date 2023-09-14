@@ -309,7 +309,33 @@ public class MypageServiceImple implements MypageService {
 	}
 
 	@Override
-	public String myjjim(HttpSession ss,Model model) {
+	public String myjjim(HttpSession ss,Model model,HttpServletRequest req) {
+		
+		int page = 1;
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(req.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+
+		int chong = mapper.getChong();
+
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
+		
 		String userid = ss.getAttribute("userid").toString();
 		ArrayList<HashMap> mapall = mapper.myjjim(userid);
 		model.addAttribute("mapall",mapall);

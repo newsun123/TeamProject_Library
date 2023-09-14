@@ -16,6 +16,6 @@ public interface MypageService {
 	public String returnOk(HttpServletRequest request);
 	public String loanlist(HttpSession session,Model model,HttpServletRequest request);
 	//jjim 추가 0911
-	public String myjjim(HttpSession ss,Model model);
+	public String myjjim(HttpSession ss,Model model,HttpServletRequest req);
 
 }
