@@ -271,10 +271,10 @@
 	}
 	
 	function listChange(num){
-		location="listChange?type=${type}&num="+num+"&start=${start}";
+		location="list?num="+num;
 	}
 	window.onload=function(){
-		document.getElementsByClassName("list")[${num}-1].style.color="#0073e9";
+		document.getElementsByClassName("lst")[${num}].style.color="blue";
 	}
 </script>
 </head>

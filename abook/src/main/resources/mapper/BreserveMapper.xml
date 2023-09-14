@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.BreserveMapper">
 	<select id="list" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where ${type} like concat('%',"${keyword}",'%')
-		 group by substr(bcode,1,4) order by no desc limit #{start},10;
+		select * from bookregi where ${type} like concat('%',#{keyword},'%')
+		group by substr(bcode,1,4) order by ${str} limit ${start},10;
 	</select>
 	<select id="list2" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi where #{title} like concat('%',"${keyword}",'%') 
 		or #{publi} like concat('%',"${keyword}",'%') or
 		${writer} like concat('%',"${keyword}",'%')  
-		group by substr(bcode,1,4) order by no desc limit #{start},10;
+		group by substr(bcode,1,4) order by ${str} limit #{start},10;
 	</select>
 	<select id="getChong" resultType="int">
 		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
@@ -39,9 +39,5 @@
 	<select id="jjimCheck" resultType="boolean">
 		select count(*) from jjim where userid=#{userid} and bcode like concat(#{bcode},'%')
 	</select>
-	<select id="listChange" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where ${type} like concat('%',#{keyword},'%')
-		group by substr(bcode,1,4)
-		order by ${str} limit ${start},10;
-	</select>
+	
 </mapper>

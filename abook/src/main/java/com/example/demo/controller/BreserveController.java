@@ -50,8 +50,4 @@ public class BreserveController {
 		return service.deljjim(req,ss);
 	}
 	
-	@RequestMapping("/breserve/listChange")
-	public String listChange(HttpServletRequest req,Model model) {
-		return service.listChange(req,model);
-	}
 }
