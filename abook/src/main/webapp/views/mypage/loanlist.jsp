@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 	#MypageWrap{
-		padding-bottom:80px; 
+		padding-bottom:30px; 
 	}
 	table{
 		border-bottom: 1px solid #ddd;
@@ -16,8 +16,11 @@
     	margin-top:30px;
 		text-align: center;
 	}
-	table tr {
-		height:55px;
+	table tr td {
+    	border-bottom: 1px solid #ddd;
+	}
+	table tr:last-child td{
+		border-bottom: none;
 	}
 	table tr:first-child td {
 	    background-color: #f9f9fb;
@@ -27,6 +30,12 @@
 	    font-family: 'NotoSansM';
 	    text-align: center;
 	} 
+	table tr {
+		height:60px;
+	}
+	table tr:first-child{
+		height: 55px;
+	}
 	.tt{
 		width: 470px;
 		padding-left: 38px;

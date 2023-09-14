@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.vo.BookRequestVo;
+import com.example.demo.vo.BookregiVo;
 
 @Mapper
 public interface BookRequestMapper {
@@ -17,4 +18,5 @@ public interface BookRequestMapper {
 	public void rupdate_ok(BookRequestVo brvo);
 	public void delete(BookRequestVo brvo);
 	public ArrayList<BookRequestVo> search(String type,String keyword,int start);
+	public ArrayList<BookRequestVo> list2(String keyword,int start);
 }

@@ -16,26 +16,13 @@ import com.example.demo.vo.InquiryVo;
 public class InquiryController {
 	
 	@Autowired
-	@Qualifier("ic")
+	@Qualifier("is")
 	private InquiryService service;
 	
 	@RequestMapping("/inquiry/list")
 	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss)
 	{
 		return service.list(req,model,ivo,ss);
-		// 1234 1234
-	}
-	
-	@RequestMapping("/inquiry/write")
-	public String write()
-	{
-		return service.write();
-	}
-	
-	@RequestMapping("/inquiry/writeOk")
-	public String writeOk(InquiryVo ivo,HttpSession ss)
-	{
-		return service.writeOk(ivo,ss);
 	}
 	
 	@RequestMapping("/inquiry/readnum")
@@ -50,21 +37,15 @@ public class InquiryController {
 		return service.content(ivo,req,model);
 	}
 	
-	@RequestMapping("/inquiry/delete")
-	public String delete(InquiryVo ivo,HttpServletRequest req)
+	@RequestMapping("/inquiry/write")
+	public String write()
 	{
-		return service.delete(ivo,req);
+		return service.write();
 	}
 	
-	@RequestMapping("/inquiry/update")
-	public String update(InquiryVo ivo,Model model,HttpServletRequest req)
+	@RequestMapping("/inquiry/writeOk")
+	public String writeOk(InquiryVo ivo)
 	{
-		return service.update(ivo,model,req);
-	}
-	
-	@RequestMapping("/inquiry/updateOk")
-	public String updateOk(InquiryVo ivo,HttpServletRequest req)
-	{
-		return service.updateOk(ivo,req);
+		return service.writeOk(ivo);
 	}
 }

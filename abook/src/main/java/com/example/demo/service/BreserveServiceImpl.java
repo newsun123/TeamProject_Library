@@ -39,6 +39,7 @@ public class BreserveServiceImpl implements BreserveService {
 		if (page % 10 == 0)
 			pstart--;
 
+    //작최윤도 시작
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
@@ -87,6 +88,48 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("start", start);
 			model.addAttribute("num", num); // num값 보내야댐
 			// model.addAttribute("blist",mapper.list(type,keyword,start,str));
+      //최윤도 끝
+      
+		//김정훈 시작
+		/* pstart=pstart*10+1;
+		
+		int pend=pstart+9;
+		
+		int chong=mapper.getChong();
+		
+		if(pend > chong)
+			pend=chong;
+		
+		if(keyword==null || keyword.length()==0)
+		{
+			type="title";
+      
+			keyword="";
+			model.addAttribute("type","aa");
+		    model.addAttribute("blist",mapper.list(type,keyword,start));
+		
+		} 
+		else
+		{
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("chong",chong);
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("start",start);
+			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+			{
+				System.out.println("list2");
+			    model.addAttribute("blist",mapper.list2(keyword,start));
+			}
+			else
+			{
+				System.out.println("list");
+			  model.addAttribute("blist",mapper.list(type,keyword,start));
+			} */
+      // 김정훈 
+
 		}
 		return "/breserve/list";
 	}
