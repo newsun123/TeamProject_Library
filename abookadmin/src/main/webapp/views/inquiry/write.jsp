@@ -114,6 +114,7 @@
 				<div id="contents">
 					<div id="gongjiWrap">					
 						<form name="iform" method="post" id="form" action="writeOk">
+						<input type="hidden" name="inno" value="${inno}">
 							<table>
 								<tr>
 									<td>제목</td>
@@ -126,7 +127,7 @@
 							</table>
 							<div id="btn">
 								<input type="button" value="취소" class="dis" onclick="location='list'">
-								<input type="submit" value="등록하기">
+								<input type="submit" value="답변등록">
 							</div> 
 						</form>					
 					</div>

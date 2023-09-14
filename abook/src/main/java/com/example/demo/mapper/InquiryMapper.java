@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Mapper
 public interface InquiryMapper {
@@ -19,4 +20,5 @@ public interface InquiryMapper {
 	public void delete(InquiryVo ivo);
 	public void update(InquiryVo ivo);
 	public void updateOk(InquiryVo ivo);
+	public MtmVo getAnswer(String no);
 }

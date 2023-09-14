@@ -90,7 +90,11 @@
 								</td>	
 							</tr>
 							<tr>
-								<td>등록일</td>
+								<td> 답변 </td>
+								<td> ${mvo.content} </td>
+							</tr>
+							<tr>
+								<td>등록일111</td>
 								<td class="tl">${ivo.writeday}</td>
 							</tr>
 						 </table>

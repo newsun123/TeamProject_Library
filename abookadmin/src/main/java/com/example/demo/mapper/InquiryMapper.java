@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Mapper
 public interface InquiryMapper {
@@ -15,7 +16,7 @@ public interface InquiryMapper {
 	public void setRownum(int r);
 	public void readnum(InquiryVo ivo);
 	public InquiryVo content(InquiryVo ivo);
-	public void writeOk(InquiryVo ivo);
-	// 질문 가져오기
-	public ArrayList<InquiryVo> getMtm(String userid);
+	public void writeOk(MtmVo mvo);
+	public MtmVo getAnswer(String no);
+	
 }
