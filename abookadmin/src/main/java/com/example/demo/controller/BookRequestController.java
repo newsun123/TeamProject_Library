@@ -24,4 +24,8 @@ public class BookRequestController {
 		return service.hopelist(request,brvo,model,bvo);
 	}
 	
+	@RequestMapping("/bookrequest/cancelBrequest")
+	public String cancelBrequest(HttpServletRequest req) {
+		return service.cancelBrequest(req);
+	}
 }

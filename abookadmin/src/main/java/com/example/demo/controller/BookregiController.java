@@ -53,4 +53,5 @@ public class BookregiController {
 	public String del(HttpServletRequest request) {
 		return service.del(request);
 	}
+	
 }

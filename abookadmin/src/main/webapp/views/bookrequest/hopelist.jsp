@@ -166,7 +166,7 @@
 							<td>
 								<fmt:formatNumber value="${i.index+1}" type="number" minIntegerDigits="2"/>
 							</td>
-							<td>${brvo.title}</td>
+							<td>${brvo.title} + ${brvo.state} + ${brvo.no }</td>
 							<td>${brvo.publi}</td>
 							<td>${brvo.writer}</td>
 							<td>${brvo.userid}</td>
@@ -176,10 +176,17 @@
 									<a href="/bookregi/write?brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a>
 								</c:if>
 								<c:if test="${brvo.state==1}">
-									<a href=""><input type="button" value="등록완료" class="rbtn" disabled></a>
+									<a><input type="button" value="등록완료" class="rbtn" disabled></a>
 								</c:if>
 							</td>
-							<td><a href="location='cancelBookRequest?brno=${brvo.no}'"><input type="button" value="도서반려" class="rbtn"></a></td>
+							<td>
+								<c:if test="${brvo.state==0}">
+									<a href="cancelBrequest?brno=${brvo.no}"><input type="button" value="도서반려" class="rbtn"></a>
+								</c:if>
+								<c:if test="${brvo.state==2}">
+									<a><input type="button" value="반려완료" class="rbtn" disabled></a>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>						
 					</table>
