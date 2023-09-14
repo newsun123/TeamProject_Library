@@ -269,6 +269,13 @@
 		schk=0;
 		document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 	}
+	
+	function listChange(num){
+		location="listChange?bcode=${bvo.bcode}&num="+num+"&start=${start}";
+	}
+	window.onload=function(){
+		document.getElementsByClassName("list")[${num}-1].style.color="#0073e9";
+	}
 </script>
 </head>
 <body>
@@ -299,10 +306,7 @@
 								<div class="arrow"></div>
 							</div>
 								<ul id="type">
-<<<<<<< HEAD
-=======
 									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
->>>>>>> origin/kjh
 									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
 									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
 									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
@@ -313,8 +317,8 @@
 					</form>
 						<table>	
 						<div> <!-- 인기도서 신착도서 버튼 만들기 0913최윤도 -->
-							<input type="button" value="신착도서" onclick="location='/breserve/list'">
-							<input type="button" value="인기도서" onclick="location='bestbook?type=${type}&keywored=${keyword}&start=${start}'">
+							<input type="button" value="신착도서" class="lst" onclick="listChange(0)">
+							<input type="button" value="인기도서" class="lst" onclick="listChange(1)">
 						</div>					
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 

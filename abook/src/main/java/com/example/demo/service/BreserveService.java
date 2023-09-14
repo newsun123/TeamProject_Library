@@ -14,5 +14,5 @@ public interface BreserveService {
 	public int cntCheck(HttpSession session);
 	public String addjjim(HttpServletRequest req, HttpSession ss);
 	public String deljjim(HttpServletRequest req, HttpSession ss);
-	public String bestbook(HttpServletRequest req, Model model);
+	public String listChange(HttpServletRequest req, Model model);
 }
