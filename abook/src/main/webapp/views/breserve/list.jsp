@@ -262,6 +262,13 @@
 		schk=0;
 		document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 	}
+	
+	function listChange(num){
+		location="list?num="+num;
+	}
+	window.onload=function(){
+		document.getElementsByClassName("lst")[${num}].style.color="blue";
+	}
 </script>
 </head>
 <body>
@@ -303,8 +310,8 @@
 					</form>
 						<table>	
 						<div> <!-- 인기도서 신착도서 버튼 만들기 0913최윤도 -->
-							<input type="button" value="신착도서" onclick="location='/breserve/list'">
-							<input type="button" value="인기도서" onclick="location='bestbook?type=${type}&keywored=${keyword}&start=${start}'">
+							<input type="button" value="신착도서" class="lst" onclick="listChange(0)">
+							<input type="button" value="인기도서" class="lst" onclick="listChange(1)">
 						</div>					
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 

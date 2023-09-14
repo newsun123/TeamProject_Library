@@ -22,9 +22,9 @@ public class BreserveServiceImpl implements BreserveService {
 	private BreserveMapper mapper;
 
 	@Override
-	public String list(Model model,BookregiVo bvo,HttpServletRequest request) {
-		String type=request.getParameter("type");
-		String keyword=request.getParameter("keyword");
+	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
+		String type = request.getParameter("type");
+		String keyword = request.getParameter("keyword");
 
 		int page;
 
@@ -38,8 +38,60 @@ public class BreserveServiceImpl implements BreserveService {
 		int pstart = page / 10;
 		if (page % 10 == 0)
 			pstart--;
-		
-		pstart=pstart*10+1;
+
+    //작최윤도 시작
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+
+		int chong = mapper.getChong();
+
+		if (pend > chong)
+			pend = chong;
+
+		if (keyword == null || keyword.length() == 0) {
+			type = "title";
+
+			String num = request.getParameter("num"); // 신간도서 - 인기도서 용 num 추가
+			if (num == null)
+				num = "0"; // num null값일 시 0으로 지정(신간도서)
+
+			String str = ""; // 값 지정할 것
+			
+			switch (num) {
+			case "0":
+				str = "no desc";
+				break;
+			case "1":
+				str = "cnt desc";
+				break;
+			default:
+				str = "no desc"; // 이게 defualt 값이라 그냥 넣음.
+				break;
+			}
+			if (type == null || keyword == null || keyword.length() == 0) {
+				String title = "title";
+				String publi = "publi";
+				String writer = "writer";
+				keyword = "";
+				model.addAttribute("blist", mapper.list2(title, publi, writer, keyword, start, str));
+
+			} else {
+				model.addAttribute("blist", mapper.list(type, keyword, start, str));
+			}
+			model.addAttribute("page", page);
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("chong", chong);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("start", start);
+			model.addAttribute("num", num); // num값 보내야댐
+			// model.addAttribute("blist",mapper.list(type,keyword,start,str));
+      //최윤도 끝
+      
+		//김정훈 시작
+		/* pstart=pstart*10+1;
 		
 		int pend=pstart+9;
 		
@@ -51,6 +103,7 @@ public class BreserveServiceImpl implements BreserveService {
 		if(keyword==null || keyword.length()==0)
 		{
 			type="title";
+      
 			keyword="";
 			model.addAttribute("type","aa");
 		    model.addAttribute("blist",mapper.list(type,keyword,start));
@@ -74,7 +127,9 @@ public class BreserveServiceImpl implements BreserveService {
 			{
 				System.out.println("list");
 			  model.addAttribute("blist",mapper.list(type,keyword,start));
-			}
+			} */
+      // 김정훈 
+
 		}
 		return "/breserve/list";
 	}
@@ -191,14 +246,5 @@ public class BreserveServiceImpl implements BreserveService {
 		}
 	}
 
-	@Override
-	public String bestbook(HttpServletRequest req, Model model) {
-		String type=req.getParameter("type");
-		String keyword="";
-		int start=Integer.parseInt(req.getParameter("start"));
-		ArrayList<BookregiVo> blist = mapper.bestBookList(type,keyword,start);
-		model.addAttribute("blist",blist);
-		return "/breserve/list";
-	}
 
 }
