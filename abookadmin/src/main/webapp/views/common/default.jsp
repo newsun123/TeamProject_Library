@@ -218,7 +218,7 @@
 					<a href="/gongji/list">게시판 관리</a>
 					<ul>
 						<li><a href="/gongji/list">공지사항</a></li>
-						<li><a href="#">문의사항</a></li>
+						<li><a href="/inquiry/list">묻고 답하기</a></li>
 					</ul>
 				</li>
 			</ul>

@@ -9,14 +9,13 @@ import com.example.demo.vo.InquiryVo;
 
 @Mapper
 public interface InquiryMapper {
-	
+
 	public int getChong();
 	public ArrayList<InquiryVo> list(@Param("start") int start);
-	public void writeOk(InquiryVo ivo);
 	public void setRownum(int r);
 	public void readnum(InquiryVo ivo);
 	public InquiryVo content(InquiryVo ivo);
-	public void delete(InquiryVo ivo);
-	public void update(InquiryVo ivo);
-	public void updateOk(InquiryVo ivo);
+	public void writeOk(InquiryVo ivo);
+	// 질문 가져오기
+	public ArrayList<InquiryVo> getMtm(String userid);
 }

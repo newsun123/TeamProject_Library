@@ -213,7 +213,7 @@
 				<a href="/gongji/list">열린 공간</a>
 				<ul>					
 					<li><a href="/gongji/list">공지사항</a></li>
-					<li><a href="#">문의 게시판</a></li>
+					<li><a href="/inquiry/list">묻고 답하기</a></li>
 				</ul>
 			</li>
 			<li class="gnbMenu">
