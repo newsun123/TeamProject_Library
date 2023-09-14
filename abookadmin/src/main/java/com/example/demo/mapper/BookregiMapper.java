@@ -12,7 +12,8 @@ import com.example.demo.vo.BookregiVo;
 public interface BookregiMapper {
 	public void write_ok(BookregiVo bvo);
 	public String getCode();
-	public ArrayList<BookregiVo> list(BookregiVo bvo, int start);
+	public ArrayList<BookregiVo> list(String type,String keyword,int start);
+	public ArrayList<BookregiVo> list2(String keyword,int start);
 	public int getChong();
 	public ArrayList<BookregiVo> content(String bcode);
 	// 0909 강서영
