@@ -191,10 +191,7 @@
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
 							</c:if>	
-							</div>
-							<div id="btnCon">
-								<a href="/inquiry/write">글쓰기</a>
-							</div>		
+							</div>	
 						</div>							
 					</div>
 				</div>

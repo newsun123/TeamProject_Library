@@ -87,6 +87,12 @@
 								<td>내용</td>
 								<td class="tl" id="cont"> 
 									${ivo.content}
+								</td>
+							</tr>
+							<tr>	
+								<td> 답변 </td>
+								<td class="tl" id="cont"> 
+									${ivo.content}
 								</td>	
 							</tr>
 							<tr>
@@ -96,8 +102,7 @@
 						 </table>
 						<div id="btn">
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
-							<a href="update?no=${ivo.no}&page=${page}"> 수정 </a>
-							<a href="delete?no=${ivo.no}&page=${page}"> 삭제 </a>
+							<a href="write"> 답변 등록 </a>
 						</div>
 					</div>
 				</div>
