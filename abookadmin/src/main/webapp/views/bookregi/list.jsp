@@ -133,7 +133,138 @@
 		pointer-event:none;
 		cursor:default;
 	}
+	#search{
+		padding:10px 20px;
+		border-radius:5px;
+		color:#fff;
+		margin-bottom:40px;
+		width:100px;
+		background:#93765a;
+	}
+	#searchCon{
+		width:630px;
+		position:relative;
+		right:0;
+		display:flex;
+		justify-content:space-between;
+		align-items:center;
+	}
+	#select{
+		display: inline-block;
+	    width: 148px;
+	    position: relative;
+	    height: 48px;
+	    border: 1px solid #e2e2e2;
+	    margin-left: 11px;
+	    background-color: #fff;
+	}
+	#select .selected{
+		display: flex;
+	    justify-content: space-between;
+	    padding: 0;
+	    cursor: pointer;
+	}
+	#select .selected_value{
+		display: inline-block;
+	    font-size: 16px;
+	    width: calc(100% - 60px);
+	    line-height: 44px;
+	    text-align: left;
+	    margin-left: 18px;
+	}
+	#select .arrow{
+		width: 42px;
+   		background: url(/static/img/common/ic_arrow.png) no-repeat 50% 50%;
+	}
+	#select ul{
+	    width: 148px;
+	    border: 1px solid #d6dae6;
+	    position: absolute;
+	    left: -1px;
+	    z-index: 999;
+	    background: #fff;
+	    border-top: none;
+	    
+	    top: 47px;	
+	    display: none;
+	}
+	#select ul li{
+	    font-size: 16px;
+	    padding: 0 20px;
+	    line-height: 38px;
+	    height: 38px;
+	    border-bottom: 1px solid #eee;
+	    cursor:pointer;
+	}
+	#select ul li:last-child{
+		border:none;
+	}
+	#select ul li:hover{
+		display: block;
+		background-color:#ebeef7;
+	}
+	input.searchtext{
+		border-radius: 0!important;
+	    height: 48px!important;
+	    vertical-align: top!important;
+	    width: 500px;
+	}
 </style>
+<script>
+	window.onload=function(){
+		<c:if test="${type!=null}">
+		   <c:if test="${type=='title'}">
+		     <c:set var="aa" value="도서명"/>
+		   </c:if>
+		   <c:if test="${type=='writer'}">
+		     <c:set var="aa" value="저자"/>
+		   </c:if>
+		   <c:if test="${type=='publi'}">
+		     <c:set var="aa" value="출판사"/>
+		   </c:if>
+			<c:if test="${type=='aa'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
+			document.getElementById("sv").innerText="${aa}";
+		</c:if>
+		 
+	}
+	var schk=0;
+	function selectView(){
+		
+		if(schk==0){
+			document.getElementById("type").style.display="block";
+			document.getElementsByClassName("arrow")[0].style.transform="rotate(180deg)";
+			schk=1;
+		}else{
+			document.getElementById("type").style.display="none";
+			document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
+			schk=0;
+		}
+	}
+	function inputWr(txt){
+ 
+		if(txt=="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			// aa로 value값을 줘서 impl
+		}
+		else if(txt=="도서명"){
+			document.getElementsByClassName("selected_value")[0].innerText="도서명";
+			document.getElementById("seltype").value="title";
+		}else if(txt=="저자"){
+			document.getElementsByClassName("selected_value")[0].innerText="저자";
+			document.getElementById("seltype").value="writer";
+		}
+			else if(txt=="출판사"){
+				document.getElementsByClassName("selected_value")[0].innerText="출판사";
+				document.getElementById("seltype").value="publi";
+			}
+		document.getElementById("type").style.display="none";
+		schk=0;
+		document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
+	}
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -161,6 +292,25 @@
 							<a href="/bookregi/write">도서등록</a>
 						</div>
 						<table>						
+					<form name="kjh" method="post" action="list">
+					<input type="hidden" value="${type}" name="type" id="seltype">
+					<input type="hidden" value="${keyword}">
+						<div id="select">
+							<div class="selected" onclick="selectView()">
+								<div class="selected_value" id="sv">전체</div>
+								
+								<div class="arrow"></div>
+							</div>
+								<ul id="type">
+									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
+									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
+									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
+								</ul>
+						</div>
+						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+						<input type="submit" id="search" class="searchtext" value="검색">
+					</form>
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
 								<td> 
