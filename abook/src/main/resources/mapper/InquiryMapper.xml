@@ -37,4 +37,8 @@
   	update inquiry set title=#{title},content=#{content}
   	where no=#{no}
   </update>
+  
+  <select id="getAnswer" resultType="com.example.demo.vo.MtmVo">
+  	select * from mtm where inno=#{no}
+  </select>
 </mapper>

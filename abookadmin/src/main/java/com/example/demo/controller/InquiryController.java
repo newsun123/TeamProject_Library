@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.InquiryService;
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Controller
 public class InquiryController {
@@ -32,20 +33,21 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/content")
-	public String content(InquiryVo ivo,HttpServletRequest req,Model model)
+	public String content(InquiryVo ivo,HttpServletRequest req,Model model,MtmVo mvo)
 	{
-		return service.content(ivo,req,model);
+		return service.content(ivo,req,model,mvo);
 	}
 	
 	@RequestMapping("/inquiry/write")
-	public String write()
+	public String write(HttpServletRequest req,Model model)
 	{
-		return service.write();
+		return service.write(req,model);
 	}
 	
 	@RequestMapping("/inquiry/writeOk")
-	public String writeOk(InquiryVo ivo,HttpSession ss)
+	public String writeOk(MtmVo mvo)
 	{
-		return service.writeOk(ivo,ss);
+		return service.writeOk(mvo);
 	}
+	
 }

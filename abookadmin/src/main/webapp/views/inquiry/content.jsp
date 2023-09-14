@@ -92,7 +92,7 @@
 							<tr>	
 								<td> 답변 </td>
 								<td class="tl" id="cont"> 
-									${ivo.content}
+									${mvo.content}
 								</td>	
 							</tr>
 							<tr>
@@ -102,7 +102,7 @@
 						 </table>
 						<div id="btn">
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
-							<a href="write"> 답변 등록 </a>
+							<a href="write?no=${ivo.no}"> 답변 등록 </a>
 						</div>
 					</div>
 				</div>
