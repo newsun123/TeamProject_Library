@@ -48,26 +48,33 @@ public class BreserveServiceImpl implements BreserveService {
 		if(pend > chong)
 			pend=chong;
 		
-		if(keyword==null || keyword.length()==0) {
+		if(keyword==null || keyword.length()==0)
+		{
 			type="title";
-		if(type==null || keyword==null || keyword.length()==0) {
-			String title="title";
-			String publi="publi";
-			String writer="writer";
 			keyword="";
-			model.addAttribute("blist",mapper.list2(title,publi,writer,keyword,start));
-			
-		}else {
-			model.addAttribute("blist",mapper.list(type,keyword,start));
-		}
-		model.addAttribute("page",page);
-		model.addAttribute("pstart",pstart);
-		model.addAttribute("pend",pend);
-		model.addAttribute("chong",chong);
-		model.addAttribute("type",type);
-		model.addAttribute("keyword",keyword);
-		model.addAttribute("start",start);
-		model.addAttribute("blist",mapper.list(type,keyword,start));
+			model.addAttribute("type","aa");
+		    model.addAttribute("blist",mapper.list(type,keyword,start));
+		
+		} 
+		else
+		{
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("chong",chong);
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("start",start);
+			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+			{
+				System.out.println("list2");
+			    model.addAttribute("blist",mapper.list2(keyword,start));
+			}
+			else
+			{
+				System.out.println("list");
+			  model.addAttribute("blist",mapper.list(type,keyword,start));
+			}
 		}
 		return "/breserve/list";
 	}
