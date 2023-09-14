@@ -128,7 +128,7 @@ public class BookregiServiceImpl implements BookregiService{
 			
 			// 희망도서 state1 만들기용 1줄
 			String brno = multi.getParameter("brno");  // 도서희망에서 가져오는 no값임.
-			System.out.println(brno);
+			//System.out.println(brno);
 			
 			// bcode 값 만들어 넣기
 			String bcode=mapper.getCode(); // memo

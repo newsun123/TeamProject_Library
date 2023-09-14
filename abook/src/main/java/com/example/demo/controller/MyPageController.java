@@ -54,7 +54,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypage/myjjim")
-	public String myjjim(HttpSession ss,Model model) {
-		return service.myjjim(ss,model);
+	public String myjjim(HttpSession ss,Model model,HttpServletRequest req) {
+		return service.myjjim(ss,model,req);
 	}
 }
