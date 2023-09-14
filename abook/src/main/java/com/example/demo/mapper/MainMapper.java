@@ -15,6 +15,6 @@ public interface MainMapper {
 	public int checkSeatPc(String time);
 	public ArrayList<BookregiVo> bookList();
 	public ArrayList<BookregiVo> bestBookList();
-
+	public ArrayList<BookregiVo> list2(String keyword);
 
 }

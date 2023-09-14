@@ -34,7 +34,7 @@ public class BreserveServiceImpl implements BreserveService {
 			page = Integer.parseInt(request.getParameter("page"));
 
 		int start = (page - 1) * 10;
-
+		System.out.println(start);
 		int pstart = page / 10;
 		if (page % 10 == 0)
 			pstart--;
@@ -47,7 +47,6 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		if(pend > chong)
 			pend=chong;
-		
 		//최윤도꺼 붙임
 		String num = request.getParameter("num"); // 신간도서 - 인기도서 용 num 추가
 		if (num == null)
@@ -66,6 +65,10 @@ public class BreserveServiceImpl implements BreserveService {
 			type="title";
       
 			keyword="";
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("chong",chong);
 			model.addAttribute("type","aa");
 		    model.addAttribute("blist",mapper.list(type,keyword,start,str));
 		
