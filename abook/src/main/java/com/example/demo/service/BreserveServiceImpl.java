@@ -57,7 +57,7 @@ public class BreserveServiceImpl implements BreserveService {
 			keyword="";
 			model.addAttribute("blist",mapper.list2(title,publi,writer,keyword,start));
 			
-		}else {
+		}else {	
 			model.addAttribute("blist",mapper.list(type,keyword,start));
 		}
 		model.addAttribute("page",page);
@@ -190,14 +190,27 @@ public class BreserveServiceImpl implements BreserveService {
 		String keyword = "";
 		int start = Integer.parseInt(req.getParameter("start"));
 		int num = Integer.parseInt(req.getParameter("num"));
-		if (num == 0) {
-			ArrayList<BookregiVo> blist = mapper.list(type, keyword, start);
-			model.addAttribute("blist",blist);
-		} else {
-			ArrayList<BookregiVo> blist = mapper.bestBookList(type, keyword, start);
-			model.addAttribute("blist", blist);
-		}
 		
+		String str = "";
+		switch (num) {
+		case 0:
+			str = "no desc";
+			break;
+		case 1:
+			str = "cnt desc";
+			break;
+		default:
+			str = "error";
+			break;
+		}
+
+		System.out.println(num+"/"+start+"/"+type+"/"+keyword);
+		
+		ArrayList<BookregiVo> blist = mapper.listChange(type, keyword, start, str);
+		model.addAttribute("blist", blist);
+		model.addAttribute("start",start);
+		
+
 		return "/breserve/list";
 	}
 

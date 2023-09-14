@@ -20,5 +20,5 @@ public interface BreserveMapper {
 	public void addjjim(String userid,String bcode);
 	public void deljjim(String userid,String bcode);
 	public boolean jjimCheck(String userid,String bcode);
-	public ArrayList<BookregiVo> bestBookList(String type,String keyword,int start);
+	public ArrayList<BookregiVo> listChange(String type,String keyword,int start,String str);
 }

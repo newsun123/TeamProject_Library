@@ -271,7 +271,7 @@
 	}
 	
 	function listChange(num){
-		location="listChange?bcode=${bvo.bcode}&num="+num+"&start=${start}";
+		location="listChange?type=${type}&num="+num+"&start=${start}";
 	}
 	window.onload=function(){
 		document.getElementsByClassName("list")[${num}-1].style.color="#0073e9";
