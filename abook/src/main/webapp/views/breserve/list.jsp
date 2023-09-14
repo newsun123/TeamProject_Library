@@ -223,15 +223,6 @@
 			<c:if test="${type=='aa'}">
 				<c:set var="aa" value="전체"/>
 			</c:if>
-		   /*  <c:if test="${type=='title'}">
-		     	<c:set var="aa" value="도서명"/>
-		    </c:if>
-		    <c:if test="${type=='writer'}">
-		     	<c:set var="aa" value="저자"/>
-		    </c:if>
-		    <c:if test="${type=='publi'}">
-		    	<c:set var="aa" value="출판사"/>
-		    </c:if> */
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
 		 

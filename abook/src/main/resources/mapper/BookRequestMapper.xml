@@ -13,9 +13,14 @@
 		select ceil(count(*)/10) from bookrequest
 	</select>
 
-	<!-- <select id="rlist" resultType="com.example.demo.vo.BookRequestVo">
-		select * from bookrequest order by no desc limit #{start},10
-	</select> -->
+	<select id="list2" resultType="com.example.demo.vo.BookRequestVo">
+	<!-- type은 다쓸거기때문에 받아오는 값도 없으니 매개변수로 받은거 지우고
+		 title,publi,writer로 써준다. -->
+		select * from bookrequest where title like concat('%',"${keyword}",'%') 
+		or writer like concat('%',"${keyword}",'%') or
+		publi like concat('%',"${keyword}",'%')  
+		 order by no desc limit #{start},10;
+	</select>
 	
  	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
 		select * from bookrequest where ${type} like concat('%',"${keyword}",'%') order by no desc limit #{start},10
