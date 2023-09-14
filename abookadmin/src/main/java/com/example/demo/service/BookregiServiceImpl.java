@@ -44,11 +44,11 @@ public class BookregiServiceImpl implements BookregiService{
 		int pend=pstart+9;
 		
 		int chong=mapper.getChong();
-		System.out.println(chong);
+		//System.out.println(chong);
 		if(pend > chong)
 			pend=chong;
 		
-		System.out.println(pend);
+		//System.out.println(pend);
 		
 		model.addAttribute("state",state);
 		model.addAttribute("start",start);
@@ -63,13 +63,20 @@ public class BookregiServiceImpl implements BookregiService{
 	
 	@Override
 	public String write(HttpServletRequest request,Model model){
-		return "/bookregi/write";
+		String brno = request.getParameter("brno"); // hopelist에서 값 가져옴.
+		if (brno == null) {
+			return "/bookregi/write";
+		} else {
+			BookregiVo bvo = mapper.getValueBrvo(brno);
+			model.addAttribute("bvo",bvo);
+			return "/bookregi/write";
+		}
 	}
 
 	@Override
 	public String write_ok(BookregiVo bvo, HttpServletRequest request,BookRequestVo brvo) {
 		
-		//String path2 = request.getRealPath("classpath:/static/img/bookregi");
+		
 		try {
 			
 			int size=1024*1024*100;
@@ -83,7 +90,7 @@ public class BookregiServiceImpl implements BookregiService{
 			bvo.setWriteyear(multi.getParameter("writeyear"));
 			bvo.setBea(Integer.parseInt(multi.getParameter("bea")));
 			bvo.setEct(multi.getParameter("ect"));
-			
+			//System.out.println(bvo.getTitle());
 			// bvo 이미지 값 넣기
 			String bimg=multi.getFilesystemName("bimg");
 			
@@ -93,9 +100,13 @@ public class BookregiServiceImpl implements BookregiService{
 			
 			bvo.setBimg(bimg);
 			
+			// 희망도서 state1 만들기용 1줄
+			String brno = multi.getParameter("brno");  // 도서희망에서 가져오는 no값임.
+			System.out.println(brno);
+			
 			// bcode 값 만들어 넣기
-			String bcode=mapper.getCode();
-			mapper.statechange(brvo);
+			String bcode=mapper.getCode(); // memo
+			//mapper.statechange(brvo);    // brvo 뭐임
 			if(bcode.length()==1){
 				bcode="b00"+bcode;
 			}else if(bcode.length()==2){
@@ -111,14 +122,17 @@ public class BookregiServiceImpl implements BookregiService{
 				if(i < 10){
 					String bcode2=bcode+"0"+i;
 					bvo.setBcode(bcode2); //진짜 bcode
-					mapper.write_ok(bvo,brvo);
+					mapper.write_ok(bvo); // brvo 머임
 					bvo.setBcode(bcode); // b코드 초기화
 				}else{
 					String bcode2=bcode+i;
 					bvo.setBcode(bcode2);
-					mapper.write_ok(bvo,brvo);
+					mapper.write_ok(bvo); // brvo 머임
 					bvo.setBcode(bcode);
 				}
+				
+				if(brno!=null) // 이건 내꺼
+					mapper.chgStateBookrequest(brno); // 이건 스트링
 			}
 			return "redirect:/bookregi/list";
 		}catch(Exception e) {

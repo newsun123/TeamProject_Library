@@ -11,5 +11,6 @@ import com.example.demo.vo.BookRequestVo;
 public interface BookRequestMapper {
 	public int getChong();
 	public ArrayList<BookRequestVo> hopelist(BookRequestVo brvo,@Param("start")int start);
+	public void cancelBrequest(String brno);
 	
 }

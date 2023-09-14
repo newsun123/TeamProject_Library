@@ -9,4 +9,7 @@
 <select id="hopelist" resultType="com.example.demo.vo.BookRequestVo">
 	select * from bookrequest order by no desc limit #{start},10
 </select>
+<update id="cancelBrequest">
+	update bookrequest set state=2 where no=#{brno}
+</update>
 </mapper>

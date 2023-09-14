@@ -49,5 +49,15 @@ public class BookRequestServiceImpl implements BookRequestService {
 		
 		return "bookrequest/hopelist";
 	}
+
+	@Override
+	public String cancelBrequest(HttpServletRequest req) {
+		String brno = req.getParameter("brno");
+		System.out.println(brno);
+		mapper.cancelBrequest(brno);
+		return "redirect:/bookrequest/hopelist";
+	}
+
+	
 	
 }

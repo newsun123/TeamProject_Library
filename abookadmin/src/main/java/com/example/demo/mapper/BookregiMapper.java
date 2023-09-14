@@ -11,7 +11,6 @@ import com.example.demo.vo.BookregiVo;
 @Mapper
 public interface BookregiMapper {
 	public void write_ok(BookregiVo bvo);
-	public void write_ok(BookregiVo bvo,BookRequestVo brvo);
 	public String getCode();
 	public ArrayList<BookregiVo> list(BookregiVo bvo, int start);
 	public int getChong();
@@ -22,5 +21,7 @@ public interface BookregiMapper {
 	public void beaUpdate(String bcode,int n);
 	public void del(String bcode);
 	public int getcnt(String bcode);
-	public void statechange(BookRequestVo brvo);
+	//public void statechange(BookRequestVo brvo);
+	public BookregiVo getValueBrvo(String brno);
+	public void chgStateBookrequest(String brno);
 }
