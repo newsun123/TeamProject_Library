@@ -7,6 +7,14 @@
 		select * from bookregi where ${type} like concat('%',"${keyword}",'%')
 		 group by substr(bcode,1,4) order by no desc limit #{start},10;
 	</select>
+	<select id="list2" resultType="com.example.demo.vo.BookregiVo">
+	<!-- type은 다쓸거기때문에 받아오는 값도 없으니 매개변수로 받은거 지우고
+		 title,publi,writer로 써준다. -->
+		select * from bookregi where title like concat('%',"${keyword}",'%') 
+		or writer like concat('%',"${keyword}",'%') or
+		publi like concat('%',"${keyword}",'%')  
+		group by substr(bcode,1,4) order by no desc limit #{start},10;
+	</select>
 	<select id="getChong" resultType="int">
 		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
 	</select>

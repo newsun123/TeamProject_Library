@@ -122,8 +122,7 @@
 	}
 </style>
 <script>
-	window.onload=function()
-	{
+	window.onload=function(){
 		<c:if test="${type!=null}">
 		   <c:if test="${type=='title'}">
 		     <c:set var="aa" value="도서명"/>
@@ -134,26 +133,34 @@
 		   <c:if test="${type=='publi'}">
 		     <c:set var="aa" value="출판사"/>
 		   </c:if>
+			<c:if test="${type=='aa'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
+		 
 	}
-	/* 이메일 select,input */
 	var schk=0;
 	function selectView(){
 		
 		if(schk==0){
 			document.getElementById("type").style.display="block";
 			document.getElementsByClassName("arrow")[0].style.transform="rotate(180deg)";
-			schk=1;	
+			schk=1;
 		}else{
 			document.getElementById("type").style.display="none";
 			document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 			schk=0;
-		}	
+		}
 	}
 	function inputWr(txt){
-		
-		if(txt=="도서명"){
+ 
+		if(txt=="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			// aa로 value값을 줘서 impl
+		}
+		else if(txt=="도서명"){
 			document.getElementsByClassName("selected_value")[0].innerText="도서명";
 			document.getElementById("seltype").value="title";
 		}else if(txt=="저자"){
@@ -164,12 +171,10 @@
 				document.getElementsByClassName("selected_value")[0].innerText="출판사";
 				document.getElementById("seltype").value="publi";
 			}
-		
 		document.getElementById("type").style.display="none";
 		schk=0;
 		document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 	}
-	
 </script>
 </head>
 <body >
@@ -195,21 +200,23 @@
 						</div>
 						<div id=searchCon>
 						<form name="rform" method="post" action="rlist">
-						<input type="hidden" value="${type}" name="type" id="seltype">
-						<input type="hidden" value="${keyword}">
-							<div id="select">
-								<div class="selected" onclick="selectView()">
-									<div class="selected_value" id="sv">도서명</div>
-									<div class="arrow"></div> 
-								</div>
-								<ul id="type" name="type">
-									<li class="option"  id="title" onclick="inputWr('도서명')">도서명</li>
+							<input type="hidden" value="${type}" name="type" id="seltype">
+					<input type="hidden" value="${keyword}">
+						<div id="select">
+							<div class="selected" onclick="selectView()">
+								<div class="selected_value" id="sv">전체</div>
+								
+								<div class="arrow"></div>
+							</div>
+								<ul id="type">
+									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
 									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
 									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
-								</ul> 
-							</div>
-							<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
-							<input type="submit" id="search" class="searchtext" value="검색">
+								</ul>
+						</div>
+						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+						<input type="submit" id="search" class="searchtext" value="검색">
 						</form>
 						</div>
 						<table align="center">
@@ -254,12 +261,17 @@
 									<td> ${brvo.userid} </td>
 									<td> ${brvo.writeday} </td>
 									<td> 
-										<c:if test="${brvo.state == 0}">
-											대기중
-										</c:if>	
-										<c:if test="${brvo.state == 1}">
-											취소중
-										</c:if>								
+										<c:choose>
+											<c:when test="${brvo.state==0}">
+												신청중
+											</c:when>
+											<c:when test="${brvo.state==1}">
+												신청완료
+											</c:when>
+											<c:when test="${brvo.state==2}">
+												취소됨
+											</c:when>
+										</c:choose>							
 									 </td>
 								</tr>
 							</c:forEach>

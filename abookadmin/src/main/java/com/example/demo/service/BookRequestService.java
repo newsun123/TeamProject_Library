@@ -9,5 +9,5 @@ import com.example.demo.vo.BookregiVo;
 
 public interface BookRequestService {
 	public String hopelist(HttpServletRequest request,BookRequestVo brvo,Model model,BookregiVo bvo);
-	
+	public String cancelBrequest(HttpServletRequest req);
 }

@@ -105,9 +105,15 @@
 									</c:if>
 									<c:if test="${brvo.gonge != 1 && userid == brvo.userid}">
 										<span class="button">
+											<c:if test="${brvo.state==1}">
+											<input type="button" value="신청완료"">
+											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
+											</c:if>
+											<c:if test="${brvo.state==0}">
 											<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
 											<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
 											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
+											</c:if>
 										</span>
 									</c:if>
 							</div>

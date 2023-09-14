@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.example.demo.vo.BookRequestVo;
 import com.example.demo.vo.BookregiVo;
 
 @Mapper
@@ -20,4 +21,7 @@ public interface BookregiMapper {
 	public void beaUpdate(String bcode,int n);
 	public void del(String bcode);
 	public int getcnt(String bcode);
+	//public void statechange(BookRequestVo brvo);
+	public BookregiVo getValueBrvo(String brno);
+	public void chgStateBookrequest(String brno);
 }

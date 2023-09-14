@@ -150,7 +150,7 @@
 				<div id="contents">
 					<div id="requestWrap">
 					<table id="table2">
-						<caption>희망도서</caption>
+						<caption>희망도서 </caption>
 						<tr>
 							<td>번호</td>
 							<td>제목</td>
@@ -159,18 +159,34 @@
 							<td>신청자</td>
 							<td>신청일</td>
 							<td>도서등록</td>
+							<td>반려</td>
 						</tr>
 					<c:forEach items="${hlist}" var="brvo" varStatus="i">
 						<tr>
 							<td>
 								<fmt:formatNumber value="${i.index+1}" type="number" minIntegerDigits="2"/>
 							</td>
-							<td>${brvo.title}</td>
+							<td>${brvo.title} + ${brvo.state} + ${brvo.no }</td>
 							<td>${brvo.publi}</td>
 							<td>${brvo.writer}</td>
 							<td>${brvo.userid}</td>
 							<td>${brvo.writeday}</td>
-							<td><a href="/bookregi/write?chk=1&title=${brvo.title}&publi=${brvo.publi}&writer=${brvo.writer}&userid=${brvo.userid}&writeday=${brvo.writeday}&writeyear=${brvo.writeyear}"><input type="button" value="도서등록" class="rbtn"></a></td>
+							<td>
+								<c:if test="${brvo.state==0}"> <!-- state 수로 버튼 변경 -->
+									<a href="/bookregi/write?brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a>
+								</c:if>
+								<c:if test="${brvo.state==1}">
+									<a><input type="button" value="등록완료" class="rbtn" disabled></a>
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${brvo.state==0}">
+									<a href="cancelBrequest?brno=${brvo.no}"><input type="button" value="도서반려" class="rbtn"></a>
+								</c:if>
+								<c:if test="${brvo.state==2}">
+									<a><input type="button" value="반려완료" class="rbtn" disabled></a>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>						
 					</table>

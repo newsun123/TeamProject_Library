@@ -220,8 +220,12 @@
 		   <c:if test="${type=='publi'}">
 		     <c:set var="aa" value="출판사"/>
 		   </c:if>
+			<c:if test="${type=='aa'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
+		 
 	}
 	var schk=0;
 	function selectView(){
@@ -237,8 +241,13 @@
 		}
 	}
 	function inputWr(txt){
-		
-		if(txt=="도서명"){
+ 
+		if(txt=="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			// aa로 value값을 줘서 impl
+		}
+		else if(txt=="도서명"){
 			document.getElementsByClassName("selected_value")[0].innerText="도서명";
 			document.getElementById("seltype").value="title";
 		}else if(txt=="저자"){
@@ -278,10 +287,12 @@
 					<input type="hidden" value="${keyword}">
 						<div id="select">
 							<div class="selected" onclick="selectView()">
-								<div class="selected_value" id="sv">도서명</div>
+								<div class="selected_value" id="sv">전체</div>
+								
 								<div class="arrow"></div>
 							</div>
 								<ul id="type">
+									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
 									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
 									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
 									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
