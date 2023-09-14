@@ -115,4 +115,11 @@ public class MemberServiceImpl implements MemberService {
 		return "redirect:/member/memberBan";
 	}
 
+	@Override
+	public String unsusBan(HttpServletRequest req) {
+		String userid=req.getParameter("userid");
+		mapper.unsusBan(userid);
+		return "redirect:/member/memberBan";
+	}
+
 }

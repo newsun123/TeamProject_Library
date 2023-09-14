@@ -14,4 +14,5 @@ public interface MemberMapper {
 	public HashMap detail(String userid);
 	public ArrayList<ReserveSeatVo> rSeat(String userid);
 	public void banOk(String userid,String breason);
+	public void unsusBan(String userid);
 }
