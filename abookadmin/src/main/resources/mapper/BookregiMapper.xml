@@ -38,10 +38,10 @@
 	<update id="statechange"> <!-- 이거 어디서 씀? -->
 		update bookrequest set state=2 where no=#{no}
 	</update>
-	<select id="getValueBrvo" resultType="HashMap">
+	<select id="getValueBrvo" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookrequest where no=#{param}
 	</select>
-	<update id="chgStateBrequest">
+	<update id="chgStateBookrequest">
 		update state=1 from bookrequest where no=#{param}
 	</update>
 </mapper>

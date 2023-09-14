@@ -67,7 +67,7 @@ public class BookregiServiceImpl implements BookregiService{
 		if (brno == null) {
 			return "/bookregi/write";
 		} else {
-			BookRequestVo bvo = mapper.getValueBrvo(brno);
+			BookregiVo bvo = mapper.getValueBrvo(brno);
 			model.addAttribute("bvo",bvo);
 			return "/bookregi/write";
 		}
@@ -102,8 +102,8 @@ public class BookregiServiceImpl implements BookregiService{
 			bvo.setBimg(bimg);
 			
 			// bcode 값 만들어 넣기
-			String bcode=mapper.getCode();
-			mapper.statechange(brvo);
+			String bcode=mapper.getCode(); // memo
+			mapper.statechange(brvo);    // brvo 뭐임
 			if(bcode.length()==1){
 				bcode="b00"+bcode;
 			}else if(bcode.length()==2){
@@ -119,17 +119,17 @@ public class BookregiServiceImpl implements BookregiService{
 				if(i < 10){
 					String bcode2=bcode+"0"+i;
 					bvo.setBcode(bcode2); //진짜 bcode
-					mapper.write_ok(bvo,brvo);
+					mapper.write_ok(bvo,brvo); // brvo 머임
 					bvo.setBcode(bcode); // b코드 초기화
 				}else{
 					String bcode2=bcode+i;
 					bvo.setBcode(bcode2);
-					mapper.write_ok(bvo,brvo);
+					mapper.write_ok(bvo,brvo); // brvo 머임
 					bvo.setBcode(bcode);
 				}
 				
-				if(brno!=null)
-					mapper.chgStateBrequest(brno);
+				if(brno!=null) // 이건 내꺼
+					mapper.chgStateBookrequest(brno); // 이건 스트링
 			}
 			return "redirect:/bookregi/list";
 		}catch(Exception e) {
