@@ -109,5 +109,13 @@ public class MainServiceImpl  implements MainService{
 		
 		return "/introduce/location";
 	}
+
+	@Override
+	public String search(Model model, HttpServletRequest request, BookregiVo bvo) {
+		String keyword=request.getParameter("keyword");
+		model.addAttribute("keyword",keyword);
+		
+		return "/breserve/search";
+	}
 }
 
