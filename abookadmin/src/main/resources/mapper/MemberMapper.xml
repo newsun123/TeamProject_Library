@@ -13,4 +13,7 @@
 <insert id="banOk">
 	update member set breason=#{breason}, ban=1 where userid=#{userid}
 </insert>
+<update id="unsusBan">
+	update member set ban=0, breason="" where userid=#{usreid}
+</update>
 </mapper>

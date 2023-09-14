@@ -123,13 +123,13 @@ function check(my) {
 											<input type="button" value="임시 정지" class="btn bformbtn" onclick="openBanForm(${sts.index})">
 										</c:if>
 										<c:if test="${mvo.ban==1}">
-											<input type="button" value="정지 해제" class="btn bformbtn" onclick="openBanForm(${sts.index})">
+											<input type="button" value="정지 해제" class="btn bformbtn" onclick="location='unsusBan?userid=${mvo.userid}'">
 										</c:if>
 										<div class="bForm">
 										<form method="post" action="banOk" name="bForm" onsubmit="return check(this)">
 										<input type="hidden" name="userid" value="${mvo.userid}">
 											<input type="text" name="breason" placeholder="사유">
-											<input type="submit" value="정지"><input type="button" value="취소" onclick="closeForm(${sts.index})">
+											<input type="submit" value="정지"> <input type="button" value="취소" onclick="closeForm(${sts.index})">
 										</form>
 										</div>
 									</td>
