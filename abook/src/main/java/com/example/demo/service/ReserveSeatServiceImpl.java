@@ -45,9 +45,9 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		int now = Integer.parseInt(LocalTime.now().toString().substring(0, 2));
 		int change = now - 1; // 현재 전 시간이니까 -1 함
 		String time = "time" + change;
-		// System.out.println(time);
-		if (time == "time9" || time == "time10" || time == "time11" || time == "time12" || time == "time13"
-				|| time == "time14" || time == "time15" || time == "time16" || time == "time17" || time == "time18") {
+		 System.out.println(time);
+		if (time.equals("time9") || time.equals("time10") || time.equals("time11") || time.equals("time12") || time.equals("time13")
+				|| time.equals("time14") || time.equals("time15") || time.equals("time16") || time.equals("time17") || time.equals("time18")) {
 			mapper.closeTable(time); // 정해진 시간대 닫기 완료
 
 			ArrayList<TableNameVo> list = mapper.searchTable();
@@ -60,7 +60,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 				String name = session.getAttribute("name").toString();
 				model.addAttribute(name);
 				model.addAttribute("total", total);
-				 return "/seat/reserveseat";
+				return "/seat/reserveseat";
 			}
 
 		} else {
