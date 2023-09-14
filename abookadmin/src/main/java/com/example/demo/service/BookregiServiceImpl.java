@@ -27,6 +27,9 @@ public class BookregiServiceImpl implements BookregiService{
 	
 	@Override
 	public String list(Model model,BookregiVo bvo,HttpServletRequest request){
+		String type=request.getParameter("type");
+		String keyword=request.getParameter("keyword");
+
 		String state=request.getParameter("state");
 		int page;
 		if(request.getParameter("page") == null)
@@ -50,13 +53,36 @@ public class BookregiServiceImpl implements BookregiService{
 		
 		//System.out.println(pend);
 		
-		model.addAttribute("state",state);
-		model.addAttribute("start",start);
-		model.addAttribute("page",page);
-		model.addAttribute("pstart",pstart);
-		model.addAttribute("pend",pend);
-		model.addAttribute("chong",chong);
-		model.addAttribute("blist",mapper.list(bvo,start));
+		if(keyword==null || keyword.length()==0)
+		{
+			type="title";
+			keyword="";
+			model.addAttribute("type","aa");
+		    model.addAttribute("blist",mapper.list(type,keyword,start));
+		
+		} 
+		else
+		{
+			model.addAttribute("state",state);
+			model.addAttribute("start",start);
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("chong",chong);
+			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+			{
+				System.out.println("list2");
+			    model.addAttribute("blist",mapper.list2(keyword,start));
+			}
+			else
+			{
+				System.out.println("list");
+			  model.addAttribute("blist",mapper.list(type,keyword,start));
+			}
+		}
+		
 		
 		return "/bookregi/list";
 	}

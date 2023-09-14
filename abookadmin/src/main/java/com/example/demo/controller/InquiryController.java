@@ -44,8 +44,8 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/writeOk")
-	public String writeOk(InquiryVo ivo,HttpSession ss)
+	public String writeOk(InquiryVo ivo)
 	{
-		return service.writeOk(ivo,ss);
+		return service.writeOk(ivo);
 	}
 }
