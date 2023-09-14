@@ -225,7 +225,8 @@
 			</c:if>
 			document.getElementById("sv").innerText="${aa}";
 		</c:if>
-		 
+		
+		document.getElementsByClassName("lst")[${num}].style.color="blue";
 	}
 	var schk=0;
 	function selectView(){
@@ -265,9 +266,6 @@
 	
 	function listChange(num){
 		location="list?num="+num;
-	}
-	window.onload=function(){
-		document.getElementsByClassName("lst")[${num}].style.color="blue";
 	}
 </script>
 </head>
