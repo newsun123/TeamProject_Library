@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 <style>
 	#bookregiWrap{
-		padding-bottom: 30px;
+		position:relative;
+		padding-bottom: 70px;
 	}
 	form{
 		width: 100%;
@@ -139,7 +140,7 @@
 		color:#fff;
 		margin-bottom:40px;
 		width:100px;
-		background:#93765a;
+		background:#3d6cc4;
 	}
 	#searchCon{
 		width:630px;
@@ -155,7 +156,6 @@
 	    position: relative;
 	    height: 48px;
 	    border: 1px solid #e2e2e2;
-	    margin-left: 11px;
 	    background-color: #fff;
 	}
 	#select .selected{
@@ -208,6 +208,20 @@
 	    height: 48px!important;
 	    vertical-align: top!important;
 	    width: 500px;
+	    margin-left: 3px;
+	}
+	.abtn{
+		display: inline-block;
+	    border: 1px solid #3d6cc4;
+	    color: #3d6cc4;
+	    padding: 0 23px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 15px;
 	}
 </style>
 <script>
@@ -273,61 +287,57 @@
 			<div id="labNav">
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>도서등록</span></a></li>
-					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li class="on"><a href="/bookregi/list"><span>도서등록</span></a></li>
 					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
-					<li><a href="#"><span>신청현황</span></a></li>
-					<li><a href="#"><span>희망도서</span></a></li>
-					<li><a href="#"><span>월별대출</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href="/loanlist/list"><span>대출이력</span></a></li>
+					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>도서등록</h3>
-					<p>도서관리&nbsp;&nbsp;>&nbsp;&nbsp;도서등록</p>
+					<p>도서 관리&nbsp;&nbsp;>&nbsp;&nbsp;도서등록</p>
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-						<div id="btnCon">
-							<a href="/bookregi/write">도서등록</a>
-						</div>
+						<a href="/bookregi/write" class="abtn">도서등록</a>
 						<table>						
-					<form name="kjh" method="post" action="list">
-					<input type="hidden" value="${type}" name="type" id="seltype">
-					<input type="hidden" value="${keyword}">
-						<div id="select">
-							<div class="selected" onclick="selectView()">
-								<div class="selected_value" id="sv">전체</div>
-								
-								<div class="arrow"></div>
-							</div>
-								<ul id="type">
-									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
-									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
-									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
-									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
-								</ul>
-						</div>
-						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
-						<input type="submit" id="search" class="searchtext" value="검색">
-					</form>
-						<c:forEach items="${blist}" var="bvo">
-							<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
-								<td> 
-									<div>
-										<img src="/static/img/bookregi/${bvo.bimg}">					
+							<form name="kjh" method="post" action="list">
+								<input type="hidden" value="${type}" name="type" id="seltype">
+								<input type="hidden" value="${keyword}">
+								<div id="select">
+									<div class="selected" onclick="selectView()">
+										<div class="selected_value" id="sv">전체</div>
+										<div class="arrow"></div>
 									</div>
-								</td>		
-								<td>
-									<div id="conBox">
-										<div class="aa">${bvo.title}</div>
-										<div class="bb">${bvo.publi}<span>${bvo.writer} 지음</span></div>
-										<div class="cc">${bvo.writeyear}</div>
-										<div class="dd">소장도서관 : 작은 도서관</div>
-									</div>
-								</td>
-							</tr>
-						</c:forEach>						
+									<ul id="type">
+										<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+										<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
+										<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
+										<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
+									</ul>
+								</div>
+								<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+								<input type="submit" id="search" class="searchtext" value="검색">
+							</form>
+							<c:forEach items="${blist}" var="bvo">
+								<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
+									<td> 
+										<div>
+											<img src="/static/img/bookregi/${bvo.bimg}">					
+										</div>
+									</td>		
+									<td>
+										<div id="conBox">
+											<div class="aa">${bvo.title}</div>
+											<div class="bb">${bvo.publi}<span>${bvo.writer} 지음</span></div>
+											<div class="cc">${bvo.writeyear}</div>
+											<div class="dd">소장도서관 : 작은 도서관</div>
+										</div>
+									</td>
+								</tr>
+							</c:forEach>						
 						</table>
 						<div id="btWrap">
 							<div id=pageCon>

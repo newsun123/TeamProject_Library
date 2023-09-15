@@ -50,7 +50,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;
@@ -61,7 +61,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;
@@ -72,7 +72,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;

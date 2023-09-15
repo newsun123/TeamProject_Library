@@ -59,7 +59,14 @@ public class BookregiServiceImpl implements BookregiService{
 			keyword="";
 			model.addAttribute("type","aa");
 		    model.addAttribute("blist",mapper.list(type,keyword,start));
-		
+		    model.addAttribute("state",state);
+			model.addAttribute("start",start);
+			model.addAttribute("page",page);
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("chong",chong);
 		} 
 		else
 		{
