@@ -18,5 +18,5 @@ public interface InquiryMapper {
 	public InquiryVo content(InquiryVo ivo);
 	public void writeOk(MtmVo mvo);
 	public MtmVo getAnswer(String no);
-	
+	public void chgState(MtmVo mvo);
 }

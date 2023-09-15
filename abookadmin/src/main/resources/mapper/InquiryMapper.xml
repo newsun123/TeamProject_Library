@@ -29,4 +29,9 @@
   <select id="getAnswer" resultType="com.example.demo.vo.MtmVo">
   	select * from mtm where inno=#{no}
   </select>
+  
+  <update id="chgState">
+  	update inquiry set state=1 where no=#{inno}
+  </update>
+  
 </mapper>

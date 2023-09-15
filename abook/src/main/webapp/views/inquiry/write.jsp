@@ -114,6 +114,7 @@
 				<div id="contents">
 					<div id="gongjiWrap">					
 						<form name="iform" method="post" id="form" action="writeOk">
+						<input type="hidden" name="inno" value="${inno}">
 							<table>
 								<tr>
 									<td>제목</td>

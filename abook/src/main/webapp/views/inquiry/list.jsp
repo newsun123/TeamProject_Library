@@ -139,7 +139,7 @@
 								<td>작성자</td>
 								<td class="tc">제목</td>
 								<td>등록일</td>
-								<td>조회수</td>
+								<td>상태처리</td>
 							</tr>						
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
@@ -149,7 +149,14 @@
 									<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> 
 								</td>
 								<td>${ivo.writeday}</td>  
-								<td>${ivo.readnum}</td>  
+								<td>
+								<c:if test="${ivo.state==0}">
+									답변대기
+								</c:if>
+								<c:if test="${ivo.state==1}">
+									답변완료
+								</c:if>
+								</td>  
 							</tr>
 						</c:forEach>							
 						</table>
