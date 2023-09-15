@@ -9,10 +9,11 @@
 <style>
 	#reservestatusWrap{
 		padding-bottom: 80px;
+    	min-height: 650px;
 	}
 	table{
 		border-bottom: 1px solid #ddd;
-    	border-top: 2px solid #666;
+    	border-top: 2px solid #cecece;
 	}
 	table tr{
 		height: 60px;
@@ -22,10 +23,11 @@
 		padding:0 10px;
 		text-align: center;
 	}
+	table tr:last-child td{
+		border:none;
+	}
 	table tr:first-child td{
-		border-top: 2px solid #666;
 	    background-color: #f9f9fb;
-	    border-bottom: 1px solid #666;
 	    height: 55px;
 	    color: #333;
 	    font-family: 'NotoSansM';
@@ -92,7 +94,7 @@
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
 					<li class="on"><a href="/reservestatus/list"><span>예약현황</span></a></li>
 					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
-					<li><a href="/loanlist/list"><span>대출이력</span></a></li>
+					<li><a href="/loanstatus/allList"><span>대출이력</span></a></li>
 					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
 			</div>
