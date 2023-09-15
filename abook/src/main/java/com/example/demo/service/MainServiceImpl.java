@@ -23,7 +23,7 @@ public class MainServiceImpl  implements MainService{
 	public String main(GongjiVo gvo,Model model,HttpServletRequest req) {
 
 		//String page=req.getParameter("page");
-  
+		String keyword=req.getParameter("keyword");
 		LocalDate day = LocalDate.now();
 
 		int year = day.getYear();
@@ -89,7 +89,7 @@ public class MainServiceImpl  implements MainService{
 		// 메인페이지 인기도서 신착도서 꺼내오기
 		ArrayList<BookregiVo> blist = mapper.bookList();
 		ArrayList<BookregiVo> bblist = mapper.bestBookList();
-		
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("blist",blist);
 		model.addAttribute("bblist",bblist);
 		
@@ -110,12 +110,5 @@ public class MainServiceImpl  implements MainService{
 		return "/introduce/location";
 	}
 
-	@Override
-	public String search(Model model, HttpServletRequest request, BookregiVo bvo) {
-		String keyword=request.getParameter("keyword");
-		model.addAttribute("keyword",keyword);
-		
-		return "/breserve/search";
-	}
 }
 

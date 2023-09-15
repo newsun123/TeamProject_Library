@@ -387,7 +387,7 @@
 		<div id="search">
 					<input type="hidden" value="${keyword}">
 			<input type="text" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
-			<a href="/breserve/list"><img id="searchBtn" src="/static/img/main/search_icon.png"></a>
+			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="location='/breserve/list?keyword=${keyword}'"></a>
 		</div>
 	</div>
 	<div id="sectionGroup">

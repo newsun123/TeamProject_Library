@@ -68,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 
 		String userid = request.getParameter("userid");
 		String checkuserid = mapper.checkUserid(userid);
-
+		
 		if (checkuserid == null) {
 			return "redirect:/member/login?chk=1";
 		} else {
@@ -79,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
 			String page = request.getParameter("page");
 			String bcode = request.getParameter("bcode");
 
-			if (ban.equals("1")) {
+			if (ban.equals("1")) { // 도서예약에서 넘어올때 , 임시정지 아이디일때
 				userid = mvo.getUserid();
 				session.invalidate(); // 밴 됐으니까 로그인 해제
 				request.getSession(true); // 이거 해줘야 깨끗하단다
@@ -99,8 +99,8 @@ public class MemberServiceImpl implements MemberService {
 					return "redirect:/main/main";
 				}
 
-			} else { // 도서예약에서 넘어올때 , 임시정지 아이디일때
-
+			} else { 
+				
 				if (name == null) {
 					return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
 
@@ -111,10 +111,25 @@ public class MemberServiceImpl implements MemberService {
 
 					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
 				}
-			}
+				
+				String rchk = request.getParameter("rchk");
+				if(name == null)
+				{
+					if(rchk.equals("1"))
+					{
+						return "redirect:/member/login?rchk=1&page="+page;
+					}
+					else
+					{
+						
+					}
+				}
+				 // 1이면 
+				// if() {
+				
+		}
 		}
 	}
-	
 	@Override
 	public String logout(HttpSession session) {
 		session.invalidate();
