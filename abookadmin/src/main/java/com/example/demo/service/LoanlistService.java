@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
-public interface LoanstatusService {
+public interface LoanlistService {
 	public String list(Model model,HttpServletRequest req);
-	public String loanBook(HttpServletRequest req);
+
 }

@@ -8,23 +8,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.service.LoanstatusService;
+import com.example.demo.service.LoanlistService;
 
 @Controller
-public class LoanstatusController {
-	
+public class LoanlistController {
+
 	@Autowired
-	@Qualifier("loans")
-	private LoanstatusService service;
+	@Qualifier("ls")
+	private LoanlistService service;
 	
-	@RequestMapping("/loanstatus/list")
-	public String list(Model model,HttpServletRequest req) {
+	@RequestMapping("/loanlist/list")
+	public String allList(Model model,HttpServletRequest req) {
 		return service.list(model,req);
 	}
-	
-	@RequestMapping("/loanstatus/loanBook")
-	public String loanBook(HttpServletRequest req) {
-		return service.loanBook(req);
-	}
-	
 }

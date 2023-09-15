@@ -242,7 +242,7 @@
 				<div id="contents">
 					<div id="requestWrap">
 					<c:if test="${userid == null}">
-						<a href="/member/login" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')" class="writebtn">신청하기</a>
+						<a href="/member/login?brchk=1" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')" class="writebtn">신청하기</a>
 					</c:if>
 					<c:if test="${userid != null}">
 						<a href="requestwrite" class="writebtn">신청하기</a>
