@@ -206,7 +206,14 @@
 				<a href="/seat/rulelibrary">열람실 이용</a>
 				<ul>
 					<li><a href="/seat/rulelibrary">이용 규칙</a></li>
-					<li><a href="/seat/chkReserveSeat">좌석 예약</a></li>
+					<li>
+					<c:if test="${userid!=null}">
+					<a href="/seat/chkReserveSeat">좌석 예약</a>
+					</c:if>
+					<c:if test="${userid==null}">
+					<a href="/member/login?rchk=1" onclick="alert('비로그인 상태에서는 예약할 수 없습니다.')">좌석 예약</a>
+					</c:if>
+					</li>
 				</ul>
 			</li>
 			<li class="gnbMenu">

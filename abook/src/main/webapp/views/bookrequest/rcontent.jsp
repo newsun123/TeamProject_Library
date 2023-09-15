@@ -135,8 +135,18 @@
 							<input type="button" value="신청완료"">
 						</c:if>
 						<c:if test="${brvo.state==0}">
+							<c:if test="${usreid==null}">
+								<a href="/member/login?brchk=2&brno=${brvo.no}" onclick="alert('비로그인 상태에서는 수정할 수 없습니다.')">수정하기</a>
+							</c:if>
+							<c:if test="${usreid!=null}">
 							<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">수정하기</a>
-							<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">삭제하기</a>
+							</c:if>
+							<c:if test="${usreid==null}">
+								<a href="/member/login?brchk=2&brno=${brvo.no}" onclick="alert('비로그인 상태에서는 수정할 수 없습니다.')">삭제하기</a>							
+							</c:if>
+							<c:if test="${usreid!=null}">
+								<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">삭제하기</a>							
+							</c:if>
 						</c:if>
 						</div>
 					</c:if>		
