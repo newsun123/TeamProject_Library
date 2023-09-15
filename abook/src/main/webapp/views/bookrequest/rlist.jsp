@@ -275,6 +275,7 @@
 								<td width="150"> 신청일 </td>
 								<td width="130"> 처리상태 </td>
 							</tr>	
+							
 							<c:forEach items="${rlist}" var="brvo" varStatus="sts">
 								<tr>
 									<input type="hidden" name="userid" id="userid" value="${brvo.userid}">

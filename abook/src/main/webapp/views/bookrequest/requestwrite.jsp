@@ -107,39 +107,43 @@
 				<div id="contents">
 					<div id="requestWrap">				
 						<div class="request">
-						<form name="rform" method="post" action="requestwrite_ok">
-							<table>
-								<tr>
-									<td>책제목</td>
-									<td><input type="text" name="title"></td>
-								</tr>
-								<tr>
-									<td>출판사</td>
-									<td><input type="text" name="publi"></td>
-								</tr>
-								<tr>
-									<td>저자</td>
-									<td><input type="text" name="publi"></td>
-								</tr>
-								<tr>
-									<td>비고</td>
-									<td class="wh"><textarea name="ect"></textarea></td>
-								</tr>
-								<tr>
-									<td>노출옵션</td>
-									<td>
-										<div>
-											<span class="gog">※ 비공개글은 체크해주세요</span>
-											<input type="checkbox" name="gonge" value="1">
-										</div>
-									</td>
-								</tr>
-							</table>
-							<div id="btn">
-								<input type="button" value="취소" class="dis" onclick="location='rlist'">
-								<input type="submit" value="등록하기">
-							</div> 
-						</form>						
+							<form name="rform" method="post" action="requestwrite_ok">
+								<table>
+									<tr>
+										<td>책제목</td>
+										<td><input type="text" name="title"></td>
+									</tr>
+									<tr>
+										<td>출판사</td>
+										<td><input type="text" name="publi"></td>
+									</tr>
+									<tr>
+										<td>저자</td>
+										<td><input type="text" name="writer"></td>
+									</tr>
+									<tr>
+										<td>출판년도</td>
+										<td><input type="text" name="writeyear"></td>
+									</tr>
+									<tr>
+										<td>비고</td>
+										<td class="wh"><textarea name="ect"></textarea></td>
+									</tr>
+									<tr>
+										<td>노출옵션</td>
+										<td>
+											<div>
+												<span class="gog">※ 비공개글은 체크해주세요</span>
+												<input type="checkbox" name="gonge" value="1">
+											</div>
+										</td>
+									</tr>
+								</table>
+								<div id="btn">
+									<input type="button" value="취소" class="dis" onclick="location='rlist'">
+									<input type="submit" value="등록하기">
+								</div> 
+							</form>						
 						</div>
 					</div>
 				</div>

@@ -7,55 +7,71 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#requestWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
+	table{
+		border-top: 2px solid #cecece;
+	}
+	table tr{
+		height: 55px;
+	}
+	table tr td{
+		border-bottom: 1px solid #e4e4e4;
+		padding:0 10px;
+	}
+	.aa{
+    	border-right: 1px solid #ddd;
+	}
+	.co{
+		background: #f8f8fa;
+		width: 110px;
+    	border-right: 1px solid #ddd;
+	}
+	.bb{
+		height: 200px!important;
+	}
+	.bb td{
+		padding:10px;
+		vertical-align: top;
+	}
+	.dis{
+		display: inline-block;
+	    border: 1px solid #e2e2e2;
+	    border-radius: 3px;
+	    color: #71757b;
+	    padding: 0 20px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
+	}
+	#btn{
+		text-align: center;
+    	padding: 30px 0;
+	}
+	#btn a{
+		color: #fff;
 	    text-align: center;
+	    background: #93765a;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    line-height: 50px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
+	    display: inline-block;
 	}
-	.nameTop{
-		height:60px;
-		border-bottom:solid 2px #000;
-		font-size:25px;
-		font-weight:bold;
-		text-align:center;
+	#btn a.dis{
+		background: #e0e3e6;
+    	color: #6e7277;
 	}
-	.conwrap{
-		justify-content:space-between;
-		border-bottom:1px solid #ddd;
-		box-sizing:border-box;
-		padding:20px 0;
-	}
-	.conWrap > div{
-		text-align:left;
-		height:45px;
-		line-height:45px;
-		border-bottom:1px solid #F1F1F1; 
-	}
-	.conWrap > div:last-child{
-		border-bottom:none;
-		margin-top:10px;
-	}
-	.mark{
-		font-size:20px;
-		display:inline-block;
-		width:140px;
-		margin-right:50px;
-	}
-	.button{
-		float:right;
-		display:inline-block;
-		width:300px;
-		border-bottom:none;
-	}
-	input[type=button]{
-		width:60px;
-		height:40px;
-		background:#967759;
-		color:#FFFFF5;
-		margin-right:20px;
-		border-radius:5px;
-		line-height:30px;
+	.rebtn{
+		display: inline-block;
+	    border: 1px solid #e2e2e2;
+	    border-radius: 3px;
+	    color: #71757b;
+	    padding: 0 20px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
 	}
 </style>
 </head>
@@ -77,45 +93,52 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-					<form name="rform" method="post">
-						<div class="conWrap">
-							<div><span class="mark"> 책제목 </span>${brvo.title}</div>
-							<div><span class="mark"> 저자 </span>${brvo.writer}</div>
-							<div><span class="mark"> 출판사 </span>${brvo.publi}</div>
-							<div><span class="mark"> 출판년도 </span>${brvo.writeyear}</div>
-							<div><span class="mark"> 신청자 </span>${brvo.userid}</div>
-							<div><span class="mark"> 비고 </span>${brvo.ect}</div>
-							<div>
-							<c:if test="${brvo.gonge == 1}"> <!-- 비공개일경우 -->
-								<span class="button">
-									<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
-									<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
-									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-								</span>
-							</c:if>
-							<c:if test="${brvo.gonge != 1 && userid != brvo.userid}">
-								<span class="button">
-									<input type="button" value="수정" style="display:none;">
-									<input type="button" value="삭제" style="display:none;">
-									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록" style="float:right;"></a>
-								</span>
-							</c:if>
-							<c:if test="${brvo.gonge != 1 && userid == brvo.userid}">
-								<span class="button">
-									<c:if test="${brvo.state==1}">
-									<input type="button" value="신청완료"">
-									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-									</c:if>
-									<c:if test="${brvo.state==0}">
-									<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
-									<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
-									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-									</c:if>
-								</span>
-							</c:if>
-							</div>							
+						<a href="rlist?type=${type}&keyword=${keyword}" class="rebtn">목록으로</a>
+						<table>
+							<tr>
+								<td class="co">도서명</td>
+								<td class="aa" width="610">${brvo.title}</td>
+								<td class="co">신청자</td>
+								<td width="340">${brvo.userid}</td>
+							</tr>
+							<tr>
+								<td class="co">출판사</td>
+								<td class="aa" width="610">${brvo.publi}</td>
+								<td class="co">저자</td>
+								<td width="340">${brvo.writer}</td>
+							</tr>
+							<tr>
+								<td class="co">출판년도</td>
+								<td colspan="3">${brvo.writeyear}</td>
+							</tr>
+							<tr class="bb">
+								<td class="co bb">비고</td>
+								<td class="p3" colspan="3">${brvo.ect}</td>
+							</tr>
+						</table>
+					<c:if test="${brvo.gonge == 1}"> <!-- 비공개일경우 -->
+						<div id="btn">
+							<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">수정하기</a>
+							<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">석제하기</a>
 						</div>
-					</form>				
+					</c:if>
+					<c:if test="${brvo.gonge != 1 && userid != brvo.userid}">
+						<div id="btn">
+							<input type="button" value="수정하기" style="display:none;">
+							<input type="button" value="삭제하기" style="display:none;">
+						</div>
+					</c:if>
+					<c:if test="${brvo.gonge != 1 && userid == brvo.userid}">
+						<div id="btn">
+						<c:if test="${brvo.state==1}">
+							<input type="button" value="신청완료"">
+						</c:if>
+						<c:if test="${brvo.state==0}">
+							<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">수정하기</a>
+							<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">삭제하기</a>
+						</c:if>
+						</div>
+					</c:if>		
 					</div>
 				</div>
 			</div>		
