@@ -132,9 +132,9 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
-					<li class="on"><a><span>대출현황</span></a></li>
-					<li><a href="/loanstatus/allList"><span>대출이력</span></a></li>
-					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
+					<li><a><span>대출현황</span></a></li>
+					<li class="on"><a><span>대출이력</span></a></li>
+					<li><a href="#"><span>예약현황</span></a></li>
 					<li><a href="#"><span>신청현황</span></a></li>
 					<li><a href="#"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>
@@ -153,17 +153,15 @@
 								<td>회원아이디</td>
 								<td>대출일</td>
 								<td>반납예정일</td>
-								<td>반납하기</td>
+								<td>반납일</td>
 							</tr>
-						<c:forEach items="${blist}" var="bvo">
+						<c:forEach items="${alist}" var="avo">
 							<tr>
-								<td><div class="el">${bvo.title}</div></td>
-								<td>${bvo.userid}</td>
-								<td>${bvo.rental}</td>
-								<td>${bvo.returnday}</td>
-								<td>
-									<input type="button" value="반납하기" onclick="location='loanBook?no=${bvo.no}&bcode=${bvo.bcode}'">
-								</td>
+								<td><div class="el">${avo.title}</div></td>
+								<td>${avo.userid}</td>
+								<td>${avo.rental}</td>
+								<td>${avo.returnday}</td>
+								<td>${avo.writeday}</td>
 							</tr>
 						</c:forEach>
 						</table>
