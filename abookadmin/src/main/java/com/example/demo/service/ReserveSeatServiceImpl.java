@@ -32,6 +32,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String stopTable(HttpServletRequest req, Model model) {
 		String tname = req.getParameter("tname");
+		System.out.println(tname);
 		mapper.stopTable(tname);
 		return "redirect:/rsvseat/reserveseat";
 	}
