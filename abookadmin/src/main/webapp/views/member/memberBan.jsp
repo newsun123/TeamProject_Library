@@ -74,6 +74,47 @@
 	    position: relative;
 	    top: -1px;
 	}
+	/*page버튼처리*/
+	#btWrap{
+		margin-top:	30px;
+		position:	relative;
+		height:	50px;
+		text-align:	center;
+	}
+	#pageCon{
+		margin:	auto;
+	}
+	#pageCon a{
+		display:	inline-block;
+		width:	30px;
+		font-sizes:	1.123em;
+		color:	#666;
+		line-height:	30px;
+		text-align:	center;
+		vertical-align:	top;
+	}
+	#pageCon .btnPage{
+		width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #ddd;
+	    background: url(/static/img/common/arr_sp.png) 50% 0 no-repeat;
+	}
+	#pageCon .btnPage.prev{
+		margin-right: 5px;
+    	background-position-y: -27px;
+	}
+	#pageCon .btnPage.next{
+		margin-left: 5px;
+    	background-position-y: -52px;
+	}
+	#pageCon .btnPage.last{
+		background-position-y: -77px;
+	}
+	#pageCon .btnPage.dis{
+		pointer-event:none;
+		cursor:default;
+	}
 </style>
 <script>
 function openBanForm(n) {
@@ -157,6 +198,48 @@ function check(my) {
 								</tr>
 								</c:forEach>
 						</table>
+						
+						<div id="btWrap">
+						<div id="pageCon">
+						<c:if test="${pstart!=1}">
+							<a href="memberBan?page=${pstart-1}" class="btnPage"></a>
+						</c:if>
+						<c:if test="${pstart==1}">
+							<a class="btnPage dis"></a>
+						</c:if>
+						
+						<c:if test="${page!=1}">
+							<a href="memberBan?page=${page-1}" class="btnPage prev"></a>
+						</c:if>
+						<c:if test="${page==1}">
+							<a class="btnPage dis prev"></a>
+						</c:if>
+						
+						<c:forEach begin="${pstart}" end="${pend}" var="i">
+							<c:if test="${page!=i}">
+								<a href="memberBan?page=${i}">${i}</a>
+							</c:if>
+							<c:if test="${page==i}">
+								<a href="memberBan?page=${i}" style="background-color:	#555;color:#fff">${i}</a>
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${page!=chong}">
+							<a href="memberBan?page=${page+1}" class="btnPage next"></a>
+						</c:if>
+						<c:if test="${page==chong}">
+							<a class="btnPage next dis"></a>
+						</c:if>
+						
+						<c:if test="${pend!=chong}">
+							<a href="memberBan?page=${pend+1}" class="btnPage last"></a>
+						</c:if>
+						<c:if test="${pend==chong}">
+							<a class="btnPage last dis"></a>
+						</c:if>
+						</div>
+					</div>
+						
 					</div>
 				</div>
 			</div>		

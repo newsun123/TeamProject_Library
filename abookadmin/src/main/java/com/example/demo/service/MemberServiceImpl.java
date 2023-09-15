@@ -23,16 +23,70 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mapper;
 
 	@Override
-	public String member(Model model) {
-		ArrayList<MemberVo> mlist = mapper.memberAll();
-		model.addAttribute("mlist", mlist);
-		return "/member/member";
+	public String member(Model model,HttpServletRequest request) {
+		/*
+		 * ArrayList<MemberVo> mlist = mapper.memberAll(); model.addAttribute("mlist",
+		 * mlist); return "/member/member";
+		 */
+		int page;
+		if(request.getParameter("page")==null) {
+			page=1;
+		}
+		else {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		int start=(page-1)*10;
+		int pstart=page/10;
+		if(page%10==0) {
+			pstart--;
+		}
+		pstart=pstart*10+1;
+		int pend=pstart+9;
+		int chong=mapper.getChong();
+		if(pend>chong)
+			pend=chong;
+		
+		model.addAttribute("page",page);
+		model.addAttribute("pstart",pstart);
+		model.addAttribute("pend",pend);
+		model.addAttribute("chong",chong);
+		model.addAttribute("start",start);
+		model.addAttribute("mlist",mapper.memberAll(start));
+		
+		return "member/member";
 	}
 
 	@Override
-	public String memberBan(Model model) {
-		ArrayList<MemberVo> mlist = mapper.memberAll();
-		model.addAttribute("mlist", mlist);
+	public String memberBan(Model model,HttpServletRequest request) {
+		/*
+		 * ArrayList<MemberVo> mlist = mapper.memberAll(start);
+		 * model.addAttribute("mlist", mlist); return "member/memberBan";
+		 */
+		int page;
+		if(request.getParameter("page")==null) {
+			page=1;
+		}
+		else {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		int start=(page-1)*10;
+		int pstart=page/10;
+		if(page%10==0) {
+			pstart--;
+		}
+		pstart=pstart*10+1;
+		int pend=pstart+9;
+		int chong=mapper.getChong();
+		if(pend>chong)
+			pend=chong;
+		
+		model.addAttribute("page",page);
+		model.addAttribute("pstart",pstart);
+		model.addAttribute("pend",pend);
+		model.addAttribute("chong",chong);
+		model.addAttribute("start",start);
+		model.addAttribute("mlist",mapper.memberAll(start));
+		
 		return "member/memberBan";
 	}
 

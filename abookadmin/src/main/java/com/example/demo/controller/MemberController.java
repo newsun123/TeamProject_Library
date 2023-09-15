@@ -18,13 +18,13 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping("/member/member")
-	public String memeber(Model model) {
-		return service.member(model);
+	public String memeber(Model model,HttpServletRequest request) {
+		return service.member(model,request);
 	}
 	
 	@RequestMapping("/member/memberBan")
-	public String memberBan(Model model) {
-		return service.memberBan(model);
+	public String memberBan(Model model,HttpServletRequest request) {
+		return service.memberBan(model,request);
 	}
 	
 	@RequestMapping("/member/detail")
