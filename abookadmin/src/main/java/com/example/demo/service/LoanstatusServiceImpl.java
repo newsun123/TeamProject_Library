@@ -32,7 +32,7 @@ public class LoanstatusServiceImpl implements LoanstatusService{
 		// System.out.println(today); 2023-09-15 확인 완료
 		for(int i=0;i < blist.size(); i++) {
 			String rday = blist.get(i).getReturnday(); 
-			if()
+			
 		}
 		
 		return "/loanstatus/list";
