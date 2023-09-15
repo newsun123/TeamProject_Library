@@ -112,21 +112,6 @@ public class MemberServiceImpl implements MemberService {
 					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
 				}
 				
-				String rchk = request.getParameter("rchk");
-				if(name == null)
-				{
-					if(rchk.equals("1"))
-					{
-						return "redirect:/member/login?rchk=1&page="+page;
-					}
-					else
-					{
-						
-					}
-				}
-				 // 1이면 
-				// if() {
-				
 		}
 		}
 	}
