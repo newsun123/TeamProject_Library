@@ -111,15 +111,17 @@
 								<td>회원아이디</td>
 								<td>대출일</td>
 								<td>반납예정일</td>
-								<td>상태</td>
+								<td>반납하기</td>
 							</tr>
-						<c:forEach items="${mapall}" var="map">
+						<c:forEach items="${blist}" var="bvo">
 							<tr>
-								<td><div class="el">${map.title}</div></td>
-								<td>${map.userid}</td>
-								<td>${map.rental}</td>
-								<td>${map.returnday}</td>
-								<td>대출중</td>
+								<td><div class="el">${bvo.title}</div></td>
+								<td>${bvo.userid}</td>
+								<td>${bvo.rental}</td>
+								<td>${bvo.returnday}</td>
+								<td>
+									<input type="button" value="반납하기" onclick="location='loanBook?no=${bvo.no}'">
+								</td>
 							</tr>
 						</c:forEach>
 						</table>

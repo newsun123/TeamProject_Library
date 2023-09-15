@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,4 +22,8 @@ public class LoanstatusController {
 		return service.list(model);
 	}
 	
+	@RequestMapping("/loanstatus/loanBook")
+	public String loanBook(HttpServletRequest req) {
+		return service.loanBook(req);
+	}
 }
