@@ -203,7 +203,6 @@
 							<div id="btnCon">
 								<a href="/gongji/write">글쓰기</a>
 							</div>
-							
 						</div>							
 					</div>
 				</div>
