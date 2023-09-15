@@ -287,11 +287,13 @@
 			<div id="labNav">
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href="/bookregi/list"><span>도서등록</span></a></li>
-					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
-					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
-					<li><a href="/loanlist/list"><span>대출이력</span></a></li>
-					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
+					<li class="on"><a>도서등록</a></li>
+					<li><a href="/loanstatus/list">대출현황</a></li>
+					<li><a href="/loanlist/list">대출이력</a></li>
+					<li><a href="/reservestatus/list">예약현황</a></li>
+					<li><a href="#">신청현황</a></li>
+					<li><a href="/bookrequest/hopelist">희망도서</a></li>
+					<li><a href="">월별대출</a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

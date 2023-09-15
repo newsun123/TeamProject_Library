@@ -136,7 +136,7 @@
 					<li class="on"><a><span>대출이력</span></a></li>
 					<li><a href="#"><span>예약현황</span></a></li>
 					<li><a href="#"><span>신청현황</span></a></li>
-					<li><a href="#"><span>희망도서</span></a></li>
+					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>
 				</ul>
 			</div>
