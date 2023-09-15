@@ -12,9 +12,6 @@
 	<update id="chgStateBookregi">
 		update bookregi set state=0 where bcode=#{bcode}
 	</update>
-	<select id="allList" resultType="com.example.demo.vo.BookLoanVo">
-		select * from bookloan where state=1 limit #{start},10
-	</select>
 	<select id="getChong" resultType="int">
       select ceil( count(*)/10 ) from bookloan 
    </select>

@@ -83,36 +83,5 @@ public class LoanstatusServiceImpl implements LoanstatusService{
 		return "redirect:/loanstatus/list";
 	}
 
-	@Override
-	public String allList(Model model,HttpServletRequest req) {
-		
-		int page = 1;
-		if (req.getParameter("page") == null)
-			page = 1;
-		else
-			page = Integer.parseInt(req.getParameter("page"));
-
-		int start = (page - 1) * 10;
-
-		int pstart = page / 10;
-		if (page % 10 == 0)
-			pstart--;
-		pstart = pstart * 10 + 1;
-
-		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
-
-		if (pend > chong)
-			pend = chong;
-
-		model.addAttribute("chong", chong);
-		model.addAttribute("pstart", pstart);
-		model.addAttribute("pend", pend);
-		model.addAttribute("page", page);
-		
-		
-		model.addAttribute("alist",mapper.allList(start));
-		return "/loanstatus/allList";
-	}
+	
 }

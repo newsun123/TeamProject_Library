@@ -132,10 +132,7 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
-					<li class="on"><a><span>대출현황</span></a></li>
-					<li><a href="/loanstatus/allList"><span>대출이력</span></a></li>
-					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
-					<li class="on"><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href=""><span>대출현황</span></a></li>
 					<li><a href="/loanlist/list"><span>대출이력</span></a></li>
 					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
