@@ -168,14 +168,14 @@
 						<div id="btWrap">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
-								<a href="list?page=${pstart-1}" class="btnPage"></a>
+								<a href="allList?page=${pstart-1}" class="btnPage"></a>
 							</c:if>
 							<c:if test="${pstart==1}">
 								<a class="btnPage dis"></a> 
 							</c:if>
 							
 							<c:if test="${page!=1}">
-								<a href="list?page=${page-1}" class="btnPage prev"></a>
+								<a href="allList?page=${page-1}" class="btnPage prev"></a>
 							</c:if>
 							<c:if test="${page==1}">
 								<a class="btnPage dis prev"></a>
@@ -183,22 +183,22 @@
 							
 							<c:forEach begin="${pstart}" end="${pend}" var="i">
 								<c:if test="${page!=i}">
-									<a href="list?page=${i}">${i}</a>
+									<a href="allList?page=${i}">${i}</a>
 								</c:if>
 								<c:if test="${page==i}">
-									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
+									<a href="allList?page=${i}" style="background-color: #555;color:#fff">${i}</a>
 								</c:if>
 							</c:forEach>
 						
 							<c:if test="${page!=chong}">
-								<a href="list?page=${page+1}" class="btnPage next"></a>
+								<a href="allList?page=${page+1}" class="btnPage next"></a>
 							</c:if>
 							<c:if test="${page==chong}">
 								<a class="btnPage next dis"></a>
 							</c:if>
 							
 							<c:if test="${pend!=chong}">
-								<a href="list?page=${pend+1}" class="btnPage last"></a>
+								<a href="allList?page=${pend+1}" class="btnPage last"></a>
 							</c:if>
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
