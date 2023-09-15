@@ -77,10 +77,7 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-					<form name="rform" method="post" cellspancing="0">
-						<div class="nameTop">
-							도서신청
-						</div>
+					<form name="rform" method="post">
 						<div class="conWrap">
 							<div><span class="mark"> 책제목 </span>${brvo.title}</div>
 							<div><span class="mark"> 저자 </span>${brvo.writer}</div>
@@ -89,39 +86,36 @@
 							<div><span class="mark"> 신청자 </span>${brvo.userid}</div>
 							<div><span class="mark"> 비고 </span>${brvo.ect}</div>
 							<div>
-									<c:if test="${brvo.gonge == 1}"> <!-- 비공개일경우 -->
-										<span class="button">
-											<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
-											<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
-											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-										</span>
+							<c:if test="${brvo.gonge == 1}"> <!-- 비공개일경우 -->
+								<span class="button">
+									<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
+									<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
+									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
+								</span>
+							</c:if>
+							<c:if test="${brvo.gonge != 1 && userid != brvo.userid}">
+								<span class="button">
+									<input type="button" value="수정" style="display:none;">
+									<input type="button" value="삭제" style="display:none;">
+									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록" style="float:right;"></a>
+								</span>
+							</c:if>
+							<c:if test="${brvo.gonge != 1 && userid == brvo.userid}">
+								<span class="button">
+									<c:if test="${brvo.state==1}">
+									<input type="button" value="신청완료"">
+									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
 									</c:if>
-									<c:if test="${brvo.gonge != 1 && userid != brvo.userid}">
-										<span class="button">
-											<input type="button" value="수정" style="display:none;">
-											<input type="button" value="삭제" style="display:none;">
-											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록" style="float:right;"></a>
-										</span>
+									<c:if test="${brvo.state==0}">
+									<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
+									<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
+									<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
 									</c:if>
-									<c:if test="${brvo.gonge != 1 && userid == brvo.userid}">
-										<span class="button">
-											<c:if test="${brvo.state==1}">
-											<input type="button" value="신청완료"">
-											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-											</c:if>
-											<c:if test="${brvo.state==0}">
-											<a href="rupdate?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="수정"></a>
-											<a href="delete?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"><input type="button" value="삭제"></a>
-											<a href="rlist?type=${type}&keyword=${keyword}"><input type="button" value="목록"></a>
-											</c:if>
-										</span>
-									</c:if>
-							</div>
-							
+								</span>
+							</c:if>
+							</div>							
 						</div>
-					</form>
-						
-						
+					</form>				
 					</div>
 				</div>
 			</div>		

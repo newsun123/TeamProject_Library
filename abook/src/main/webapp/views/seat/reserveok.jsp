@@ -13,28 +13,37 @@
 		border:4px solid #f1f1f1;
 	    padding: 7px;
 	    text-align: center;
-	    height: 430px; 
 	}
 	#outer {
-		width: 100%;
-    	height: 100%;
-	}
-	table h3 {
-		font-size: 25px;
-	    margin-bottom: 20px;
+	    font-size: 19px;
+	    margin-top: 20px;
 	    font-family: 'NotoSansM';
-	    color: #444;
+	    color: #555;
 	}
-	table {
-		margin-top:40px;
-		text-align: center;
+	#rsvOkWrap h3{
+		color:#333;
+		font-size:25px;
+		font-family: NotoSansM;
+		margin-bottom: 20px;
 	}
-	table tr {
-		height:35px;
-
+	#conBox {
+		padding: 50px 0;
 	}
-	table tr td {
-		align:center;
+	#conBox img{
+		position: relative;
+    	left: -10px;
+    	width: 130px;
+	}
+	.mr{
+		margin-right: 10px;
+	}
+	#conBox span{
+		color:#333;
+	}
+	.pp{
+		font-size: 15px;
+	    margin-top: 30px;
+	    color: #777;
 	}
 </style>
 </head>
@@ -56,22 +65,15 @@
 				</div>
 				<div id="contents">
 						<div id="rsvOkWrap">
-							<div id="outer">
-								<table width="1000">
-								<caption><h3>예약이 완료 되었습니다.</h3></caption>
-									<tr>
-										<td>예약자명</td>
-										<td>예약 좌석</td>
-										<td>예약 시간</td>
-									</tr>
-									<tr>
-										<td>${rvo.userid}</td>
-										<td>${rvo.tname}</td>
-										<td>${timelist.time}</td>
-									</tr>
-								</table>
-								<div style="margin-top:30px;">예약취소는 <b style="font-weight:600;"> 마이페이지 > 좌석예약</b> 에서 가능하십니다.</div>
-							</div>	
+							<div id="conBox">
+								<h3>예약이 완료 되었습니다.</h3>
+								<img src="/static/img/member/ico_result.png">
+								<div id="outer">
+									예약좌석 : <span class="mr">${rvo.tname}번</span>
+									예약시간 : <span>${timelist.time}</span>
+								</div>	
+								<div class="pp">예약취소는 마이페이지 > 좌석예약 에서 가능합니다.</div>						
+							</div>
 						</div>
 					</div>
 				</div>
