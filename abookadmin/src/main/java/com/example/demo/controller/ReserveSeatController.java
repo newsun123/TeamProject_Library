@@ -34,8 +34,8 @@ public class ReserveSeatController {
 	}
 	
 	@RequestMapping("/rsvseat/cancelseat")
-	public String cancelseat(Model model) {
-		return service.cancelseat(model);
+	public String cancelseat(Model model,HttpServletRequest request) {
+		return service.cancelseat(model,request);
 	}
 	
 	@RequestMapping("/rsvseat/cancelSeat")

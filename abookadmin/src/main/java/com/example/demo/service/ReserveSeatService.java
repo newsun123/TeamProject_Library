@@ -9,6 +9,6 @@ public interface ReserveSeatService {
 	public String reserveseat(Model model);
 	public String stopTable(HttpServletRequest req,Model model);
 	public String startTable(HttpServletRequest req, Model model);
-	public String cancelseat(Model model);
+	public String cancelseat(Model model,HttpServletRequest request);
 	public String cancelSeat(HttpServletRequest req);
 }
