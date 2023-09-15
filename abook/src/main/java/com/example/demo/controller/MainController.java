@@ -38,11 +38,6 @@ public class MainController {
 	public String location(){
 		return service.location();
 	}
-	
-	@RequestMapping("/breserve/search")
-	public String search(Model model,HttpServletRequest request,BookregiVo bvo) {
-		return service.search(model,request,bvo);
-	}
 }
 
 

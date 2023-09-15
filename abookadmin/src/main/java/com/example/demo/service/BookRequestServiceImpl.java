@@ -20,7 +20,6 @@ public class BookRequestServiceImpl implements BookRequestService {
 
 	@Override
 	public String hopelist(HttpServletRequest request, BookRequestVo brvo, Model model,BookregiVo bvo) {
-		String state=request.getParameter("state");
 		int page;
 		if(request.getParameter("page")==null) {
 			page=1;
@@ -39,7 +38,6 @@ public class BookRequestServiceImpl implements BookRequestService {
 		if(pend>chong)
 			pend=chong;
 		
-		model.addAttribute("state",state);
 		model.addAttribute("page",page);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);

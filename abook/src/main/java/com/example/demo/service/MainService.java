@@ -12,5 +12,4 @@ public interface MainService {
 	public String main(GongjiVo gvo,Model model,HttpServletRequest req);
 	public String intro();
 	public String location();
-	public String search(Model model,HttpServletRequest request,BookregiVo bvo);
 }
