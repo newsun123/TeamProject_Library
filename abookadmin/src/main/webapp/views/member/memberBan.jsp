@@ -54,6 +54,26 @@
 	.ta_b{
 		text-align: right;
 	}
+	.dbtn{
+		background: #fff;
+	    border: 1px solid #4379d6;
+	    color: #4379d6;
+	    font-size: 14px;
+	    width: 65px;
+	    height: 41px;
+	    border-radius: 3px;
+	    display: inline-block;
+	    line-height: 41px;
+	}
+	.ml10{
+		margin-left: 10px;
+	}
+	.oin{
+		font-size: 14px;
+	    width: 300px;
+	    position: relative;
+	    top: -1px;
+	}
 </style>
 <script>
 function openBanForm(n) {
@@ -128,8 +148,8 @@ function check(my) {
 										<div class="bForm">
 										<form method="post" action="banOk" name="bForm" onsubmit="return check(this)">
 										<input type="hidden" name="userid" value="${mvo.userid}">
-											<input type="text" name="breason" placeholder="사유">
-											<input type="submit" value="정지"> <input type="button" value="취소" onclick="closeForm(${sts.index})">
+											<input type="text" name="breason" placeholder="사유" class="oin">
+											<input type="submit" value="정지" class="dbtn ml10"> <input type="button" value="취소" onclick="closeForm(${sts.index})" class="dbtn">
 										</form>
 										</div>
 									</td>

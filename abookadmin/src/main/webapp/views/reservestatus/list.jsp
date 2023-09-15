@@ -70,6 +70,16 @@
 	    white-space: nowrap;
 	    width: 490px;
 	}
+	.ab{
+	    width: 460px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
 </style>
 </head>
 <body>
@@ -80,17 +90,16 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
+					<li class="on"><a href="/reservestatus/list"><span>예약현황</span></a></li>
 					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
-					<li class="on"><a><span>예약현황</span></a></li>
-					<li><a href="#"><span>신청현황</span></a></li>
-					<li><a href="#"><span>희망도서</span></a></li>
-					<li><a href="#"><span>월별대출</span></a></li>
+					<li><a href="/loanlist/list"><span>대출이력</span></a></li>
+					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>예약현황</h3>
-					<p>도서관리&nbsp;&nbsp;>&nbsp;&nbsp;예약현황</p>
+					<p>도서 관리&nbsp;&nbsp;>&nbsp;&nbsp;예약현황</p>
 				</div>
 				<div id="contents">
 					<div id="reservestatusWrap">
@@ -104,7 +113,7 @@
 							</tr>
 						<c:forEach items="${mapall}" var="map">
 							<tr>
-								<td>${map.title}</td>
+								<td><div class="ab">${map.title}</div></td>
 								<td>${map.userid}</td>
 								<td>${map.writeday}</td>
 								<td></td>

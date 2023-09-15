@@ -195,8 +195,8 @@
 						<li><a href="/bookregi/list">도서등록</a></li>
 						<li><a href="/reservestatus/rslist">예약현황</a></li>
 						<li><a href="/loanstatus/list">대출현황</a></li>
-						<li><a href="/loanstatus/list">대출이력</a></li>
-						<li><a href="#">희망도서</a></li>
+						<li><a href="/loanlist/list">대출이력</a></li>
+						<li><a href="/bookrequest/hopelist">희망도서</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">
@@ -210,7 +210,7 @@
 					<a href="/rsvseat/reserveseat">좌석 관리</a>
 					<ul>
 						<li><a href="/rsvseat/reserveseat">사용불가 지정</a></li>
-						<li><a href="/rsvseat/cancelseat">퇴실 처리</a></li>
+						<li><a href="/rsvseat/cancelseat">퇴실처리</a></li>
 					</ul>
 				</li>
 				<li class="gnbMenu">
