@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.vo.BookLoanVo;
 import com.example.demo.vo.MemberVo;
 import com.example.demo.vo.ReserveSeatVo;
 
@@ -14,4 +15,6 @@ public interface MemberMapper {
 	public HashMap detail(String userid);
 	public ArrayList<ReserveSeatVo> rSeat(String userid);
 	public void banOk(String userid,String breason);
+	public void unsusBan(String userid);
+	public ArrayList<BookLoanVo> bLoan(String userid);
 }

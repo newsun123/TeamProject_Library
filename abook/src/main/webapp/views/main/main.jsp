@@ -203,6 +203,7 @@
 	#bTxt{
 		width: 100%;
 		height: 100px;
+		position: relative;
 	}
 	#bTxt ul{
 		display: flex;
@@ -310,6 +311,9 @@
 	    left: 15px;
 	    top: 18px;
 	}
+	.imore2{
+		left: 250px;
+	}
 </style>
 <script>
 	$(function(){
@@ -317,6 +321,12 @@
 			var idx=$(this).index();
 			$(this).addClass('act').siblings().removeClass('act');
 			$("#bconWrap .bcon").eq(idx).addClass('act').siblings().removeClass('act');
+			
+			if(idx==1) {
+				$("#go1").attr("href","../breserve/list?num=1");
+			}else {
+				$("#go1").attr("href","../breserve/list?num=0");
+			};
 		});
 		
 	});
@@ -443,6 +453,7 @@
 					<li class="act">인기도서</li>
 					<li>신착도서</li>
 				</ul>
+					<div class="imore imore2"><a href="../breserve/list?num=0" id="go1"></a></div> <!-- 플러스버튼인데 한개로 2개 DB를 어케 씀? -->
 			</div>
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->

@@ -115,7 +115,7 @@
 		width: 170px;
 	}
 	table#table2 tr td:nth-child(5) {
-		width: 190px;
+		width: 339px;
 	}
 	table#table2 tr td:last-child{
 		width: 160px;
@@ -167,9 +167,8 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li class="on"><a><span>도서등록</span></a></li>
-					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
 					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
-					<li><a href="#"><span>신청현황</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
 					<li><a href="#"><span>희망도서</span></a></li>
 					<li><a href="#"><span>월별대출</span></a></li>
 				</ul>

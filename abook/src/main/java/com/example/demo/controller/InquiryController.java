@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.InquiryService;
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Controller
 public class InquiryController {
@@ -45,9 +46,9 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/content")
-	public String content(InquiryVo ivo,HttpServletRequest req,Model model)
+	public String content(InquiryVo ivo,HttpServletRequest req,Model model,MtmVo mvo)
 	{
-		return service.content(ivo,req,model);
+		return service.content(ivo,req,model,mvo);
 	}
 	
 	@RequestMapping("/inquiry/delete")

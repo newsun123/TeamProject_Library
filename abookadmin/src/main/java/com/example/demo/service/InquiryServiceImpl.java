@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.mapper.InquiryMapper;
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Service
 @Qualifier("is")
@@ -68,33 +69,40 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 
 	@Override
-	public String content(InquiryVo ivo, HttpServletRequest req, Model model) {
+	public String content(InquiryVo ivo, HttpServletRequest req, Model model,MtmVo mvo) {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
-		ivo.setUserid(ivo.getUserid());
 		
-		ivo=mapper.content(ivo);
+		
+		
+		ivo=mapper.content(ivo); // 유저 질문 가져오기
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
-	 
+		
+		// 내 답변 받아오기
+		mvo = mapper.getAnswer(no);
+		
+		model.addAttribute("mvo",mvo);
+		// mvo 값을 모델로 전해줄려면 mapper 에 select 해줘야한다!
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
-		model.addAttribute("mtm",mapper.getMtm(ivo.getUserid()));
 		return "/inquiry/content";
 	}
 
 	@Override
-	public String write() {
+	public String writeOk(MtmVo mvo) {
 		
-		return "/inquiry/write";
-	}
-
-	@Override
-	public String writeOk(InquiryVo ivo) {
-		
-		mapper.writeOk(ivo);
+		mapper.writeOk(mvo);
 		
 		return "redirect:/inquiry/list";
 	}
-	
+
+	@Override
+	public String write(HttpServletRequest req,Model model) {
+		
+		String inno=req.getParameter("no");
+		model.addAttribute("inno",inno);
+		
+		return "/inquiry/write";
+	}
 }

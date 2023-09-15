@@ -78,6 +78,10 @@ public class BookRequestServiceImpl implements BookRequestService {
 	        keyword = "";
 	        model.addAttribute("type","aa");
 		    model.addAttribute("rlist",mapper.search(type,keyword,start));
+		    model.addAttribute("page", page);
+	    	model.addAttribute("pstart", pstart);
+	    	model.addAttribute("pend", pend);
+	    	model.addAttribute("chong", chong);
 	    }
 	    else
 	    {

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.example.demo.mapper.InquiryMapper;
 import com.example.demo.vo.InquiryVo;
+import com.example.demo.vo.MtmVo;
 
 @Service
 @Qualifier("ic")
@@ -85,7 +86,7 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String content(InquiryVo ivo, HttpServletRequest req, Model model) {
+	public String content(InquiryVo ivo, HttpServletRequest req, Model model,MtmVo mvo) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
@@ -94,10 +95,12 @@ public class InquiryServiceImpl implements InquiryService {
 		ivo=mapper.content(ivo);
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
-	 
+		
+		mvo=mapper.getAnswer(no);
+		
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
-		
+		model.addAttribute("mvo",mvo);
 		return "/inquiry/content";
 	}
 

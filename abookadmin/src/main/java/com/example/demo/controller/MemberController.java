@@ -36,4 +36,9 @@ public class MemberController {
 	public String banOk(HttpServletRequest req) {
 		return service.banOk(req);
 	}
+	
+	@RequestMapping("/member/unsusBan")
+	public String unsusBan(HttpServletRequest req) {
+		return service.unsusBan(req);
+	}
 }

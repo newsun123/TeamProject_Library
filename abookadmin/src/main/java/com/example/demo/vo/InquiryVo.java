@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class InquiryVo {
 	private int no,readnum,grp,seq,rnum;
-	private String title,content,userid,writeday;
+	private String title,content,userid,writeday,name;
 }

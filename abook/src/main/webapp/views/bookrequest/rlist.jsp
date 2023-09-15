@@ -7,30 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-		#requestWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
-	    text-align: center;
+	#requestWrap{
+		position:relative;
+    	min-height: 350px;
 	}
-	.nameTop{
-		height:60px;
-		border-bottom:solid 2px #000;
-		font-size:25px;
-		font-weight:bold;
-		text-align:left;
-	}
-	.searchtext{
-		margin-top:20px;
+	form{
+		width: 100%;
+	    display: block;
 	}
 	#search{
 		padding:10px 20px;
 		border-radius:5px;
-		color:white;
-		margin-left:10px;
-		margin-bottom:20px;
+		color:#fff;
+		margin-bottom:40px;
 		width:100px;
-		background:#007bff;
+		background:#93765a;
 	}
 	#searchCon{
 		width:630px;
@@ -40,39 +31,12 @@
 		justify-content:space-between;
 		align-items:center;
 	}
-	table{
-		border:1px solid #333;
-	}
-	table tr{
-		height:120px;
-		cursor:pointer;
-	}
-	table tr:first-child{
-		height:65px;
-		cursor:default;
-		pointer-events:none;
-	}
-	table tr:first-child td{
-		border-bottom:1px solid #eeee;		
-	}
-	table tr td img{
-		object-fit:cover;
-		height:100px;
-	}
-	#pagein{
-		text-align:center;
-	}
-	.rimg{
-		width:40px;
-		object-fit:cover
-	}
 	#select{
 		display: inline-block;
 	    width: 148px;
 	    position: relative;
 	    height: 48px;
 	    border: 1px solid #e2e2e2;
-	    margin-left: 11px;
 	    background-color: #fff;
 	}
 	#select .selected{
@@ -119,6 +83,88 @@
 	#select ul li:hover{
 		display: block;
 		background-color:#ebeef7;
+	}
+	input.searchtext{
+		border-radius: 0!important;
+	    height: 48px!important;
+	    vertical-align: top!important;
+	    width: 500px;
+	}
+		/*page버튼처리*/
+	#btWrap{
+	    margin-top: 30px;
+	    position: relative;
+	    height: 50px;
+	    text-align: center;
+	}
+	#pageCon{
+    	margin: auto;
+	}
+	#pageCon a{
+		display: inline-block;
+	    width: 30px;
+	    font-size: 1.125em;
+	    color: #666;
+	    line-height: 30px;
+	    text-align: center;
+	    vertical-align: top;
+	}
+	#pageCon .btnPage{
+		width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #ddd;
+	    background: url(/static/img/common/arr_sp.png) 50% 0 no-repeat;
+	}
+	#pageCon .btnPage.prev{
+		margin-right: 5px;
+    	background-position-y: -27px;
+	}
+	#pageCon .btnPage.next{
+		margin-left: 5px;
+    	background-position-y: -52px;
+	}
+	#pageCon .btnPage.last{
+		background-position-y: -77px;
+	}
+	#pageCon .btnPage.dis{
+		pointer-event:none;
+		cursor:default;
+	}
+	/*page버튼처리끝*/
+	table {
+		border-top: 2px solid #cecece;
+		text-align: center;
+	}	
+	table tr {
+		height: 55px;
+	}	
+	table tr:first-child {
+		background: #f8f8fa;
+	}	
+	table tr td {
+		border-bottom: 1px solid #e4e4e4;
+	}	
+	.writebtn{
+		display: inline-block;
+	    border: 1px solid #93765a;
+	    color: #93765a;
+	    padding: 0 23px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 15px;
+	}
+	.el{
+		text-overflow: ellipsis;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    width: 591px;
+	    height: 100%;
+	    text-align: left;
 	}
 </style>
 <script>
@@ -195,68 +241,73 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-						<div class="nameTop">
-							신청하기
-						</div>
-						<div id=searchCon>
-						<form name="rform" method="post" action="rlist">
-							<input type="hidden" value="${type}" name="type" id="seltype">
-							<input type="hidden" value="${keyword}">
-							<input type="hidden" value="${rchk}" name="rchk">
-						<div id="select">
-							<div class="selected" onclick="selectView()">
-								<div class="selected_value" id="sv">전체</div>
-								
-								<div class="arrow"></div>
-							</div>
-								<ul id="type">
-									<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
-									<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
-									<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
-									<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
-								</ul>
-						</div>
-						<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
-						<input type="submit" id="search" class="searchtext" value="검색">
-						</form>
-						</div>
-						<table align="center">
+					<c:if test="${userid == null}">
+						<a href="/member/login" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')" class="writebtn">신청하기</a>
+					</c:if>
+					<c:if test="${userid != null}">
+						<a href="requestwrite" class="writebtn">신청하기</a>
+					</c:if>
+							<form name="rform" method="post" action="rlist">
+								<input type="hidden" value="${type}" name="type" id="seltype">
+								<input type="hidden" value="${keyword}">
+								<div id="select">
+									<div class="selected" onclick="selectView()">
+										<div class="selected_value" id="sv">전체</div>		
+										<div class="arrow"></div>
+									</div>
+									<ul id="type">
+										<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+										<li class="option" id="title" onclick="inputWr('도서명')">도서명</li>
+										<li class="option" id="writer" onclick="inputWr('저자')">저자</li>
+										<li class="option" id="publi" onclick="inputWr('출판사')">출판사</li>
+									</ul>
+								</div>
+								<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+								<input type="submit" id="search" class="searchtext" value="검색">
+							</form>
+						<table>
 							<tr>
-								<td> 번호 </td>
-								<td> 도서명 </td>
-								<td> 신청자 </td>
-								<td> 신청일 </td>
-								<td> 처리상태 </td>
-							</tr>
+								<td width="100"> 번호 </td>
+								<td width="49"></td>
+								<td width="591"> 도서명 </td>
+								<td width="150"> 신청자 </td>
+								<td width="150"> 신청일 </td>
+								<td width="130"> 처리상태 </td>
+							</tr>	
 							
-							<c:forEach items="${rlist}" var="brvo">
+							<c:forEach items="${rlist}" var="brvo" varStatus="sts">
 								<tr>
 									<input type="hidden" name="userid" id="userid" value="${brvo.userid}">
 									<input type="hidden" name="sessionuserid" id="sessionuserid" value="${userid}">
 									<%-- <td>${userid},${brvo.userid}</td> --%>
-									<td> ${brvo.no} </td>
+									<td>${sts.index+1}</td>
 									<td>
-									<c:if test="${userid != brvo.userid && brvo.gonge == 1 && userid != null}"><!-- 유저아이디는 다른데 비공개글일경우 -->
-										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
+									<c:if test="${brvo.gonge==0}">
+										&nbsp;
+									</c:if>
+									<c:if test="${brvo.gonge==1}">
+										<img src="/static/img/bookrequest/lock.png" id="rimg">
+									</c:if>	
+									</td>
+									<td>
+									<c:if test="${userid != brvo.userid && brvo.gonge == 1 && userid != null}"><!-- 유저아이디는 다른데 비공개글일경우 -->	
+										<div class="el"><a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a></div>
 									</c:if>
 									<c:if test="${userid != brvo.userid && brvo.gonge == 0 && userid != null}"><!-- 유저아이디는 다른데 공개글일경우 -->
-										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a></div>
 									</c:if>
 									<c:if test="${userid == brvo.userid && brvo.gonge == 0}"><!-- 유저아이디가 같을경우 공개글 -->
-										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a></div>
 									</c:if>
 									<c:if test="${userid == brvo.userid && brvo.gonge == 1}"><!-- 유저아이디가 같을경우 비공개글 -->
-										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a></div>
 									</c:if>
 									
 									<c:if test="${userid == null && brvo.gonge == 1}"><!-- 로그인 안했을경우 비공개글 -->
-										<img src="/static/img/bookrequest/locked.png" class="rimg">
-										<a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}&rchk=1" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a>
+										<div class="el"><a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a></div>
 									</c:if>
 									<c:if test="${userid == null && brvo.gonge == 0}"><!-- 로그인 안했을경우 공개글 -->
-										<a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a>
+										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a></div>
 									</c:if>
 									</td>
 									<td> ${brvo.userid} </td>
@@ -276,62 +327,45 @@
 									 </td>
 								</tr>
 							</c:forEach>
-								<tr>
-									<td id="pagein" colspan="8">
-									
-						<!-- 10페이지 왼쪽 이동 -->  
-						<c:if test="${pstart != 1}">
-							<a href="rlist?page="${pstart-1}"> << </a>
-						</c:if>
-						<c:if test="${pstart == 1}">
-							<<
-						</c:if>
-						
-						<!-- 1페이지 왼쪽이동 -->
-						<c:if test="${page != 1}">
-							<a href="rlist?page="${page-1}"> < </a>
-						</c:if>
-						<c:if test="${page == 1}">
-							<
-						</c:if>
-						
-						<c:forEach begin="${pstart}" end="${pend}" var="i">
-							<c:if test="${page != i}">
-								<a href="rlist?page=${i}"> ${i} </a>
-							</c:if>
-							<c:if test="${page == i}">
-								<a href="rlist?page=${i}" style="color:red"> ${i} </a>
-							</c:if>
-						</c:forEach>
-						
-						<!-- 1페이지 오른쪽 이동 -->
-						<c:if test="${page != chong}">
-							<a href="rlist?page=${page+1}"> > </a>
-						</c:if>
-						<c:if test="${page == chong}">
-							>
-						</c:if>
-						
-						<!-- 10페이지 오른쪽 이동 -->
-						<c:if test="${pend != chong}">
-							<a href="rlist?page=${pend+1}"> >> </a>
-						</c:if>
-						<c:if test="${pend == chong}">
-							>>
-						</c:if>
-								</td>
-							</tr>
-							<tr>
-						<c:if test="${rchk==1}">
-							<c:if test="${userid == null}">
-								<td colspan="8"> <a href="/member/login" onclick="alert('비로그인 상태에서는 신청할 수 없습니다.')"> 신청하기 </a> </td>
-							</c:if>
-							<c:if test="${userid != null}">
-								<td colspan="8"> <a href="requestwrite"> 신청하기 </a> </td>
-							</c:if>
-						</c:if>
-							</tr>	
 						</table>
+						<div id="btWrap">
+							<div id=pageCon>
+							<c:if test="${pstart!=1}">
+								<a href="list?page=${pstart-1}" class="btnPage"></a>
+							</c:if>
+							<c:if test="${pstart==1}">
+								<a class="btnPage dis"></a> 
+							</c:if>
+							
+							<c:if test="${page!=1}">
+								<a href="list?page=${page-1}" class="btnPage prev"></a>
+							</c:if>
+							<c:if test="${page==1}">
+								<a class="btnPage dis prev"></a>
+							</c:if>
+							
+							<c:forEach begin="${pstart}" end="${pend}" var="i">
+								<c:if test="${page!=i}">
+									<a href="list?page=${i}">${i}</a>
+								</c:if>
+								<c:if test="${page==i}">
+									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
+								</c:if>
+							</c:forEach>
+							<c:if test="${page!=chong}">
+								<a href="list?page=${page+1}" class="btnPage next"></a>
+							</c:if>
+							<c:if test="${page==chong}">
+								<a class="btnPage next dis"></a>
+							</c:if>
+							<c:if test="${pend!=chong}">
+								<a href="list?page=${pend+1}" class="btnPage last"></a>
+							</c:if>
+							<c:if test="${pend==chong}">
+								<a class="btnPage last dis"></a> 
+							</c:if>	
+							</div>			
+						</div>
 					</div>
 				</div>
 			</div>		
