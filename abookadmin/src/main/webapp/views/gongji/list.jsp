@@ -130,7 +130,7 @@
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>공지사항</h3>
-					<p>게시판관리&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</p>
+					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</p>
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">

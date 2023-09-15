@@ -14,6 +14,7 @@
 	   padding: 7px;
 	   text-align: center;
 	   padding: 50px 60px;
+	   margin-bottom: 80px;
 	}
 	#reserveWrap h3{
 		color:#333;
@@ -282,10 +283,10 @@ function starttable(my) {
 	<div class="sImg"></div>
 	<div id="section">
 		<div id="labNav">
-			<h2><span>좌석 관리</span></h2>
+			<h2><span>좌석관리</span></h2>
 			<ul id="lnb">
 				<li class="on"><a><span>사용불가 지정</span></a></li>
-				<li><a href="/rsvseat/cancelseat"><span>퇴실 처리</span></a></li>
+				<li><a href="/rsvseat/cancelseat"><span>퇴실처리</span></a></li>
 			</ul>
 		</div>
 		<div id="contentCore">

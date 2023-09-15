@@ -9,7 +9,6 @@
 <style>
 	#requestWrap{
 		position:relative;
-		padding-bottom: 30px;
     	min-height: 350px;
 	}
 	form{
