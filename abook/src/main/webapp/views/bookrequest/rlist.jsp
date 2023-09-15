@@ -352,14 +352,12 @@
 									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
 								</c:if>
 							</c:forEach>
-						
 							<c:if test="${page!=chong}">
 								<a href="list?page=${page+1}" class="btnPage next"></a>
 							</c:if>
 							<c:if test="${page==chong}">
 								<a class="btnPage next dis"></a>
 							</c:if>
-							
 							<c:if test="${pend!=chong}">
 								<a href="list?page=${pend+1}" class="btnPage last"></a>
 							</c:if>

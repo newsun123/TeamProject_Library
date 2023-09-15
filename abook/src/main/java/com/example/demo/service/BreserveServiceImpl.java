@@ -25,7 +25,7 @@ public class BreserveServiceImpl implements BreserveService {
 	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
-
+		System.out.println(keyword);
 		int page;
 
 		if (request.getParameter("page") == null)
@@ -34,7 +34,6 @@ public class BreserveServiceImpl implements BreserveService {
 			page = Integer.parseInt(request.getParameter("page"));
 
 		int start = (page - 1) * 10;
-		System.out.println(start);
 		int pstart = page / 10;
 		if (page % 10 == 0)
 			pstart--;
