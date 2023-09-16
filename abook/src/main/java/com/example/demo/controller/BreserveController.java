@@ -50,8 +50,4 @@ public class BreserveController {
 		return service.deljjim(req,ss);
 	}
 	
-	@RequestMapping("/breserve/bestbook")
-	public String bestbook(HttpServletRequest req,Model model) {
-		return service.bestbook(req,model);
-	}
 }

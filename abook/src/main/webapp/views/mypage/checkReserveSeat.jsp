@@ -70,7 +70,7 @@
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
-					<li><a href="#"><span>1:1문의현황</span></a></li>
+					<li><a href="#"><span>문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -91,7 +91,7 @@
 							</tr>
 							<c:if test="${rtoday.size()==0}">
 							<tr>
-								<td colspan="4" class="no">※ 금일 예약된 좌석이 없습니다.</td>
+								<td colspan="5" class="no">※ 금일 예약된 좌석이 없습니다.</td>
 							</tr>
 							</c:if>
 							<c:if test="${rtoday.size()!=0}">
@@ -117,7 +117,7 @@
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<tr>
-								<td colspan="4" class="no">※ 예약된 좌석이 없습니다.</td>
+								<td colspan="5" class="no">※ 예약된 좌석이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:forEach items="${rlist}" var="rvo" varStatus="status">

@@ -148,7 +148,7 @@ function stepchk(my){
 									<td>노출옵션</td>
 									<td>
 										<div>
-											<span class="gog">고정글은 체크해주세요</span>
+											<span class="gog">※ 고정글은 체크해주세요</span>
 											<input type="checkbox" name="step">										
 										</div>
 									</td>

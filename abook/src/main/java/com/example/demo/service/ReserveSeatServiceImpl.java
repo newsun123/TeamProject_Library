@@ -45,7 +45,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		int now = Integer.parseInt(LocalTime.now().toString().substring(0, 2));
 		int change = now - 1; // 현재 전 시간이니까 -1 함
 		String time = "time" + change;
-		 System.out.println(time);
+		 //System.out.println(time);
 		if (time.equals("time9") || time.equals("time10") || time.equals("time11") || time.equals("time12") || time.equals("time13")
 				|| time.equals("time14") || time.equals("time15") || time.equals("time16") || time.equals("time17") || time.equals("time18")) {
 			mapper.closeTable(time); // 정해진 시간대 닫기 완료
@@ -54,19 +54,10 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 			model.addAttribute("list", list);
 			String total = req.getParameter("total");
 
-			if (session.getAttribute("userid") == null) {
-				return "redirect:/member/login";
-			} else {
-				String name = session.getAttribute("name").toString();
-				model.addAttribute(name);
-				model.addAttribute("total", total);
-				return "/seat/reserveseat";
-			}
-
 		} else {
 			mapper.closeAllTable();
-			return "/seat/reserveseat";
 		}
+		return "/seat/reserveseat";
 	}
 
 	@Override
@@ -85,15 +76,18 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 
 	@Override
 	public String reserveSeater(ReserveSeatVo rvo, HttpSession session, HttpServletRequest request) {
-		String userid = session.getAttribute("userid").toString();
+		if (session.getAttribute("userid") == null) {
+			return "redirect:/member/login?rchk=1";
+		} else {
+			String userid = session.getAttribute("userid").toString();
 
 			// 배열로 만들어 time value값 가져오기
 			String aa = request.getParameter("arrychktime");
 			String[] imsi = aa.split(",");
-			
+
 			rvo.setUserid(userid);
 			rvo.setTname(request.getParameter("tname"));
-			
+
 			mapper.reserveSeater(rvo); // 유저아이디 값 들어간 예약테이블
 			// tablename 테이블에 시간 추가 적기(배열이용하기)
 			for (int i = 0; i < imsi.length; i++) {
@@ -101,9 +95,10 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 					mapper.updateTableName("time" + (i + 9), rvo.getTname()); // time+숫자 , tname 사용
 				}
 			}
-			
-			return "redirect:/seat/reserveok?userid="+userid;
+
+			return "redirect:/seat/reserveok?userid=" + userid;
 		}
+	}
 
 		@Override
 		public String reserveok(HttpServletRequest req, Model model) {

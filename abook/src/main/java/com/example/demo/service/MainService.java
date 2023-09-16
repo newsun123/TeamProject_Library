@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.example.demo.vo.BookregiVo;
 import com.example.demo.vo.GongjiVo;
 
 public interface MainService {

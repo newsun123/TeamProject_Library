@@ -10,5 +10,6 @@ public interface MemberService {
 	public String memberBan(Model model);
 	public String detail(Model model, HttpServletRequest req);
 	public String banOk(HttpServletRequest req);
+	public String unsusBan(HttpServletRequest req);
 	
 }

@@ -28,26 +28,35 @@
 	}
 	table#table1 tr td:nth-child(1){
 	    width: 220px;
-	    padding: 30px 0;
+    	padding: 20px 0;
+	}
+	table#table1 tr td:nth-child(1) > div{
+		width: 220px;
+		height: 300px;
 	}
 	table#table1 img{
-	   	width: 230px;
-	    height: 320px;
+	   	width: 100%;
+	    height:100%;
 	    box-sizing: border-box;
-	    border: 1px solid #e2e2e2;   	   
+    	border: 1px solid #e2e2e2;     	   
 	}
 	#conBox{
 		margin-left: 30px;
-		padding: 30px 0;
-		height: 370px;
+		padding: 20px 0;
+		height: 340px;
+		position: relative;
 	}
 	#conBox > div{
-		height: 35px;
-    	line-height: 35px;
+		height: 47px;
+    	line-height: 47px;
 	}
 	.aa{
 		font-family: 'NotoSansM';
 		font-size: 20px;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 	.bb{
 		color:#777;
@@ -62,16 +71,16 @@
 		color: #555;
 	}
 	.ee{
-		color:#444;
-		line-height: 29px!important;
-		width: 100%;
+		color: #444;
+	    line-height: 29px!important;
+	    width: 100%;
 	    text-overflow: ellipsis;
 	    overflow: hidden;
 	    word-break: break-word;
 	    display: -webkit-box;
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
-	    height: auto!important;
+	    height: 60px!important;
 	}
 	.rbtn{
 		display: inline-block;
@@ -115,7 +124,7 @@
 		width: 170px;
 	}
 	table#table2 tr td:nth-child(5) {
-		width: 190px;
+		width: 339px;
 	}
 	table#table2 tr td:last-child{
 		width: 160px;
@@ -135,7 +144,6 @@
 	    padding: 0 20px;
 	    line-height: 43px;
 	    height: 45px;
-	    margin-top: 18px;
 	    background: #3d6cc4;
 	}
 	.delbtn{
@@ -157,6 +165,11 @@
 		color:#888;
 		background:#ddd;
 	}
+	.chubtn{
+		position: absolute;
+	    bottom: 20px;
+	    right: 0px;
+	}
 </style>
 </head>
 <body>
@@ -166,22 +179,21 @@
 			<div id="labNav">
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>도서등록</span></a></li>
-					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li class="on"><a href="/bookregi/list"><span>도서등록</span></a></li>
 					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
-					<li><a href="#"><span>신청현황</span></a></li>
-					<li><a href="#"><span>희망도서</span></a></li>
-					<li><a href="#"><span>월별대출</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href="/loanstatus/allList"><span>대출이력</span></a></li>
+					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>도서등록</h3>
-					<p>도서관리&nbsp;&nbsp;>&nbsp;&nbsp;도서등록</p>
+					<p>도서 관리&nbsp;&nbsp;>&nbsp;&nbsp;도서등록</p>
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-						<a href="/bookregi/list?page=${page}" class="rbtn">목록으로</a>
+						<a href="/bookregi/list" class="rbtn">목록으로</a>
 						<table id="table1">
 							<tr>
 								<td>
@@ -197,7 +209,7 @@
 										<div class="dd">소장도서관 : 작은 도서관</div>
 										<div class="ee">${mapall.get(0).ect}</div>
 										<div class="ff">대출횟수 : ${mapall.get(0).cnt}번</div>
-										<div>
+										<div class="chubtn">
 											<input type="button" id="addbtn" value="도서추가" onclick="location='add?bcode=${mapall.get(0).bcode}&page=${page}'">
 										</div>
 									</div>

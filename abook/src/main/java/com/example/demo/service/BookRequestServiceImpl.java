@@ -46,6 +46,11 @@ public class BookRequestServiceImpl implements BookRequestService {
 
 	@Override
 	public String rlist(Model model, HttpServletRequest request, BookRequestVo brvo, HttpSession session) {
+		String rchk=request.getParameter("rchk");
+		if(rchk==null) {
+			rchk="1";
+		}
+		
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
 	    String title = request.getParameter("title");
@@ -66,12 +71,17 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    int chong=mapper.getChong();
 	    if (pend>chong)
 	        pend=chong;
-
+	    model.addAttribute("rchk",rchk);
+	    model.addAttribute("page",page);
 	    if (keyword==null || keyword.length()==0) {
 	        type="title";
 	        keyword = "";
 	        model.addAttribute("type","aa");
 		    model.addAttribute("rlist",mapper.search(type,keyword,start));
+		    model.addAttribute("page", page);
+	    	model.addAttribute("pstart", pstart);
+	    	model.addAttribute("pend", pend);
+	    	model.addAttribute("chong", chong);
 	    }
 	    else
 	    {

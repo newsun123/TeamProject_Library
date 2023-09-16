@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.service.MainService;
+import com.example.demo.vo.BookregiVo;
 import com.example.demo.vo.GongjiVo;
 
 @Controller
@@ -38,3 +39,5 @@ public class MainController {
 		return service.location();
 	}
 }
+
+

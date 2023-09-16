@@ -60,6 +60,16 @@ public class MemberServiceImpl implements MemberService {
 			String breason=mapper.getBreason(userid);
 			model.addAttribute("breason",breason);	
 			
+			//bookrequest brchk
+			String brchk = request.getParameter("brchk");
+			model.addAttribute("brchk",brchk);
+			String brno = request.getParameter("brno");
+			model.addAttribute("brno",brno);
+			
+			//reserveseat rchk
+			String rchk = request.getParameter("rchk");
+			model.addAttribute("rchk",rchk);
+			
 		return "/member/login";
 	}
 
@@ -68,6 +78,9 @@ public class MemberServiceImpl implements MemberService {
 
 		String userid = request.getParameter("userid");
 		String checkuserid = mapper.checkUserid(userid);
+		String brchk = request.getParameter("brchk"); // bookrequest login;
+		String brno = request.getParameter("brno");
+		String rchk = request.getParameter("rchk"); // reserveseat login;
 
 		if (checkuserid == null) {
 			return "redirect:/member/login?chk=1";
@@ -78,15 +91,51 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println(ban);
 			String page = request.getParameter("page");
 			String bcode = request.getParameter("bcode");
+			
 
-			if (ban.equals("1")) {
+			if (ban.equals("1")) { // 도서예약에서 넘어올때 , 임시정지 아이디일때
 				userid = mvo.getUserid();
 				session.invalidate(); // 밴 됐으니까 로그인 해제
 				request.getSession(true); // 이거 해줘야 깨끗하단다
 
 				return "redirect:/member/login?bchk=1&userid=" + userid;
 			}
+			
+			// bookreqeust login 1일때는 list 2일때는 컨텐츠
+			if (brchk.equals("1")) {
+				if (name == null) {
+					return "redirect:/member/login?brchk=1";
+				} else{
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
 
+					return "redirect:/bookrequest/rlist";
+				}	
+			}else if(brchk.equals("2")) {
+				if (name == null) {
+					return "redirect:/member/login?brchk=2&brno="+brno;
+				} else{
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+					
+					return "redirect:/bookrequest/rcontent?no="+brno;
+				}
+			}
+			
+			
+			// reserveseat login
+			if(rchk.equals("1")) {
+				if(name==null) {
+					return "redirect:/member/login?rchk=1";
+				}else {
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+					
+					return "redirect:/seat/reserveseat";
+				}
+			}
+			
+			
 			if (bcode == null || bcode == "") { // 그냥 로그인할때
 				if (name == null) {
 
@@ -99,7 +148,7 @@ public class MemberServiceImpl implements MemberService {
 					return "redirect:/main/main";
 				}
 
-			} else { // 도서예약에서 넘어올때 , 임시정지 아이디일때
+			} else {
 
 				if (name == null) {
 					return "redirect:/member/login?chk=1&page=" + page + "&bcode=" + bcode;
@@ -111,9 +160,11 @@ public class MemberServiceImpl implements MemberService {
 
 					return "redirect:/breserve/content?page=" + page + "&bcode=" + bcode;
 				}
+
 			}
 		}
 	}
+	
 	
 	@Override
 	public String logout(HttpSession session) {

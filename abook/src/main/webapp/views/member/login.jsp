@@ -100,6 +100,9 @@
 							<form method="post" action="loginOk">
 								 <input type="hidden" name="page" value="${page}">
 								 <input type="hidden" name="bcode" value="${bcode}">
+								 <input type="hidden" name="brchk" value="${brchk}"> <!-- bookrequest alert -->
+								 <input type="hidden" name="brno" value="${brno}"> <!-- bookrequest_content no -->
+								 <input type="hidden" name="rchk" value="${rchk}"> <!-- reserveseat alert -->
 						         <div><input type="text" name="userid" id="userid" placeholder="아이디"></div>
 						         <div><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></div>
 						         <div><input type="submit" value="로그인"></div> 

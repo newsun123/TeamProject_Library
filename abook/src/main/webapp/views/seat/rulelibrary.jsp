@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +59,14 @@
 				<h2><span>열람실이용</span></h2>
 				<ul id="lnb">
 					<li class="on"><a href="/seat/rulelibrary"><span>이용규칙</span></a></li>
-					<li><a href="/seat/reserveseat"><span>좌석예약</span></a></li>
+					<li>
+					<c:if test="${userid!=null}">
+					<a href="/seat/reserveseat"><span>좌석예약</span></a>
+					</c:if>
+					<c:if test="${userid==null}">
+					<a href="/member/login?rchk=1" onclick="alert('비로그인 상태에서는 예약할 수 없습니다.')"><span>좌석예약</span></a>
+					</c:if>
+					</li>
 				</ul>
 			</div>
 			<div id="contentCore">

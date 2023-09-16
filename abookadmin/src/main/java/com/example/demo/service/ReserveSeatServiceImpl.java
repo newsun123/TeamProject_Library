@@ -32,6 +32,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String stopTable(HttpServletRequest req, Model model) {
 		String tname = req.getParameter("tname");
+		System.out.println(tname);
 		mapper.stopTable(tname);
 		return "redirect:/rsvseat/reserveseat";
 	}
@@ -44,10 +45,33 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	}
 
 	@Override
-	public String cancelseat(Model model) {
+	public String cancelseat(Model model,HttpServletRequest request) {
 		// 전체 예약 현황 mapper 만들어 보내기
+		int page;
+		if(request.getParameter("page")==null) {
+			page=1;
+		}
+		else {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		int start=(page-1)*10;
+		int pstart=page/10;
+		if(page%10==0) {
+			pstart--;
+		}
+		pstart=pstart*10+1;
+		int pend=pstart+9;
+		int chong=mapper.getChong();
+		if(pend>chong)
+			pend=chong;
 		
-		ArrayList<ReserveSeatVo> rlist = mapper.searchReserve1();
+		model.addAttribute("page",page);
+		model.addAttribute("pstart",pstart);
+		model.addAttribute("pend",pend);
+		model.addAttribute("chong",chong);
+		model.addAttribute("start",start);
+		model.addAttribute("rlist",mapper.searchReserve1(start));
+		ArrayList<ReserveSeatVo> rlist = mapper.searchReserve1(start);
 
 		model.addAttribute("rlist", rlist);
 

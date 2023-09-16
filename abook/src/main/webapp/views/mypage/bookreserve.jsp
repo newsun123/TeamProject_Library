@@ -50,7 +50,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;
@@ -61,7 +61,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;
@@ -72,7 +72,7 @@
 		padding:0 20px;
 		box-sizing: border-box;
 		height: 100%;
-		line-height: 55px;
+		line-height: 60px;
 		text-align: left;
 		overflow: hidden;
 	    text-overflow: ellipsis;
@@ -106,7 +106,7 @@
 					<li class="on"><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
-					<li><a href="#"><span>1:1문의현황</span></a></li>
+					<li><a href="#"><span>문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

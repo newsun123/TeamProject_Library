@@ -7,85 +7,85 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#requestWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
+	form{
+		width: 100%;
+	    display: block;
+	}
+	table{
+		border-top: 2px solid #cecece;
+	}
+	table tr{
+		height: 55px;
+	}
+	table tr td{
+		border-bottom: 1px solid #e4e4e4;
+		padding:0 10px;
+	}
+	table tr td:first-child {
+		padding-left: 10px;
+	    background: #f8f8fa;
+	    width: 112px;
+	    border-right: 1px solid #e4e4e4;
+	    font-size: 15px;
+	    font-family: 'NotoSansM';
+	    color: #555;
+	    letter-spacing: 1px;
+	}
+	table input{
+		width: 100%;
+		font-size: 15px;
+		border:none!important;
+		padding:0!important;	
+	}
+	#btn{
+		text-align: center;
+		padding-top: 30px;
+	}
+	input[type=submit]{
+	    color: #fff;
 	    text-align: center;
+	    background: #93765a;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
 	}
-	.nameTop{
-		height:60px;
-		border-bottom:solid 2px #000;
-		font-size:25px;
-		font-weight:bold;
-		text-align:left;
+	input[type=button]{
+		text-align: center;
+	    background: #e0e3e6;
+	    color: #6e7277;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
 	}
-	.request{
-		border-bottom:1px solid #ddd;
-		box-sizing:border-box;
-		padding:50px 0;
-		text-align:center;
-		flex-direction: column;
-		justify-content:center;
+	textarea{
+		width: 100%;
+	    height: 100%;
+	    display: block;
+	    padding: 10px 0;
+	    font-size: 15px;
+	    overflow:hidden;
+	}	
+	table tr td.wh{
+		width: 986px;
+   		height: 300px;
 	}
-	.request input[type=submit]{
-		margin-top:20px;
-		margin-right:20px;
+	.gog{
+		color: #555;
+    	font-size: 15px;
 	}
-	form > div{
-		width:450px;
-		margin:auto;
-		margin-bottom:20px;
-		height:48px;
+	input[type=checkbox]{
+		width: 18px;
+		height: 18px;
+		position: relative;
+	    top: 3px;
+	    margin-left: 10px;
 	}
-	form input{
-		width:80%;
-	}
-	.mark{
-		display:inline-block;		
-		width:20%;
-	}
-	.mark input[type=text]{
-		height:30px;
-	}
-	.all{
-		width:1000px;
-		margin-right:300px;
-	}
-	.all2{
-		margin-right:300px;
-		display:flex;
-	}
-	.all2 .all3{
-		width:1000px;
-		align-items:center;
-		margin-bottom:10px;
-	}
-	.all3 input[type=checkbox]{
-		width:20px;
-		height:20px;
-		margin-right:10px;
-		vertical-align:middle;
-	}
-	#msg2 {
-		visibility:hidden;
-	}
-	#msg3{
-		visibility:hidden;
-	}
-		
-	#msg4{
-		visibility:hidden;
-	}
-		
-	#msg5{
-		visibility:hidden;
-	}
-		
-	#msg6{
-		visibility:hidden;
-	}
-		
 </style>
 <script>
 	function check(my)
@@ -183,40 +183,52 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-						<div class="nameTop">
-							도서신청
-						</div>						
 						<div class="request">
-						<form name="rform" method="post" action="rupdate_ok" onsubmit="return check(this)">
-						<input type="hidden" name="page" value="${page}">
-						<input type="hidden" name="no" value="${brvo.no}">
-						<input type="hidden" id="checkgonge" name="checkgonge" value="${brvo.gonge}">
-							<div class="all"><span class="mark">책제목</span><input type="text" name="title" oninput="returnchk()" value="${brvo.title}"></div>
-							<span id="msg2" name="msg2"> 책제목을 입력하세요</span>
-							<div class="all"><span class="mark">저자</span><input type="text" name="writer" oninput="returnchk()" value="${brvo.writer}"></div>
-							<span id="msg3" name="msg3"> 저자를 입력하세요</span>
-							<div class="all"><span class="mark">출판사</span><input type="text" name="publi" oninput="returnchk()" value="${brvo.publi}"></div>
-							<span id="msg4" name="msg4"> 출판사를 입력하세요</span>
-							<div class="all"><span class="mark">출판년도</span><input type="text" name="writeyear" oninput="returnchk()" value="${brvo.writeyear}"></div>
-							<span id="msg5" name="msg5"> 출판년도를 입력하세요</span>
-							<div class="all2">
-								<div class="all3"><span class="mark">*비공개*</span>
-								<c:if test="${brvo.gonge == 1}">
-									<input type="checkbox" id="gonge" name="gonge" value="1" checked>
-								</c:if>
-								<c:if test="${brvo.gonge == 0}">
-									<input type="checkbox" id="gonge" name="gonge" value="1">
-								</c:if>
-								</div>   
-							 </div>
-							<div class="all"><span class="mark">비고</span><input type="text" name="ect" oninput="returnchk()" value="${brvo.ect}"></div>
-							<span id="msg6" name="msg6"> 비고를 입력하세요</span>
-							<div class="all">
+							<form name="rform" method="post" action="rupdate_ok" onsubmit="return check(this)">
+							<input type="hidden" name="page" value="${page}">
+							<input type="hidden" name="no" value="${brvo.no}">
+							<input type="hidden" id="checkgonge" name="checkgonge" value="${brvo.gonge}">
+							<table>
+								<tr>
+									<td>책제목</td>
+									<td><input type="text" name="title" value="${brvo.title}"></td>
+								</tr>
+								<tr>
+									<td>출판사</td>
+									<td><input type="text" name="publi" value="${brvo.publi}"></td>
+								</tr>
+								<tr>
+									<td>저자</td>
+									<td><input type="text" name="writer" value="${brvo.writer}"></td>
+								</tr>
+								<tr>
+									<td>출판년도</td>
+									<td><input type="text" name="writeyear" value="${brvo.writeyear}"></td>
+								</tr>
+								<tr>
+									<td>비고</td>
+									<td class="wh"><textarea name="ect">${brvo.writeyear}</textarea></td>
+								</tr>
+								<tr>
+									<td>노출옵션</td>
+									<td>
+										<div>
+											<span class="gog">※ 비공개글은 체크해주세요</span>
+										<c:if test="${brvo.gonge == 1}">
+											<input type="checkbox" id="gonge" name="gonge" value="1" checked>
+										</c:if>
+										<c:if test="${brvo.gonge == 0}">
+											<input type="checkbox" id="gonge" name="gonge" value="1">
+										</c:if>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<div id="btn">
+								<input type="button" value="취소" class="dis" onclick="location='rlist'">
 								<input type="submit" value="수정하기" onclick="gongecheck()">
-								<input type="button" onclick="history.back()" value="취소">
-							</div>
-							
-						</form>						
+							</div> 
+							</form>						
 						</div>
 					</div>
 				</div>
