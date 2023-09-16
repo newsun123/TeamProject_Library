@@ -48,6 +48,11 @@
 	    text-overflow: ellipsis;
 	    white-space: nowrap;
 	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
+	}
 	/*page버튼처리*/
 	#btWrap {
 		margin-top: 30px;

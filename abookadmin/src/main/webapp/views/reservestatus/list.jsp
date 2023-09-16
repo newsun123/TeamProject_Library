@@ -26,6 +26,9 @@
 	table tr:last-child td{
 		border:none;
 	}
+	table tr:first-child{
+		height: 55px;
+	}
 	table tr:first-child td{
 	    background-color: #f9f9fb;
 	    height: 55px;
@@ -57,9 +60,9 @@
 	    border: 1px solid #3d6cc4;
 	    border-radius: 3px;
 	    color: #3d6cc4;
-	    padding: 0 30px;
+	   	width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #fff;
 	    margin-right: 5px;
 	}
@@ -81,6 +84,52 @@
 	    overflow: hidden;
 	    text-overflow: ellipsis;
 	    white-space: nowrap;
+	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
+	}
+	/*page버튼처리*/
+	#btWrap{
+	    margin-top: 30px;
+	    position: relative;
+	    height: 50px;
+	    text-align:center;
+	}
+	#pageCon{
+    	margin: auto;
+	}
+	#pageCon a{
+		display: inline-block;
+	    width: 30px;
+	    font-size: 1.125em;
+	    color: #666;
+	    line-height: 30px;
+	    text-align: center;
+	    vertical-align: top;
+	}
+	#pageCon .btnPage{
+		width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    border: 1px solid #ddd;
+	    background: url(/static/img/common/arr_sp.png) 50% 0 no-repeat;
+	}
+	#pageCon .btnPage.prev{
+		margin-right: 5px;
+    	background-position-y: -27px;
+	}
+	#pageCon .btnPage.next{
+		margin-left: 5px;
+    	background-position-y: -52px;
+	}
+	#pageCon .btnPage.last{
+		background-position-y: -77px;
+	}
+	#pageCon .btnPage.dis{
+		pointer-event:none;
+		cursor:default;
 	}
 </style>
 </head>
@@ -113,6 +162,12 @@
 								<td></td>
 								<td>상태처리</td>
 							</tr>
+						<c:if test="${mapall.size()==0}">
+							<tr>
+								<td colspan="5" class="no">※ 예약현황이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${mapall.size()!=0}">
 						<c:forEach items="${mapall}" var="map">
 							<tr>
 								<td><div class="ab">${map.title}</div></td>
@@ -125,8 +180,49 @@
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</table>
+						<div id="btWrap">
+							<div id=pageCon>
+							<c:if test="${pstart!=1}">
+								<a href="list?page=${pstart-1}" class="btnPage"></a>
+							</c:if>
+							<c:if test="${pstart==1}">
+								<a class="btnPage dis"></a> 
+							</c:if>
+							
+							<c:if test="${page!=1}">
+								<a href="list?page=${page-1}" class="btnPage prev"></a>
+							</c:if>
+							<c:if test="${page==1}">
+								<a class="btnPage dis prev"></a>
+							</c:if>
+							${pstart},
+							${pend}
+							<c:forEach begin="${pstart}" end="${pend}" var="i">
+								<c:if test="${page!=i}">
+									<a href="list?page=${i}">${i}</a>
+								</c:if>
+								<c:if test="${page==i}">
+									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
+								</c:if>
+							</c:forEach>
 						
+							<c:if test="${page!=chong}">
+								<a href="list?page=${page+1}" class="btnPage next"></a>
+							</c:if>
+							<c:if test="${page==chong}">
+								<a class="btnPage next dis"></a>
+							</c:if>
+							
+							<c:if test="${pend!=chong}">
+								<a href="list?page=${pend+1}" class="btnPage last"></a>
+							</c:if>
+							<c:if test="${pend==chong}">
+								<a class="btnPage last dis"></a> 
+							</c:if>	
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>		

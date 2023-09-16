@@ -44,6 +44,7 @@
 	table tr td.no{
 		color: #666;
     	font-size: 14px;
+    	text-align: center;
 	}
 	.tb1_tt{
 		width: 350px;
@@ -86,7 +87,7 @@
 	    color: #967759;
 	    font-size: 14px;
 	    width: 110px;
-	    height: 41px;
+	    height: 40px;
 	    border-radius: 3px;
 	}
 	.fs14{

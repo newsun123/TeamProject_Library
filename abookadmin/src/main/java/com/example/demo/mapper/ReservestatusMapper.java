@@ -10,7 +10,7 @@ import com.example.demo.vo.ReservestatusVo;
 
 @Mapper
 public interface ReservestatusMapper {
-	public ArrayList<HashMap> list();
+	public ArrayList<HashMap> list(int start);
 	public void rcheck(String bcode);
 	public void rcheck2(String bcode);
 	public BookregiVo getbook(String bcode);
@@ -19,4 +19,5 @@ public interface ReservestatusMapper {
 	public void dcheck(String bcode);
 	public void setbrefuse(String bcode,String userid,String writeday,String title,String publi,String writer);
 	public void cntupdate(String bcode);
+	public int getChong();
 }

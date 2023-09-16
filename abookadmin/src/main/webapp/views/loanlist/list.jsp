@@ -65,6 +65,11 @@
 	    text-overflow: ellipsis;
 	    white-space: nowrap;
 	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
+	}
 	/*page버튼처리*/
 	#btWrap{
 	    margin-top: 30px;
@@ -148,6 +153,12 @@
 								<td width="150">반납예정일</td>
 								<td width="150">반납일</td>
 							</tr>
+						<c:if test="${alist.size()==0}">
+							<tr>
+								<td colspan="5" class="no">※ 대출현황이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${alist.size()!=0}">
 						<c:forEach items="${alist}" var="avo">
 							<tr>
 								<td><div class="el">${avo.title}</div></td>
@@ -157,6 +168,7 @@
 								<td>${avo.writeday}</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</table>
 						<div id="btWrap">
 							<div id=pageCon>
