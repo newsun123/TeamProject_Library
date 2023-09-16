@@ -46,9 +46,10 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/content")
-	public String content(InquiryVo ivo,HttpServletRequest req,Model model,MtmVo mvo)
+	public String content(InquiryVo ivo,HttpServletRequest req,
+			Model model,MtmVo mvo,HttpSession ss)
 	{
-		return service.content(ivo,req,model,mvo);
+		return service.content(ivo,req,model,mvo,ss);
 	}
 	
 	@RequestMapping("/inquiry/delete")

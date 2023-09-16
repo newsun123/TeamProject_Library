@@ -59,6 +59,9 @@
 	    color: #6e7277;
 	}
 </style>
+<script>
+	
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -90,18 +93,29 @@
 								</td>	
 							</tr>
 							<tr>
-								<td> 답변 </td>
+								<td id="answer"> 답변 </td>
 								<td> ${mvo.content} </td>
 							</tr>
 							<tr>
-								<td>등록일111</td>
+								<td>등록일</td>
 								<td class="tl">${ivo.writeday}</td>
 							</tr>
 						 </table>
-						<div id="btn">
+						<div id="btn"> 
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
-							<a href="update?no=${ivo.no}&page=${page}"> 수정 </a>
-							<a href="delete?no=${ivo.no}&page=${page}"> 삭제 </a>
+							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
+								<a href="update?no=${ivo.no}&page=${page}" id="update"> 수정 </a>
+							</c:if>
+							<c:if test="${userid != ivo.userid && ivo.state == 1}">
+								
+							</c:if>
+							<c:if test="${userid == ivo.userid && ivo.state == 0}">
+									<a href="delete?no=${ivo.no}&page=${page}"> 삭제 </a>
+							</c:if>
+							<c:if test="${userid != ivo.userid && ivo.state == 1}">
+								
+							</c:if>
+						
 						</div>
 					</div>
 				</div>

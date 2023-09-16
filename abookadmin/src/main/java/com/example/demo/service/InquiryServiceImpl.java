@@ -92,8 +92,8 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public String writeOk(MtmVo mvo) {
 		
+		mapper.chgState(mvo);
 		mapper.writeOk(mvo);
-		
 		return "redirect:/inquiry/list";
 	}
 

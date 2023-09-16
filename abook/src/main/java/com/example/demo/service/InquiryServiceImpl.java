@@ -47,12 +47,12 @@ public class InquiryServiceImpl implements InquiryService {
 		int r=(page-1)*10;
 		mapper.setRownum(r);
 		
-		String userid=ss.getAttribute("userid").toString();
+		// String userid=ss.getAttribute("userid").toString();
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
-		model.addAttribute("userid",userid);
+		// model.addAttribute("userid",userid);
 		
 		model.addAttribute("ilist", mapper.list(start));
 		
@@ -71,7 +71,6 @@ public class InquiryServiceImpl implements InquiryService {
 		String userid=ss.getAttribute("userid").toString();
 		ivo.setUserid(userid);
 		mapper.writeOk(ivo);
-		
 		return "redirect:/inquiry/list";
 	}
 
@@ -86,21 +85,26 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String content(InquiryVo ivo, HttpServletRequest req, Model model,MtmVo mvo) {
+	public String content(InquiryVo ivo, HttpServletRequest req, 
+			Model model,MtmVo mvo,HttpSession ss) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
-		
+		String userid=ss.getAttribute("userid").toString();
+
 		// 줄바꿈 처리 => ivo 재활용
 		ivo=mapper.content(ivo);
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
 		
 		mvo=mapper.getAnswer(no);
+		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
 		model.addAttribute("mvo",mvo);
+		model.addAttribute("userid",userid);
+		
 		return "/inquiry/content";
 	}
 
