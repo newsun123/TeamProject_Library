@@ -22,6 +22,7 @@
 	}
 	table tr td {
     	border-bottom: 1px solid #ddd;
+    	letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border-bottom: none;

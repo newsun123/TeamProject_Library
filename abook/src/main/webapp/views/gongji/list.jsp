@@ -29,6 +29,7 @@
 	}	
 	table tr td {
 		border-bottom: 1px solid #e4e4e4;
+		letter-spacing: 0.5px;
 	}	
 	table tr td:nth-child(2) {
 		width: 49px;

@@ -47,23 +47,25 @@
 	    color: #fff;
 	    text-align: center;
 	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 14px;
 	}
 	input[type=button]{
 		text-align: center;
 	    background: #e0e3e6;
 	    color: #6e7277;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 14px;
 	}
 	textarea{
 		width: 100%;
@@ -110,7 +112,7 @@
 			<div id="labNav">
 				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>공지사항</span></a></li>
+					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
 					<li><a href=""><span>문의사항</span></a></li>
 				</ul>
 			</div>

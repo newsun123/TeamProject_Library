@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	#MemberWrap{
+		margin-bottom: 50px;
+	}
 	table{
 		border-bottom: 1px solid #ddd;
     	border-top: 2px solid #cecece;
@@ -15,6 +18,7 @@
 	}
 	table tr td {
     	border-bottom: 1px solid #ddd;
+    	letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border-bottom: none;
@@ -48,7 +52,7 @@
 	/*page버튼처리*/
 	#btWrap{
 		margin-top:	30px;
-		position:	relative;
+		position:relative;
 		height:	50px;
 		text-align:	center;
 	}
@@ -56,11 +60,11 @@
 		margin:	auto;
 	}
 	#pageCon a{
-		display:	inline-block;
-		width:	30px;
-		font-sizes:	1.123em;
-		color:	#666;
-		line-height:	30px;
+		display:inline-block;
+		width:30px;
+		font-size: 14px;
+		color:#666;
+		line-height:30px;
 		text-align:	center;
 		vertical-align:	top;
 	}
@@ -112,8 +116,8 @@
 									<td>아이디</td>
 									<td width="180">이름</td>
 									<td width="290">이메일</td>
-									<td width="190">가입일</td>
-									<td width="200">상세정보</td>
+									<td width="180">가입일</td>
+									<td width="210">상세정보</td>
 								</tr>
 							<c:if test="${mlist.size()==0}">
 								<tr>

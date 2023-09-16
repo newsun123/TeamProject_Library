@@ -47,21 +47,32 @@
 		padding:0!important;	
 	}
 	#btn{
-		text-align: right;
-		padding: 30px 0;
+		text-align: center;
+		padding-top: 30px;
 	}
 	input[type=submit]{
 	    color: #fff;
 	    text-align: center;
 	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
-	    display: inline-block;
-	    line-height: 50px;
+	    font-size: 15px;
+	}
+	input[type=button]{
+		text-align: center;
+	    background: #e0e3e6;
+	    color: #6e7277;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
+	    font-size: 15px;
 	}
 	input[type=file]::file-selector-button {
 	    height: 38px;
@@ -201,7 +212,10 @@
 									<td><input type="file" id="bimg" name="bimg" ></td>
 								</tr>
 							</table>
-							<div id="btn"><input type="submit" value="도서등록"></div> 
+							<div id="btn">
+								<input type="button" value="취소" class="dis" onclick="location='list'">
+								<input type="submit" value="등록하기">
+							</div> 
 						</form>						
 					</div>
 				</div>

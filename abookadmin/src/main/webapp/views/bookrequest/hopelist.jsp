@@ -19,10 +19,14 @@
 	table tr{
 		height: 60px;
 	}
+	table tr:first-child{
+		height: 55px;
+	}
 	table tr td{
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
 		text-align: center;
+		letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border:none;
@@ -47,13 +51,22 @@
 	    border: 1px solid #3d6cc4;
 	    border-radius: 3px;
 	    color: #3d6cc4;
-	    padding: 0 30px;
+		width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #fff;
 	    margin-right: 5px;
 	}
-	
+	.at{
+		width: 540px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
 	/*page버튼처리*/
 	#btWrap{
 		margin-top:	30px;
@@ -65,11 +78,11 @@
 		margin:	auto;
 	}
 	#pageCon a{
-		display:	inline-block;
-		width:	30px;
-		font-sizes:	1.123em;
-		color:	#666;
-		line-height:	30px;
+		display:inline-block;
+		width:30px;
+		font-size: 14px;
+		color:#666;
+		line-height:30px;
 		text-align:	center;
 		vertical-align:	top;
 	}
@@ -131,21 +144,15 @@
 					<div id="requestWrap">
 					<table id="table2">
 						<tr>
-							<td>번호</td>
-							<td>제목</td>
-							<td>신청자</td>
-							<td>신청일</td>
-							<td>도서등록</td>
-							<td>반려</td>
+							<td width="540">제목</td>
+							<td width="145">신청자</td>
+							<td width="220">신청일</td>
+							<td width="140">도서등록</td>
+							<td width="140">도서반려</td>
 						</tr>
 					<c:forEach items="${hlist}" var="brvo" varStatus="i">
 						<tr>
-							<td>
-								<fmt:formatNumber value="${i.index+1}" type="number"/>
-							</td>
-							<td>${brvo.title}</td>
-							<td>${brvo.publi}</td>
-							<td>${brvo.writer}</td>
+							<td><div class="at">${brvo.title}</div></td>
 							<td>${brvo.userid}</td>
 							<td>${brvo.writeday}</td>
 							<td>

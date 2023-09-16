@@ -19,9 +19,10 @@
 	table#table1 tr{
 		height: 300px;
 	}
-	table#table tr td{
+	table tr td{
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
+		letter-spacing: 0.5px;
 	}
 	table#table1 tr td:nth-child(1){
 	    width: 220px;
@@ -141,7 +142,7 @@
 	    color: #fff;
 	    font-size: 14px;
 	    width: 110px;
-	    height: 41px;
+	    height: 40px;
 	    border-radius: 3px;
 	}
 	.resBtn.dis{

@@ -39,6 +39,7 @@
 	} 
 	table tr td{
 		height: 60px;
+		letter-spacing: 0.5px;
 	}
 	table tr td.no{
 		color: #666;
@@ -51,9 +52,9 @@
 	    border: 1px solid #3d6cc4;
 	    border-radius: 3px;
 	    color: #3d6cc4;
-	    padding: 0 30px;
+	    width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #fff;
 	    margin-right: 5px;
 	}
@@ -68,11 +69,11 @@
 		margin:	auto;
 	}
 	#pageCon a{
-		display:	inline-block;
-		width:	30px;
-		font-sizes:	1.123em;
-		color:	#666;
-		line-height:	30px;
+		display:inline-block;
+		width:30px;
+		font-size: 14px;
+		color:#666;
+		line-height:30px;
 		text-align:	center;
 		vertical-align:	top;
 	}
@@ -108,7 +109,7 @@
 			<h2><span>좌석관리</span></h2>
 			<ul id="lnb">
 				<li><a href="reserveseat"><span>사용불가 지정</span></a></li>
-				<li class="on"><a><span>퇴실처리</span></a></li>
+				<li class="on"><a href="cancelseat"><span>퇴실처리</span></a></li>
 			</ul>
 		</div>
 		<div id="contentCore">
@@ -128,7 +129,7 @@
 							</tr>
 							<c:if test="${mapall.size()==0}">
 							<tr>
-								<td colspan="4">※ 금일 예약 내역이 없습니다.</td>
+								<td colspan="4" class="no">※ 금일 예약 내역이 없습니다.</td>
 							</tr>
 							</c:if>
 							<c:if test="${mapall.size()!=0}">
@@ -152,7 +153,7 @@
 							</tr>
 							<c:if test="${rlist.size()==0}">
 							<tr>
-								<td colspan="4">※ 전체 예약 내역이 없습니다.</td>
+								<td colspan="4" class="no">※ 전체 예약 내역이 없습니다.</td>
 							</tr>
 							</c:if>
 							<c:if test="${rlist.size()!=0}">
