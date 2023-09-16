@@ -174,6 +174,10 @@
 				else 
 				{	
 					var sday=y+"-"+(m+1)+"-"+day;
+					
+					// 당일 td색은 색상 입히가
+					
+					
 					/*
 						빈값을 만들고 , 그 빈값에 값을 넣어주고
 						그 해당하는 값에 필요한 값을 넣어준다.
@@ -182,10 +186,10 @@
 					if( j == 5 )
 					{
 						insertText="휴관일";
-						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
 					}else{
-						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'>"+insertText+"</div></td>";
 					}
 					
