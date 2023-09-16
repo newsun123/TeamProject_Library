@@ -46,22 +46,24 @@
 	    text-align: center;
 	    background: #93765a;
 	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 14px;
 	}
 	input[type=button]{
 		text-align: center;
 	    background: #e0e3e6;
 	    color: #6e7277;
 	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 14px;
 	}
 	textarea{
 		width: 100%;

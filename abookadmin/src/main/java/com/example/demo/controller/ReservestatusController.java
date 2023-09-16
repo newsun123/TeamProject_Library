@@ -20,8 +20,8 @@ public class ReservestatusController {
 	private ReservestatusService service;
 	
 	@RequestMapping("/reservestatus/list")
-	public String list(Model model) {
-		return service.list(model);
+	public String list(Model model,HttpServletRequest request) {
+		return service.list(model,request);
 	}
 	
 	@RequestMapping("/reservestatus/rcheck")

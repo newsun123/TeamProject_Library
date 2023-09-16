@@ -42,26 +42,28 @@
 		padding-top: 30px;
 	}
 	input[type=submit]{
-	    color: #fff;
+		color: #fff;
 	    text-align: center;
 	    background: #93765a;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 15px;
 	}
 	input[type=button]{
 		text-align: center;
 	    background: #e0e3e6;
 	    color: #6e7277;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 15px;
 	}
 	textarea{
 		width: 100%;

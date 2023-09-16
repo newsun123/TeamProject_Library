@@ -837,8 +837,8 @@
 							<div class="time" id="time18" onclick="checktime(9,this)">18시~19시</div><input type="checkbox" name="time18" class="chktime" value="0">
 						</div>
 						<div class="sbouter">
-							<input type="submit" value="좌석예약">
 							<input type="button" value="뒤로가기" onclick="hideLayer()">
+							<input type="submit" value="좌석예약">
 							<span id="chkaa"></span>
 						</div>
 					</form>

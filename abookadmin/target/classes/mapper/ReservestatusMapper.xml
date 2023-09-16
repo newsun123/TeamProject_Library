@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ReservestatusMapper">
 	<select id="list" resultType="HashMap">
-		select *,(select title from bookregi where bcode=b.bcode) as title from bookreserve as b order by writeday desc;
+		select *,(select title from bookregi where bcode=b.bcode) as title from bookreserve as b order by writeday desc limit #{start},10
 	</select>
 	<update id="rcheck">
 		update bookregi set state=2 where bcode=#{bcode}
@@ -32,5 +32,7 @@
 	<update id="cntupdate">
 		update bookregi set cnt=cnt+1 where bcode like concat(#{bcode},'%')
 	</update>
-
+	<select id="getChong" resultType="int">
+      select ceil( count(*)/10 ) from bookreserve 
+   </select>
 </mapper>
