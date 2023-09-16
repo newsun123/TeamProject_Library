@@ -101,19 +101,18 @@
 								<td class="tl">${ivo.writeday}</td>
 							</tr>
 						 </table>
-						<div id="btn">
+						<div id="btn"> 
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
-							<c:if test="${userid == ivo.userid && ivo.state == 0 ">
+							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
 								<a href="update?no=${ivo.no}&page=${page}" id="update"> 수정 </a>
 							</c:if>
 							<c:if test="${userid != ivo.userid && ivo.state == 1}">
 								
 							</c:if>
-							
-							<c:if test="${userid == ivo.userid && ivo.state == 0  }">
+							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 									<a href="delete?no=${ivo.no}&page=${page}"> 삭제 </a>
 							</c:if>
-							<c:if test="${userid != ivo.userid && ivo.state == 1 }">
+							<c:if test="${userid != ivo.userid && ivo.state == 1}">
 								
 							</c:if>
 						

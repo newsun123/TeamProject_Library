@@ -43,6 +43,6 @@
   </select>
   
    	<select id="getState" resultType="com.example.demo.vo.InquiryVo">
-  		select * from mtm where state=1 where no=#{inno}
+  		select * from inquiry where state=1 and no=#{no}
   	</select>
 </mapper>

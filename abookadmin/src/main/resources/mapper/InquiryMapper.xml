@@ -26,6 +26,7 @@
   	insert into mtm(title,content,inno,writeday)
   	values(#{title},#{content},#{inno},now()) 
   </insert>
+  
   <select id="getAnswer" resultType="com.example.demo.vo.MtmVo">
   	select * from mtm where inno=#{no}
   </select>

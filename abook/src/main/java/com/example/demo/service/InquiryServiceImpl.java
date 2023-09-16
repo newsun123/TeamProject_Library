@@ -91,17 +91,19 @@ public class InquiryServiceImpl implements InquiryService {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		String userid=ss.getAttribute("userid").toString();
-		
+
 		// 줄바꿈 처리 => ivo 재활용
 		ivo=mapper.content(ivo);
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
 		
 		mvo=mapper.getAnswer(no);
-			
+		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
+		
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
 		model.addAttribute("mvo",mvo);
+		model.addAttribute("userid",userid);
 		
 		return "/inquiry/content";
 	}
