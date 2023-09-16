@@ -236,11 +236,20 @@
 	.bcon ul li{
 		width: 160px;
 		height: 230px;
-		box-shadow: 6px 6px 7px rgba(0, 0, 0, .15);
+		/*box-shadow: 6px 6px 7px rgba(0, 0, 0, .15);*/
 	}
 	.bcon ul li a{
 		width: 100%;
 		height: 100%;
+		display: inline-block;
+		transition: all 0.4s;
+	}
+	.bcon ul li a:hover{
+		box-shadow: none;
+	    box-shadow: 7px 11px 22.56px 1.44px rgba(0, 0, 0, 0.3);
+	    -webkit-box-shadow: 7px 11px 22.56px 1.44px rgba(0, 0, 0, 0.3);
+	    -moz-box-shadow: 7px 11px 22.56px 1.44px rgba(0, 0, 0, 0.3);
+	    transform: translateY(-10px);
 	}
 	.bcon img{
 		width: 100%;
@@ -329,7 +338,14 @@
 			};
 		});
 		
+		$(".gongh").hover(function(){
+			$(this).css("color","#c10547");
+		},function(){
+			$(this).css("color","#282828");
+		});
+		
 	});
+	
 	
 	function calView2(d)
 	{
@@ -427,7 +443,7 @@
 				<ul>
 				<c:forEach items="${glist}" var="glist">
 					<li onclick="location='../gongji/content?no=${glist.no}'">
-						<a>${glist.title}</a>
+						<a class="gongh">${glist.title}</a>
 						<span class="date">${glist.writeday}</span>
 					</li>
 				</c:forEach>
@@ -517,7 +533,12 @@
 				※ 1회 최대 3시간 사용가능<br>
 				※ 이용문의: 031-123-45678910
 			</div>
-			<a href="#" class="reBtn">좌석 예약하기</a>
+		<c:if test="${userid!=null}">
+			<a href="/seat/reserveseat" class="reBtn">좌석 예약하기</a>
+		</c:if>
+		<c:if test="${userid==null}">
+			<a href="/member/login?rchk=1" onclick="alert('비로그인 상태에서는 예약할 수 없습니다.')" class="reBtn">좌석 예약하기</a>
+		</c:if>
 		</div>
 	</div>
 </body>

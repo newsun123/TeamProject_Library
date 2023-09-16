@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
+	#inquiryWrap{
 		padding-bottom: 30px;
+		min-height: 650px;
 	}
 	form{
 		width: 100%;
@@ -48,6 +49,11 @@
     	white-space: nowrap;
     	overflow: hidden;
  
+	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
 	}
 	.tc{
 		text-align: center!important;
@@ -132,7 +138,7 @@
 					<p>열린 공간&nbsp;&nbsp;>&nbsp;&nbsp;묻고답하기</p>
 				</div>
 				<div id="contents">
-					<div id="gongjiWrap">
+					<div id="inquiryWrap">
 						<table>
 							<tr>
 								<td> 번호 </td>
@@ -140,7 +146,12 @@
 								<td class="tc">제목</td>
 								<td>등록일</td>
 								<td>조회수</td>
-							</tr>						
+							</tr>
+						<c:if test="${ilist.size==0}">
+							<tr>
+								<td colspan="5" class="no">※ 문의사항이 없습니다.</td>
+							</tr>
+						</c:if>					
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td> ${ivo.rnum} </td>

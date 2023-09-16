@@ -102,8 +102,26 @@
 	    vertical-align: middle;
 	    margin-right: 2px;
 	}
-	.today { /* 서영아 */
-		background:#ccc;	
+	.chktoday { /* 서영아 */
+		/*background:#ccc;*/	
+	}
+	#sswrap{
+		position: relative;
+	}
+	.ss{
+		position: absolute;
+	    display: inline-block;
+	    width: 40px;
+	    height: 40px;
+	    background: #171d33;
+	    top: -10px;
+	    left: -12px;
+	    border-radius: 50%;
+	}
+	.to{
+	    position: relative;
+	    z-index: 3;
+	    color: #fff;
 	}
 </style>
 <script>
@@ -177,10 +195,7 @@
 				else 
 				{	
 					var sday=y+"-"+(m+1)+"-"+day;
-					
-					
-					
-					
+	
 					/*
 						빈값을 만들고 , 그 빈값에 값을 넣어주고
 						그 해당하는 값에 필요한 값을 넣어준다.
@@ -192,6 +207,9 @@
 						insertText="휴관일";
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
+					}else if(day==dd){ // 당일 td색은 색상 입히기 서영아
+						calData=calData+"<td class='chktd chktoday' onclick='thisDay("+y+","+(m+1)+","+day+")'><span id='sswrap'><span class='ss'></span><span class='to'>"+day+
+						"</span></span><div class='inner''>"+insertText+"</div></td>";
 					}else {
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'>"+insertText+"</div></td>";
@@ -213,12 +231,11 @@
 		chk.onload=function()
 		{
 			var data=JSON.parse(chk.responseText);
-			// alert(chk.responseText);
 			var str=data.str;
 			for(i=0; i<data.length; i++)
 			{
 				document.getElementsByClassName("chktd")[data[i].xday-1].querySelector('.inner').style.color="#a50000 ";
-				document.getElementsByClassName("inner")[data[i].xday-1].innerHTML="<span class='bup'>"+data[i].str+"</span>"; // 서영아
+				document.getElementsByClassName("inner")[data[i].xday-1].innerHTML="<span>"+data[i].str+"</span>"; // 서영아
 			}
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
