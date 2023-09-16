@@ -103,6 +103,7 @@
 								 <input type="hidden" name="brchk" value="${brchk}"> <!-- bookrequest alert -->
 								 <input type="hidden" name="brno" value="${brno}"> <!-- bookrequest_content no -->
 								 <input type="hidden" name="rchk" value="${rchk}"> <!-- reserveseat alert -->
+								 <input type="hidden" name="ichk" value="${ichk}"> <!-- inquiry alert -->
 						         <div><input type="text" name="userid" id="userid" placeholder="아이디"></div>
 						         <div><input type="password" name="pwd" id="pwd" placeholder="비밀번호"></div>
 						         <div><input type="submit" value="로그인"></div> 

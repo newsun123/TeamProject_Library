@@ -200,7 +200,12 @@
 							</c:if>	
 							</div>
 							<div id="btnCon">
-								<a href="/inquiry/write">글쓰기</a>
+								<c:if test="${userid!=null}">
+									<a href="/inquiry/write">글쓰기</a>
+								</c:if>
+								<c:if test="${userid==null}">
+									<a href="/member/login?ichk=1" onclick="alert('비로그인 시 작성할 수 없습니다.')"><span>글쓰기</span></a>
+								</c:if>
 							</div>		
 						</div>							
 					</div>
