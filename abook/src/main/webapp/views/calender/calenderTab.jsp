@@ -102,7 +102,7 @@
 	    vertical-align: middle;
 	    margin-right: 2px;
 	}
-	.chktoday { /* 서영아 */
+	.today { /* 서영아 */
 		background:#ccc;	
 	}
 </style>
@@ -163,7 +163,6 @@
 		calData=calData+"<td>토</td>";
 		calData=calData+"</tr>";
 		
-		
 		var day=1;
 		for(i=1; i<=ju; i++)
 		{
@@ -187,20 +186,16 @@
 						그 해당하는 값에 필요한 값을 넣어준다.
 					*/
 					var insertText="";
-					var dd = String(today.getDate()).padStart(2, '0');
+					
 					if( j == 5 )
 					{
 						insertText="휴관일";
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
-					}else if(day==dd){ // 당일 td색은 색상 입히기 서영아
-						calData=calData+"<td class='chktd chktoday' onclick='thisDay("+y+","+(m+1)+","+day+")'><span>"+day+
-						"</span><div class='inner''>"+insertText+"</div></td>";
 					}else {
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'>"+insertText+"</div></td>";
-					}
-					
+					} // 강사님에게 물어보기
 					
 					day++;
 				}
@@ -218,7 +213,7 @@
 		chk.onload=function()
 		{
 			var data=JSON.parse(chk.responseText);
-			 alert(chk.responseText);
+			// alert(chk.responseText);
 			var str=data.str;
 			for(i=0; i<data.length; i++)
 			{
