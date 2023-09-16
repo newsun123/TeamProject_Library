@@ -18,10 +18,14 @@
 	table tr{
 		height: 60px;
 	}
+	table tr:first-child{
+		height: 55px;
+	}
 	table tr td{
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
 		text-align: center;
+		letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border:none;
@@ -83,7 +87,7 @@
 	#pageCon a{
 		display: inline-block;
 	    width: 30px;
-	    font-size: 1.125em;
+	    font-size: 14px;
 	    color: #666;
 	    line-height: 30px;
 	    text-align: center;

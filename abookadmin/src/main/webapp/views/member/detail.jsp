@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 	#MemberWrap{
-		padding-bottom:30px; 
+		padding-bottom:80px; 
 	}
 	h4{
 		font-size: 20px;
@@ -22,6 +22,7 @@
 	}
 	table tr td {
     	border-bottom: 1px solid #ddd;
+    	letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border-bottom: none;

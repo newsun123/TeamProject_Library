@@ -285,7 +285,7 @@ function starttable(my) {
 		<div id="labNav">
 			<h2><span>좌석관리</span></h2>
 			<ul id="lnb">
-				<li class="on"><a><span>사용불가 지정</span></a></li>
+				<li class="on"><a href="/rsvseat/reserveseat"><span>사용불가 지정</span></a></li>
 				<li><a href="/rsvseat/cancelseat"><span>퇴실처리</span></a></li>
 			</ul>
 		</div>

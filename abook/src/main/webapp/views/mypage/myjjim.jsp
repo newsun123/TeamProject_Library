@@ -30,6 +30,7 @@
 	} 
 	table tr td {
     	border-bottom: 1px solid #ddd;
+    	letter-spacing: 0.5px;
 	}
 	table tr:last-child td{
 		border-bottom: none;
@@ -78,7 +79,7 @@
 	#pageCon a {
 		display: inline-block;
 		width: 30px;
-		font-size: 1.125em;
+		font-size: 14px;
 		color: #666;
 		line-height: 30px;
 		text-align: center;

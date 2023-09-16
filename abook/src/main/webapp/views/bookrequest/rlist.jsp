@@ -103,7 +103,7 @@
 	#pageCon a{
 		display: inline-block;
 	    width: 30px;
-	    font-size: 1.125em;
+	    font-size: 14px;
 	    color: #666;
 	    line-height: 30px;
 	    text-align: center;
@@ -144,6 +144,7 @@
 	}	
 	table tr td {
 		border-bottom: 1px solid #e4e4e4;
+		letter-spacing: 0.5px;
 	}	
 	.writebtn{
 		display: inline-block;

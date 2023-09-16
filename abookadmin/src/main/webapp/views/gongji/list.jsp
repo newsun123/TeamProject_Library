@@ -32,6 +32,7 @@
 	}
 	table tr td{
 		border-bottom: 1px solid #e4e4e4;
+		letter-spacing: 0.5px;
 	}
 	table tr td:nth-child(2){
 		width: 49px;
@@ -53,22 +54,22 @@
 		text-align: center!important;
 	}
 	#btnCon{    
-		position: absolute;
-		top:0;
-		right:0;
+		height: 72px;
+    	text-align: right;
 	}
 	#btnCon a{
 		color: #fff;
 	    text-align: center;
 	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
 	    display: inline-block;
-    	line-height: 50px;
+    	line-height: 45px;
+    	font-size: 14px;
 	}
 	table img{
 	    width: 21px;
@@ -86,7 +87,7 @@
 	#pageCon a{
 		display: inline-block;
 	    width: 30px;
-	    font-size: 1.125em;
+	    font-size: 14px;
 	    color: #666;
 	    line-height: 30px;
 	    text-align: center;
@@ -123,7 +124,7 @@
 			<div id="labNav">
 				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>공지사항</span></a></li>
+					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
 					<li><a href=""><span>문의사항</span></a></li>
 				</ul>
 			</div>
@@ -134,6 +135,9 @@
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">
+						<div id="btnCon">
+							<a href="/gongji/write">글쓰기</a>
+						</div>
 						<table>
 							<tr>
 								<td>작성자</td>
@@ -199,9 +203,6 @@
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
 							</c:if>	
-							</div>
-							<div id="btnCon">
-								<a href="/gongji/write">글쓰기</a>
 							</div>
 						</div>							
 					</div>

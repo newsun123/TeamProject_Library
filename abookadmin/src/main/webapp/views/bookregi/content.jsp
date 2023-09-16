@@ -141,8 +141,8 @@
 	    border: 1px solid #e2e2e2;
 	    border-radius: 3px;
 	    color: #fff;
-	    padding: 0 20px;
-	    line-height: 43px;
+	    width:110px;
+	    line-height: 45px;
 	    height: 45px;
 	    background: #3d6cc4;
 	}
@@ -153,9 +153,9 @@
 	    border: 1px solid #e2e2e2;
 	    border-radius: 3px;
 	    color: #fff;
-	    padding: 0 35px;
+	    width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #3d6cc4;
 	}
 	.delbtn.dis{
