@@ -70,6 +70,10 @@ public class MemberServiceImpl implements MemberService {
 			String rchk = request.getParameter("rchk");
 			model.addAttribute("rchk",rchk);
 			
+			//inquiry ichk
+			String ichk = request.getParameter("ichk");
+			model.addAttribute("ichk",ichk);
+			
 		return "/member/login";
 	}
 
@@ -81,6 +85,7 @@ public class MemberServiceImpl implements MemberService {
 		String brchk = request.getParameter("brchk"); // bookrequest login;
 		String brno = request.getParameter("brno");
 		String rchk = request.getParameter("rchk"); // reserveseat login;
+		String ichk = request.getParameter("ichk"); // inquiry login;
 
 		if (checkuserid == null) {
 			return "redirect:/member/login?chk=1";
@@ -135,6 +140,17 @@ public class MemberServiceImpl implements MemberService {
 				}
 			}
 			
+			// inquiry login
+			if(ichk.equals("1")) {
+				if(name==null) {
+					return "redirect:/member/login?rchk=1";
+				}else {
+					session.setAttribute("userid", mvo.getUserid());
+					session.setAttribute("name", name);
+					
+					return "redirect:/inquiry/list";
+				}
+			}
 			
 			if (bcode == null || bcode == "") { // 그냥 로그인할때
 				if (name == null) {
