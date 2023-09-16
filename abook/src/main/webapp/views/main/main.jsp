@@ -407,17 +407,17 @@
 		chk.onload=function()
 		{
 			var data=JSON.parse(chk.responseText);
-			//alert(chk.responseText);
-			var str=data.str;
-			for(i=0; i<data.length; i++)
+			// alert(data.length);
+			for(i=0; i<data.length; i++) // 왜 안되냐
 			{
-				calData=calData+"<div class='bup'>"+data.xday+"</div>";
+				
 			}
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
 			chk.send();
 	
 		document.getElementById("calenderMain").innerHTML=calData;
+		
 	}
 	
 	window.onload=function()
@@ -476,7 +476,7 @@
 			<p>매주 금요일, 법정 공휴일</p>
 			<div>
 				<div id="calenderMain"> 
-					
+					<span class="bup"></span>
 				</div>	
 			</div>
 		</div>
@@ -488,7 +488,7 @@
 					<li class="act">인기도서</li>
 					<li>신착도서</li>
 				</ul>
-					<div class="imore imore2"><a href="../breserve/list?num=0" id="go1"></a></div> <!-- 플러스버튼인데 한개로 2개 DB를 어케 씀? -->
+					<div class="imore imore2"><a href="../breserve/list?num=1" id="go1"></a></div> <!-- 플러스버튼인데 한개로 2개 DB를 어케 씀? -->
 			</div>
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->
