@@ -9,10 +9,11 @@
 <style>
 	#loanstatusWrap{
 		padding-bottom: 80px;
+    	min-height: 650px;
 	}
 	table{
 		border-bottom: 1px solid #ddd;
-    	border-top: 2px solid #666;
+    	border-top: 2px solid #cecece;
 	}
 	table tr{
 		height: 60px;
@@ -22,10 +23,11 @@
 		padding:0 10px;
 		text-align: center;
 	}
+	table tr:last-child td{
+		border:none;
+	}
 	table tr:first-child td{
-		border-top: 2px solid #666;
 	    background-color: #f9f9fb;
-	    border-bottom: 1px solid #666;
 	    height: 55px;
 	    color: #333;
 	    font-family: 'NotoSansM';
@@ -35,18 +37,7 @@
 		text-align: center!important;
 	}
 	table tr td:nth-child(1) {
-		width: 490px;
-		text-align: left;
 		padding-left: 20px;
-	}
-	table tr td:nth-child(2) {
-		width: 172px;
-	}
-	table tr td:nth-child(3) {
-		width: 172px;
-	}
-	table tr td:nth-child(4) {
-		width: 172px;
 	}
 	input[type=button]{
 		cursor: pointer;
@@ -65,10 +56,14 @@
 		margin-right: 0;
 	}
 	table tr td .el{
-		text-overflow: ellipsis;
+		width: 565px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
 	    overflow: hidden;
+	    text-overflow: ellipsis;
 	    white-space: nowrap;
-	    width: 490px;
 	}
 	/*page버튼처리*/
 	#btWrap{
@@ -132,12 +127,10 @@
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
-					<li><a><span>대출현황</span></a></li>
-					<li class="on"><a><span>대출이력</span></a></li>
-					<li><a href="#"><span>예약현황</span></a></li>
-					<li><a href="#"><span>신청현황</span></a></li>
+					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li class="on"><a href="/loanstatus/allList"><span>대출이력</span></a></li>
 					<li><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
-					<li><a href="#"><span>월별대출</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -149,11 +142,11 @@
 					<div id="loanstatusWrap">
 						<table>
 							<tr>
-								<td>도서명</td>
-								<td>회원아이디</td>
-								<td>대출일</td>
-								<td>반납예정일</td>
-								<td>반납일</td>
+								<td width="565">도서명</td>
+								<td width="170">회원아이디</td>
+								<td width="150">대출일</td>
+								<td width="150">반납예정일</td>
+								<td width="150">반납일</td>
 							</tr>
 						<c:forEach items="${alist}" var="avo">
 							<tr>

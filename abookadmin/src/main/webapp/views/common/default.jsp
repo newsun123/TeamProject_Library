@@ -194,9 +194,7 @@
 					<ul>
 						<li><a href="/bookregi/list">도서등록</a></li>
 						<li><a href="/loanstatus/list">대출현황</a></li>
-						<li><a href="/loanlist/list">대출이력</a></li>
-						<li><a href="/reservestatus/list">예약현황</a></li>
-						<li><a href="#">신청현황</a></li>
+						<li><a href="/loanstatus/allList">대출이력</a></li>
 						<li><a href="/bookrequest/hopelist">희망도서</a></li>
 						<li><a href="">월별대출</a></li>
 					</ul>

@@ -9,68 +9,49 @@
 <title>Insert title here</title>
 <style>
 	#requestWrap{
-		position: relative;
-		border:4px solid #f1f1f1;
-	    padding: 7px;
+		padding-bottom: 80px;
+    	min-height: 650px;
+	}
+	table{
+		border-bottom: 1px solid #ddd;
+    	border-top: 2px solid #cecece;
+	}
+	table tr{
+		height: 60px;
+	}
+	table tr td{
+		border-bottom: 1px solid #e4e4e4;
+		padding:0 10px;
+		text-align: center;
+	}
+	table tr:last-child td{
+		border:none;
+	}
+	table tr:first-child td{
+	    background-color: #f9f9fb;
+	    height: 55px;
+	    color: #333;
+	    font-family: 'NotoSansM';
 	    text-align: center;
 	}
-	table#table2{
-		margin-top:	100px;
-		text-align:	center;
+	table tr td.ta{
+		text-align: center!important;
 	}
-	table#table2 caption{
-		text-align:	left;
-		height:	80px;
-		font-size:	25px;
-		font-family:	'NotoSansM';
+	table tr td:nth-child(1) {
+		padding-left: 20px;
 	}
-	table#table2 tr:first-child td{
-		border-top:	2px solid #666;
-		background-color:	#f9f9fb;
-		border-bottom:	1px solid #666;
-		height:	55px;
-		color:	#333;
-		font-family:	'NotoSansM';
-		text-align:	center;
-	}
-	tabl#table2	tr	td:nth-child(1){
-		width:	150px;
-	}
-	table#table2 tr td:nth-child(2){
-		width:	160px;
-	}
-	table#table2 tr td:nth-child(3){
-		width:	200px;
-	}
-	table#table2 tr td:nth-child(4){
-		width:	170px;
-	}
-	table#table2 tr td:nth-child(5){
-		width:	190px;
-	}
-	table#table2 tr td:nth-child(6){
-		width:	160px;
-	}
-	table#table2 tr td:last-child{
-		width:	160px;
-	}
-	table#table2 tr{
-		height:	60px;
-	}
-	table#table2 tr td{
-		border-bottom:	1px solid #e2e2e2;
-	}
-	.rbtn{
-		cursor:	pointer;
-		font-size:	14px;
-		display:	inline-block;
-		border:	1px solid #e2e2e2;
-		border-radius:	3px;
-		color:	#fff;
-		padding:	0	35px;
-		line-height:	40px;
-		height:	42px;
-		background:	#3d6cc4;
+	input[type=button]{
+		cursor: pointer;
+	    font-size: 14px;
+	    display: inline-block;
+	    border: 1px solid #3d6cc4;
+	    border-radius: 3px;
+	    color: #3d6cc4;
+	    padding: 0 30px;
+	    line-height: 40px;
+	    height: 42px;
+	    background: #fff;
+	    margin-right: 5px;
 	}
 	
 	/*page버튼처리*/
@@ -134,13 +115,11 @@
 			<div id="labNav">
 				<h2><span>도서관리</span></h2>
 				<ul id="lnb">
-					<li><a href="/bookregi/list">도서등록</a></li>
-					<li><a href="/loanstatus/list">대출현황</a></li>
-					<li><a href="/loanlist/list">대출이력</a></li>
-					<li><a href="/reservestatus/list">예약현황</a></li>
-					<li><a href="#">신청현황</a></li>
-					<li class="on"><a href="/bookrequest/hopelist">희망도서</a></li>
-					<li><a href="">월별대출</a></li>
+					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
+					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
+					<li><a href="/loanstatus/list"><span>대출현황</span></a></li>
+					<li><a href="/loanstatus/allList"><span>대출이력</span></a></li>
+					<li class="on"><a href="/bookrequest/hopelist"><span>희망도서</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -151,12 +130,9 @@
 				<div id="contents">
 					<div id="requestWrap">
 					<table id="table2">
-						<caption>희망도서 </caption>
 						<tr>
 							<td>번호</td>
 							<td>제목</td>
-							<td>출판사</td>
-							<td>저자</td>
 							<td>신청자</td>
 							<td>신청일</td>
 							<td>도서등록</td>
@@ -165,7 +141,7 @@
 					<c:forEach items="${hlist}" var="brvo" varStatus="i">
 						<tr>
 							<td>
-								<fmt:formatNumber value="${i.index+1}" type="number" minIntegerDigits="2"/>
+								<fmt:formatNumber value="${i.index+1}" type="number"/>
 							</td>
 							<td>${brvo.title}</td>
 							<td>${brvo.publi}</td>
