@@ -533,7 +533,12 @@
 				※ 1회 최대 3시간 사용가능<br>
 				※ 이용문의: 031-123-45678910
 			</div>
-			<a href="#" class="reBtn">좌석 예약하기</a>
+		<c:if test="${userid!=null}">
+			<a href="/seat/reserveseat" class="reBtn">좌석 예약하기</a>
+		</c:if>
+		<c:if test="${userid==null}">
+			<a href="/member/login?rchk=1" onclick="alert('비로그인 상태에서는 예약할 수 없습니다.')" class="reBtn">좌석 예약하기</a>
+		</c:if>
 		</div>
 	</div>
 </body>

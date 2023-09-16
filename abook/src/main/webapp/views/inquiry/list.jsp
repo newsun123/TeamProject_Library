@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
+	#inquiryWrap{
 		padding-bottom: 30px;
+		min-height: 380px;
 	}
 	form{
 		width: 100%;
@@ -25,6 +26,9 @@
 		text-align: center;
 	}
 	table tr{
+		height: 60px;
+	}
+	table tr:first-child{
 		height: 55px;
 	}
 	table tr:first-child{
@@ -34,45 +38,43 @@
 		border-bottom: 1px solid #e4e4e4;
 		letter-spacing: 0.5px;
 	}
-	table tr td:nth-child(2){
-		width:150px;
-	}
-	table tr td:nth-child(4){
-		width: 130px;
-	}
-	table tr td:first-child,
-	table tr td:last-child {	
-    	width: 150px;
-	}
-	table tr td:nth-child(3){
-		text-overflow: ellipsis;
-    	white-space: nowrap;
-    	overflow: hidden;
- 
-	}
-	.tc{
-		text-align: center!important;
-	}
+	
 	#btnCon{    
-		position: absolute;
-		top:0;
-		right:0;
+		height: 74px;
+		text-align: right;
 	}
 	#btnCon a{
-		color: #fff;
+		display: inline-block;
+	    border: 1px solid #93765a;
+	    color: #93765a;
+	   	width:110px;
+	    line-height: 45px;
+	    height: 45px;
+	    margin-bottom: 30px;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 15px;
 	    text-align: center;
-	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
-	    cursor: pointer;
-	    margin: 0 2px;
-	    border-radius: 3px;
-	    display: inline-block;
-    	line-height: 50px;
 	}
 	table img{
 	    width: 21px;
+	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
+	}
+	.ta{
+		width: 670px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    padding-left: 30px;
 	}
 	/*page버튼처리*/
 	#btWrap{
@@ -136,22 +138,28 @@
 					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
-					<div id="gongjiWrap">
+					<div id="inquiryWrap">
+						<div id="btnCon">
+						<c:if test="${userid!=null}">
+							<a href="/inquiry/write">글쓰기</a>
+						</c:if>
+						<c:if test="${userid==null}">
+							<a href="/member/login?ichk=1" onclick="alert('비로그인 시 작성할 수 없습니다.')"><span>글쓰기</span></a>
+						</c:if>
+						</div>		
 						<table>
 							<tr>
-								<td>번호</td>
-								<td>작성자</td>
-								<td class="tc">제목</td>
-								<td>등록일</td>
-								<td>상태처리</td>
+								<td width="670">제목</td>
+								<td width="180">작성자</td>
+								<td width="190">등록일</td>
+								<td width="130">상태처리</td>
 							</tr>						
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
-								<td>${ivo.rnum}</td>
-								<td>${ivo.userid}</td>	
 								<td>
-									<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> 
+									<div class="ta"><a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a></div> 
 								</td>
+								<td>${ivo.userid}</td>	
 								<td>${ivo.writeday}</td>  
 								<td>
 								<c:if test="${ivo.state==0}">
@@ -203,14 +211,6 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
-							<div id="btnCon">
-								<c:if test="${userid!=null}">
-									<a href="/inquiry/write">글쓰기</a>
-								</c:if>
-								<c:if test="${userid==null}">
-									<a href="/member/login?ichk=1" onclick="alert('비로그인 시 작성할 수 없습니다.')"><span>글쓰기</span></a>
-								</c:if>
-							</div>		
 						</div>							
 					</div>
 				</div>

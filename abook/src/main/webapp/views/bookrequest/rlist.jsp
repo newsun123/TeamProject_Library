@@ -150,8 +150,10 @@
 		display: inline-block;
 	    border: 1px solid #93765a;
 	    color: #93765a;
-	    padding: 0 23px;
-	    line-height: 43px;
+	    /* padding: 0 23px; */
+	    width: 110px;
+	    text-align: center;
+	    line-height: 45px;
 	    height: 45px;
 	    margin-bottom: 30px;
 	    position: absolute;
