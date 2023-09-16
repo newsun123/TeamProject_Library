@@ -102,6 +102,9 @@
 	    vertical-align: middle;
 	    margin-right: 2px;
 	}
+	.chktoday { /* 서영아 */
+		background:#ccc;	
+	}
 </style>
 <script>
 	function calView(y,m)
@@ -160,6 +163,7 @@
 		calData=calData+"<td>토</td>";
 		calData=calData+"</tr>";
 		
+		
 		var day=1;
 		for(i=1; i<=ju; i++)
 		{
@@ -174,20 +178,29 @@
 				else 
 				{	
 					var sday=y+"-"+(m+1)+"-"+day;
+					
+					
+					
+					
 					/*
 						빈값을 만들고 , 그 빈값에 값을 넣어주고
 						그 해당하는 값에 필요한 값을 넣어준다.
 					*/
 					var insertText="";
+					var dd = String(today.getDate()).padStart(2, '0');
 					if( j == 5 )
 					{
 						insertText="휴관일";
-						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
-					}else{
-						calData=calData+"<td class='chktd' onclicsk='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+					}else if(day==dd){ // 당일 td색은 색상 입히기 서영아
+						calData=calData+"<td class='chktd chktoday' onclick='thisDay("+y+","+(m+1)+","+day+")'><span>"+day+
+						"</span><div class='inner''>"+insertText+"</div></td>";
+					}else {
+						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'>"+insertText+"</div></td>";
 					}
+					
 					
 					day++;
 				}
@@ -201,22 +214,22 @@
 		 db에서 값을 가져와야하기때문에 , ajax를 통해서 값 보내주기!
 		 단 값을 보낼땐 함수명을 다르게 해서 만들어줘야 한다!
 		*/
-		
 		var chk=new XMLHttpRequest();
 		chk.onload=function()
 		{
 			var data=JSON.parse(chk.responseText);
-			// alert(chk.responseText);
+			 alert(chk.responseText);
 			var str=data.str;
 			for(i=0; i<data.length; i++)
 			{
 				document.getElementsByClassName("chktd")[data[i].xday-1].querySelector('.inner').style.color="#a50000 ";
-				document.getElementsByClassName("inner")[data[i].xday-1].innerText=data[i].str;
+				document.getElementsByClassName("inner")[data[i].xday-1].innerHTML="<span class='bup'>"+data[i].str+"</span>"; // 서영아
 			}
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
 			chk.send();
 		}
+		
 	
 	/* calview 호출 */
 	window.onload=function()

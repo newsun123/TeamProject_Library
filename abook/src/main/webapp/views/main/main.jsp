@@ -323,9 +323,9 @@
 			$("#bconWrap .bcon").eq(idx).addClass('act').siblings().removeClass('act');
 			
 			if(idx==1) {
-				$("#go1").attr("href","../breserve/list?num=1");
-			}else {
 				$("#go1").attr("href","../breserve/list?num=0");
+			}else {
+				$("#go1").attr("href","../breserve/list?num=1");
 			};
 		});
 		
@@ -351,12 +351,12 @@
 		
 		var ju=Math.ceil( (chong+yoil)/7 );
 		
-		var calData="<table width='200' height='50' border='0' id='cal'>";
+		var calData="<div class='y'>";
 		
-		calData=calData+y+"년 "+(m+1)+"월";
+		calData=calData+y+"년 </div>";
+		calData=calData+"<div class='m'>"+(m+1)+"월 </div>";
 		
-		calData=calData+"<tr align='center'>";
-
+		
 		var n=yoil-5;
 		if(n == 1)
 			n == 6;
@@ -375,13 +375,32 @@
 			
 			str=str+friday+",";
 			chk=chk+7;
-			str=str.replace(/,/g,"일 "); 
+			//str=str.replace(/,/g,"일 ");  혁범이꺼
 		}
-		 
-		 
-		calData=calData+"</tr>";
-		calData=calData+"<tr><td colspan='7'>" +str+ "</td></tr>";
-
+		
+		//휴관일 가져온 것 잘라서 배열로 만들기
+		var hyu = [];
+		hyu = str.split(",");
+		for(i=0; i < hyu.length-1; i++) {
+			calData = calData+"<div>"+hyu[i]+"일</div>";//법정 공휴일 추가할떄 겹치는거 지워야됌
+		}
+		
+		//아작스로 법정 공휴일 가져오기
+		
+		var chk=new XMLHttpRequest();
+		chk.onload=function()
+		{
+			var data=JSON.parse(chk.responseText);
+			//alert(chk.responseText);
+			var str=data.str;
+			for(i=0; i<data.length; i++)
+			{
+				calData=calData+"<div class='bup'>"+data.xday+"</div>";
+			}
+		}
+			chk.open("get","cal2?y="+y+"&m="+(m+1));
+			chk.send();
+	
 		document.getElementById("calenderMain").innerHTML=calData;
 	}
 	
@@ -458,15 +477,15 @@
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->
 					<ul>
-						<c:forEach items="${blist}" var="bvo">
-						<li><a href="/breserve/content?bcode=${bvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bvo.bimg}"></a></li>
+						<c:forEach items="${bblist}" var="bbvo">
+						<li><a href="/breserve/content?bcode=${bbvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bbvo.bimg}"></a></li>
 						</c:forEach>
 					</ul>
 				</div>
 				<div class="bcon"> <!-- 신착도서(이거 리스트) -->
 					<ul>
-						<c:forEach items="${bblist}" var="bbvo">
-						<li><a href="/breserve/content?bcode=${bbvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bbvo.bimg}"></a></li>
+						<c:forEach items="${blist}" var="bvo">
+						<li><a href="/breserve/content?bcode=${bvo.bcode.substring(0,4)}"><img src="/static/img/breserve/${bvo.bimg}"></a></li>
 						</c:forEach>
 					</ul>
 				</div>

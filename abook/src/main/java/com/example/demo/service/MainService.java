@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
@@ -12,4 +15,5 @@ public interface MainService {
 	public String main(GongjiVo gvo,Model model,HttpServletRequest req);
 	public String intro();
 	public String location();
+	public ArrayList<HashMap> cal2(HttpServletRequest request,Model model);
 }
