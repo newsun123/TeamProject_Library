@@ -391,12 +391,10 @@
 		chk.onload=function()
 		{
 			var data=JSON.parse(chk.responseText);
-			 alert(data.length);
-			 
-			for(i=0; i<data.length; i++)
+			// alert(data.length);
+			for(i=0; i<data.length; i++) // 왜 안되냐
 			{
-				var bup = document.getElementsByClassName("bup")[data[i].xday-1].innerHTML;
-				bup ="<span class='bup'>"+data[i].str+"</span>";
+				
 			}
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
