@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.MainService;
 import com.example.demo.vo.BookregiVo;
@@ -37,6 +41,12 @@ public class MainController {
 	@RequestMapping("/introduce/location")
 	public String location(){
 		return service.location();
+	}
+	
+	@RequestMapping("/main/cal2")
+	public @ResponseBody ArrayList<HashMap> cal2(HttpServletRequest request,Model model)
+	{
+		return service.cal2(request,model);
 	}
 }
 

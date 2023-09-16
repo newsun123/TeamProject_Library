@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -108,6 +110,18 @@ public class MainServiceImpl  implements MainService{
 	public String location() {
 		
 		return "/introduce/location";
+	}
+
+	@Override
+	public ArrayList<HashMap> cal2(HttpServletRequest request, Model model) {
+		String y=request.getParameter("y");
+		int m=Integer.parseInt(request.getParameter("m"));
+		
+		String mm=String.format("%02d", m);
+		
+		ArrayList<HashMap> mapall=mapper.Cal2(y+"-"+mm);
+		
+		return mapall;
 	}
 
 }
