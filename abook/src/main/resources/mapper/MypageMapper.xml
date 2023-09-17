@@ -50,4 +50,10 @@
 		from jjim as j inner join bookregi as b on b.bcode=j.bcode
 		where userid=#{userid}
 	</select>
+	<select id="myinquiry1" resultType="com.example.demo.vo.InquiryVo">
+		select * from inquiry where userid=#{userid} and state=0
+	</select>
+	<select id="myinquiry2" resultType="com.example.demo.vo.InquiryVo">
+		select * from inquiry where userid=#{userid} and state=1
+	</select>
 </mapper>

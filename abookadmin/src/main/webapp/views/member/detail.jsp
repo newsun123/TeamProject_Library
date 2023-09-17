@@ -101,9 +101,33 @@
 						<h4>작성글</h4>
 						<table id="table2">
 							<tr>
-								<td></td>
-								<td></td>
+								<td>제목</td>
+								<td width="180">등록일</td>
+								<td width="180">조회수</td>
+								<td width="180">답변 상태</td>
 							</tr>
+							<c:if test="${ilist.size()==0}">
+							<tr>
+								<td colspan="4" class="no">※현재 문의하신 내역이 없습니다</td>
+							</tr>
+							</c:if>
+							<c:if test="${ilist.size()!=0}">
+							<c:forEach items="${ilist}" var="ivo">
+							<tr>
+								<td><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></td>
+								<td>${ivo.writeday }</td>
+								<td>${ivo.readnum}</td>
+								<td>
+								<c:if test="${ivo.state==0}">
+									답변 대기
+								</c:if>
+								<c:if test="${ivo.state==1}">
+									답변 완료
+								</c:if>
+								</td>
+							</tr>
+							</c:forEach>
+							</c:if>	
 						</table>
 						<h4>대출이력</h4>
 						<table id="table3">
@@ -114,6 +138,12 @@
 								<td>대출일</td>
 								<td>반납일</td>
 							</tr>
+							<c:if test="${blist.size()==0}">
+							<tr>
+								<td colspan="5" class="no">※현재 대출이력이 없습니다.</td>
+							</tr>
+							</c:if>
+							<c:if test="${blist.size()!=0}">
 							<c:forEach items="${blist}" var="bvo">
 							<tr>
 								<td>${bvo.title}</td>
@@ -123,6 +153,7 @@
 								<td>${bvo.writeday}</td>
 							</tr>
 							</c:forEach>
+							</c:if>
 						</table>
 						<h4>좌석예약이력</h4>
 						<table id="table4">

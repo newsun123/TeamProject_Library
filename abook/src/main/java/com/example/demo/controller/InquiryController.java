@@ -28,9 +28,9 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/write")
-	public String write()
+	public String write(HttpServletRequest req, Model model,HttpSession session)
 	{
-		return service.write();
+		return service.write(req,model,session);
 	}
 	
 	@RequestMapping("/inquiry/writeOk")
@@ -40,22 +40,22 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/readnum")
-	public String readnum(InquiryVo ivo,HttpServletRequest req)
+	public String readnum(HttpServletRequest req)
 	{
-		return service.readnum(ivo,req);
+		return service.readnum(req);
 	}
 	
 	@RequestMapping("/inquiry/content")
-	public String content(InquiryVo ivo,HttpServletRequest req,
-			Model model,MtmVo mvo,HttpSession ss)
+	public String content(HttpServletRequest req,
+			Model model,HttpSession ss)
 	{
-		return service.content(ivo,req,model,mvo,ss);
+		return service.content(req,model,ss);
 	}
 	
 	@RequestMapping("/inquiry/delete")
-	public String delete(InquiryVo ivo,HttpServletRequest req)
+	public String delete(HttpServletRequest req)
 	{
-		return service.delete(ivo,req);
+		return service.delete(req);
 	}
 	
 	@RequestMapping("/inquiry/update")

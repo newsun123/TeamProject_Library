@@ -126,7 +126,7 @@
 								</tr>
 							</table>
 							<div id="btn">
-								<input type="button" value="취소" class="dis" onclick="location='list'">
+								<input type="button" value="취소" class="dis" onclick="location='content?no=${inno}'">
 								<input type="submit" value="답변등록">
 							</div> 
 						</form>					

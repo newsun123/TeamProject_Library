@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.mapper.MypageMapper;
+import com.example.demo.vo.InquiryVo;
 import com.example.demo.vo.ReserveSeatVo;
 import com.example.demo.vo.TableNameVo;
 
@@ -340,6 +341,21 @@ public class MypageServiceImple implements MypageService {
 		ArrayList<HashMap> mapall = mapper.myjjim(userid);
 		model.addAttribute("mapall",mapall);
 		return "/mypage/myjjim";
+	}
+
+	@Override
+	public String myinquiry(HttpSession ss, Model model, HttpServletRequest req) {
+		// 페이지 처리할거면 쓰라고 일단 다 받음
+		String userid = ss.getAttribute("userid").toString();
+		
+		// 답변 대기중인것 받아오기
+		ArrayList<InquiryVo> ilist = mapper.myinquiry1(userid);
+		model.addAttribute("ilist",ilist);
+		
+		// 답변 완료인것 받아오기
+		ArrayList<InquiryVo> alist = mapper.myinquiry2(userid);
+		model.addAttribute("alist",alist);
+		return "/mypage/myinquiry";
 	}
 	
 	

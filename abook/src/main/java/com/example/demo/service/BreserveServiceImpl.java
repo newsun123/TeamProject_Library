@@ -129,10 +129,13 @@ public class BreserveServiceImpl implements BreserveService {
 
 			//mypage jjim 관련 mj 값 줌
 			String mj = request.getParameter("mj");
-			if(mj=="1") {
-				model.addAttribute("mj",mj);				
-				model.addAttribute("img","jjim1.png"); //로그인 안했을때 파일 안깨지게
+							
+			if(mj!=null) {
+				model.addAttribute("mj",mj);
+				model.addAttribute("img","jjim2.png"); // mypage에서 이동하는거니까 당연히 찜이 되있는 상태, 즉 빨강 하트로 보냄
 			}
+		}else {
+			model.addAttribute("img","jjim1.png");
 		}
 		
 		return "/breserve/content";

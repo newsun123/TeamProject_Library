@@ -61,76 +61,70 @@
 </style>
 </head>
 <body>
-	<div id="secWrap">
+<div id="secWrap">
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
 				<h2><span>마이페이지</span></h2>
 				<ul id="lnb">
 					<li><a href="/mypage/mypage"><span>회원정보수정</span></a></li>
-					<li class="on"><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
+					<li><a href="/mypage/checkReserveSeat"><span>좌석예약현황</span></a></li>
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
-					<li><a href="/mypage/myinquiry"><span>문의현황</span></a></li>
+					<li class="on"><a href="/mypage/myinquiry"><span>문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>좌석예약현황</h3>
-					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;좌석 예약현황</p>
+					<h3>문의현황</h3>
+					<p>마이페이지&nbsp;&nbsp;>&nbsp;&nbsp;문의현황</p>
 				</div>
 				<div id="contents">
-					<div id="rsvOkWrap">
-						<h4>금일 예약현황</h4>
-						<table id="table1"> <!-- 금일 예약 테이블 -->
+					<div id="MypageWrap">
+						<h4>답변 대기</h4>
+						<table id="table1"> <!-- state=0 테이블 -->
 							<tr>
-								<td width="180">예약자명</td>
-								<td width="180">예약좌석</td>
-								<td>예약시간</td>
-								<td width="180">총예약시간</td>
-								<td width="180">예약취소</td>
+								<td>제목</td>
+								<td width="180">등록일</td>
+								<td width="180">조회수</td>
 							</tr>
-							<c:if test="${rtoday.size()==0}">
+							<c:if test="${ilist.size()==0}">
 							<tr>
-								<td colspan="5" class="no">※ 금일 예약된 좌석이 없습니다.</td>
+								<td colspan="3" class="no">※현재 문의하신 내역이 없습니다</td>
 							</tr>
 							</c:if>
-							<c:if test="${rtoday.size()!=0}">
-							<c:forEach items="${rtoday}" var="map" varStatus="sts">
+							<c:if test="${ilist.size()!=0}">
+							<c:forEach items="${ilist}" var="ivo">
 							<tr>
-								<td>${map.userid}</td>
-								<td>${map.tname} 좌석</td>
-								<td class="ls">${timelist2.get(sts.index)}</td>
-								<td>${chongtimes2.get(sts.index)}시간</td>
-								<td><input type="button" value="예약취소" class="btn1" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'"></td>
+								<td><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></td>
+								<td>${ivo.writeday }</td>
+								<td>${ivo.readnum}</td>
 							</tr>
 							</c:forEach>
 							</c:if>	
 						</table>
-						<h4>전체 예약현황</h4>
-						<table id="table2"> <!-- 전체 예약 테이블 -->
+						<h4>문의 완료</h4>
+						<table id="table2"> <!-- state=1 테이블 -->
 							<tr>
-								<td width="180">예약자명</td>
-								<td width="180">예약좌석</td>
-								<td width="170">예약일</td>
-								<td>예약시간</td>
-								<td width="150">총예약시간</td>
+								<td>제목</td>
+								<td width="180">등록일</td>
+								<td width="180">조회수</td>
 							</tr>
-						<c:if test="${rlist.size()==0}">
+							<c:if test="${alist.size()==0}">
 							<tr>
-								<td colspan="5" class="no">※ 예약된 좌석이 없습니다.</td>
+								<td colspan="3" class="no">※현재 문의하신 내역이 없습니다</td>
 							</tr>
-						</c:if>
-						<c:forEach items="${rlist}" var="rvo" varStatus="status">
+							</c:if>
+							<c:if test="${alist.size()!=0}">
+							<c:forEach items="${alist}" var="ivo2">
 							<tr>
-								<td>${rvo.userid}</td>
-								<td>${rvo.tname} 좌석</td>
-								<td>${rvo.reserveday}</td>
-								<td class="ls"> ${timelist.get(status.index)}</td>
-								<td>${chongtimes.get(status.index)}시간</td>
+								<td><a href="/inquiry/content?no=${ivo2.no}&mchk=1">${ivo2.title}</a></td>
+								<td>${ivo2.writeday }</td>
+								<td>${ivo2.readnum}</td>
 							</tr>
-						</c:forEach>
+							</c:forEach>
+							</c:if>	
 						</table>
 					</div>
 				</div>

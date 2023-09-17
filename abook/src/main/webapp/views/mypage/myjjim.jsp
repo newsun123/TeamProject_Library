@@ -121,7 +121,7 @@
 					<li><a href="/mypage/bookreserve"><span>도서예약현황</span></a></li>
 					<li><a href="/mypage/loanlist"><span>도서대출이력</span></a></li>
 					<li class="on"><a href="/mypage/myjjim">도서찜리스트<span></span></a></li>
-					<li><a href="#"><span>문의현황</span></a></li>
+					<li><a href="/mypage/myinquiry"><span>문의현황</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
@@ -151,7 +151,7 @@
 									<td>${map.publi}</td>
 									<td>${map.writeyear}</td>
 									<td>${map.writeday}</td>
-									<td><a href="/breserve/content?bcode=${map.bcode.substring(0,4)}&mj=1&userid=${map.userid}" class="btn1">예약하기</a></td>
+									<td><a href="/breserve/content?bcode=${map.bcode.substring(0,4)}&mj=1" class="btn1">예약하기</a></td>
 								</tr>
 							</c:forEach>	
 							</c:if>

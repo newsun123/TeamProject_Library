@@ -60,8 +60,8 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String write() {
-		
+	public String write(HttpServletRequest req,Model model,HttpSession session) {
+		//귀찮아서 못지움. 나중에 지우기
 		return "/inquiry/write";
 	}
 
@@ -75,44 +75,45 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String readnum(InquiryVo ivo,HttpServletRequest req) {
+	public String readnum(HttpServletRequest req) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
-		mapper.readnum(ivo);
+		mapper.readnum(no);
 		
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 
 	@Override
-	public String content(InquiryVo ivo, HttpServletRequest req, 
-			Model model,MtmVo mvo,HttpSession ss) {
+	public String content(HttpServletRequest req,Model model,HttpSession ss) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
+		model.addAttribute("page",page);
 		String userid=ss.getAttribute("userid").toString();
+		model.addAttribute("userid",userid);
+		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
+		model.addAttribute("mchk",mchk);
 
 		// 줄바꿈 처리 => ivo 재활용
-		ivo=mapper.content(ivo);
+		InquiryVo ivo=mapper.content(no);
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
-		
-		mvo=mapper.getAnswer(no);
-		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
-		
 		model.addAttribute("ivo",ivo);
-		model.addAttribute("page",page);
+		
+		MtmVo mvo=mapper.getAnswer(no);
+		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		model.addAttribute("mvo",mvo);
-		model.addAttribute("userid",userid);
 		
 		return "/inquiry/content";
 	}
 
 	@Override
-	public String delete(InquiryVo ivo,HttpServletRequest req) {
+	public String delete(HttpServletRequest req) {
 		
 		String page=req.getParameter("page");
-		mapper.delete(ivo);
+		String no = req.getParameter("no");
+		mapper.delete(no);
 		
 		return "redirect:/inquiry/list?page="+page;
 	}
@@ -124,7 +125,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String page=req.getParameter("page");
 		mapper.update(ivo);
 		
-		model.addAttribute("ivo",mapper.content(ivo));
+		model.addAttribute("ivo",mapper.content(no));
 		model.addAttribute("page","page");
 		
 		return "/inquiry/update";
