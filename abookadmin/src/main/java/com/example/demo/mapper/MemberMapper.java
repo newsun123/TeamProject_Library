@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.vo.BookLoanVo;
+import com.example.demo.vo.InquiryVo;
 import com.example.demo.vo.MemberVo;
 import com.example.demo.vo.ReserveSeatVo;
 
@@ -19,4 +20,5 @@ public interface MemberMapper {
 	public void banOk(String userid,String breason);
 	public void unsusBan(String userid);
 	public ArrayList<BookLoanVo> bLoan(String userid);
+	public ArrayList<InquiryVo> myInquiry(String userid);
 }
