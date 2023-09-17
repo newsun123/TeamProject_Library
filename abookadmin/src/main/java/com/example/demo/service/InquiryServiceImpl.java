@@ -20,8 +20,8 @@ public class InquiryServiceImpl implements InquiryService{
 	private InquiryMapper mapper;
 	
 	@Override
-	public String list(HttpServletRequest req, Model model, InquiryVo ivo, HttpSession ss) {
-		
+	public String list(HttpServletRequest req, Model model,HttpSession ss) {
+		// 페이지 처리
 		int page=1;
 		if(req.getParameter("page") ==null)
 			page =1;
@@ -41,16 +41,14 @@ public class InquiryServiceImpl implements InquiryService{
 		
 		if(pend > chong)
 			pend=chong;
-		
-		int r=(page-1)*10;
-		
-		
-		mapper.setRownum(r);
-		
+		// 번호매기기
+		mapper.setRownum(start);
+			
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
+		
 		model.addAttribute("ilist", mapper.list(start));
 		
 		return "/inquiry/list";
@@ -58,29 +56,17 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 
 	@Override
-	public String readnum(InquiryVo ivo,HttpServletRequest req) {
-		
-		String no=req.getParameter("no");
+	public String content(HttpServletRequest req, Model model) {
+		// inquiry no == mtm inno
+		int no=Integer.parseInt(req.getParameter("no")); 
 		String page=req.getParameter("page");
 		
-		mapper.readnum(ivo);
-		
-		return "redirect:/inquiry/content?no="+no+"&page="+page;
-	}
-
-	@Override
-	public String content(InquiryVo ivo, HttpServletRequest req, Model model,MtmVo mvo) {
-		String no=req.getParameter("no");
-		String page=req.getParameter("page");
-		
-		
-		
-		ivo=mapper.content(ivo); // 유저 질문 가져오기
+		InquiryVo ivo=mapper.content(no); // 유저 질문 가져오기
 		String imsi=ivo.getContent().replace("\r\n", "<br>");
 		ivo.setContent(imsi);
 		
 		// 내 답변 받아오기
-		mvo = mapper.getAnswer(no);
+		MtmVo mvo = mapper.getAnswer(no);
 		
 		model.addAttribute("mvo",mvo);
 		// mvo 값을 모델로 전해줄려면 mapper 에 select 해줘야한다!
@@ -92,17 +78,17 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public String writeOk(MtmVo mvo) {
 		
-		mapper.chgState(mvo);
 		mapper.writeOk(mvo);
+		mapper.chgState(mvo);
 		return "redirect:/inquiry/list";
 	}
 
 	@Override
-	public String write(HttpServletRequest req,Model model) {
-		
-		String inno=req.getParameter("no");
-		model.addAttribute("inno",inno);
-		
-		return "/inquiry/write";
+	public String updateOK(MtmVo mvo,HttpServletRequest req) {
+		String page = req.getParameter("page");
+		String inno = Integer.toString(mvo.getInno());
+		mapper.updateOk(mvo);
+		return "redirect:/inquiry/content?no="+inno;
 	}
+
 }

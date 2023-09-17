@@ -60,7 +60,13 @@
 	}
 </style>
 <script>
-	
+	function checkcDel() {
+		if(confirm("삭제하시겠습니까?")) {
+			location="delete?no=${ivo.no}&page=${page}";
+		}else {
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
@@ -86,6 +92,10 @@
 								<td>제목</td>
 								<td>${ivo.title}</td>
 							</tr>
+							<tr> <!-- 여기 tr height 조정 필요 -->
+								<td>조회수</td>
+								<td>${ivo.readnum}</td>
+							</tr>
 							<tr>
 								<td>내용</td>
 								<td class="tl" id="cont"> 
@@ -110,12 +120,10 @@
 								
 							</c:if>
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
-									<a href="delete?no=${ivo.no}&page=${page}"> 삭제 </a>
+									<a onclick="checkcDel()"> 삭제 </a>
 							</c:if>
 							<c:if test="${userid != ivo.userid && ivo.state == 1}">
-								
 							</c:if>
-						
 						</div>
 					</div>
 				</div>

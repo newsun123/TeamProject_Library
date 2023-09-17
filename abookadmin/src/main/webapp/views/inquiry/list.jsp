@@ -127,15 +127,16 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>묻고 답하기</span></h2>
+				<h2><span>문의사항</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>묻고 답하기</span></a></li>
+					<li><a href="/gongji/list"><span>공지사항</span></a></li>
+					<li class="on"><a><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>묻고 답하기</h3>
-					<p>열린 공간&nbsp;&nbsp;>&nbsp;&nbsp;묻고답하기</p>
+					<h3>문의사항</h3>
+					<p>열린 공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
 					<div id="inquiryWrap">
@@ -147,7 +148,7 @@
 								<td>등록일</td>
 								<td>조회수</td>
 							</tr>
-						<c:if test="${ilist.size==0}">
+						<c:if test="${ilist.size()==0}"> <!-- size할때는 괄호해야됌 -->
 							<tr>
 								<td colspan="5" class="no">※ 문의사항이 없습니다.</td>
 							</tr>
@@ -157,7 +158,7 @@
 								<td> ${ivo.rnum} </td>
 								<td> ${ivo.userid} </td>	
 								<td>
-									<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> 
+									<a href="content?no=${ivo.no}&page=${page}">${ivo.title}</a> 
 								</td>
 								<td>${ivo.writeday}</td>  
 								<td>${ivo.readnum}</td>  

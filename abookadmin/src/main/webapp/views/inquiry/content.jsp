@@ -54,11 +54,34 @@
 	    border-radius: 3px;
 	    display:inline-block;
 	}
+	.a{  /* 임의로 submit,button 버튼 만짐 */
+		color: #fff;
+	    text-align: center;
+	    background: #4e68b9;
+	    font-family: 'NotoSansM';
+	    height: 50px;
+	    width: 130px;
+	    line-height:50px;
+	    cursor: pointer;
+	    margin: 0 2px;
+	    border-radius: 3px;
+	    display:inline-block;
+	}
 	#btn a.dis{
 		background: #e0e3e6;
 	    color: #6e7277;
 	}
 </style>
+<script>
+	function upForm() {
+		document.getElementById("con").style.display="none";
+		document.getElementById("upForm").style.display="block";
+	}
+	function cancelUp() {		
+		document.getElementById("con").style.display="block";
+		document.getElementById("upForm").style.display="none";
+	}
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -67,14 +90,14 @@
 			<div id="labNav">
 				<h2><span>묻고 답하기</span></h2>
 				<ul id="lnb">
-					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
-					<li><a href="/inquiry/list"><span>묻고 답하기</span></a></li>
+					<li><a href="/gongji/list"><span>공지사항</span></a></li>
+					<li class="on"><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>묻고 답하기</h3>
-					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;묻고 답하기</p>
+					<h3>문의사항</h3>
+					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">				
@@ -91,8 +114,27 @@
 							</tr>
 							<tr>	
 								<td> 답변 </td>
-								<td class="tl" id="cont"> 
-									${mvo.content}
+								<td class="tl" id="cont">
+								<c:if test="${mvo.content!=null}" >
+									<span id="con">
+									${mvo.content} 
+									<input type="button" value=" 답변 수정" class="a" onclick="upForm()">
+									</span>
+									<span id="upForm" style="display:none;"> 
+										<form method="post" action="updateOk">
+										<input type="hidden" name="no" value="${mvo.no}">
+										<input type="hidden" name="inno" value="${mvo.inno}">
+										<input type="hidden" name="page" value="${page}">										<textarea name="content">${mvo.content}</textarea>
+										<input type="submit" value="답변 수정" class="a">
+										<input type="button" value="수정 취소" class="a" onclick="cancelUp()">
+										</form>
+									</span>
+								</c:if>
+								<c:if test="${mvo.content==null}">
+									<form method="post" action="writeOk">
+									<iput type="hidden" name="inno" value="${ivo.no}">
+									<textarea name="content"></textarea>
+								</c:if>
 								</td>	
 							</tr>
 							<tr>
@@ -102,7 +144,10 @@
 						 </table>
 						<div id="btn">
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
-							<a href="write?no=${ivo.no}"> 답변 등록 </a>
+							<c:if test="${mvo.content==null}">
+								<input type="submit" value="답변 등록" class="a">
+								</form>
+							</c:if>
 						</div>
 					</div>
 				</div>

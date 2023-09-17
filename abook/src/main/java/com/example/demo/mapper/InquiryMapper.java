@@ -15,9 +15,9 @@ public interface InquiryMapper {
 	public ArrayList<InquiryVo> list(@Param("start") int start);
 	public void writeOk(InquiryVo ivo);
 	public void setRownum(int r);
-	public void readnum(InquiryVo ivo);
-	public InquiryVo content(InquiryVo ivo);
-	public void delete(InquiryVo ivo);
+	public void readnum(String no);
+	public InquiryVo content(String no);
+	public void delete(String no);
 	public void update(InquiryVo ivo);
 	public void updateOk(InquiryVo ivo);
 	public MtmVo getAnswer(String no);
