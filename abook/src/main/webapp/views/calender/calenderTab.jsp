@@ -207,9 +207,6 @@
 						insertText="휴관일";
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
-					}else if(day==dd){ // 당일 td색은 색상 입히기 서영아
-						calData=calData+"<td class='chktd chktoday' onclick='thisDay("+y+","+(m+1)+","+day+")'><span id='sswrap'><span class='ss'></span><span class='to'>"+day+
-						"</span></span><div class='inner''>"+insertText+"</div></td>";
 					}else {
 						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
 						"<div class='inner'>"+insertText+"</div></td>";
