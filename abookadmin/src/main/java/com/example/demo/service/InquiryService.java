@@ -12,6 +12,6 @@ public interface InquiryService {
 	
 	public String list(HttpServletRequest req,Model model,HttpSession ss);
 	public String content(HttpServletRequest req,Model model);
-	public String writeOk(MtmVo mvo);
+	public String writeOk(MtmVo mvo,HttpServletRequest req);
 	public String updateOK(MtmVo mvo,HttpServletRequest req);
 }

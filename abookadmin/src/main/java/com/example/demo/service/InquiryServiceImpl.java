@@ -76,11 +76,13 @@ public class InquiryServiceImpl implements InquiryService{
 	}
 
 	@Override
-	public String writeOk(MtmVo mvo) {
-		
+	public String writeOk(MtmVo mvo,HttpServletRequest req) {
+		int inno = Integer.parseInt(req.getParameter("inno"));
+		mvo.setInno(inno);
+		String page = req.getParameter("page");
 		mapper.writeOk(mvo);
 		mapper.chgState(mvo);
-		return "redirect:/inquiry/list";
+		return "redirect:/inquiry/content?no="+inno+"&page="+page;
 	}
 
 	@Override

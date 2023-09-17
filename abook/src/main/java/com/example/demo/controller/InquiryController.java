@@ -28,9 +28,9 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/write")
-	public String write()
+	public String write(HttpServletRequest req, Model model,HttpSession session)
 	{
-		return service.write();
+		return service.write(req,model,session);
 	}
 	
 	@RequestMapping("/inquiry/writeOk")

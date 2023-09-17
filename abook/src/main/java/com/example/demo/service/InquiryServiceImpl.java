@@ -60,8 +60,8 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String write() {
-		
+	public String write(HttpServletRequest req,Model model,HttpSession session) {
+		//귀찮아서 못지움. 나중에 지우기
 		return "/inquiry/write";
 	}
 

@@ -132,8 +132,9 @@
 								</c:if>
 								<c:if test="${mvo.content==null}">
 									<form method="post" action="writeOk">
-									<iput type="hidden" name="inno" value="${ivo.no}">
-									<textarea name="content"></textarea>
+									<input type="hidden" name="inno" value="${ivo.no}">
+									<input type="hidden" name="page" value="${page}">
+									<textarea name="content" placeholder="답변 입력"></textarea>
 								</c:if>
 								</td>	
 							</tr>

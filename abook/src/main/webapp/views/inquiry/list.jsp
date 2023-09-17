@@ -159,7 +159,7 @@
 								<td>
 									<div class="ta">
 									<c:if test="${userid==null}">
-										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 작성할 수 없습니다.')">${ivo.title}</a>
+										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">${ivo.title}</a>
 									</c:if>
 									<c:if test="${userid!=null}">
 										<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a>

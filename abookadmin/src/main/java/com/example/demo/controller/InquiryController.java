@@ -33,9 +33,9 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/writeOk")
-	public String writeOk(MtmVo mvo)
+	public String writeOk(MtmVo mvo,HttpServletRequest req)
 	{
-		return service.writeOk(mvo);
+		return service.writeOk(mvo,req);
 	}
 	
 	@RequestMapping("/inquiry/updateOk")
