@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.example.demo.vo.InquiryVo;
 import com.example.demo.vo.ReserveSeatVo;
 import com.example.demo.vo.TableNameVo;
 
@@ -27,5 +28,8 @@ public interface MypageMapper {
 	public ArrayList<HashMap> loanlist(String userid,@Param("start") int start);
 	// jjim추가 0911
 	public ArrayList<HashMap> myjjim(String userid);
+	// inquiry 추가 0917
+	public ArrayList<InquiryVo> myinquiry1(String userid);
+	public ArrayList<InquiryVo> myinquiry2(String userid);
 
 }

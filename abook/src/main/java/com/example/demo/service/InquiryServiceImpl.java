@@ -92,6 +92,8 @@ public class InquiryServiceImpl implements InquiryService {
 		model.addAttribute("page",page);
 		String userid=ss.getAttribute("userid").toString();
 		model.addAttribute("userid",userid);
+		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
+		model.addAttribute("mchk",mchk);
 
 		// 줄바꿈 처리 => ivo 재활용
 		InquiryVo ivo=mapper.content(no);

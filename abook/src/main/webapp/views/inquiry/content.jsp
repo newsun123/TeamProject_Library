@@ -112,7 +112,12 @@
 							</tr>
 						 </table>
 						<div id="btn"> 
-							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
+							<c:if test="${mchk==1}">
+							<a href="/mypage/myinquiry" class="dis">목록</a>
+							</c:if>
+							<c:if test="${mchk!=1}">
+							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록</a>
+							</c:if>
 							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
 								<a href="update?no=${ivo.no}&page=${page}" id="update"> 수정 </a>
 							</c:if>
