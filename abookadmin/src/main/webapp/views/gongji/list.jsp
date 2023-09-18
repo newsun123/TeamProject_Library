@@ -54,7 +54,6 @@
 		text-align: center!important;
 	}
 	#btnCon{    
-		height: 72px;
     	text-align: right;
 	}
 	#btnCon a{
@@ -132,7 +131,7 @@
 		color:#fff;
 		margin-bottom:40px;
 		width:100px;
-		background:#93765a;
+		background:#3d6cc4;
 	}
 	#searchCon{
 		width:630px;
