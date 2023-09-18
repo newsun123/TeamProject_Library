@@ -16,5 +16,4 @@ public interface MainService {
 	public String intro();
 	public String location();
 	public ArrayList<HashMap> cal2(HttpServletRequest request,Model model);
-	public String search(HttpServletRequest request,BookregiVo bvo,Model model);
 }
