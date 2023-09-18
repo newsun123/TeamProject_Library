@@ -212,11 +212,9 @@
 		
 		if(schk==0){
 			document.getElementById("type").style.display="block";
-			document.getElementsByClassName("arrow")[0].style.transform="rotate(180deg)";
 			schk=1;
 		}else{
 			document.getElementById("type").style.display="none";
-			document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 			schk=0;
 		}
 	}
@@ -296,7 +294,7 @@
 									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
 								</tr>
 							</c:if>
-						<c:if test="${!empty ilist}">					
+							<c:if test="${! empty ilist}">					
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td>
