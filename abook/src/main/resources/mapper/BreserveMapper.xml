@@ -22,14 +22,17 @@
 		select * ,(select returnday from bookloan where bcode=b.bcode) as returnday from bookregi as b where bcode like concat(#{bcode},'%')
 	</select>
 	<insert id="bresOk">
-		insert into bookreserve(userid,bcode,state,writeday)
-		values(#{userid},#{bcode},1,now())
+		insert into bookreserve(userid,bcode,writeday)
+		values(#{userid},#{bcode},now())
 	</insert>
 	<update id="bresUpdate">
 		update bookregi set state=1 where bcode=#{bcode}
 	</update>
 	<select id="cntCheck" resultType="int">
-		select count(*) from bookreserve where userid=#{userid} and state in(1,2)
+		select count(*) from bookreserve where userid=#{userid}
+	</select>
+	<select id="cntCheck2" resultType="int">
+		select count(*) from bookloan where state=0 and userid=#{userid}
 	</select>
 	<insert id="addjjim">
 		insert into jjim(userid,bcode,writeday)

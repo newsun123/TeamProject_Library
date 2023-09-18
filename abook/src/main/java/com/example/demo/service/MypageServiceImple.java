@@ -246,9 +246,7 @@ public class MypageServiceImple implements MypageService {
 		// reserveday 삭제
 
 		mapper.cancelSeat(no);
-		
-		
-		
+
 		return "redirect:/mypage/checkReserveSeat";
 	}
 
@@ -270,7 +268,10 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public String returnOk(HttpServletRequest request) {
 		String no=request.getParameter("no");
+		String bcode=request.getParameter("bcode");
+		System.out.println(bcode);
 		mapper.returnOk(no);
+		mapper.changeState(bcode);
 		return "redirect:/mypage/bookreserve";
 	}
 
