@@ -24,12 +24,15 @@ public interface MypageMapper {
 	public void changeState(String bcode);
 	public void giganUpdate(String no);
 	public void returnOk(String no);
-	public int getChong();
+	public int getChong(String db);
+	public int getChongloan();
 	public ArrayList<HashMap> loanlist(String userid,@Param("start") int start);
 	// jjim추가 0911
 	public ArrayList<HashMap> myjjim(String userid);
 	// inquiry 추가 0917
 	public ArrayList<InquiryVo> myinquiry1(String userid);
 	public ArrayList<InquiryVo> myinquiry2(String userid);
-
+	// mypage 페이지 처리 시작
+	public int getChongSeat(String userid);
+	public int getChongBregi1(String userid);
 }

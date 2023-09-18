@@ -25,10 +25,36 @@ public class MypageServiceImple implements MypageService {
 	private MypageMapper mapper;
 	
 	@Override
-	public String checkReserveSeat(HttpSession ss,Model model) {
+	public String checkReserveSeat(HttpSession ss,Model model,HttpServletRequest req) {
+		String userid = ss.getAttribute("userid").toString();
+		// page
+		int page = 1;
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(req.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+		
+		int chong = mapper.getChongSeat(userid);
+		
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
 		
 		//전체 예약 현황 mapper 만들어 보내기
-		String userid = ss.getAttribute("userid").toString();
+		
 		model.addAttribute("userid",userid); 
 		
 		//System.out.println(userid);
@@ -213,9 +239,37 @@ public class MypageServiceImple implements MypageService {
 	}
 	
 	@Override
-	public String bookreserve(Model model,HttpSession session) {
-		
+	public String bookreserve(Model model,HttpSession session,HttpServletRequest req) {
 		String userid=session.getAttribute("userid").toString();
+		
+		// 예약현황 page(bookregi의 state 1인것+userid)
+		int page = 1;
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(req.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+		
+		int chong = mapper.getChongSeat(userid); // 이따 고쳐라
+		
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
+		
+		
+		
 		
 		ArrayList<HashMap> mapall=mapper.bookreserve(userid);
 		model.addAttribute("mapall",mapall);
@@ -292,7 +346,7 @@ public class MypageServiceImple implements MypageService {
 
 		int pend = pstart + 9;
 
-		int chong = mapper.getChong();
+		int chong = mapper.getChongloan();
 
 		if (pend > chong)
 			pend = chong;
@@ -326,8 +380,8 @@ public class MypageServiceImple implements MypageService {
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
+		String db = "jjim";
+		int chong = mapper.getChong(db);
 
 		if (pend > chong)
 			pend = chong;

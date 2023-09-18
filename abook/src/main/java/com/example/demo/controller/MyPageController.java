@@ -19,8 +19,8 @@ public class MyPageController {
 	private MypageService service;
 	
 	@RequestMapping("/mypage/checkReserveSeat")
-	public String checkReserveSeat(HttpSession ss,Model model ) {
-		return service.checkReserveSeat(ss,model);
+	public String checkReserveSeat(HttpSession ss,Model model,HttpServletRequest req) {
+		return service.checkReserveSeat(ss,model,req);
 	}
 	
 	@RequestMapping("/mypage/cancelSeat")
@@ -29,8 +29,8 @@ public class MyPageController {
 	}
 
 	@RequestMapping("/mypage/bookreserve")
-	public String bookreserve(Model model,HttpSession session) {
-		return service.bookreserve(model,session);
+	public String bookreserve(Model model,HttpSession session,HttpServletRequest req) {
+		return service.bookreserve(model,session,req);
 	}
 	
 	@RequestMapping("/mypage/brsvCancel")
