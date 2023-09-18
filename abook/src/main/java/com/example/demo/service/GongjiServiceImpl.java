@@ -20,6 +20,10 @@ public class GongjiServiceImpl implements GongjiService {
 	@Override
 	public String list(Model model, HttpServletRequest req, GongjiVo gvo) {
 		
+		String type=req.getParameter("type");
+		String keyword=req.getParameter("keyword");
+		String title=req.getParameter("title");
+		System.out.println(type+" : "+keyword);
 		int page = 1;
 		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
 			page = 1;
@@ -39,14 +43,30 @@ public class GongjiServiceImpl implements GongjiService {
 
 		if (pend > chong)
 			pend = chong;
-
-		model.addAttribute("chong", chong);
-		model.addAttribute("pstart", pstart);
-		model.addAttribute("pend", pend);
-		model.addAttribute("page", page);
-
-		model.addAttribute("glist", mapper.list(start));
-
+		if(keyword==null || keyword.length()==0) {
+			type="title";
+			keyword="";
+			model.addAttribute("type","aa");
+			model.addAttribute("glist",mapper.list(type,keyword,start));
+			model.addAttribute("pstart",pstart);
+			model.addAttribute("pend",pend);
+			model.addAttribute("chong",chong);
+		}
+		else {
+			model.addAttribute("chong", chong);
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("page", page);
+			model.addAttribute("type",type);
+			model.addAttribute("keyword",keyword);
+			model.addAttribute("start",start);
+		}
+		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
+		{
+			model.addAttribute("glist",mapper.list2(keyword, start));
+		}
+		else
+			model.addAttribute("glist",mapper.list(type,keyword,start));
 		return "/gongji/list";
 		
 	}
