@@ -277,7 +277,12 @@
 								<td width="150"> 신청일 </td>
 								<td width="130"> 처리상태 </td>
 							</tr>	
-							
+							<c:if test="${empty rlist}">
+								<tr>
+									<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${! empty rlist}">
 							<c:forEach items="${rlist}" var="brvo" varStatus="sts">
 								<tr>
 									<input type="hidden" name="userid" id="userid" value="${brvo.userid}">
@@ -330,6 +335,7 @@
 									 </td>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</table>
 						<div id="btWrap">
 							<div id=pageCon>

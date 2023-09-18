@@ -51,9 +51,9 @@
 	    border: 1px solid #3d6cc4;
 	    border-radius: 3px;
 	    color: #3d6cc4;
-	    padding: 0 30px;
+	    width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #fff;
 	    margin-right: 5px;
 	}
@@ -152,7 +152,7 @@
 					<div id="loanstatusWrap">
 						<table>
 							<tr>
-								<td width="555">도서명</td>
+								<td width="555" class="ta">도서명</td>
 								<td width="160">회원아이디</td>
 								<td width="150">대출일</td>
 								<td width="150">반납예정일</td>
