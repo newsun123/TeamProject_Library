@@ -94,7 +94,7 @@
 				</div>
 				<div id="contents">
 					<div id="requestWrap">
-						<a href="rlist?type=${type}&keyword=${keyword}" class="rebtn">목록으로</a>
+						<a href="rlist?page=${page}&type=${type}&keyword=${keyword}" class="rebtn">목록으로</a>
 						<table>
 							<tr>
 								<td class="co">도서명</td>

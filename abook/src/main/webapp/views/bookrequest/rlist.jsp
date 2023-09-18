@@ -288,7 +288,7 @@
 									<input type="hidden" name="userid" id="userid" value="${brvo.userid}">
 									<input type="hidden" name="sessionuserid" id="sessionuserid" value="${userid}">
 									<%-- <td>${userid},${brvo.userid}</td> --%>
-									<td>${sts.index+1}</td>
+									<td>${sts.count+((page-1)*10)}</td>
 									<td>
 									<c:if test="${brvo.gonge==0}">
 										&nbsp;
