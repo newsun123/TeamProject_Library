@@ -184,9 +184,9 @@
 	    margin-left: 15px;
 	}
 	#rigthBox{
-		border: 1px solid;
 	    width: 450px;
 	    height: 265px;
+	    position: relative;
 	}
 	#sectionGroup2{
 		width:1500px;
@@ -322,6 +322,95 @@
 	}
 	.imore2{
 		left: 250px;
+	}
+	.calCon{
+		position: relative;
+	    top: 22px;
+	    left:51px;
+	    width: 310px;
+	}
+	.calCon li{
+		float: left;
+	    margin-right: 7px;
+	    width: 93px;
+	    background: url(/static/img/main/date.gif) no-repeat;
+	    box-sizing: border-box;
+	    padding: 0 5px;
+	    height: 105px;
+	    margin-right: 10px;
+	    position: relative;
+	}
+	.calCon:after {
+	    content: '';
+	    display: block;
+	    clear: both;
+	}
+	.top_t{
+		height: 147px;
+	    width: 100%;
+	    background: url(/static/img/main/calendar_bg.gif) no-repeat;
+	    background-size: cover;
+	    padding: 20px;
+	    box-sizing: border-box;
+	}
+	.cal_date{
+	    color: #003aa5;
+	    font-size: 11px;
+	    position: absolute;
+	    top: 19px;
+	    display: block;
+	    width: 83px;
+	    text-align: center;
+	    height: 23px;
+    	border-bottom: 1px solid #ddd;
+	}
+	.cal_day{
+		color: #333;
+	    font-size: 20px;
+	    position: absolute;
+	    top: 56px;
+	    display: block;
+	    width: 83px;
+	    text-align: center;
+	}
+	.calbtn{
+		position: absolute;
+	    top: 10px;
+	    right: 20px;
+	}
+	.calbtn img{
+		width: 30px;
+	}
+	.bottom_t{
+		height: 118px;
+    	width: 100%;   	
+    	background: #f4f4f9;
+	}
+	.cal_tt{
+		color: #003aa5;
+	    text-align: center;
+	    position: relative;
+	    top: 23px;
+	}
+	.conbox{
+		display: flex;
+		justify-content: center;
+	}
+	.bupcon{
+		position: relative;
+    	top: 40px;
+    	padding: 0 20px;
+	}
+	.bupcon li{
+		width: 40px;
+	    height: 40px;
+	    background: #8aa9e1;
+	    color: #fff;
+	    text-align: center;
+	    line-height: 40px;
+	    border-radius: 50%;
+	    font-size: 14px;
+		margin-left: 12px;
 	}
 </style>
 <script>
@@ -508,8 +597,37 @@
 			</div>
 		</div>
 		<div id="rigthBox">
-			<p>이달의 휴관일 안내</p>
-			<p>매주 금요일, 법정 공휴일</p>
+			<a href="/calender/calenderTab" class="calbtn"><img src="/static/img/main/link02.gif"></a>
+			<div class="top_t">
+				<ul class="calCon">
+					<li>
+						<p class="cal_date">YEAR</p>
+						<p class="cal_day">2023</p>
+					</li>
+					<li>
+						<p class="cal_date">MONTH</p>
+						<p class="cal_day">9</p>
+					</li>
+					<li>
+						<p class="cal_date">DAY</p>
+						<p class="cal_day">18</p>
+					</li>
+				</ul>			
+			</div>
+			<div class="bottom_t">
+				<div class="cal_tt">휴관일, 법정 공휴일</div>
+				<div class="bupcon">
+					<ul class="conbox">
+						<li>1일</li>
+						<li>8일</li>
+						<li>15일</li>
+						<li>22일</li>
+						<li>28일</li>
+						<li>29일</li>
+						<li>30일</li>
+					</ul>
+				</div>
+			</div>
 			<div>
 				<div id="calenderMain"> 
 					<span class="bup"></span>
