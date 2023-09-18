@@ -135,7 +135,7 @@
 							</tr>
 						 </table>
 						<div id="btn"> 		
-							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
+							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 								<a href="update?no=${ivo.no}&page=${page}" id="update">수정하기</a>
 							</c:if>
 							<c:if test="${userid == ivo.userid && ivo.state == 1}">
