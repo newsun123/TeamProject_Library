@@ -27,6 +27,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("req");
+		
 		int page=1;
 		if(req.getParameter("page") ==null)
 			page =1;
@@ -48,7 +49,6 @@ public class InquiryServiceImpl implements InquiryService {
 			pend=chong;
 		
 		int r=(page-1)*10;
-		mapper.setRownum(r);
 		
 		if(keyword==null || keyword.length()==0) {
 			type="title";
@@ -57,6 +57,7 @@ public class InquiryServiceImpl implements InquiryService {
 			model.addAttribute("glist",mapper.list(type,keyword,start));
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
+			model.addAttribute("page", page);
 			model.addAttribute("chong",chong);
 		}
 		else {
@@ -77,26 +78,12 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String write(HttpServletRequest req,Model model,HttpSession session) {
-		//귀찮아서 못지움. 나중에 지우기
-		return "/inquiry/write";
-	}
-
-	@Override
-	public String writeOk(InquiryVo ivo,HttpSession ss) {
-		
-		String userid=ss.getAttribute("userid").toString();
-		ivo.setUserid(userid);
-		mapper.writeOk(ivo);
-		return "redirect:/inquiry/list";
-	}
-
-	@Override
-	public String readnum(HttpServletRequest req) {
+	public String readnum(HttpServletRequest req,Model model) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		mapper.readnum(no);
+		model.addAttribute("no",no);
 		
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
@@ -123,6 +110,21 @@ public class InquiryServiceImpl implements InquiryService {
 		model.addAttribute("mvo",mvo);
 		
 		return "/inquiry/content";
+	}
+	
+	@Override
+	public String write(HttpServletRequest req,Model model,HttpSession session) {
+		//귀찮아서 못지움. 나중에 지우기
+		return "/inquiry/write";
+	}
+
+	@Override
+	public String writeOk(InquiryVo ivo,HttpSession ss) {
+		
+		String userid=ss.getAttribute("userid").toString();
+		ivo.setUserid(userid);
+		mapper.writeOk(ivo);
+		return "redirect:/inquiry/list";
 	}
 
 	@Override
