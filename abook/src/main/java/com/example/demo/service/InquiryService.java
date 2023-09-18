@@ -13,7 +13,7 @@ public interface InquiryService {
 	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss);
 	public String write(HttpServletRequest req,Model model,HttpSession session);
 	public String writeOk(InquiryVo ivo,HttpSession ss,HttpServletRequest req);
-	public String readnum(HttpServletRequest req);
+	public String readnum(HttpServletRequest req,Model model);
 	public String content(HttpServletRequest req,Model model,HttpSession ss);
 	public String delete(HttpServletRequest req);
 	public String update(InquiryVo ivo,Model model,HttpServletRequest req);

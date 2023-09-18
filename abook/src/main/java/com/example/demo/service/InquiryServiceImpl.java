@@ -89,12 +89,6 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String write(HttpServletRequest req,Model model,HttpSession session) {
-		//귀찮아서 못지움. 나중에 지우기
-		return "/inquiry/write";
-	}
-
-	@Override
 	public String writeOk(InquiryVo ivo,HttpSession ss,HttpServletRequest req) {
 		
 		String userid=ss.getAttribute("userid").toString();
@@ -113,18 +107,6 @@ public class InquiryServiceImpl implements InquiryService {
 		ivo.setUserid(userid);
 		mapper.writeOk(ivo);
 		return "redirect:/inquiry/list";
-	}
-
-	@Override
-	public String readnum(HttpServletRequest req,Model model) {
-
-		
-		String no=req.getParameter("no");
-		String page=req.getParameter("page");
-		mapper.readnum(no);
-		model.addAttribute("no",no);
-		
-		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 
 	@Override
@@ -158,15 +140,6 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String writeOk(InquiryVo ivo,HttpSession ss) {
-		
-		String userid=ss.getAttribute("userid").toString();
-		ivo.setUserid(userid);
-		mapper.writeOk(ivo);
-		return "redirect:/inquiry/list";
-	}
-
-	@Override
 	public String delete(HttpServletRequest req) {
 		
 		String page=req.getParameter("page");
@@ -195,6 +168,17 @@ public class InquiryServiceImpl implements InquiryService {
 		String page=req.getParameter("page");
 		String no=req.getParameter("no");
 		mapper.updateOk(ivo);
+		return "redirect:/inquiry/content?no="+no+"&page="+page;
+	}
+
+	@Override
+	public String readnum(HttpServletRequest req,Model model) {
+		
+		String no=req.getParameter("no");
+		String page=req.getParameter("page");
+		mapper.readnum(no);
+		model.addAttribute("no",no);
+		
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 }
