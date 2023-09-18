@@ -39,10 +39,10 @@
   </update>
   
   <select id="getAnswer" resultType="com.example.demo.vo.MtmVo">
-  	select * from mtm where inno=#{no}
+  		select * from mtm where inno=#{no}
   </select>
   
    	<select id="getState" resultType="com.example.demo.vo.InquiryVo">
-  		select * from inquiry where state=1 and no=#{no}
+  		select * from inquiry where state=1 
   	</select>
 </mapper>

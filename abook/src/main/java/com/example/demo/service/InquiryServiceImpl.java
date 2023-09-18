@@ -98,7 +98,7 @@ public class InquiryServiceImpl implements InquiryService {
 		ivo.setContent(imsi);
 		
 		mvo=mapper.getAnswer(no);
-		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
+		ivo=mapper.getState(ivo.getState());	
 		
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
