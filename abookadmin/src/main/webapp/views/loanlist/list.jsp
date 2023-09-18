@@ -159,7 +159,7 @@
 							</tr>
 						<c:if test="${alist.size()==0}">
 							<tr>
-								<td colspan="5" class="no">※ 대출현황이 없습니다.</td>
+								<td colspan="5" class="no">※ 대출이력이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:if test="${alist.size()!=0}">

@@ -9,9 +9,7 @@
 	<update id="rcheck">
 		update bookregi set state=2 where bcode=#{bcode}
 	</update>
-	<update id="rcheck2">
-		update bookreserve set state=2 where bcode=#{bcode}
-	</update>
+
 	<select id="getbook" resultType="com.example.demo.vo.BookregiVo">
 		select title,publi,writer from bookregi where bcode=#{bcode}
 	</select>
@@ -20,7 +18,7 @@
 		values(#{bcode},#{userid},#{title},#{publi},#{writer},curdate(),curdate()+5)
 	</insert>
 	<delete id="delbreserve">
-		delete from bookreserve where bcode=#{bcode} and userid=#{userid}
+		delete from bookreserve where bcode=#{bcode}
 	</delete>
 	<update id="dcheck">
 		update bookregi set state=0 where bcode=#{bcode}

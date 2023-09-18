@@ -145,36 +145,30 @@ public class BreserveServiceImpl implements BreserveService {
 	public String bresOk(HttpSession session, HttpServletRequest request, Model model) {
 
 		if (session.getAttribute("userid") == null) {
+			
 			String page = request.getParameter("page");
 			String bcode = request.getParameter("bcode");
 
 			return "redirect:/member/login?page=" + page + "&bcode=" + bcode;
+		
 		} else {
-
+			
+			String page = request.getParameter("page");
 			String bcode = request.getParameter("bcode");
 			String userid = session.getAttribute("userid").toString();
 
-			if (mapper.cntCheck(userid) > 3) {
-				return "redirect:/breserve/content?bcode=" + bcode + "&chk=1";
+			if (mapper.cntCheck(userid)+mapper.cntCheck2(userid) > 3) {
+				return "redirect:/breserve/content?bcode="+bcode+"&page="+page+"&chk=1";
 
 			} else {
 
 				mapper.bresOk(userid, bcode);
 				mapper.bresUpdate(bcode);
 
-				return "redirect:/breserve/content?bcode=" + bcode;
+				return "redirect:/breserve/content?bcode="+bcode+"&page="+page;
 			}
 		}
 
-	}
-
-	@Override
-	public int cntCheck(HttpSession session) {
-
-		String userid = session.getAttribute("userid").toString();
-
-		int cnt = mapper.cntCheck(userid);
-		return cnt;
 	}
 
 	@Override

@@ -59,8 +59,9 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		
 		String bcode=request.getParameter("bcode");
 		String userid=request.getParameter("userid");
+		
 		mapper.rcheck(bcode);
-		mapper.rcheck2(bcode);
+		
 		String bcode2=bcode.substring(0,4);
 		mapper.cntupdate(bcode2);
 		
@@ -70,7 +71,7 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		String writer=bvo.getWriter();
 		
 		mapper.setloan(bcode,userid,title,publi,writer);
-		mapper.delbreserve(bcode,userid);
+		mapper.delbreserve(bcode);
 		
 		return "redirect:/reservestatus/list";
 	}
@@ -84,7 +85,7 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		
 		mapper.dcheck(bcode);
 		
-		mapper.delbreserve(bcode,userid);
+		mapper.delbreserve(bcode);
 		
 		BookregiVo bvo=mapper.getbook(bcode);
 		String title=bvo.getTitle();

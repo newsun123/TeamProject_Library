@@ -256,10 +256,10 @@
 								</c:if>
 								</td>
 								<td>
-								<c:if test="${map.returnday==null}">
+								<c:if test="${map.state==0}">
 									-
 								</c:if>
-								<c:if test="${map.returnday!=null}">
+								<c:if test="${map.state==2}">
 									${map.returnday}
 								</c:if>
 								</td>
