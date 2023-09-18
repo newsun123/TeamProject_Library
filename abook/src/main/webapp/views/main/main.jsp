@@ -414,12 +414,9 @@
 	}
 </style>
 <script>
-	function aa(){
-		alert("Adfasdfds")
-	}
 	function search(type,keyword){
 		var keyword=document.getElementById("search2").value;
-		location="/breserve/list?keyword="+keyword;
+		location="/breserve/list?keyword="+keyword+"&type="+"aa";
 	}
 	$(function(){
 		$("#bTxt > ul > li").click(function(){
