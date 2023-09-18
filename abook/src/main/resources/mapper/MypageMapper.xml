@@ -61,12 +61,12 @@
 		select ceil(count(*)/10) from bookregi 
 	</select>
 	<select id="getChong" resultType="int">
-	select ceil(count(*)/10) from ${db}
+		select ceil(count(*)/10) from ${db}
 	</select>
-	<!-- <select id="getChongloan" resultType="int">
-    select ceil(count(*)/10),b1.title, b1.publi, b1.writer, b1.bcode, b1.state, b2.userid, b2.writeday from
-		 bookregi as b1 inner join bookreserve as b2 on b1.bcode=b2.bcode
-		 where userid=#{userid}
-	</select> -->
-	
+	<select id="getChongloan" resultType="int">
+		select ceil(count(*)/10) from bookloan where userid=#{userid}  
+	</select> 
+	<select id="getChongInquiry" resultType="int">
+		select ceil(count(*)/10) from inquiry where userid=#{userid} and state=1
+	</select>
 </mapper>

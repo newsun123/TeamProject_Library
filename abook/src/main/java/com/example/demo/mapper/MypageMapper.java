@@ -34,5 +34,7 @@ public interface MypageMapper {
 	public ArrayList<InquiryVo> myinquiry2(String userid);
 	// mypage 페이지 처리 시작
 	public int getChongSeat(String userid);
-	public int getChongBregi1(String userid);
+	public int getChongloan(String userid);
+	public int getChongInquiry(String userid);
+
 }

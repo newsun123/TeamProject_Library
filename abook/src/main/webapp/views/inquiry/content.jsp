@@ -103,7 +103,7 @@
 								</td>	
 							</tr>
 							<tr>
-								<td id="answer"> 답변 </td>
+								<td id="answer"> 답변 ${mvo.state} </td>
 								<td> ${mvo.content} </td>
 							</tr>
 							<tr>
@@ -118,12 +118,14 @@
 							<c:if test="${mchk!=1}">
 							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록</a>
 							</c:if>
-							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
+							
+							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 								<a href="update?no=${ivo.no}&page=${page}" id="update"> 수정 </a>
 							</c:if>
-							<c:if test="${userid != ivo.userid && ivo.state == 1}">
+							<c:if test="${userid == ivo.userid && ivo.state == 1}">
 								
 							</c:if>
+							
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 									<a onclick="checkcDel()"> 삭제 </a>
 							</c:if>
