@@ -30,7 +30,7 @@
 	}
 	#btn{
 		text-align: center;
-		padding: 30px 0;
+		padding-top: 30px;
 	}
 	.dis{
 		display: inline-block;
