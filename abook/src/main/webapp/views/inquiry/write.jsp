@@ -93,6 +93,10 @@
 	    top: 3px;
 	    margin-left: 10px;
 	}
+	.gog{
+		color: #555;
+    	font-size: 15px;
+	}
 </style>
 </head>
 <body>
@@ -123,6 +127,13 @@
 								<tr>
 									<td>내용</td>
 									<td class="wh"><textarea name="content"></textarea></td>
+								</tr>
+								<tr>
+									<td> 노출옵션 </td>
+									<td>
+										<span class="gong">※ 비공개글은 체크해주세요</span>
+										<input type="checkbox" name="gonge" value="1">
+									</td>
 								</tr>
 							</table>
 							<div id="btn">

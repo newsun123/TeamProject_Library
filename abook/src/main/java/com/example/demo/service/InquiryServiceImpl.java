@@ -24,6 +24,8 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss) {
 		
+		String gonge=req.getParameter("gonge");
+		
 		int page=1;
 		if(req.getParameter("page") ==null)
 			page =1;
@@ -52,6 +54,8 @@ public class InquiryServiceImpl implements InquiryService {
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
+		model.addAttribute("gonge",gonge);
+		
 		// model.addAttribute("userid",userid);
 		
 		model.addAttribute("ilist", mapper.list(start));
@@ -66,9 +70,21 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String writeOk(InquiryVo ivo,HttpSession ss) {
+	public String writeOk(InquiryVo ivo,HttpSession ss,HttpServletRequest req) {
 		
 		String userid=ss.getAttribute("userid").toString();
+		
+		int gonge;
+		if(req.getParameter("gonge") == null)
+		{
+			gonge=0;
+		}
+		else
+		{
+			gonge=1;
+		}
+		
+		ivo.setGonge(gonge);
 		ivo.setUserid(userid);
 		mapper.writeOk(ivo);
 		return "redirect:/inquiry/list";

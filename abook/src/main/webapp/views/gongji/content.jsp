@@ -86,16 +86,16 @@
 						<a href="list?page=${page}" class="dis">목록으로</a>
 						<table>
 							<tr>
-								<td>${gvo2.title}</td>
+								<td>${gvo.title}</td>
 							</tr>
 							<tr>
 								<td id="flex">
-									<div>작성일<span class="sp">${gvo2.writeday}</span></div>
-									<div class="tar">조회수<span class="sp">${gvo2.readnum}</span></div>
+									<div>작성일<span class="sp">${gvo.writeday}</span></div>
+									<div class="tar">조회수<span class="sp">${gvo.readnum}</span></div>
 								</td>	
 							</tr>
 							<tr>
-								<td class="p3">${gvo2.content}</td>
+								<td class="p3">${gvo.content}</td>
 							</tr>
 						</table>
 					</div>

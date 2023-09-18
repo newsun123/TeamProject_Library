@@ -307,7 +307,8 @@
 									</c:if>
 									
 									<c:if test="${userid == null && brvo.gonge == 1}"><!-- 로그인 안했을경우 비공개글 -->
-										<div class="el"><a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}" onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a></div>
+										<div class="el"><a href="/member/login?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}"
+										 onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${brvo.title}</a></div>
 									</c:if>
 									<c:if test="${userid == null && brvo.gonge == 0}"><!-- 로그인 안했을경우 공개글 -->
 										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}&type=${type}&keyword=${keyword}">${brvo.title}</a></div>
