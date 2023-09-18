@@ -123,6 +123,9 @@
 	    z-index: 3;
 	    color: #fff;
 	}
+	.tt {
+ 
+	}
 </style>
 <script>
 	function calView(y,m)
@@ -145,6 +148,9 @@
 			y=y+1;
 			m=0;
 		}	
+		
+		var todate=new Date();
+		var aa=todate.getDate(); // 오늘날짜
 		
 		var xday=new Date(y,m,1);
 		
@@ -202,15 +208,19 @@
 					*/
 					var insertText="";
 					
+					var inback="";
+					if(day==aa)
+						inback="<span class='tt'> </span>";
+					
 					if( j == 5 )
 					{
 						insertText="휴관일";
-						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+inback+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
 					}else {
-						calData=calData+"<td class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+inback+
 						"<div class='inner'>"+insertText+"</div></td>";
-					} // 강사님에게 물어보기
+					} 
 					
 					day++;
 				}
