@@ -26,6 +26,7 @@ public class BreserveServiceImpl implements BreserveService {
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 		System.out.println(keyword);
+		System.out.println(type);
 		int page;
 
 		if (request.getParameter("page") == null)
@@ -59,6 +60,8 @@ public class BreserveServiceImpl implements BreserveService {
 		default: str = "no desc"; break;
 		} //최윤도꺼 붙임 끝
 		model.addAttribute("num", num); // num값 보내야댐
+		
+		
 		if(keyword==null || keyword.length()==0)
 		{
 			type="title";
@@ -82,9 +85,9 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 			
-			
 			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
+				
 				//System.out.println("list2");
 			    model.addAttribute("blist",mapper.list2(keyword,start,str));
 			}

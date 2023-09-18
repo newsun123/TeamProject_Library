@@ -95,6 +95,8 @@ public class MainServiceImpl  implements MainService{
 		model.addAttribute("blist",blist);
 		model.addAttribute("bblist",bblist);
 		
+
+
 		return "/main/main";
 	}
 
@@ -118,8 +120,16 @@ public class MainServiceImpl  implements MainService{
 		String mm=String.format("%02d", m);
 		
 		ArrayList<HashMap> mapall=mapper.Cal2(y+"-"+mm);
-		// System.out.println(mapall.size());
+		
 		return mapall;
+	}
+
+	public String search(HttpServletRequest request,BookregiVo bvo,Model model) {
+		String keyword=request.getParameter("keyword");
+		String type=request.getParameter("aa");
+		model.addAttribute("type","aa");
+		model.addAttribute("blist",mapper.search(type,keyword));
+		return "redirect:/breserve/list";
 	}
 
 }
