@@ -458,7 +458,7 @@
 	}
 	
 	function search(){
-		var keyword=document.getElementById("search").value;
+		var keyword=document.getElementById("search2").value;
 		
 	}
 </script>
@@ -468,7 +468,7 @@
 		<img src="/static/img/main/main_bg.jpg"> 
 		<div id="search">
 					<input type="hidden" value="${keyword}">
-			<input type="text" id="search" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
+			<input type="text" id="search2" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
 			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="search()"></a>
 		</div>
 	</div>
