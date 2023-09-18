@@ -25,7 +25,9 @@ public class BreserveServiceImpl implements BreserveService {
 	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
+		System.out.println(keyword);
 		String num = request.getParameter("num");
+		
 		int page;
 
 		if (request.getParameter("page") == null)
@@ -46,18 +48,16 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		if(pend > chong)
 			pend=chong;
-		//최윤도꺼 붙임
 		
 		if (num == null)
 			num = "0"; // num null값일 시 0으로 지정(신간도서)
 		//System.out.println(num);
 		String str = ""; // 값 지정할 것
-		
 		switch (num) {
 		case "0": str = "no desc"; break;
 		case "1": str = "cnt desc"; break;
 		default: str = "no desc"; break;
-		} //최윤도꺼 붙임 끝
+		} 
 		model.addAttribute("num", num); // num값 보내야댐
 		
 		
@@ -84,17 +84,12 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 			
-			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+			if (type.equals("aa")) // aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
-				
-				//System.out.println("list2");
-			    model.addAttribute("blist",mapper.list2(keyword,start,str));
+				model.addAttribute("blist", mapper.list2(keyword, start, str));
+			} else {
+				model.addAttribute("blist", mapper.list(type, keyword, start, str));
 			}
-			else
-			{
-				//System.out.println("list");
-			  model.addAttribute("blist",mapper.list(type,keyword,start,str));
-			} 
 		}
 		return "/breserve/list";
 	}

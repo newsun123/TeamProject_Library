@@ -48,11 +48,7 @@ public class MainController {
 	{
 		return service.cal2(request,model);
 	}
-	
-	@RequestMapping("/main/search")
-	public String search(HttpServletRequest request,BookregiVo bvo,Model model) {
-		return service.search(request,bvo,model);
-	}
+
 }
 
 

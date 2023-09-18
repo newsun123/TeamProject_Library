@@ -299,20 +299,6 @@
 							<tr> 
 								<td>
 									<div class="ta">
-
-									<c:if test="${userid != ivo.userid && ivo.gonge ==1 && userid != null}">
-										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">
-											${ivo.title}
-										</a>
-									</c:if>
-									
-									<c:if test="${userid != ivo.userid && ivo.gonge ==0 && userid != null}">
-										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">
-											${ivo.title}
-										</a>
-									</c:if>
-									
-									<c:if test="${userid!=null}">
 										<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a>
 									</div> 
 								</td>

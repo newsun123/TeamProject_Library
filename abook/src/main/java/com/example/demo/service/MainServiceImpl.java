@@ -124,13 +124,5 @@ public class MainServiceImpl  implements MainService{
 		return mapall;
 	}
 
-	public String search(HttpServletRequest request,BookregiVo bvo,Model model) {
-		String keyword=request.getParameter("keyword");
-		String type=request.getParameter("aa");
-		model.addAttribute("type","aa");
-		model.addAttribute("blist",mapper.search(type,keyword));
-		return "redirect:/breserve/list";
-	}
-
 }
 
