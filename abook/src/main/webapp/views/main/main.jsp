@@ -426,7 +426,7 @@
 				$("#go1").attr("href","../breserve/list?num=1");
 			};
 		});
-		
+		`	
 		$(".gongh").hover(function(){
 			$(this).css("color","#c10547");
 		},function(){

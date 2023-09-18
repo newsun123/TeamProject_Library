@@ -111,11 +111,11 @@
 	.ss{
 		position: absolute;
 	    display: inline-block;
-	    width: 40px;
-	    height: 40px;
+	    width: 36px;
+	    height: 36px;
 	    background: #171d33;
-	    top: -10px;
-	    left: -12px;
+	    top: 12px;
+	    left: 10px;
 	    border-radius: 50%;
 	}
 	.to{
@@ -123,8 +123,8 @@
 	    z-index: 3;
 	    color: #fff;
 	}
-	.tt {
- 
+	.chktd{
+		position: relative;
 	}
 </style>
 <script>
@@ -151,6 +151,8 @@
 		
 		var todate=new Date();
 		var aa=todate.getDate(); // 오늘날짜
+		var bb=todate.getMonth()+1; //오늘월 
+		var cc=todate.getFullYear(); //오늘년도
 		
 		var xday=new Date(y,m,1);
 		
@@ -188,6 +190,7 @@
 		calData=calData+"</tr>";
 		
 		var day=1;
+		
 		for(i=1; i<=ju; i++)
 		{
 			calData=calData+"<tr>";
@@ -209,17 +212,17 @@
 					var insertText="";
 					
 					var inback="";
-
+					
 					if( j == 5 )
 					{
 						insertText="휴관일";
 						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+inback+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
 					}
-					else if(day==aa)
+					else if(day==aa && (m+1)==bb && y==cc)
 					{
-						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'><span>"+inback+day+
-						"</span><div class='inner'><i></i>"+insertText+"</div></td>";
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'><div class='ss'></div><span class='to'>"+inback+day+
+						"</span><div class='inner'>"+insertText+"</div></td>";
 					}
 					else
 					{
@@ -247,7 +250,7 @@
 			for(i=0; i<data.length; i++)
 			{
 				document.getElementsByClassName("chktd")[data[i].xday-1].querySelector('.inner').style.color="#a50000 ";
-				document.getElementsByClassName("inner")[data[i].xday-1].innerHTML="<span>"+data[i].str+"</span>"; // 서영아
+				document.getElementsByClassName("inner")[data[i].xday-1].innerHTML="<span>"+data[i].str+"</span>"; 
 			}
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
