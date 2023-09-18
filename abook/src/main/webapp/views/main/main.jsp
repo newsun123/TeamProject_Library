@@ -455,14 +455,15 @@
 		
 		var ju=Math.ceil( (chong+yoil)/7 );
 		
-		var calData="<div class='y'>";
+		var calData="";
 		
 		var todate=new Date();
 		var todayDate=todate.getDate(); // 오늘날짜 구하기
 		
-		calData=calData+y+"년 </div>";
-		calData=calData+"<div class='m'>"+(m+1)+"월 </div>";
-		calData=calData+"<div class='d'>"+todayDate+"일 </div>";
+		
+		document.getElementsByClassName("cal_day")[0].innerHTML=y;
+		document.getElementsByClassName("cal_day")[1].innerHTML=(m+1);
+		document.getElementsByClassName("cal_day")[2].innerHTML=todayDate;
 		
 		var n=yoil-5;
 		if(n == 1)
@@ -532,8 +533,8 @@
 			
 		    // console.log(hyu);
 		    for(i=0;i<hyu.length;i++)
-		       calData = calData+"<div>"+hyu[i]+"일</div>"; 
-			document.getElementById("calenderMain").innerHTML=calData;
+		       calData = calData+"<li>"+hyu[i]+"일</li>"; 
+			document.getElementsByClassName("conbox")[0].innerHTML=calData;
 
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
@@ -602,15 +603,15 @@
 				<ul class="calCon">
 					<li>
 						<p class="cal_date">YEAR</p>
-						<p class="cal_day">2023</p>
+						<p class="cal_day"></p>
 					</li>
 					<li>
 						<p class="cal_date">MONTH</p>
-						<p class="cal_day">9</p>
+						<p class="cal_day"></p>
 					</li>
 					<li>
 						<p class="cal_date">DAY</p>
-						<p class="cal_day">18</p>
+						<p class="cal_day"></p>
 					</li>
 				</ul>			
 			</div>
@@ -618,13 +619,6 @@
 				<div class="cal_tt">휴관일, 법정 공휴일</div>
 				<div class="bupcon">
 					<ul class="conbox">
-						<li>1일</li>
-						<li>8일</li>
-						<li>15일</li>
-						<li>22일</li>
-						<li>28일</li>
-						<li>29일</li>
-						<li>30일</li>
 					</ul>
 				</div>
 			</div>
@@ -642,7 +636,7 @@
 					<li class="act">인기도서</li>
 					<li>신착도서</li>
 				</ul>
-					<div class="imore imore2"><a href="../breserve/list?num=1" id="go1"></a></div> <!-- 플러스버튼인데 한개로 2개 DB를 어케 씀? -->
+					<div class="imore imore2"><a href="../breserve/list?num=1" id="go1"></a></div> 
 			</div>
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->
