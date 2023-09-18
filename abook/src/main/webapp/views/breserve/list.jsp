@@ -318,7 +318,13 @@
 							<input type="button" value="인기도서" class="lst" onclick="listChange(1)">
 						</div>					
 					</form>
-						<table>	
+						<table>
+						<c:if test="${empty blist}">
+							<tr>
+								<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+							</tr>
+						</c:if>	
+						<c:if test="${! empty blist}">
 						<c:forEach items="${blist}" var="bvo">
 							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
 								<td> 
@@ -335,7 +341,8 @@
 									</div>
 								</td>
 							</tr>
-						</c:forEach>						
+						</c:forEach>
+						</c:if>						
 						</table>
 						<div id="btWrap">
 							<div id=pageCon>
