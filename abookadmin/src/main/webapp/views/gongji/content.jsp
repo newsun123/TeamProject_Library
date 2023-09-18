@@ -18,6 +18,7 @@
 	table tr td{
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
+		letter-spacing: 0.5px;
 	}
 	table tr td:first-child {
 		padding-left: 10px;
@@ -69,7 +70,7 @@
 				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
 					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
-					<li><a href=""><span>문의사항</span></a></li>
+					<li><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

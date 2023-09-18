@@ -58,21 +58,32 @@
     	text-align: right;
 	}
 	#btnCon a{
-		color: #fff;
-	    text-align: center;
-	    background: #4e68b9;
-	    /*font-family: 'NotoSansM';*/
+		display: inline-block;
+	    border: 1px solid #3d6cc4;
+	    color: #3d6cc4;
+	    width:110px;
+	    line-height: 45px;
 	    height: 45px;
-	    width: 110px;
-	    cursor: pointer;
-	    margin: 0 2px;
-	    border-radius: 3px;
-	    display: inline-block;
-    	line-height: 45px;
-    	font-size: 14px;
+	    text-align:center;
+	    /* margin-bottom: 30px; */
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    font-size: 15px;
 	}
 	table img{
 	    width: 21px;
+	}
+	.el{
+		width: 832px;
+	   	padding-right: 10px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 	/*page버튼처리*/
 	#btWrap{
@@ -124,7 +135,7 @@
 			<div id="labNav">
 				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>공지사항</span></a></li>
+					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
 					<li><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
@@ -158,7 +169,7 @@
 									</c:if>
 								</td>		
 								<td>
-									<a href="readnum?no=${gvo.no}&page=${page}">${gvo.title}</a> 
+									<div class="el"><a href="readnum?no=${gvo.no}&page=${page}">${gvo.title}</a></div>
 								</td>
 								<td>${gvo.writeday}</td>  
 								<td>${gvo.readnum}</td>  

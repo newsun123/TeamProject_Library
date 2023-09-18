@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
-		padding-bottom: 30px;
-	}
 	table{
 		border-top: 2px solid #cecece;
 	}
@@ -20,43 +17,68 @@
 		border-bottom: 1px solid #e4e4e4;
 		padding:0 10px;
 	}
-	table tr td:first-child {
-		padding-left: 10px;
+	table tr:first-child td {
 	    background: #f8f8fa;
-	    width: 121px;
-	    border-right: 1px solid #e4e4e4;
-	    font-size: 15px;
+	    font-size: 16px;
 	    font-family: 'NotoSansM';
 	    color: #555;
 	    letter-spacing: 1px;
+	    text-align:center;
 	}
-	table tr:nth-child(2){
-		height: 300px;
-	}
-	table tr td#cont{
-		vertical-align: top;
-    	padding: 13px 10px;
+	table tr:nth-child(4){
+		height: 400px;
 	}
 	#btn{
 		text-align: center;
-		padding: 30px 0;
+		padding-top: 30px;
+	}
+	.dis{
+		display: inline-block;
+	    border: 1px solid #e2e2e2;
+	    border-radius: 3px;
+	    color: #71757b;
+	    padding: 0 20px;
+	    line-height: 43px;
+	    height: 45px;
+	    margin-bottom: 30px;
+	}
+	#flex{
+		display: flex;
+	    justify-content: space-between;
+	    height: 55px;
+	    padding: 0 30px;
+	}
+	#flex > div{
+		width: 210px;
+   		line-height: 55px;
+	}
+	.sp{
+		color: #666;
+    	margin-left: 20px;
+	}
+	.tar{
+		text-align: right;
+	}
+	.p3{
+		vertical-align: top;
+    	padding: 20px 30px;
+	}
+	.p30{
+		padding:0 30px!important;
 	}
 	#btn a{
 		color: #fff;
 	    text-align: center;
-	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
-	    line-height:50px;
+	    background: #93765a;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
+	    line-height: 45px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
-	    display:inline-block;
-	}
-	#btn a.dis{
-		background: #e0e3e6;
-	    color: #6e7277;
+	    display: inline-block;
+	    font-size: 14px;
 	}
 </style>
 <script>
@@ -86,46 +108,41 @@
 					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
-					<div id="gongjiWrap">				
+					<div id="gongjiWrap">	
+						<c:if test="${mchk==1}">
+							<a href="/mypage/myinquiry" class="dis">목록으로</a>
+						</c:if>
+						<c:if test="${mchk!=1}">
+							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록으로</a>
+						</c:if>			
 						<table> 
 							<tr>
-								<td>제목</td>
 								<td>${ivo.title}</td>
 							</tr>
-							<tr> <!-- 여기 tr height 조정 필요 -->
-								<td>조회수</td>
-								<td>${ivo.readnum}</td>
+							<tr> 
+								<td id="flex">
+									<div>작성자<span class="sp">${ivo.userid}</span></div>
+									<div class="tar">조회수<span class="sp">${ivo.readnum}</span></div>
+								</td>
+							</tr>
+							<tr> 
+								<td class="p30">
+									<div>작성일<span class="sp">${ivo.writeday}</span></div>
+								</td>
 							</tr>
 							<tr>
-								<td>내용</td>
-								<td class="tl" id="cont"> 
-									${ivo.content}
-								</td>	
-							</tr>
-							<tr>
-								<td id="answer"> 답변 </td>
-								<td> ${mvo.content} </td>
-							</tr>
-							<tr>
-								<td>등록일</td>
-								<td class="tl">${ivo.writeday}</td>
+								<td class="p3">${ivo.content}</td>	
 							</tr>
 						 </table>
-						<div id="btn"> 
-							<c:if test="${mchk==1}">
-							<a href="/mypage/myinquiry" class="dis">목록</a>
-							</c:if>
-							<c:if test="${mchk!=1}">
-							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록</a>
-							</c:if>
+						<div id="btn"> 		
 							<c:if test="${userid == ivo.userid && ivo.state == 0} ">
-								<a href="update?no=${ivo.no}&page=${page}" id="update"> 수정 </a>
+								<a href="update?no=${ivo.no}&page=${page}" id="update">수정하기</a>
 							</c:if>
 							<c:if test="${userid != ivo.userid && ivo.state == 1}">
 								
 							</c:if>
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
-									<a onclick="checkcDel()"> 삭제 </a>
+								<a onclick="checkcDel()">삭제하기</a>
 							</c:if>
 							<c:if test="${userid != ivo.userid && ivo.state == 1}">
 							</c:if>

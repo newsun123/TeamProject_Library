@@ -23,6 +23,7 @@
 	table tr td {
     	border-bottom: 1px solid #ddd;
     	letter-spacing: 0.5px;
+    	height: 60px;
 	}
 	table tr:last-child td{
 		border-bottom: none;
@@ -38,9 +39,6 @@
 	    font-family: 'NotoSansM';
 	    text-align: center;
 	} 
-	table tr td{
-		height: 60px;
-	}
 	table tr td.no{
 		color: #666;
     	font-size: 14px;
@@ -55,8 +53,16 @@
 	    height: 40px;
 	    border-radius: 3px;
 	}
-	.ls{
-		letter-spacing: 0.5px;	
+	.el{
+		width: 860px;
+	   	padding: 0 20px 0 40px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 </style>
 </head>
@@ -85,19 +91,19 @@
 						<h4>답변 대기</h4>
 						<table id="table1"> <!-- state=0 테이블 -->
 							<tr>
-								<td>제목</td>
+								<td width="860">제목</td>
 								<td width="180">등록일</td>
-								<td width="180">조회수</td>
+								<td width="130">조회수</td>
 							</tr>
 							<c:if test="${ilist.size()==0}">
 							<tr>
-								<td colspan="3" class="no">※현재 문의하신 내역이 없습니다</td>
+								<td colspan="3" class="no">※문의한 내역이 없습니다</td>
 							</tr>
 							</c:if>
 							<c:if test="${ilist.size()!=0}">
 							<c:forEach items="${ilist}" var="ivo">
 							<tr>
-								<td><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></td>
+								<td><div class="el"><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></div></td>
 								<td>${ivo.writeday }</td>
 								<td>${ivo.readnum}</td>
 							</tr>
@@ -107,19 +113,19 @@
 						<h4>문의 완료</h4>
 						<table id="table2"> <!-- state=1 테이블 -->
 							<tr>
-								<td>제목</td>
+								<td width="860">제목</td>
 								<td width="180">등록일</td>
-								<td width="180">조회수</td>
+								<td width="130">조회수</td>
 							</tr>
 							<c:if test="${alist.size()==0}">
 							<tr>
-								<td colspan="3" class="no">※현재 문의하신 내역이 없습니다</td>
+								<td colspan="3" class="no">※문의한 내역이 없습니다</td>
 							</tr>
 							</c:if>
 							<c:if test="${alist.size()!=0}">
 							<c:forEach items="${alist}" var="ivo2">
 							<tr>
-								<td><a href="/inquiry/content?no=${ivo2.no}&mchk=1">${ivo2.title}</a></td>
+								<td><div class="el"><a href="/inquiry/content?no=${ivo2.no}&mchk=1">${ivo2.title}</a></div></td>
 								<td>${ivo2.writeday }</td>
 								<td>${ivo2.readnum}</td>
 							</tr>

@@ -33,22 +33,7 @@
 	}
 	table tr td{
 		border-bottom: 1px solid #e4e4e4;
-	}
-	table tr td:nth-child(2){
-		width:150px;
-	}
-	table tr td:nth-child(4){
-		width: 130px;
-	}
-	table tr td:first-child,
-	table tr td:last-child {	
-    	width: 150px;
-	}
-	table tr td:nth-child(3){
-		text-overflow: ellipsis;
-    	white-space: nowrap;
-    	overflow: hidden;
- 
+		letter-spacing: 0.5px;
 	}
 	table tr td.no{
 		color: #666;
@@ -78,6 +63,17 @@
 	}
 	table img{
 	    width: 21px;
+	}
+	.el{
+		width: 725px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 	/*page버튼처리*/
 	#btWrap{
@@ -127,26 +123,25 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>문의사항</span></h2>
+				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/gongji/list"><span>공지사항</span></a></li>
-					<li class="on"><a><span>문의사항</span></a></li>
+					<li class="on"><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>문의사항</h3>
-					<p>열린 공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
+					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
 					<div id="inquiryWrap">
 						<table>
 							<tr>
-								<td> 번호 </td>
-								<td>작성자</td>
-								<td class="tc">제목</td>
-								<td>등록일</td>
-								<td>조회수</td>
+								<td width="725">제목</td>
+								<td width="190">작성자</td>
+								<td width="160">등록일</td>
+								<td width="110">조회수</td>
 							</tr>
 						<c:if test="${ilist.size()==0}"> <!-- size할때는 괄호해야됌 -->
 							<tr>
@@ -155,11 +150,10 @@
 						</c:if>					
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
-								<td> ${ivo.rnum} </td>
-								<td> ${ivo.userid} </td>	
 								<td>
-									<a href="content?no=${ivo.no}&page=${page}">${ivo.title}</a> 
+									<div class="el"><a href="content?no=${ivo.no}&page=${page}">${ivo.title}</a></div>
 								</td>
+								<td>${ivo.userid} </td>	
 								<td>${ivo.writeday}</td>  
 								<td>${ivo.readnum}</td>  
 							</tr>
