@@ -157,16 +157,17 @@
 							</c:if>
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty mapall}">
 							<div id=pageCon>
 								<c:if test="${pstart!=1}">
-									<a href="loanlist?page=${pstart-1}" class="btnPage"></a>
+									<a href="myjjim?page=${pstart-1}" class="btnPage"></a>
 								</c:if>
 								<c:if test="${pstart==1}">
 									<a class="btnPage dis"></a>
 								</c:if>
 
 								<c:if test="${page!=1}">
-									<a href="loanlist?page=${page-1}" class="btnPage prev"></a>
+									<a href="myjjim?page=${page-1}" class="btnPage prev"></a>
 								</c:if>
 								<c:if test="${page==1}">
 									<a class="btnPage dis prev"></a>
@@ -174,28 +175,31 @@
 
 								<c:forEach begin="${pstart}" end="${pend}" var="i">
 									<c:if test="${page!=i}">
-										<a href="loanlist?page=${i}">${i}</a>
+										<a href="myjjim?page=${i}">${i}</a>
 									</c:if>
 									<c:if test="${page==i}">
-										<a href="loanlist?page=${i}"
+										<a href="myjjim?page=${i}"
 											style="background-color: #555; color: #fff">${i}</a>
 									</c:if>
 								</c:forEach>
 
 								<c:if test="${page!=chong}">
-									<a href="loanlist?page=${page+1}" class="btnPage next"></a>
+									<a href="myjjim?page=${page+1}" class="btnPage next"></a>
 								</c:if>
 								<c:if test="${page==chong}">
 									<a class="btnPage next dis"></a>
 								</c:if>
 
 								<c:if test="${pend!=chong}">
-									<a href="loanlist?page=${pend+1}" class="btnPage last"></a>
+									<a href="myjjim?page=${pend+1}" class="btnPage last"></a>
 								</c:if>
 								<c:if test="${pend==chong}">
 									<a class="btnPage last dis"></a>
 								</c:if>
 							</div>
+						</c:if>
+						<c:if test="${empty ilist}">
+						</c:if>
 						</div>		
 					</div>
 				</div>

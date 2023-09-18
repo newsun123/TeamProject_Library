@@ -95,8 +95,6 @@ public class MainServiceImpl  implements MainService{
 		model.addAttribute("blist",blist);
 		model.addAttribute("bblist",bblist);
 		
-
-
 		return "/main/main";
 	}
 

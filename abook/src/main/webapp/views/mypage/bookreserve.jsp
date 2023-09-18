@@ -197,7 +197,7 @@
 						 		<td width="170">${map.rental}</td>
 								<td width="170">${map.returnday}</td>
 								<td width="150">
-									<input type="button" value="반납하기" id="rebtn" onclick="location='returnOk?no=${map.no}'">									
+									<input type="button" value="반납하기" id="rebtn" onclick="location='returnOk?no=${map.no}&bcode=${map.bcode}'">									
 								</td>
 								<td width="150">
 								<c:if test="${map.gigan==0}">

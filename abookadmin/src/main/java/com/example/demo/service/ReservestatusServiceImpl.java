@@ -23,26 +23,26 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 	@Override
 	public String list(Model model,HttpServletRequest request) {
 		
-		int page = 1;
-		if (request.getParameter("page") == null)
-			page = 1;
+		int page=1;
+		if(request.getParameter("page") ==null)
+			page =1;
 		else
-			page = Integer.parseInt(request.getParameter("page"));
-
-		int start = (page - 1) * 10;
-
-		int pstart = page / 10;
-		if (page % 10 == 0)
+			page=Integer.parseInt(request.getParameter("page"));
+		
+		int start=(page -1) * 10;
+		
+		int pstart = page/10;
+		if(page%10 ==0)
 			pstart--;
-		pstart = pstart * 10 + 1;
-
-		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
-
-		if (pend > chong)
-			pend = chong;
-
+		pstart=pstart*10+1;
+		
+		int pend=pstart +9;
+		
+		int chong=mapper.getChong();
+		
+		if(pend > chong)
+			pend=chong;
+		
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
@@ -59,8 +59,9 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		
 		String bcode=request.getParameter("bcode");
 		String userid=request.getParameter("userid");
+		
 		mapper.rcheck(bcode);
-		mapper.rcheck2(bcode);
+		
 		String bcode2=bcode.substring(0,4);
 		mapper.cntupdate(bcode2);
 		
@@ -70,7 +71,7 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		String writer=bvo.getWriter();
 		
 		mapper.setloan(bcode,userid,title,publi,writer);
-		mapper.delbreserve(bcode,userid);
+		mapper.delbreserve(bcode);
 		
 		return "redirect:/reservestatus/list";
 	}
@@ -84,7 +85,7 @@ public class ReservestatusServiceImpl implements ReservestatusService{
 		
 		mapper.dcheck(bcode);
 		
-		mapper.delbreserve(bcode,userid);
+		mapper.delbreserve(bcode);
 		
 		BookregiVo bvo=mapper.getbook(bcode);
 		String title=bvo.getTitle();

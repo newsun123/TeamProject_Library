@@ -193,7 +193,7 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-						<a href="/bookregi/list" class="rbtn">목록으로</a>
+						<a href="/bookregi/list?page=${page }" class="rbtn">목록으로</a>
 						<table id="table1">
 							<tr>
 								<td>
@@ -256,10 +256,10 @@
 								</c:if>
 								</td>
 								<td>
-								<c:if test="${map.returnday==null}">
+								<c:if test="${map.state==0}">
 									-
 								</c:if>
-								<c:if test="${map.returnday!=null}">
+								<c:if test="${map.state==2}">
 									${map.returnday}
 								</c:if>
 								</td>

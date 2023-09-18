@@ -321,6 +321,12 @@
 								<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
 								<input type="submit" id="search" class="searchtext" value="검색">
 							</form>
+							<c:if test="${empty blist}">
+								<tr>
+									<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${! empty blist}">
 							<c:forEach items="${blist}" var="bvo">
 								<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
 									<td> 
@@ -337,9 +343,11 @@
 										</div>
 									</td>
 								</tr>
-							</c:forEach>						
+							</c:forEach>
+							</c:if>						
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty blist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="list?page=${pstart-1}" class="btnPage"></a>
@@ -378,7 +386,9 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
-										
+						</c:if>
+						<c:if test="${empty ilist}">
+						</c:if>				
 						</div>							
 					</div>
 				</div>

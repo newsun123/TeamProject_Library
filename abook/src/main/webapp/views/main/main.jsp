@@ -355,7 +355,6 @@
 		
 		var xday=new Date(y,m,1); // 해당 달(월)
 		var yoil=xday.getDay();
-		alert(m);
 		var month=[31,28,31,30,31,30,31,31,30,31,30,31];
 		var chong=month[m];
 		
@@ -456,6 +455,11 @@
 	{
 		calView2();
 	}
+	
+	function search(){
+		var keyword=document.getElementById("search2").value;
+		
+	}
 </script>
 </head>
 <body>
@@ -463,8 +467,8 @@
 		<img src="/static/img/main/main_bg.jpg"> 
 		<div id="search">
 					<input type="hidden" value="${keyword}">
-			<input type="text" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
-			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="location='/breserve/list?keyword=${keyword}'"></a>
+			<input type="text" id="search2" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
+			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="search()"></a>
 		</div>
 	</div>
 	<div id="sectionGroup">

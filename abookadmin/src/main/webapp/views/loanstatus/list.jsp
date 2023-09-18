@@ -51,9 +51,9 @@
 	    border: 1px solid #3d6cc4;
 	    border-radius: 3px;
 	    color: #3d6cc4;
-	    padding: 0 30px;
+	    width:110px;
 	    line-height: 40px;
-	    height: 42px;
+	    height: 40px;
 	    background: #fff;
 	    margin-right: 5px;
 	}
@@ -152,7 +152,7 @@
 					<div id="loanstatusWrap">
 						<table>
 							<tr>
-								<td width="555">도서명</td>
+								<td width="555" class="ta">도서명</td>
 								<td width="160">회원아이디</td>
 								<td width="150">대출일</td>
 								<td width="150">반납예정일</td>
@@ -160,7 +160,7 @@
 							</tr>
 						<c:if test="${blist.size()==0}">
 							<tr>
-								<td colspan="5" class="no">※ 대출이력이 없습니다.</td>
+								<td colspan="5" class="no">※ 대출현황이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:if test="${blist.size()!=0}">
@@ -178,6 +178,7 @@
 						</c:if>
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty blist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="list?page=${pstart-1}" class="btnPage"></a>
@@ -216,6 +217,9 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
+						</c:if>
+						<c:if test="${empty blist}">
+						</c:if>
 						</div>	
 					</div>
 				</div>
