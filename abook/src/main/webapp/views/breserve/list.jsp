@@ -52,6 +52,11 @@
 		height: 45px;
     	line-height: 45px;
 	}
+	table tr td.no{
+		color: #666;
+    	font-size: 15px;
+    	text-align: center;
+	}
 	.tc{
 		text-align: center!important;
 	}
@@ -324,7 +329,7 @@
 						<table>
 						<c:if test="${empty blist}">
 							<tr>
-								<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+								<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
 							</tr>
 						</c:if>	
 						<c:if test="${! empty blist}">

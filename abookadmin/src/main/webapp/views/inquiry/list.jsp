@@ -213,9 +213,11 @@
 		
 		if(schk==0){
 			document.getElementById("type").style.display="block";
+			document.getElementsByClassName("arrow")[0].style.transform="rotate(180deg)";
 			schk=1;
 		}else{
 			document.getElementById("type").style.display="none";
+			document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 			schk=0;
 		}
 	}
