@@ -202,8 +202,8 @@ function check(my) {
 								</tr>
 								</c:forEach>
 						</table>
-						
 						<div id="btWrap">
+						<c:if test="${!empty mlist}">
 						<div id="pageCon">
 						<c:if test="${pstart!=1}">
 							<a href="memberBan?page=${pstart-1}" class="btnPage"></a>
@@ -242,6 +242,9 @@ function check(my) {
 							<a class="btnPage last dis"></a>
 						</c:if>
 						</div>
+						</c:if>
+						<c:if test="${empty mlist}">
+						</c:if>
 					</div>
 						
 					</div>

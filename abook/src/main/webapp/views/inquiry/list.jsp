@@ -322,6 +322,7 @@
 						</c:if>							
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty ilist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="list?page=${pstart-1}" class="btnPage"></a>
@@ -360,6 +361,9 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
+						</c:if>
+						<c:if test="${empty ilist}">
+						</c:if>
 						</div>							
 					</div>
 				</div>

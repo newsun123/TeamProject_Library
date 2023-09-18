@@ -45,7 +45,7 @@ public class InquiryServiceImpl implements InquiryService{
 		if(pend > chong)
 			pend=chong;
 		// 번호매기기
-		mapper.setRownum(start);
+		// mapper.setRownum(start);
 			
 		if(keyword==null || keyword.length()==0) {
 			type="title";

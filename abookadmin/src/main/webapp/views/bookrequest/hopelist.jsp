@@ -175,6 +175,7 @@
 					</c:forEach>						
 					</table>
 					<div id="btWrap">
+					<c:if test="${!empty hlist}">
 						<div id="pageCon">
 						<c:if test="${pstart!=1}">
 							<a href="hlist?page=${pstart-1}" class="btnPage"></a>
@@ -214,7 +215,9 @@
 						</c:if>
 						</div>
 					</div>
-					
+					</c:if>
+					<<c:if test="${empty hlist}">
+					</c:if>
 					</div>
 				</div>
 			</div>		

@@ -175,6 +175,7 @@
 						</c:if>
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty alist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="allList?page=${pstart-1}" class="btnPage"></a>
@@ -213,6 +214,9 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
+						</c:if>
+						<c:if test="${empty alist}">
+						</c:if>
 						</div>	
 					</div>
 				</div>
