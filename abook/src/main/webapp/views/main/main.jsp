@@ -374,6 +374,7 @@
 		calData=calData+y+"년 </div>";
 		calData=calData+"<div class='m'>"+(m+1)+"월 </div>";
 		calData=calData+"<div class='d'>"+todayDate+"일 </div>";
+		
 		var n=yoil-5;
 		if(n == 1)
 			n == 6;
@@ -418,7 +419,7 @@
 				for(j=0;j<hyu.length;j++)
 				{
 			       var xday=parseInt(data[i].xday);
-			       console.log(typeof xday);
+			       // console.log(typeof xday);
 				   if(xday == hyu[j])	
 				   {	   
 					  // console.log("같다");
@@ -437,11 +438,10 @@
                 
 				if(ccc==0)
 					hyu.splice(hyu.length,0,xday);
-				
-				// console.log(i+" : "+hyu);
+					// console.log(i+" : "+hyu);
 			}
 			
-		    console.log(hyu);
+		    // console.log(hyu);
 		    for(i=0;i<hyu.length;i++)
 		       calData = calData+"<div>"+hyu[i]+"일</div>"; 
 			document.getElementById("calenderMain").innerHTML=calData;

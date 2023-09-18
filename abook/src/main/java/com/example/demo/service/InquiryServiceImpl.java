@@ -24,9 +24,12 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss) {
 		
+
+		String gonge=req.getParameter("gonge");
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("req");
+
 		
 		int page=1;
 		if(req.getParameter("page") ==null)
@@ -48,7 +51,15 @@ public class InquiryServiceImpl implements InquiryService {
 		if(pend > chong)
 			pend=chong;
 		
-		int r=(page-1)*10;
+		// String userid=ss.getAttribute("userid").toString();
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
+		model.addAttribute("gonge",gonge);
+		
+		// model.addAttribute("userid",userid);
+
 		
 		if(keyword==null || keyword.length()==0) {
 			type="title";
@@ -78,7 +89,35 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
+	public String write(HttpServletRequest req,Model model,HttpSession session) {
+		//귀찮아서 못지움. 나중에 지우기
+		return "/inquiry/write";
+	}
+
+	@Override
+	public String writeOk(InquiryVo ivo,HttpSession ss,HttpServletRequest req) {
+		
+		String userid=ss.getAttribute("userid").toString();
+		
+		int gonge;
+		if(req.getParameter("gonge") == null)
+		{
+			gonge=0;
+		}
+		else
+		{
+			gonge=1;
+		}
+		
+		ivo.setGonge(gonge);
+		ivo.setUserid(userid);
+		mapper.writeOk(ivo);
+		return "redirect:/inquiry/list";
+	}
+
+	@Override
 	public String readnum(HttpServletRequest req,Model model) {
+
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");

@@ -209,16 +209,21 @@
 					var insertText="";
 					
 					var inback="";
-					if(day==aa)
-						inback="<span class='tt'> </span>";
-					
+
 					if( j == 5 )
 					{
 						insertText="휴관일";
-						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+inback+
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+inback+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
-					}else {
-						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+day+inback+
+					}
+					else if(day==aa)
+					{
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'><span>"+inback+day+
+						"</span><div class='inner'><i></i>"+insertText+"</div></td>";
+					}
+					else
+					{
+						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+inback+day+
 						"<div class='inner'>"+insertText+"</div></td>";
 					} 
 					
