@@ -338,6 +338,7 @@
 							</c:if>
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty rlist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="rlist?page=${pstart-1}" class="btnPage"></a>
@@ -373,7 +374,10 @@
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
 							</c:if>	
-							</div>			
+							</div>
+							</c:if>
+							<c:if test="${empty rlist}">
+							</c:if>			
 						</div>
 					</div>
 				</div>

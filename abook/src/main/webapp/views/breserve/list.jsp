@@ -345,6 +345,7 @@
 						</c:if>						
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty blist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="list?page=${pstart-1}&num=${num}" class="btnPage"></a>
@@ -383,7 +384,11 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>			
-						</div>							
+						</div>	
+						</c:if>
+						<c:if test="${empty blist}">
+						
+						</c:if>						
 					</div>
 				</div>
 			</div>		
