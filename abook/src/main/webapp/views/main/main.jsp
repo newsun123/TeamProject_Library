@@ -355,7 +355,6 @@
 		
 		var xday=new Date(y,m,1); // 해당 달(월)
 		var yoil=xday.getDay();
-		alert(m);
 		var month=[31,28,31,30,31,30,31,31,30,31,30,31];
 		var chong=month[m];
 		
