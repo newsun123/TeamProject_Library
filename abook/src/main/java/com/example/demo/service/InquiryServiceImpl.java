@@ -24,7 +24,10 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss) {
 		
+		String no=req.getParameter("no");
 		String gonge=req.getParameter("gonge");
+		// String userid=ss.getAttribute("userid").toString();
+		// model.addAttribute(userid);
 		
 		int page=1;
 		if(req.getParameter("page") ==null)
@@ -54,7 +57,6 @@ public class InquiryServiceImpl implements InquiryService {
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
-		model.addAttribute("gonge",gonge);
 		
 		// model.addAttribute("userid",userid);
 		
@@ -106,8 +108,8 @@ public class InquiryServiceImpl implements InquiryService {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		model.addAttribute("page",page);
-		String userid=ss.getAttribute("userid").toString();
-		model.addAttribute("userid",userid);
+		// String userid=ss.getAttribute("userid").toString();
+		// model.addAttribute("userid",userid);
 		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
 		model.addAttribute("mchk",mchk);
 

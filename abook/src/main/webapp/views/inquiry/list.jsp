@@ -158,26 +158,44 @@
 							<tr> 
 								<td>
 									<div class="ta">
-									<c:if test="${userid != ivo.userid && ivo.gonge ==1 && userid != null}">
-										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">
-											${ivo.title}
-										</a>
+									<!-- 유저아이디는 다른데 비공개글일경우 -->	
+									<c:if test="${userid != ivo.userid && ivo.gonge == 1 && userid != null}">
+									<div class="">
+										${ivo.title}
+									</div>
+									</c:if>
+									<!-- 유저아이디는 다른데 비공개글일경우 -->	
+									<c:if test="${userid != ivo.userid && ivo.gonge == 0 && userid != null}">
+										<div class=""> <a href="readnum?no=${ivo.no}&page=${page}"> 
+										${ivo.title} </a></div>
+									</c:if>
+									<!-- 유저아이디는 다른데 공개글일경우 -->
+									<c:if test="${userid != ivo.userid && ivo.gonge == 0 && userid != null}">
+										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}">
+										${ivo.title}</a></div>
 									</c:if>
 									
-									<c:if test="${userid != ivo.userid && ivo.gonge ==0 && userid != null}">
-										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">
-											${ivo.title}
-										</a>
+									<!-- 유저아이디가 같을경우 공개글 -->
+									<c:if test="${userid == ivo.userid && brvo.gonge == 0}">
+										<div class=""> <a href="readnum?no=${ivo.no}&page=${page}"> 
+										${ivo.title} </a></div>
+									</c:if>
+									<!-- 유저아이디가 같을경우 비공개글 -->
+									<c:if test="${userid == ivo.userid && ivo.gonge == 1}">
+										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}">
+										${ivo.title}</a></div>
 									</c:if>
 									
-									
-									
-									
-									
-									<c:if test="${userid!=null}">
-										<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a>
+									<!-- 로그인 안했을경우 비공개글 -->
+									<c:if test="${userid == null && ivo.gonge == 1}">
+										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}">
+										${ivo.title}</a></div>
 									</c:if>
-									</div> 
+									<!-- 로그인 안했을경우 공개글 -->
+									<c:if test="${userid == null && ivo.gonge == 0}">
+										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}">
+										${ivo.title}</a></div>
+									</c:if>
 								</td>
 								<td>${ivo.userid}</td>	
 								<td>${ivo.writeday}</td>  

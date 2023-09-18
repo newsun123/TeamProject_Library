@@ -13,8 +13,8 @@
   </select>
   
   <insert id="writeOk">
-  	insert into inquiry(title,content,userid,writeday)
-  	values(#{title},#{content},#{userid},now())
+  	insert into inquiry(title,content,userid,gonge,writeday)
+  	values(#{title},#{content},#{userid},#{gonge},now())
   </insert>
   
   <update id="readnum">
@@ -45,4 +45,5 @@
    	<select id="getState" resultType="com.example.demo.vo.InquiryVo">
   		select * from inquiry where state=1 and no=#{no}
   	</select>
+  	
 </mapper>

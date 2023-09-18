@@ -22,5 +22,5 @@ public interface InquiryMapper {
 	public void updateOk(InquiryVo ivo);
 	public MtmVo getAnswer(String no);
 	public InquiryVo getState(int state,int no);
-
+	
 }
