@@ -50,6 +50,7 @@ public class GongjiServiceImpl implements GongjiService {
 			model.addAttribute("glist",mapper.list(type,keyword,start));
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
+			model.addAttribute("page", page);
 			model.addAttribute("chong",chong);
 		}
 		else {

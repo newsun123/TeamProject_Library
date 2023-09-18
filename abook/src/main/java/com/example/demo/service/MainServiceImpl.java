@@ -120,7 +120,7 @@ public class MainServiceImpl  implements MainService{
 		String mm=String.format("%02d", m);
 		
 		ArrayList<HashMap> mapall=mapper.Cal2(y+"-"+mm);
-		
+		// System.out.println(mapall.size());
 		return mapall;
 	}
 
