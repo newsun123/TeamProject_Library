@@ -414,6 +414,13 @@
 	}
 </style>
 <script>
+	function aa(){
+		alert("Adfasdfds")
+	}
+	function search(type,keyword){
+		var keyword=document.getElementById("search2").value;
+		location="/breserve/list?keyword="+keyword;
+	}
 	$(function(){
 		$("#bTxt > ul > li").click(function(){
 			var idx=$(this).index();
@@ -426,7 +433,7 @@
 				$("#go1").attr("href","../breserve/list?num=1");
 			};
 		});
-		`	
+			
 		$(".gongh").hover(function(){
 			$(this).css("color","#c10547");
 		},function(){
@@ -532,24 +539,20 @@
 			}
 			
 		    // console.log(hyu);
-		    for(i=0;i<hyu.length;i++)
-		       calData = calData+"<li>"+hyu[i]+"일</li>"; 
-			document.getElementsByClassName("conbox")[0].innerHTML=calData;
+		    for(i=0;i<hyu.length;i++){
+		       calData = calData+"<li>"+hyu[i]+"일</li>"; 		    	
+		    }
+				document.getElementsByClassName("conbox")[0].innerHTML=calData;		    	
+		    
 
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
 			chk.send();	
 	}
-	
 	window.onload=function()
 	{
 		calView2();
-	}
-	
-	function search(type,keyword){
-		var keyword=document.getElementById("search2").value;
-		location="/breserve/list?keyword="+keyword;
-	}
+	}	
 </script>
 </head>
 <body>
@@ -558,7 +561,7 @@
 		<div id="search">
 			<input type="hidden" value="${keyword}">
 			<input type="text" id="search2" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
-			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="search('keyword')"></a>
+			<span onclick="search()"><img id="searchBtn" src="/static/img/main/search_icon.png" ></span>
 		</div>
 	</div>
 	<div id="sectionGroup">
