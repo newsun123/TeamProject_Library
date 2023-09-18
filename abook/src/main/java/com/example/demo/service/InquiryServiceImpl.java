@@ -94,8 +94,8 @@ public class InquiryServiceImpl implements InquiryService {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		model.addAttribute("page",page);
-		String userid=ss.getAttribute("userid").toString();
-		model.addAttribute("userid",userid);
+//		String userid=ss.getAttribute("userid").toString();
+//		model.addAttribute("userid",userid);
 		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
 		model.addAttribute("mchk",mchk);
 
