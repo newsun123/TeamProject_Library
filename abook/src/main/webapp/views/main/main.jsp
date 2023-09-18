@@ -390,7 +390,7 @@
 		color: #003aa5;
 	    text-align: center;
 	    position: relative;
-	    top: 23px;
+	    top: 11px;
 	}
 	.conbox{
 		display: flex;
@@ -398,7 +398,7 @@
 	}
 	.bupcon{
 		position: relative;
-    	top: 40px;
+    	top: 28px;
     	padding: 0 20px;
 	}
 	.bupcon li{
