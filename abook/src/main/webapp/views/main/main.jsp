@@ -546,9 +546,9 @@
 		calView2();
 	}
 	
-	function search(){
+	function search(type,keyword){
 		var keyword=document.getElementById("search2").value;
-		
+		location="/breserve/list?keyword="+keyword;
 	}
 </script>
 </head>
@@ -556,9 +556,9 @@
 	<div id="mainBg">
 		<img src="/static/img/main/main_bg.jpg"> 
 		<div id="search">
-					<input type="hidden" value="${keyword}">
+			<input type="hidden" value="${keyword}">
 			<input type="text" id="search2" name="search" placeholder="도서이름, 출판사, 저자를 입력하세요.">
-			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="search()"></a>
+			<a><img id="searchBtn" src="/static/img/main/search_icon.png" onclick="search('keyword')"></a>
 		</div>
 	</div>
 	<div id="sectionGroup">
