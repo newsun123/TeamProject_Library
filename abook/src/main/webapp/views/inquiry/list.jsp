@@ -294,7 +294,7 @@
 									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
 								</tr>
 							</c:if>
-							<c:if test="${! empty ilist}">					
+						<c:if test="${!empty ilist}">					
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td>
