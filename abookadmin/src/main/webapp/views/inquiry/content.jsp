@@ -33,6 +33,9 @@
 	table tr:nth-child(2){
 		height: 300px;
 	}
+	table tr:nth-child(3){
+		height: 300px;
+	}
 	table tr td#cont{
 		vertical-align: top;
     	padding: 13px 10px;
@@ -45,27 +48,28 @@
 		color: #fff;
 	    text-align: center;
 	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
-	    line-height:50px;
+	    /*font-family: 'NotoSansM';*/
+	    height: 45px;
+	    width: 110px;
+	    line-height:45px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
 	    display:inline-block;
 	}
-	.a{  /* 임의로 submit,button 버튼 만짐 */
+	.a{ 
 		color: #fff;
 	    text-align: center;
 	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
-	    line-height:50px;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
+	    line-height: 45px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
-	    display:inline-block;
+	    display: inline-block;
+	    font-size: 14px;
 	}
 	#btn a.dis{
 		background: #e0e3e6;
@@ -88,7 +92,7 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>묻고 답하기</span></h2>
+				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
 					<li><a href="/gongji/list"><span>공지사항</span></a></li>
 					<li class="on"><a href="/inquiry/list"><span>문의사항</span></a></li>
@@ -97,7 +101,7 @@
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>문의사항</h3>
-					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
+					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">				
@@ -113,7 +117,7 @@
 								</td>
 							</tr>
 							<tr>	
-								<td> 답변 </td>
+								<td>답변</td>
 								<td class="tl" id="cont">
 								<c:if test="${mvo.content!=null}" >
 									<span id="con">

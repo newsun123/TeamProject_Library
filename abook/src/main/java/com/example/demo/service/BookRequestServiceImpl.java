@@ -104,16 +104,6 @@ public class BookRequestServiceImpl implements BookRequestService {
 			}
 	    }
 
-		/*
-		 * //System.out.println(start); // 한 번만 모델에 추가 ArrayList<BookRequestVo> rlist =
-		 * mapper.search(type, keyword, start); model.addAttribute("rlist", rlist);
-		 */
-		/*
-		 * if (session.getAttribute("userid") != null) { String userid =
-		 * session.getAttribute("userid").toString(); model.addAttribute("userid",
-		 * userid); }
-		 */
-
 	    return "bookrequest/rlist";
 	}
 

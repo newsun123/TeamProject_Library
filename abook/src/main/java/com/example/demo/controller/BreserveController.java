@@ -35,11 +35,6 @@ public class BreserveController {
 		return service.bresOk(session,request,model);
 	}
 	
-	@RequestMapping("/breserve/cntCheck")
-	public @ResponseBody int cntCheck(HttpSession session){
-		return service.cntCheck(session);
-	}
-	
 	@RequestMapping("/breserve/addjjim")
 	public @ResponseBody String addjjim(HttpServletRequest req,HttpSession ss) {
 		return service.addjjim(req,ss);

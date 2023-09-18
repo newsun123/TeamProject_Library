@@ -164,17 +164,8 @@
 <script>
 	window.onload=function(){
 		if(${chk==1}){
-			alert("1인 최대 4회 예약/대출 가능하며 추가 예약을 원할 시\n마이페이지 > 도서예약현황에서 기존 예약 취소 또는 대출 반납을\n해주세요.")
+			alert("1인 최대 4회 예약/대출 가능하며 추가 예약을 원할 시\n마이페이지 > 도서 예약현황 기존 예약 취소 또는 대출 반납을\n해주세요.")
 		}
-	}
-	function bresCheck(my){
-		
-		var parent=my.parentNode.parentNode;
-	    var inputbocde=parent.getElementsByClassName('bcode');
-	    var bcode=inputbocde[0].value;
-		
-	    location="bresOk?bcode="+bcode+"&page=${page}";
-		
 	}
 
 	function jjim(src) {
@@ -223,7 +214,7 @@
 				<div id="contents">
 					<div id="bookregiWrap">
 						<c:if test="${mj!=1}">
-						<a href="/breserve/list" class="rbtn">목록으로</a>
+						<a href="/breserve/list?page=${page}&num=${num}" class="rbtn">목록으로</a>
 						</c:if>
 						<c:if test="${mj==1}">
 						<a href="/mypage/myjjim" class="rbtn">목록으로</a>
@@ -302,8 +293,7 @@
 								<td></td>
 								<td>
 								<c:if test="${map.state==0}">
-									<input type="hidden" value="${map.bcode}" name="bocde" class="bcode">
-									<input type="button" value="도서예약" class="resBtn" onclick="bresCheck(this)">
+									<input type="button" value="도서예약" class="resBtn" onclick="location='bresOk?bcode=${map.bcode}&page=${page}'">
 								</c:if>
 								<c:if test="${map.state==1}">
 									<input type="button" value="예약중" class="resBtn dis">

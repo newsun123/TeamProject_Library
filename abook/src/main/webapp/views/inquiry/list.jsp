@@ -38,9 +38,7 @@
 		border-bottom: 1px solid #e4e4e4;
 		letter-spacing: 0.5px;
 	}
-	
 	#btnCon{    
-		height: 74px;
 		text-align: right;
 	}
 	#btnCon a{
@@ -117,7 +115,127 @@
 		pointer-event:none;
 		cursor:default;
 	}
+	#search{
+		padding:10px 20px;
+		border-radius:5px;
+		color:#fff;
+		margin-bottom:40px;
+		width:100px;
+		background:#93765a;
+	}
+	#searchCon{
+		width:630px;
+		position:relative;
+		right:0;
+		display:flex;
+		justify-content:space-between;
+		align-items:center;
+	}
+	#select{
+		display: inline-block;
+	    width: 148px;
+	    position: relative;
+	    height: 48px;
+	    border: 1px solid #e2e2e2;
+	    background-color: #fff;
+	}
+	#select .selected{
+		display: flex;
+	    justify-content: space-between;
+	    padding: 0;
+	    cursor: pointer;
+	}
+	#select .selected_value{
+		display: inline-block;
+	    font-size: 16px;
+	    width: calc(100% - 60px);
+	    line-height: 44px;
+	    text-align: left;
+	    margin-left: 18px;
+	}
+	#select .arrow{
+		width: 42px;
+   		background: url(/static/img/common/ic_arrow.png) no-repeat 50% 50%;
+	}
+	#select ul{
+	    width: 148px;
+	    border: 1px solid #d6dae6;
+	    position: absolute;
+	    left: -1px;
+	    z-index: 999;
+	    background: #fff;
+	    border-top: none;
+	    
+	    top: 47px;	
+	    display: none;
+	}
+	#select ul li{
+	    font-size: 16px;
+	    padding: 0 20px;
+	    line-height: 38px;
+	    height: 38px;
+	    border-bottom: 1px solid #eee;
+	    cursor:pointer;
+	}
+	#select ul li:last-child{
+		border:none;
+	}
+	#select ul li:hover{
+		display: block;
+		background-color:#ebeef7;
+	}
+	input.searchtext{
+		border-radius: 0!important;
+	    height: 48px!important;
+	    vertical-align: top!important;
+	    width: 500px;
+	}
 </style>
+<script>
+	window.onload=function(){
+		<c:if test="${type!=null}">
+		   <c:if test="${type=='title'}">
+		     <c:set var="aa" value="제목"/>
+		   </c:if>
+		   <c:if test="${type=='content'}">
+		     <c:set var="aa" value="내용"/>
+		   </c:if>
+			<c:if test="${type=='aa'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
+			document.getElementById("sv").innerText="${aa}";
+		</c:if>
+		 
+	}
+	var schk=0;
+	function selectView(){
+		
+		if(schk==0){
+			document.getElementById("type").style.display="block";
+			schk=1;
+		}else{
+			document.getElementById("type").style.display="none";
+			schk=0;
+		}
+	}
+	function inputWr(txt){
+ 
+		if(txt=="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			// aa로 value값을 줘서 impl
+		}
+		else if(txt=="제목"){
+			document.getElementsByClassName("selected_value")[0].innerText="제목";
+			document.getElementById("seltype").value="title";
+		}else if(txt=="내용"){
+			document.getElementsByClassName("selected_value")[0].innerText="내용";
+			document.getElementById("seltype").value="content";
+		}
+		document.getElementById("type").style.display="none";
+		schk=0;
+	}
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -139,6 +257,23 @@
 				</div>
 				<div id="contents">
 					<div id="inquiryWrap">
+					<form name="iform" method="post" action="list">
+							<input type="hidden" value="${type}" name="type" id="seltype">
+								<input type="hidden" value="${keyword}">
+								<div id="select">
+									<div class="selected" onclick="selectView()">
+										<div class="selected_value" id="sv">전체</div>		
+										<div class="arrow"></div>
+									</div>
+									<ul id="type">
+										<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+										<li class="option" id="title" onclick="inputWr('제목')">제목</li>
+										<li class="option" id="content" onclick="inputWr('내용')">내용</li>
+									</ul>
+								</div>
+								<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+								<input type="submit" id="search" class="searchtext" value="검색">
+						</form>
 						<div id="btnCon">
 						<c:if test="${userid!=null}">
 							<a href="/inquiry/write">글쓰기</a>
@@ -153,11 +288,18 @@
 								<td width="180">작성자</td>
 								<td width="190">등록일</td>
 								<td width="130">상태처리</td>
-							</tr>						
+							</tr>	
+						<c:if test="${empty ilist}">
+								<tr>
+									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${! empty ilist}">					
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td>
 									<div class="ta">
+<<<<<<< HEAD
 									<!-- 유저아이디는 다른데 비공개글일경우 -->	
 									<c:if test="${userid != ivo.userid && ivo.gonge == 1 && userid != null}">
 									<div class="">
@@ -173,6 +315,13 @@
 									<c:if test="${userid != ivo.userid && ivo.gonge == 0 && userid != null}">
 										<div class="el"><a href="rcontent?no=${brvo.no}&page=${page}">
 										${ivo.title}</a></div>
+=======
+
+									<c:if test="${userid != ivo.userid && ivo.gonge ==1 && userid != null}">
+										<a href="/member/login?ichk=1" onclick="alert('비로그인 시 확인할 수 없습니다.')">
+											${ivo.title}
+										</a>
+>>>>>>> d7b3452f66efb0942ce528c185104a6215165793
 									</c:if>
 									
 									<!-- 유저아이디가 같을경우 공개글 -->
@@ -186,6 +335,7 @@
 										${ivo.title}</a></div>
 									</c:if>
 									
+<<<<<<< HEAD
 									<!-- 로그인 안했을경우 비공개글 -->
 									<c:if test="${userid == null && ivo.gonge == 1}">
 										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}">
@@ -196,6 +346,11 @@
 										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}">
 										${ivo.title}</a></div>
 									</c:if>
+=======
+									<c:if test="${userid!=null}">
+										<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a>
+									</div> 
+>>>>>>> d7b3452f66efb0942ce528c185104a6215165793
 								</td>
 								<td>${ivo.userid}</td>	
 								<td>${ivo.writeday}</td>  
@@ -208,9 +363,11 @@
 								</c:if>
 								</td>  
 							</tr>
-						</c:forEach>							
+						</c:forEach>
+						</c:if>							
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty ilist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="list?page=${pstart-1}" class="btnPage"></a>
@@ -249,6 +406,9 @@
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>
+						</c:if>
+						<c:if test="${empty ilist}">
+						</c:if>
 						</div>							
 					</div>
 				</div>

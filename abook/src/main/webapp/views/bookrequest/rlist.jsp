@@ -277,13 +277,18 @@
 								<td width="150"> 신청일 </td>
 								<td width="130"> 처리상태 </td>
 							</tr>	
-							
+							<c:if test="${empty rlist}">
+								<tr>
+									<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${! empty rlist}">
 							<c:forEach items="${rlist}" var="brvo" varStatus="sts">
 								<tr>
 									<input type="hidden" name="userid" id="userid" value="${brvo.userid}">
 									<input type="hidden" name="sessionuserid" id="sessionuserid" value="${userid}">
 									<%-- <td>${userid},${brvo.userid}</td> --%>
-									<td>${sts.index+1}</td>
+									<td>${sts.count+((page-1)*10)}</td>
 									<td>
 									<c:if test="${brvo.gonge==0}">
 										&nbsp;
@@ -331,8 +336,10 @@
 									 </td>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty rlist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
 								<a href="rlist?page=${pstart-1}" class="btnPage"></a>
@@ -368,7 +375,10 @@
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
 							</c:if>	
-							</div>			
+							</div>
+							</c:if>
+							<c:if test="${empty rlist}">
+							</c:if>			
 						</div>
 					</div>
 				</div>

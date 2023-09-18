@@ -25,10 +25,36 @@ public class MypageServiceImple implements MypageService {
 	private MypageMapper mapper;
 	
 	@Override
-	public String checkReserveSeat(HttpSession ss,Model model) {
+	public String checkReserveSeat(HttpSession ss,Model model,HttpServletRequest req) {
+		String userid = ss.getAttribute("userid").toString();
+		// page
+		int page = 1;
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(req.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+		
+		int chong = mapper.getChongSeat(userid);
+		
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
 		
 		//전체 예약 현황 mapper 만들어 보내기
-		String userid = ss.getAttribute("userid").toString();
+		
 		model.addAttribute("userid",userid); 
 		
 		//System.out.println(userid);
@@ -213,8 +239,7 @@ public class MypageServiceImple implements MypageService {
 	}
 	
 	@Override
-	public String bookreserve(Model model,HttpSession session) {
-		
+	public String bookreserve(Model model,HttpSession session,HttpServletRequest req) {
 		String userid=session.getAttribute("userid").toString();
 		
 		ArrayList<HashMap> mapall=mapper.bookreserve(userid);
@@ -246,9 +271,7 @@ public class MypageServiceImple implements MypageService {
 		// reserveday 삭제
 
 		mapper.cancelSeat(no);
-		
-		
-		
+
 		return "redirect:/mypage/checkReserveSeat";
 	}
 
@@ -270,13 +293,17 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public String returnOk(HttpServletRequest request) {
 		String no=request.getParameter("no");
+		String bcode=request.getParameter("bcode");
+		System.out.println(bcode);
 		mapper.returnOk(no);
+		mapper.changeState(bcode);
 		return "redirect:/mypage/bookreserve";
 	}
 
 	@Override
 	public String loanlist(HttpSession session,Model model,HttpServletRequest request) {
-		
+		String userid=session.getAttribute("userid").toString();
+		// page
 		int page = 1;
 		if (request.getParameter("page") == null || request.getParameter("page").equals(""))
 			page = 1;
@@ -291,8 +318,8 @@ public class MypageServiceImple implements MypageService {
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
+		
+		int chong = mapper.getChongloan(userid);
 
 		if (pend > chong)
 			pend = chong;
@@ -302,7 +329,7 @@ public class MypageServiceImple implements MypageService {
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		
-		String userid=session.getAttribute("userid").toString();
+		
 		ArrayList<HashMap> mapall=mapper.loanlist(userid,start);
 		model.addAttribute("mapall",mapall);
 		
@@ -326,8 +353,8 @@ public class MypageServiceImple implements MypageService {
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
+		String db = "jjim";
+		int chong = mapper.getChong(db);
 
 		if (pend > chong)
 			pend = chong;
@@ -347,6 +374,32 @@ public class MypageServiceImple implements MypageService {
 	public String myinquiry(HttpSession ss, Model model, HttpServletRequest req) {
 		// 페이지 처리할거면 쓰라고 일단 다 받음
 		String userid = ss.getAttribute("userid").toString();
+		
+		// page
+		int page = 1;
+		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
+			page = 1;
+		else
+			page = Integer.parseInt(req.getParameter("page"));
+
+		int start = (page - 1) * 10;
+
+		int pstart = page / 10;
+		if (page % 10 == 0)
+			pstart--;
+		pstart = pstart * 10 + 1;
+
+		int pend = pstart + 9;
+		
+		int chong = mapper.getChongInquiry(userid);
+
+		if (pend > chong)
+			pend = chong;
+
+		model.addAttribute("chong", chong);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("pend", pend);
+		model.addAttribute("page", page);
 		
 		// 답변 대기중인것 받아오기
 		ArrayList<InquiryVo> ilist = mapper.myinquiry1(userid);

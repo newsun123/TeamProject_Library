@@ -30,7 +30,7 @@
 	}
 	#btn{
 		text-align: center;
-		padding: 30px 0;
+		padding-top: 30px;
 	}
 	.dis{
 		display: inline-block;
@@ -73,7 +73,7 @@
 				<h2><span>열린공간</span></h2>
 				<ul id="lnb">
 					<li class="on"><a href="/gongji/list"><span>공지사항</span></a></li>
-					<li><a href=""><span>문의사항</span></a></li>
+					<li><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">

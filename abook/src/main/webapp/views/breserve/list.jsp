@@ -318,9 +318,15 @@
 							<input type="button" value="인기도서" class="lst" onclick="listChange(1)">
 						</div>					
 					</form>
-						<table>	
+						<table>
+						<c:if test="${empty blist}">
+							<tr>
+								<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+							</tr>
+						</c:if>	
+						<c:if test="${! empty blist}">
 						<c:forEach items="${blist}" var="bvo">
-							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
+							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}&num=${num }'"> 
 								<td> 
 									<div>
 										<img src="/static/img/breserve/${bvo.bimg}">					
@@ -335,19 +341,21 @@
 									</div>
 								</td>
 							</tr>
-						</c:forEach>						
+						</c:forEach>
+						</c:if>						
 						</table>
 						<div id="btWrap">
+						<c:if test="${!empty blist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
-								<a href="list?page=${pstart-1}" class="btnPage"></a>
+								<a href="list?page=${pstart-1}&num=${num}" class="btnPage"></a>
 							</c:if>
 							<c:if test="${pstart==1}">
 								<a class="btnPage dis"></a> 
 							</c:if>
 							
 							<c:if test="${page!=1}">
-								<a href="list?page=${page-1}" class="btnPage prev"></a>
+								<a href="list?page=${page-1}&num=${num}" class="btnPage prev"></a>
 							</c:if>
 							<c:if test="${page==1}">
 								<a class="btnPage dis prev"></a>
@@ -355,28 +363,32 @@
 							
 							<c:forEach begin="${pstart}" end="${pend}" var="i">
 								<c:if test="${page!=i}">
-									<a href="list?page=${i}">${i}</a>
+									<a href="list?page=${i}&num=${num}">${i}</a>
 								</c:if>
 								<c:if test="${page==i}">
-									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
+									<a href="list?page=${i}&num=${num}" style="background-color: #555;color:#fff">${i}</a>
 								</c:if>
 							</c:forEach>
 						
 							<c:if test="${page!=chong}">
-								<a href="list?page=${page+1}" class="btnPage next"></a>
+								<a href="list?page=${page+1}&num=${num}" class="btnPage next"></a>
 							</c:if>
 							<c:if test="${page==chong}">
 								<a class="btnPage next dis"></a>
 							</c:if>
 							
 							<c:if test="${pend!=chong}">
-								<a href="list?page=${pend+1}" class="btnPage last"></a>
+								<a href="list?page=${pend+1}&num=${num}" class="btnPage last"></a>
 							</c:if>
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
 							</c:if>	
 							</div>			
-						</div>							
+						</div>	
+						</c:if>
+						<c:if test="${empty blist}">
+						
+						</c:if>						
 					</div>
 				</div>
 			</div>		

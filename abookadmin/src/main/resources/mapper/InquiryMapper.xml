@@ -8,8 +8,15 @@
 		set @rownum=(select count(*) from inquiry)-${start} 
 	</select>  
 	<select id="list" resultType="com.example.demo.vo.InquiryVo">
-		select * ,(@rownum := @rownum-1)+1 as rnum from inquiry order by no desc limit #{start},10
-	</select>
+  	select * ,(@rownum := @rownum-1)+1 as rnum from inquiry
+  	where ${type} like concat('%',"${keyword}",'%') 
+  	order by no desc limit #{start},10
+  </select>
+  <select id="list2" resultType="com.example.demo.vo.InquiryVo">
+   		select * from inquiry where title like concat('%',"${keyword}",'%') 
+		or content like concat('%',"${keyword}",'%')
+		 order by no desc limit #{start},10;
+   </select>
 
 	<select id="content" resultType="com.example.demo.vo.InquiryVo">
 		select * from inquiry where no=#{no}

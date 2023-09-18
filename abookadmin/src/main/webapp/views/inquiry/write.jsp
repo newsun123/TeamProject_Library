@@ -101,15 +101,16 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>묻고 답하기</span></h2>
+				<h2><span>게시판관리</span></h2>
 				<ul id="lnb">
-					<li class="on"><a><span>묻고 답하기</span></a></li>
+					<li><a href="/gongji/list"><span>공지사항</span></a></li>
+					<li class="on"><a href="/inquiry/list"><span>문의사항</span></a></li>
 				</ul>
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>묻고 답하기</h3>
-					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;묻고 답하기</p>
+					<h3>문의사항</h3>
+					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">					

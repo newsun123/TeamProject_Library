@@ -6,11 +6,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 public interface MypageService {
-	public String checkReserveSeat(HttpSession ss,Model model);
+	public String checkReserveSeat(HttpSession ss,Model model,HttpServletRequest req);
 	public String cancelSeat(HttpServletRequest req,HttpSession ss);
 	//0909 강서영 백업
 	
-	public String bookreserve(Model model,HttpSession session);
+	public String bookreserve(Model model,HttpSession session,HttpServletRequest req);
 	public String brsvCancel(HttpServletRequest request);
 	public String giganUpdate(HttpServletRequest request);
 	public String returnOk(HttpServletRequest request);
