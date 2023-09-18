@@ -355,7 +355,7 @@
 		
 		var xday=new Date(y,m,1); // 해당 달(월)
 		var yoil=xday.getDay();
-		
+		alert(m);
 		var month=[31,28,31,30,31,30,31,31,30,31,30,31];
 		var chong=month[m];
 		
@@ -369,10 +369,12 @@
 		
 		var calData="<div class='y'>";
 		
+		var todate=new Date();
+		var todayDate=todate.getDate(); // 오늘날짜 구하기
+		
 		calData=calData+y+"년 </div>";
 		calData=calData+"<div class='m'>"+(m+1)+"월 </div>";
-		
-		
+		calData=calData+"<div class='d'>"+todayDate+"일 </div>";
 		var n=yoil-5;
 		if(n == 1)
 			n == 6;
@@ -393,31 +395,61 @@
 			chk=chk+7;
 			//str=str.replace(/,/g,"일 ");  혁범이꺼
 		}
-		
+		// alert(str); => 매주 금요일의 집합변수("str")
 		//휴관일 가져온 것 잘라서 배열로 만들기
-		var hyu = [];
-		hyu = str.split(",");
-		for(i=0; i < hyu.length-1; i++) {
-			calData = calData+"<div>"+hyu[i]+"일</div>";//법정 공휴일 추가할떄 겹치는거 지워야됌
-		}
-		
+		//var hy = [];
+		var hy = str.split(",");
+		var hyu=new Array();
+		for(i=0;i<hy.length-1;i++)
+		{
+			hyu[i]=parseInt(hy[i]);
+		}	
+	
 		//아작스로 법정 공휴일 가져오기
-		
 		var chk=new XMLHttpRequest();
 		chk.onload=function()
 		{
+			console.log(chk.responseText);
 			var data=JSON.parse(chk.responseText);
-			// alert(data.length);
-			for(i=0; i<data.length; i++) // 왜 안되냐
+			 
+			for(i=0; i<data.length; i++) 
 			{
+				// 매주 휴관일과 공휴일의 중복 체크!	
+				var ccc=0;
+				for(j=0;j<hyu.length;j++)
+				{
+			       var xday=parseInt(data[i].xday);
+			       console.log(typeof xday);
+				   if(xday == hyu[j])	
+				   {	   
+					  // console.log("같다");
+					  ccc=1;
+					  break;
+				   }
+					if(xday< hyu[j])
+					{
+						hyu.splice(j,0,xday);
+						// console.log(hyu);
+						ccc=1;
+						
+						break;
+				 	}	
+				}
+                
+				if(ccc==0)
+					hyu.splice(hyu.length,0,xday);
 				
+				// console.log(i+" : "+hyu);
 			}
+			
+		    console.log(hyu);
+		    for(i=0;i<hyu.length;i++)
+		       calData = calData+"<div>"+hyu[i]+"일</div>"; 
+			document.getElementById("calenderMain").innerHTML=calData;
+
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
-			chk.send();
-	
-		document.getElementById("calenderMain").innerHTML=calData;
-		
+			chk.send();	
 	}
 	
 	window.onload=function()
@@ -541,5 +573,6 @@
 		</c:if>
 		</div>
 	</div>
+ 
 </body>
 </html>
