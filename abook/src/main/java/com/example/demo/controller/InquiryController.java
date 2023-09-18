@@ -40,14 +40,13 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/readnum")
-	public String readnum(HttpServletRequest req)
+	public String readnum(HttpServletRequest req,Model model)
 	{
-		return service.readnum(req);
+		return service.readnum(req,model);
 	}
 	
 	@RequestMapping("/inquiry/content")
-	public String content(HttpServletRequest req,
-			Model model,HttpSession ss)
+	public String content(HttpServletRequest req,Model model,HttpSession ss)
 	{
 		return service.content(req,model,ss);
 	}

@@ -139,7 +139,6 @@
 									<input type="hidden" name="inno" value="${ivo.no}">
 									<input type="hidden" name="page" value="${page}">
 									<textarea name="content" placeholder="답변 입력"></textarea>
-									</form>
 								</c:if>
 								</td>	
 							</tr>
