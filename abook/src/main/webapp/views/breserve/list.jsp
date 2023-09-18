@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	#bookregiWrap{
+		min-height: 350px;
+	}
 	form{
 		width: 100%;
 	    display: block;
