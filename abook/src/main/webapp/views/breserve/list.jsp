@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	#bookregiWrap{
+		min-height: 350px;
+	}
 	form{
 		width: 100%;
 	    display: block;
@@ -326,7 +329,7 @@
 						</c:if>	
 						<c:if test="${! empty blist}">
 						<c:forEach items="${blist}" var="bvo">
-							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}'"> 
+							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}&num=${num }'"> 
 								<td> 
 									<div>
 										<img src="/static/img/breserve/${bvo.bimg}">					

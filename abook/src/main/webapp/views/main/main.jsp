@@ -184,9 +184,9 @@
 	    margin-left: 15px;
 	}
 	#rigthBox{
-		border: 1px solid;
 	    width: 450px;
 	    height: 265px;
+	    position: relative;
 	}
 	#sectionGroup2{
 		width:1500px;
@@ -323,6 +323,95 @@
 	.imore2{
 		left: 250px;
 	}
+	.calCon{
+		position: relative;
+	    top: 22px;
+	    left:51px;
+	    width: 310px;
+	}
+	.calCon li{
+		float: left;
+	    margin-right: 7px;
+	    width: 93px;
+	    background: url(/static/img/main/date.gif) no-repeat;
+	    box-sizing: border-box;
+	    padding: 0 5px;
+	    height: 105px;
+	    margin-right: 10px;
+	    position: relative;
+	}
+	.calCon:after {
+	    content: '';
+	    display: block;
+	    clear: both;
+	}
+	.top_t{
+		height: 147px;
+	    width: 100%;
+	    background: url(/static/img/main/calendar_bg.gif) no-repeat;
+	    background-size: cover;
+	    padding: 20px;
+	    box-sizing: border-box;
+	}
+	.cal_date{
+	    color: #003aa5;
+	    font-size: 11px;
+	    position: absolute;
+	    top: 19px;
+	    display: block;
+	    width: 83px;
+	    text-align: center;
+	    height: 23px;
+    	border-bottom: 1px solid #ddd;
+	}
+	.cal_day{
+		color: #333;
+	    font-size: 20px;
+	    position: absolute;
+	    top: 56px;
+	    display: block;
+	    width: 83px;
+	    text-align: center;
+	}
+	.calbtn{
+		position: absolute;
+	    top: 10px;
+	    right: 20px;
+	}
+	.calbtn img{
+		width: 30px;
+	}
+	.bottom_t{
+		height: 118px;
+    	width: 100%;   	
+    	background: #f4f4f9;
+	}
+	.cal_tt{
+		color: #003aa5;
+	    text-align: center;
+	    position: relative;
+	    top: 23px;
+	}
+	.conbox{
+		display: flex;
+		justify-content: center;
+	}
+	.bupcon{
+		position: relative;
+    	top: 40px;
+    	padding: 0 20px;
+	}
+	.bupcon li{
+		width: 40px;
+	    height: 40px;
+	    background: #8aa9e1;
+	    color: #fff;
+	    text-align: center;
+	    line-height: 40px;
+	    border-radius: 50%;
+	    font-size: 14px;
+		margin-left: 12px;
+	}
 </style>
 <script>
 	$(function(){
@@ -337,7 +426,7 @@
 				$("#go1").attr("href","../breserve/list?num=1");
 			};
 		});
-		
+		`	
 		$(".gongh").hover(function(){
 			$(this).css("color","#c10547");
 		},function(){
@@ -366,14 +455,16 @@
 		
 		var ju=Math.ceil( (chong+yoil)/7 );
 		
-		var calData="<div class='y'>";
+		var calData="";
 		
 		var todate=new Date();
 		var todayDate=todate.getDate(); // 오늘날짜 구하기
 		
-		calData=calData+y+"년 </div>";
-		calData=calData+"<div class='m'>"+(m+1)+"월 </div>";
-		calData=calData+"<div class='d'>"+todayDate+"일 </div>";
+		
+		document.getElementsByClassName("cal_day")[0].innerHTML=y;
+		document.getElementsByClassName("cal_day")[1].innerHTML=(m+1);
+		document.getElementsByClassName("cal_day")[2].innerHTML=todayDate;
+		
 		var n=yoil-5;
 		if(n == 1)
 			n == 6;
@@ -418,7 +509,7 @@
 				for(j=0;j<hyu.length;j++)
 				{
 			       var xday=parseInt(data[i].xday);
-			       console.log(typeof xday);
+			       // console.log(typeof xday);
 				   if(xday == hyu[j])	
 				   {	   
 					  // console.log("같다");
@@ -437,14 +528,13 @@
                 
 				if(ccc==0)
 					hyu.splice(hyu.length,0,xday);
-				
-				// console.log(i+" : "+hyu);
+					// console.log(i+" : "+hyu);
 			}
 			
-		    console.log(hyu);
+		    // console.log(hyu);
 		    for(i=0;i<hyu.length;i++)
-		       calData = calData+"<div>"+hyu[i]+"일</div>"; 
-			document.getElementById("calenderMain").innerHTML=calData;
+		       calData = calData+"<li>"+hyu[i]+"일</li>"; 
+			document.getElementsByClassName("conbox")[0].innerHTML=calData;
 
 		}
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
@@ -508,8 +598,30 @@
 			</div>
 		</div>
 		<div id="rigthBox">
-			<p>이달의 휴관일 안내</p>
-			<p>매주 금요일, 법정 공휴일</p>
+			<a href="/calender/calenderTab" class="calbtn"><img src="/static/img/main/link02.gif"></a>
+			<div class="top_t">
+				<ul class="calCon">
+					<li>
+						<p class="cal_date">YEAR</p>
+						<p class="cal_day"></p>
+					</li>
+					<li>
+						<p class="cal_date">MONTH</p>
+						<p class="cal_day"></p>
+					</li>
+					<li>
+						<p class="cal_date">DAY</p>
+						<p class="cal_day"></p>
+					</li>
+				</ul>			
+			</div>
+			<div class="bottom_t">
+				<div class="cal_tt">휴관일, 법정 공휴일</div>
+				<div class="bupcon">
+					<ul class="conbox">
+					</ul>
+				</div>
+			</div>
 			<div>
 				<div id="calenderMain"> 
 					<span class="bup"></span>
@@ -524,7 +636,7 @@
 					<li class="act">인기도서</li>
 					<li>신착도서</li>
 				</ul>
-					<div class="imore imore2"><a href="../breserve/list?num=1" id="go1"></a></div> <!-- 플러스버튼인데 한개로 2개 DB를 어케 씀? -->
+					<div class="imore imore2"><a href="../breserve/list?num=1" id="go1"></a></div> 
 			</div>
 			<div id="bconWrap">
 				<div class="bcon act"> <!-- 인기도서(이거 베스트북) -->

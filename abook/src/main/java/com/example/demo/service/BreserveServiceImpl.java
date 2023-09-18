@@ -25,8 +25,7 @@ public class BreserveServiceImpl implements BreserveService {
 	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
-		System.out.println(keyword);
-		System.out.println(type);
+		String num = request.getParameter("num");
 		int page;
 
 		if (request.getParameter("page") == null)
@@ -48,7 +47,7 @@ public class BreserveServiceImpl implements BreserveService {
 		if(pend > chong)
 			pend=chong;
 		//최윤도꺼 붙임
-		String num = request.getParameter("num"); // 신간도서 - 인기도서 용 num 추가
+		
 		if (num == null)
 			num = "0"; // num null값일 시 0으로 지정(신간도서)
 		//System.out.println(num);
@@ -102,7 +101,9 @@ public class BreserveServiceImpl implements BreserveService {
 
 	@Override
 	public String content(HttpServletRequest request, Model model,HttpSession ss) {
+		
 		String chk = request.getParameter("chk");
+		
 		if (chk == null) {
 			chk = "0";
 		}
@@ -110,6 +111,9 @@ public class BreserveServiceImpl implements BreserveService {
 		model.addAttribute("chk", chk);
 		String page = request.getParameter("page");
 		String bcode = request.getParameter("bcode");
+		
+		String num = request.getParameter("num");
+		model.addAttribute("num",num);
 
 		bcode = bcode.substring(0, 4);
 		model.addAttribute("page", page);

@@ -193,7 +193,7 @@
 				</div>
 				<div id="contents">
 					<div id="bookregiWrap">
-						<a href="/bookregi/list" class="rbtn">목록으로</a>
+						<a href="/bookregi/list?page=${page }" class="rbtn">목록으로</a>
 						<table id="table1">
 							<tr>
 								<td>

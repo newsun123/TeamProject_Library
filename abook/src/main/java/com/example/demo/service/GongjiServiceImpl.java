@@ -88,17 +88,11 @@ public class GongjiServiceImpl implements GongjiService {
 		
 		String page=req.getParameter("page");
 		
-		String replaceBr=mapper.content(gvo).getContent();
-		String resultBr=replaceBr.replaceAll("\\n","<br>");
-
-		GongjiVo gvo2=mapper.content(gvo);
-		String content=gvo2.getContent().replaceAll("//n", "<br>");
-		gvo.setContent(resultBr);
-		
-		gvo2.setContent(content);
+		gvo=mapper.content(gvo);
+		String imsi=gvo.getContent().replace("\r\n", "<br>");
+		gvo.setContent(imsi);
 		
 		model.addAttribute("gvo",gvo);
-		model.addAttribute("gvo2",gvo2);
 		model.addAttribute("page", page);
 		
 		return "/gongji/content";
