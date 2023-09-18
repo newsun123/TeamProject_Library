@@ -116,7 +116,127 @@
 		pointer-event:none;
 		cursor:default;
 	}
+	#search{
+		padding:10px 20px;
+		border-radius:5px;
+		color:#fff;
+		margin-bottom:40px;
+		width:100px;
+		background:#93765a;
+	}
+	#searchCon{
+		width:630px;
+		position:relative;
+		right:0;
+		display:flex;
+		justify-content:space-between;
+		align-items:center;
+	}
+	#select{
+		display: inline-block;
+	    width: 148px;
+	    position: relative;
+	    height: 48px;
+	    border: 1px solid #e2e2e2;
+	    background-color: #fff;
+	}
+	#select .selected{
+		display: flex;
+	    justify-content: space-between;
+	    padding: 0;
+	    cursor: pointer;
+	}
+	#select .selected_value{
+		display: inline-block;
+	    font-size: 16px;
+	    width: calc(100% - 60px);
+	    line-height: 44px;
+	    text-align: left;
+	    margin-left: 18px;
+	}
+	#select .arrow{
+		width: 42px;
+   		background: url(/static/img/common/ic_arrow.png) no-repeat 50% 50%;
+	}
+	#select ul{
+	    width: 148px;
+	    border: 1px solid #d6dae6;
+	    position: absolute;
+	    left: -1px;
+	    z-index: 999;
+	    background: #fff;
+	    border-top: none;
+	    
+	    top: 47px;	
+	    display: none;
+	}
+	#select ul li{
+	    font-size: 16px;
+	    padding: 0 20px;
+	    line-height: 38px;
+	    height: 38px;
+	    border-bottom: 1px solid #eee;
+	    cursor:pointer;
+	}
+	#select ul li:last-child{
+		border:none;
+	}
+	#select ul li:hover{
+		display: block;
+		background-color:#ebeef7;
+	}
+	input.searchtext{
+		border-radius: 0!important;
+	    height: 48px!important;
+	    vertical-align: top!important;
+	    width: 500px;
+	}
 </style>
+<script>
+	window.onload=function(){
+		<c:if test="${type!=null}">
+		   <c:if test="${type=='title'}">
+		     <c:set var="aa" value="제목"/>
+		   </c:if>
+		   <c:if test="${type=='content'}">
+		     <c:set var="aa" value="내용"/>
+		   </c:if>
+			<c:if test="${type=='aa'}">
+				<c:set var="aa" value="전체"/>
+			</c:if>
+			document.getElementById("sv").innerText="${aa}";
+		</c:if>
+		 
+	}
+	var schk=0;
+	function selectView(){
+		
+		if(schk==0){
+			document.getElementById("type").style.display="block";
+			schk=1;
+		}else{
+			document.getElementById("type").style.display="none";
+			schk=0;
+		}
+	}
+	function inputWr(txt){
+ 
+		if(txt=="전체"){
+			document.getElementsByClassName("selected_value")[0].innerText="전체";
+			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			// aa로 value값을 줘서 impl
+		}
+		else if(txt=="제목"){
+			document.getElementsByClassName("selected_value")[0].innerText="제목";
+			document.getElementById("seltype").value="title";
+		}else if(txt=="내용"){
+			document.getElementsByClassName("selected_value")[0].innerText="내용";
+			document.getElementById("seltype").value="content";
+		}
+		document.getElementById("type").style.display="none";
+		schk=0;
+	}
+</script>
 </head>
 <body>
 	<div id="secWrap">
@@ -136,6 +256,23 @@
 				</div>
 				<div id="contents">
 					<div id="inquiryWrap">
+					<form name="iform" method="post" action="list">
+							<input type="hidden" value="${type}" name="type" id="seltype">
+								<input type="hidden" value="${keyword}">
+								<div id="select">
+									<div class="selected" onclick="selectView()">
+										<div class="selected_value" id="sv">전체</div>		
+										<div class="arrow"></div>
+									</div>
+									<ul id="type">
+										<li class="option" id="notype" onclick="inputWr('전체')">전체</li>
+										<li class="option" id="title" onclick="inputWr('제목')">제목</li>
+										<li class="option" id="content" onclick="inputWr('내용')">내용</li>
+									</ul>
+								</div>
+								<input type="text" class="searchtext" name="keyword" maxlength="100" placeholder="검색어 입력" value="${keyword}">
+								<input type="submit" id="search" class="searchtext" value="검색">
+						</form>
 						<table>
 							<tr>
 								<td width="725">제목</td>
@@ -143,6 +280,12 @@
 								<td width="160">등록일</td>
 								<td width="110">조회수</td>
 							</tr>
+						<c:if test="${empty ilist}">
+								<tr>
+									<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+								</tr>
+							</c:if>
+							<c:if test="${! empty ilist}">
 						<c:if test="${ilist.size()==0}"> <!-- size할때는 괄호해야됌 -->
 							<tr>
 								<td colspan="5" class="no">※ 문의사항이 없습니다.</td>
@@ -157,7 +300,8 @@
 								<td>${ivo.writeday}</td>  
 								<td>${ivo.readnum}</td>  
 							</tr>
-						</c:forEach>							
+						</c:forEach>
+						</c:if>							
 						</table>
 						<div id="btWrap">
 							<div id=pageCon>

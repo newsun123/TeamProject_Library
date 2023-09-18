@@ -23,7 +23,7 @@ public class GongjiServiceImpl implements GongjiService {
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("title");
-		System.out.println(type+" : "+keyword);
+		//System.out.println(type+" : "+keyword);
 		int page = 1;
 		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
 			page = 1;

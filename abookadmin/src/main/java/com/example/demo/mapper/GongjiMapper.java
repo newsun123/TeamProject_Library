@@ -9,7 +9,8 @@ import com.example.demo.vo.GongjiVo;
 
 @Mapper
 public interface GongjiMapper {
-	public ArrayList<GongjiVo> list(@Param("start") int start);
+	public ArrayList<GongjiVo> list(String type,String keyword,int start);
+	public ArrayList<GongjiVo> list2(String keyword,int start);
 	public void writeOk(GongjiVo gvo);
 	public GongjiVo content(GongjiVo gvo);
 	public void delete(GongjiVo gvo);

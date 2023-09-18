@@ -12,7 +12,8 @@ import com.example.demo.vo.MtmVo;
 public interface InquiryMapper {
 
 	public int getChong();
-	public ArrayList<InquiryVo> list(@Param("start") int start);
+	public ArrayList<InquiryVo> list(String type,String keyword,int start);
+	public ArrayList<InquiryVo> list2(String keyword,int start);
 	public void setRownum(int start);
 	public InquiryVo content(int no);
 	public void writeOk(MtmVo mvo);

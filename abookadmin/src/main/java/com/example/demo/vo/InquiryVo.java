@@ -6,4 +6,5 @@ import lombok.Data;
 public class InquiryVo {
 	private int no,readnum,grp,seq,rnum,state;
 	private String title,content,userid,writeday,name;
+	private String type,keyword;
 }
