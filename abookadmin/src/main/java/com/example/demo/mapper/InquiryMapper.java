@@ -20,4 +20,7 @@ public interface InquiryMapper {
 	public MtmVo getAnswer(int no);
 	public void chgState(MtmVo mvo);
 	public void updateOk(MtmVo mvo);
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
+	
 }

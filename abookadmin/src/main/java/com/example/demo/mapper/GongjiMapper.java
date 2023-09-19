@@ -18,4 +18,6 @@ public interface GongjiMapper {
 	public void updateOk(GongjiVo gvo);
 	public int getChong();
 	public void readnum(String id);
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
 }

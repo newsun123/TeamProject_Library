@@ -25,8 +25,8 @@ public class BookregiController {
 	}
 	
 	@RequestMapping("/bookregi/list")
-	public String list(Model model,BookregiVo bvo,HttpServletRequest request){
-		return service.list(model,bvo,request);
+	public String list(Model model,HttpServletRequest request){
+		return service.list(model,request);
 	}
 	
 	@RequestMapping("/bookregi/write")

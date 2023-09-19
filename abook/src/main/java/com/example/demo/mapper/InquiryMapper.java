@@ -24,4 +24,6 @@ public interface InquiryMapper {
 	public MtmVo getAnswer(String no);
 	public InquiryVo getState(int state,int no);
 	public MtmVo getMtm(MtmVo mvo);
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
 }

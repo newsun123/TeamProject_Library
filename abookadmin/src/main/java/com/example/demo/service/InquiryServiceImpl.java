@@ -40,16 +40,18 @@ public class InquiryServiceImpl implements InquiryService{
 		
 		int pend=pstart +9;
 		
-		int chong=mapper.getChong();
 		
-		if(pend > chong)
-			pend=chong;
+		
+		
 		// 번호매기기
 		// mapper.setRownum(start);
-			
+		int chong;
 		if(keyword==null || keyword.length()==0) {
 			type="title";
 			keyword="";
+			
+			chong=mapper.getChong();
+			
 			model.addAttribute("type","aa");
 			model.addAttribute("glist",mapper.list(type,keyword,start));
 			model.addAttribute("pstart",pstart);
@@ -58,7 +60,7 @@ public class InquiryServiceImpl implements InquiryService{
 			model.addAttribute("chong",chong);
 		}
 		else {
-			model.addAttribute("chong", chong);
+			
 			model.addAttribute("pstart", pstart);
 			model.addAttribute("pend", pend);
 			model.addAttribute("page", page);
@@ -67,17 +69,32 @@ public class InquiryServiceImpl implements InquiryService{
 			model.addAttribute("start",start);
 		}
 		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
-		{
+		{	
+			chong=mapper.getChong3(keyword);
+			model.addAttribute("chong",chong);
 			model.addAttribute("ilist",mapper.list2(keyword, start));
 		}
-		else
-			model.addAttribute("ilist",mapper.list(type,keyword,start));		
+		else {
+			chong=mapper.getChong2(type,keyword);
+			model.addAttribute("chong",chong);
+			model.addAttribute("ilist",mapper.list(type,keyword,start));	
+		}
+		
+		if(pend > chong)
+			pend=chong;
+		model.addAttribute("pend", pend);
 		return "/inquiry/list";
 			
 	}
 
 	@Override
 	public String content(HttpServletRequest req, Model model) {
+		
+		String keyword=req.getParameter("keyword");
+		model.addAttribute("keyword",keyword);
+		String type=req.getParameter("type");
+		model.addAttribute("type",type);
+		
 		// inquiry no == mtm inno
 		int no=Integer.parseInt(req.getParameter("no")); 
 		String page=req.getParameter("page");
@@ -93,6 +110,8 @@ public class InquiryServiceImpl implements InquiryService{
 		// mvo 값을 모델로 전해줄려면 mapper 에 select 해줘야한다!
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
+		
+		
 		return "/inquiry/content";
 	}
 

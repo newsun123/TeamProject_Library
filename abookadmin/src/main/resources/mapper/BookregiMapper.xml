@@ -13,6 +13,19 @@
 	<select id="getChong" resultType="int">
 		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
 	</select>
+	<select id="getChong2" resultType="int">
+		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
+		where ${type} like concat('%',"${keyword}",'%')
+		group by substr(bcode,1,4)
+	</select>
+	<select id="getChong3" resultType="int">
+		select ceil( count( distinct left(bcode,4) )/10 ) from bookregi
+		where title like concat('%',"${keyword}",'%') 
+		or writer like concat('%',"${keyword}",'%')
+		or publi like concat('%',"${keyword}",'%')  
+		group by substr(bcode,1,4)
+	</select>
+	
 	<select id="list" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi where ${type} like concat('%',"${keyword}",'%')
 		 group by substr(bcode,1,4) order by no desc limit #{start},10;

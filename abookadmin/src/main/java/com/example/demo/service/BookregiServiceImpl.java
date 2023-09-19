@@ -26,11 +26,12 @@ public class BookregiServiceImpl implements BookregiService{
 	private BookregiMapper mapper;
 	
 	@Override
-	public String list(Model model,BookregiVo bvo,HttpServletRequest request){
+	public String list(Model model,HttpServletRequest request){
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
 
 		String state=request.getParameter("state");
+		
 		int page;
 		if(request.getParameter("page") == null)
 			page=1;
@@ -42,55 +43,63 @@ public class BookregiServiceImpl implements BookregiService{
 		int pstart=page/10;
 		if(page%10 == 0)
 			pstart--;
+		
 		pstart=pstart*10+1;
 		
 		int pend=pstart+9;
-		
-		int chong=mapper.getChong();
-		//System.out.println(chong);
-		if(pend > chong)
-			pend=chong;
-		
-		//System.out.println(pend);
-		
-		if(keyword==null || keyword.length()==0)
-		{
-			type="title";
-			keyword="";
-			model.addAttribute("type","aa");
-		    model.addAttribute("blist",mapper.list(type,keyword,start));
-		    model.addAttribute("state",state);
-			model.addAttribute("start",start);
-			model.addAttribute("page",page);
-			model.addAttribute("pstart",pstart);
-			model.addAttribute("pend",pend);
-			model.addAttribute("type",type);
-			model.addAttribute("keyword",keyword);
-			model.addAttribute("chong",chong);
-		} 
-		else
-		{
-			model.addAttribute("state",state);
-			model.addAttribute("start",start);
-			model.addAttribute("page",page);
-			model.addAttribute("pstart",pstart);
-			model.addAttribute("pend",pend);
-			model.addAttribute("type",type);
-			model.addAttribute("keyword",keyword);
-			model.addAttribute("chong",chong);
-			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+
+		Integer chong;
+		if (keyword == null || keyword.length() == 0) {
+			
+			type = "title";
+			keyword = "";
+
+			chong = mapper.getChong();
+
+			model.addAttribute("type", "aa");
+			model.addAttribute("blist", mapper.list(type, keyword, start));
+			model.addAttribute("state", state);
+			model.addAttribute("start", start);
+			model.addAttribute("page", page);
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("chong", chong);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+		} else {
+			model.addAttribute("state", state);
+			model.addAttribute("start", start);
+			model.addAttribute("page", page);
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+
+			if (type.equals("aa")) // aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
-				System.out.println("list2");
-			    model.addAttribute("blist",mapper.list2(keyword,start));
-			}
-			else
-			{
-				System.out.println("list");
-			  model.addAttribute("blist",mapper.list(type,keyword,start));
+				chong = mapper.getChong3(keyword);
+				System.out.println(keyword+": list2");
+				if(chong==null)  // chong 값이 null 뜨는경우(검색결과가 없는 keyword)를 위해 Integer로 변경하고 null값일시 0을 준다.
+					chong=0;		
+				
+				model.addAttribute("chong", chong);
+				ArrayList<BookregiVo> blist =mapper.list2(keyword, start); 
+				model.addAttribute("blist", blist);
+			} else {
+				chong = mapper.getChong2(type,keyword);
+				System.out.println(keyword+": list");
+				if(chong==null)  // chong 값이 null 뜨는경우(검색결과가 없는 keyword)를 위해 Integer로 변경하고 null값일시 0을 준다.
+					chong=0;
+				
+				model.addAttribute("chong",chong);
+				ArrayList<BookregiVo> blist = mapper.list(type, keyword, pstart);
+				model.addAttribute("blist", blist);
 			}
 		}
 		
-		
+		if(pend > chong)
+			pend=chong;
+		model.addAttribute("pend",pend);
 		return "/bookregi/list";
 	}
 	
@@ -185,6 +194,11 @@ public class BookregiServiceImpl implements BookregiService{
 		bcode=bcode.substring(0,4);
 		model.addAttribute("page",page);
 		model.addAttribute("mapall",mapper.content(bcode));
+		
+		String keyword=request.getParameter("keyword");
+		String type = request.getParameter("type");
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("type",type);
 		
 		return "/bookregi/content";
 	}
