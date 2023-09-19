@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 	#gongjiWrap{
-		padding-bottom: 30px;
+		padding-bottom: 60px;
 	}
 	form{
 		width: 100%;

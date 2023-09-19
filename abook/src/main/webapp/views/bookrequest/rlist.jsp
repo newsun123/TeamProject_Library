@@ -169,6 +169,11 @@
 	    height: 100%;
 	    text-align: left;
 	}
+	table tr td.no{
+		color: #666;
+    	font-size: 14px;
+    	text-align: center;
+	}
 </style>
 <script>
 	window.onload=function(){
@@ -279,7 +284,7 @@
 							</tr>	
 							<c:if test="${empty rlist}">
 								<tr>
-									<td colspan="5" align="center">※ 일치하는 검색 기록이 없습니다.</td>
+									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
 								</tr>
 							</c:if>
 							<c:if test="${! empty rlist}">
