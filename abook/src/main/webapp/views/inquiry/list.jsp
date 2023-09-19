@@ -55,24 +55,18 @@
 	    font-size: 15px;
 	    text-align: center;
 	}
-	table img{
-	    width: 21px;
-	}
 	table tr td.no{
 		color: #666;
     	font-size: 14px;
     	text-align: center;
 	}
-	.ta{
-		width: 670px;
-	    box-sizing: border-box;
-	    height: 100%;
-	    line-height: 60px;
-	    text-align: left;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+	.el{
+		text-overflow: ellipsis;
 	    white-space: nowrap;
-	    padding-left: 30px;
+	    overflow: hidden;
+	    width: 591px;
+	    height: 100%;
+	    text-align: left;
 	}
 	/*page버튼처리*/
 	#btWrap{
@@ -284,58 +278,65 @@
 						</div>		
 						<table>
 							<tr>
-								<td width="100"> 번호 </td>
-								<td width="670">제목</td>
-								<td width="180">작성자</td>
-								<td width="190">등록일</td>
+								<td width="100">번호</td>
+								<td width="49"></td>
+								<td>제목</td>
+								<td width="150">작성자</td>
+								<td width="150">등록일</td>
 								<td width="130">상태처리</td>
 							</tr>	
 						<c:if test="${empty ilist}">
-								<tr>
-									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
-								</tr>
-							</c:if>
-							<c:if test="${! empty ilist}">					
+							<tr>
+								<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:if test="${! empty ilist}">					
 						<c:forEach items="${ilist}" var="ivo" varStatus="sts">
 							<tr> 		
-							<td> ${sts.count+((page-1)*10)} </td>	
+								<td>${sts.count+((page-1)*10)}</td>	
 								<td>
-									<div class="ta"> <!-- 공개글 , 비공개글 처리  -->
+							<c:if test="${ivo.gonge==0}">
+									&nbsp;
+							</c:if>
+							<c:if test="${ivo.gonge==1}">
+									<img src="/static/img/bookrequest/lock.png" id="rimg">
+							</c:if>
+								</td>
+								<td>
+									 <!-- 공개글 , 비공개글 처리  -->
 									<!-- <a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> -->
 									<!-- 유저아이디는 다른데 비공개글일경우 -->	
 									<c:if test="${userid != ivo.userid && ivo.gonge == 1 && userid != null}">
-										<div class=""><a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">
+										<div class="el"><a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">
 										${ivo.title}</a></div>
 									</c:if>
 									<!-- 유저아이디는 다른데 공개글일경우 -->
 									<c:if test="${userid != ivo.userid && ivo.gonge == 0 && userid != null}">
-										<div class=""><a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">
+										<div class="el"><a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">
 										${ivo.title}</a></div>
 									</c:if>
 									
 									<!-- 유저아이디가 같을경우 공개글 -->	
 									<c:if test="${userid == ivo.userid && ivo.gonge == 0}">
-										<div class="">
+										<div class="el">
 										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
 									</c:if>
 									<!-- 유저아이디가 같을경우 비공개글 -->	
 									<c:if test="${userid == ivo.userid && ivo.gonge == 1}">
-										<div class="">
+										<div class="el">
 										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
 									</c:if>
 									<!-- 로그인 안했을경우 비공개글 -->
 									<c:if test="${userid == null && ivo.gonge == 1}">
-										<div class="">
+										<div class="el">
 										 <a href="/member/login?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}"
 										 onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${ivo.title}</a></div>
 									</c:if>
 									<!-- 로그인 안했을경우 공개글 -->
 									<c:if test="${userid == null && ivo.gonge == 0}">
-										<div class="">
+										<div class="el">
 										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
-									</c:if>
-									
-									</div> 
+									</c:if> 
 								</td>
 								<td>${ivo.userid}</td>	
 								<td>${ivo.writeday}</td>  

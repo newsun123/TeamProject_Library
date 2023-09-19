@@ -68,6 +68,17 @@
 	    text-overflow: ellipsis;
 	    white-space: nowrap;
 	}
+	.tt_l{
+		width: 725px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
 </style>
 </head>
 <body>
@@ -113,7 +124,7 @@
 							<tr>
 								<td>제목</td>
 								<td width="180">등록일</td>
-								<td width="180">조회수</td>
+								<td width="100">조회수</td>
 								<td width="180">답변 상태</td>
 							</tr>
 							<c:if test="${ilist.size()==0}">
@@ -124,7 +135,7 @@
 							<c:if test="${ilist.size()!=0}">
 							<c:forEach items="${ilist}" var="ivo">
 							<tr>
-								<td><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></td>
+								<td><div class="tt_l"><a href="/inquiry/content?no=${ivo.no}&mchk=1">${ivo.title}</a></div></td>
 								<td>${ivo.writeday }</td>
 								<td>${ivo.readnum}</td>
 								<td>
@@ -168,9 +179,9 @@
 						<h4>좌석예약이력</h4>
 						<table id="table4">
 							<tr>
-								<td width="300">예약좌석</td>
+								<td width="180">예약좌석</td>
 								<td>예약시간</td>
-								<td width="300">예약일</td>
+								<td width="180">예약일</td>
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<td colspan="3" class="no">※ 예약이력이 없습니다.</td>

@@ -137,10 +137,11 @@
 		text-align: center;
 	}	
 	table tr {
-		height: 55px;
+		height: 60px;
 	}	
 	table tr:first-child {
 		background: #f8f8fa;
+		height: 55px;
 	}	
 	table tr td {
 		border-bottom: 1px solid #e4e4e4;
@@ -275,7 +276,7 @@
 							</form>
 						<table>
 							<tr>
-								<td width="100"> 번호 </td>
+								<td width="100">번호</td>
 								<td width="49"></td>
 								<td width="591"> 도서명 </td>
 								<td width="150"> 신청자 </td>
