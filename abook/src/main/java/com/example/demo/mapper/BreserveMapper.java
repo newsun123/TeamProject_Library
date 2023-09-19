@@ -22,4 +22,6 @@ public interface BreserveMapper {
 	public void addjjim(String userid,String bcode);
 	public void deljjim(String userid,String bcode);
 	public boolean jjimCheck(String userid,String bcode);
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
 }
