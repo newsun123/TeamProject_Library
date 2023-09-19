@@ -131,9 +131,22 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="p3">${ivo.content}</td>	
+								<td class="p3"> 
+									${ivo.content}
+								</td>	
 							</tr>
-						 </table>
+							<tr>
+								<c:choose>
+								    <c:when test="${not empty mvo.content}">
+								            <td> 답변 </td>
+								            <td class="tl" id="cont">${mvo.content}</td>
+								    </c:when>
+								    <c:otherwise>
+											<!-- 답변에 대한 값이 없다면 , 아무것도 뜨지 않음  -->
+								    </c:otherwise>
+								</c:choose>
+							</tr>
+						 </table>	
 						<div id="btn"> 		
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 								<a href="update?no=${ivo.no}&page=${page}" id="update">수정하기</a>

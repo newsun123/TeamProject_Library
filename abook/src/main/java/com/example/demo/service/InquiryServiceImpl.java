@@ -22,15 +22,13 @@ public class InquiryServiceImpl implements InquiryService {
 	private InquiryMapper mapper;
 
 	@Override
-	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss) {
-		
+	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss,MtmVo mvo) {
 
 		String gonge=req.getParameter("gonge");
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("req");
 
-		
 		int page=1;
 		if(req.getParameter("page") ==null)
 			page =1;
@@ -50,8 +48,10 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		if(pend > chong)
 			pend=chong;
+		mvo=mapper.getMtm(mvo);
 		
 		// String userid=ss.getAttribute("userid").toString();
+		model.addAttribute("mvo",mvo);
 		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
@@ -60,7 +60,6 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		// model.addAttribute("userid",userid);
 
-		
 		if(keyword==null || keyword.length()==0) {
 			type="title";
 			keyword="";

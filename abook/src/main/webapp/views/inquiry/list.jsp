@@ -284,6 +284,7 @@
 						</div>		
 						<table>
 							<tr>
+								<td width="100"> 번호 </td>
 								<td width="670">제목</td>
 								<td width="180">작성자</td>
 								<td width="190">등록일</td>
@@ -295,8 +296,9 @@
 								</tr>
 							</c:if>
 							<c:if test="${! empty ilist}">					
-						<c:forEach items="${ilist}" var="ivo">
-							<tr> 
+						<c:forEach items="${ilist}" var="ivo" varStatus="sts">
+							<tr> 		
+							<td> ${sts.count+((page-1)*10)} </td>	
 								<td>
 									<div class="ta"> <!-- 공개글 , 비공개글 처리  -->
 									<!-- <a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> -->
