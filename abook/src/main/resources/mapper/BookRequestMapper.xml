@@ -19,6 +19,16 @@
 	<select id="getChong" resultType="int">
 		select ceil(count(*)/10) from bookrequest
 	</select>
+	<select id="getChong2" resultType="int">
+		select ceil(count(*)/10) from bookrequest
+		where ${type} like concat('%',"${keyword}",'%')
+	</select>
+	<select id="getChong3" resultType="int">
+		select ceil(count(*)/10) from bookrequest
+		where title like concat('%',"${keyword}",'%') 
+		or writer like concat('%',"${keyword}",'%') or
+		publi like concat('%',"${keyword}",'%')
+	</select>
  	<select id="search" resultType="com.example.demo.vo.BookRequestVo">
 		select * from bookrequest where ${type} like concat('%',"${keyword}",'%') order by no desc limit #{start},10
 	</select> 

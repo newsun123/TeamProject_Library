@@ -102,19 +102,20 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    	
 	    	if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
-				chong = mapper.getChong3();
+				chong = mapper.getChong3(keyword);
 				model.addAttribute("chong",chong);
 			    model.addAttribute("rlist",mapper.list2(keyword,start));
 			}
 			else
 			{
-				chong = mapper.getChong2();
+				chong = mapper.getChong2(type,keyword);
 				model.addAttribute("chong",chong);
 				model.addAttribute("rlist",mapper.search(type,keyword,start));
 			}
 	    }
 	    if (pend>chong)
 	        pend=chong;
+	    model.addAttribute("pend", pend);
 	    return "bookrequest/rlist";
 	}
 
