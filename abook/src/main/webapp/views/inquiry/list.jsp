@@ -298,8 +298,8 @@
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td>
-									<div class="ta"> <!-- 공개글 , 비공개글 처리  -->
-									<!-- <a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> -->
+									<div class="ta"> 
+									<!-- 공개글 , 비공개글 처리  -->
 									<!-- 유저아이디는 다른데 비공개글일경우 -->	
 									<c:if test="${userid != ivo.userid && ivo.gonge == 1 && userid != null}">
 										<div class=""><a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">
