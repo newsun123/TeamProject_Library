@@ -113,21 +113,27 @@ public class BookRequestServiceImpl implements BookRequestService {
 		String gonge=request.getParameter("gonge");
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
+		
 		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
 			model.addAttribute("type",type);
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("page",page);
-			model.addAttribute("brvo",mapper.rcontent(brvo));
+			brvo=mapper.rcontent(brvo);
+			brvo.setEct( brvo.getEct().replace("\r\n","<br>") );
+			model.addAttribute("brvo",brvo);
 			return "/bookrequest/rcontent";
 		}
 		
 		String userid=session.getAttribute("userid").toString();
 		brvo.setGonge(brvo.getGonge());
+		
 		model.addAttribute("type",type);
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("userid",userid);
-		model.addAttribute("brvo",mapper.rcontent(brvo));
+		brvo=mapper.rcontent(brvo);
+		brvo.setEct( brvo.getEct().replace("\r\n","<br>") );
+		model.addAttribute("brvo",brvo);
 		
 		return "/bookrequest/rcontent";
 	}
