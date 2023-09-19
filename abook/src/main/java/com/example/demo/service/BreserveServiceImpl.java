@@ -59,7 +59,7 @@ public class BreserveServiceImpl implements BreserveService {
 		} 
 		model.addAttribute("num", num); // num값 보내야댐
 		
-		int chong;
+		Integer chong;
 		
 		if(keyword==null || keyword.length()==0)
 		{
@@ -68,7 +68,8 @@ public class BreserveServiceImpl implements BreserveService {
 			keyword="";
 			
            chong=mapper.getChong();
-
+           if(chong==null)
+        	   chong=0;
 			model.addAttribute("page",page);
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
@@ -93,7 +94,8 @@ public class BreserveServiceImpl implements BreserveService {
 				 System.out.println("hh");
 				
 				chong=mapper.getChong3(keyword);
-				
+				if(chong==null)
+					chong=0;
 				model.addAttribute("chong",chong);
 				model.addAttribute("blist", mapper.list2(keyword, start, str));
 			} else {
