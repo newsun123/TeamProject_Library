@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.mapper.InquiryMapper;
 import com.example.demo.vo.InquiryVo;
@@ -137,11 +138,12 @@ public class InquiryServiceImpl implements InquiryService {
 		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		model.addAttribute("mvo",mvo);
 		
-		String type= req.getParameter("type");
-		model.addAttribute("type",type);
-		String keyword = req.getParameter("keyword");
-		System.out.println(keyword);
-		model.addAttribute("keyword",keyword);
+		// rttr로 보냈으므로 굳이 다시 값을 받아서 모델로 보낼 필요가 없음.
+//		String type= req.getParameter("type");
+//		model.addAttribute("type",type);
+//		String keyword = req.getParameter("keyword");
+//		System.out.println(keyword);
+//		model.addAttribute("keyword",keyword);
 		
 		return "/inquiry/content";
 	}
@@ -185,16 +187,16 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String readnum(HttpServletRequest req,Model model) {
+	public String readnum(HttpServletRequest req,Model model,RedirectAttributes rttr) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		mapper.readnum(no);
 		model.addAttribute("no",no);
 		String keyword = req.getParameter("keyword");
-		model.addAttribute("keyword",keyword);
+		rttr.addFlashAttribute("keyword", keyword);
 		String type = req.getParameter("type");
-		model.addAttribute("type",type);
-		return "redirect:/inquiry/content?no="+no+"&page="+page+"&type="+type;
+		rttr.addFlashAttribute("type", type); // 리다이렉트 시에 rttr 사용해서 값 보내기
+		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 }
