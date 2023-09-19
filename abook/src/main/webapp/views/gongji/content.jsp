@@ -83,7 +83,7 @@
 				</div>
 				<div id="contents">
 					<div id="gongjiWrap">	
-						<a href="list?page=${page}" class="dis">목록으로</a>
+						<a href="list?page=${page}&type=${type}&keyword=${keyword}" class="dis">목록으로</a>
 						<table>
 							<tr>
 								<td>${gvo.title}</td>

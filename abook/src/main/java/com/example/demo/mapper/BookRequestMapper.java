@@ -19,4 +19,6 @@ public interface BookRequestMapper {
 	public void delete(BookRequestVo brvo);
 	public ArrayList<BookRequestVo> search(String type,String keyword,int start);
 	public ArrayList<BookRequestVo> list2(String keyword,int start);
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
 }
