@@ -19,8 +19,8 @@
   </select>
   
   <insert id="writeOk">
-  	insert into inquiry(title,content,userid,writeday)
-  	values(#{title},#{content},#{userid},now())
+  	insert into inquiry(title,content,userid,gonge,writeday)
+  	values(#{title},#{content},#{userid},#{gonge},now())
   </insert>
   
   <update id="readnum">
