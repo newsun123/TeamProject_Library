@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>s
+<style>
 	form{
 		width: 100%;
 	    display: block;

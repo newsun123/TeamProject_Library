@@ -80,6 +80,25 @@
 	    display: inline-block;
 	    font-size: 14px;
 	}
+	#table2{
+		margin-top: 50px;
+	}
+	table#table2 tr:first-child td{
+		text-align: left;
+		padding-left: 30px;
+		color:#333;
+	}
+	.answrite{
+		margin-left: 15px;
+		color:#555;
+	}
+	table#table2 tr:nth-child(2){
+		height: 250px;
+	}
+	#table2 .p3{
+		width: 1170px;
+    	height: 250px;
+	}
 </style>
 <script>
 	function checkcDel() {
@@ -113,7 +132,7 @@
 							<a href="/mypage/myinquiry" class="dis">목록으로</a>
 						</c:if>
 						<c:if test="${mchk!=1}">
-							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록으로</a>
+							<a href="list?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}" class="dis">목록으로</a>
 						</c:if>			
 						<table> 
 							<tr>
@@ -135,19 +154,23 @@
 									${ivo.content}
 								</td>	
 							</tr>
-							<tr>
-								<c:choose>
-								    <c:when test="${not empty mvo.content}">
-								            <td> 답변 </td>
-								            <td class="tl" id="cont">${mvo.content}</td>
-								    </c:when>
-								    <c:otherwise>
-											<!-- 답변에 대한 값이 없다면 , 아무것도 뜨지 않음  -->
-								    </c:otherwise>
-								</c:choose>
-							</tr>
 						 </table>	
-						<div id="btn"> 		
+						 <c:choose>
+					     <c:when test="${not empty mvo.content}">
+					     	<table id="table2">
+					     		<tr>
+					     			<td>답변일<span class="answrite">${mvo.writeday}</span></td>
+					     		</tr>
+					     		<tr>
+					     			<td><div class="p3">${mvo.content}</div></td>
+					     		</tr>
+					     	</table>
+					     </c:when>
+					     <c:otherwise>
+								<!-- 답변에 대한 값이 없다면 , 아무것도 뜨지 않음  -->
+					     </c:otherwise>
+						 </c:choose>
+						 <div id="btn"> 		
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 								<a href="update?no=${ivo.no}&page=${page}" id="update">수정하기</a>
 							</c:if>
