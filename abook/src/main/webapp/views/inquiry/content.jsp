@@ -123,7 +123,7 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>문의사항</h3>
+					<h3>문의사항${keyword}</h3>
 					<p>열린공간&nbsp;&nbsp;>&nbsp;&nbsp;문의사항</p>
 				</div>
 				<div id="contents">

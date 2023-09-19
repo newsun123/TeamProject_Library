@@ -34,9 +34,9 @@ public class GongjiController {
 	}
 	
 	@RequestMapping("/gongji/readnum")
-	public String readnum(HttpServletRequest req)
+	public String readnum(HttpServletRequest req,Model model)
 	{
-		return service.readnum(req);
+		return service.readnum(req,model);
 	}
 	@RequestMapping("/gongji/content")
 	public String content(GongjiVo gvo, Model model, HttpServletRequest request) {

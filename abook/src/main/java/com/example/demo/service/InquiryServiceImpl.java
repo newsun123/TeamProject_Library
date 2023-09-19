@@ -44,46 +44,54 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		int pend=pstart +9;
 		
-		int chong=mapper.getChong();
-		
-		if(pend > chong)
-			pend=chong;
 		mvo=mapper.getMtm(mvo);
 		
 		// String userid=ss.getAttribute("userid").toString();
 		model.addAttribute("mvo",mvo);
-		model.addAttribute("chong", chong);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		model.addAttribute("gonge",gonge);
 		
 		// model.addAttribute("userid",userid);
-
-		if(keyword==null || keyword.length()==0) {
-			type="title";
-			keyword="";
-			model.addAttribute("type","aa");
-			model.addAttribute("glist",mapper.list(type,keyword,start));
-			model.addAttribute("pstart",pstart);
-			model.addAttribute("pend",pend);
-			model.addAttribute("page", page);
-			model.addAttribute("chong",chong);
-		}
-		else {
-			model.addAttribute("chong", chong);
+		int chong;
+		if (keyword == null || keyword.length() == 0) {
+			
+			type = "title";
+			keyword = "";
+			
+			chong=mapper.getChong();
+			
+			model.addAttribute("type", "aa");
 			model.addAttribute("pstart", pstart);
 			model.addAttribute("pend", pend);
 			model.addAttribute("page", page);
-			model.addAttribute("type",type);
-			model.addAttribute("keyword",keyword);
-			model.addAttribute("start",start);
+			model.addAttribute("chong", chong);
+			model.addAttribute("glist", mapper.list(type, keyword, start));
+			
+		} else {
+			
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("page", page);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("start", start);
 		}
-		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
-			model.addAttribute("ilist",mapper.list2(keyword, start));
-		else
-			model.addAttribute("ilist",mapper.list(type,keyword,start));
 		
+		if (type.equals("aa")) { // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
+			chong = mapper.getChong3(keyword);
+			model.addAttribute("chong",chong);
+			model.addAttribute("ilist", mapper.list2(keyword, start));
+		} else {
+			chong = mapper.getChong2(type,keyword);
+			model.addAttribute("chong",chong);
+			model.addAttribute("ilist", mapper.list(type, keyword, start));
+		}
+		
+		if(pend > chong)
+			pend=chong;
+		model.addAttribute("pend", pend);
 		return "/inquiry/list";
 	}
 
@@ -115,8 +123,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		model.addAttribute("page",page);
-//		String userid=ss.getAttribute("userid").toString();
-//		model.addAttribute("userid",userid);
+
 		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
 		model.addAttribute("mchk",mchk);
 
@@ -129,6 +136,12 @@ public class InquiryServiceImpl implements InquiryService {
 		MtmVo mvo=mapper.getAnswer(no);
 		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		model.addAttribute("mvo",mvo);
+		
+		String type= req.getParameter("type");
+		model.addAttribute("type",type);
+		String keyword = req.getParameter("keyword");
+		System.out.println(keyword);
+		model.addAttribute("keyword",keyword);
 		
 		return "/inquiry/content";
 	}
@@ -178,7 +191,10 @@ public class InquiryServiceImpl implements InquiryService {
 		String page=req.getParameter("page");
 		mapper.readnum(no);
 		model.addAttribute("no",no);
-		
-		return "redirect:/inquiry/content?no="+no+"&page="+page;
+		String keyword = req.getParameter("keyword");
+		model.addAttribute("keyword",keyword);
+		String type = req.getParameter("type");
+		model.addAttribute("type",type);
+		return "redirect:/inquiry/content?no="+no+"&page="+page+"&type="+type;
 	}
 }

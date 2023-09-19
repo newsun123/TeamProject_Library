@@ -11,7 +11,7 @@ public interface GongjiService {
 	public String list(Model model,HttpServletRequest request,GongjiVo gvo);
 	public String write();
 	public String writeOk(GongjiVo gvo);
-	public String readnum(HttpServletRequest req);
+	public String readnum(HttpServletRequest req,Model model);
 	public String content(GongjiVo gvo,Model model,HttpServletRequest request);
 	public String delete(GongjiVo gvo,HttpServletRequest request);
 	public String update(GongjiVo gvo,Model model,HttpServletRequest request);

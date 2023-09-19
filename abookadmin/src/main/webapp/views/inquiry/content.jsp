@@ -166,7 +166,7 @@
 							</tr>
 						 </table>
 						 <div id="btn">
-							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록</a>
+							<a href="list?no=${ivo.no}&page=${page}&keyword=${keyword}&type=${type}" class="dis">목록</a>
 							<c:if test="${mvo.content==null}">
 								<input type="submit" value="답변등록" class="a">
 							</c:if>
