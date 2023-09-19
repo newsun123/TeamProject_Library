@@ -75,6 +75,22 @@
 		background: #e0e3e6;
 	    color: #6e7277;
 	}
+	.cnlbtn{
+		background: #e0e3e6;
+	    color: #6e7277;
+	}
+	.tar{
+		width: 801px;
+    	height: 268px;
+	}
+	.fform{
+		position: relative;
+	}
+	.subtnWrap{
+		position: absolute;
+	    bottom: 0;
+	    right: 0;
+	}
 </style>
 <script>
 	function upForm() {
@@ -122,23 +138,25 @@
 								<c:if test="${mvo.content!=null}" >
 									<span id="con">
 									${mvo.content} 
-									<input type="button" value=" 답변 수정" class="a" onclick="upForm()">
 									</span>
 									<span id="upForm" style="display:none;"> 
-										<form method="post" action="updateOk">
+										<form method="post" action="updateOk" class="fform">
 										<input type="hidden" name="no" value="${mvo.no}">
 										<input type="hidden" name="inno" value="${mvo.inno}">
-										<input type="hidden" name="page" value="${page}">										<textarea name="content">${mvo.content}</textarea>
-										<input type="submit" value="답변 수정" class="a">
-										<input type="button" value="수정 취소" class="a" onclick="cancelUp()">
+										<input type="hidden" name="page" value="${page}">
+										<textarea name="content" class="tar">${mvo.content}</textarea>
+										<div class="subtnWrap">
+											<input type="button" value="수정취소" class="a cnlbtn" onclick="cancelUp()">										
+											<input type="submit" value="답변수정" class="a">
+										</div>
 										</form>
 									</span>
 								</c:if>
 								<c:if test="${mvo.content==null}">
 									<form method="post" action="writeOk">
-									<input type="hidden" name="inno" value="${ivo.no}">
-									<input type="hidden" name="page" value="${page}">
-									<textarea name="content" placeholder="답변 입력"></textarea>
+										<input type="hidden" name="inno" value="${ivo.no}">
+										<input type="hidden" name="page" value="${page}">
+										<textarea name="content" placeholder="답변입력"></textarea>
 								</c:if>
 								</td>	
 							</tr>
@@ -147,13 +165,16 @@
 								<td class="tl">${ivo.writeday}</td>
 							</tr>
 						 </table>
-						<div id="btn">
-							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록 </a>
+						 <div id="btn">
+							<a href="list?no=${ivo.no}&page=${page}" class="dis">목록</a>
 							<c:if test="${mvo.content==null}">
-								<input type="submit" value="답변 등록" class="a">
-								</form>
+								<input type="submit" value="답변등록" class="a">
+							</c:if>
+							<c:if test="${mvo.content!=null}" >
+								<input type="button" value="답변수정" class="a" onclick="upForm()">
 							</c:if>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>		

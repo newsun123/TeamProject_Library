@@ -366,7 +366,7 @@
 	}
 	.cal_day{
 		color: #333;
-	    font-size: 20px;
+	    font-size: 25px;
 	    position: absolute;
 	    top: 56px;
 	    display: block;

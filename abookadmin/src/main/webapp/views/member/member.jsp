@@ -127,7 +127,7 @@
 							<c:if test="${mlist.size()!=0}">
 								<c:forEach items="${mlist}" var="mvo" varStatus="sts">
 								<tr>	
-									<td>${sts.index+1}</td>
+									<td>${sts.count+((page-1)*10)}</td>
 									<td>${mvo.userid}</td>
 									<td>${mvo.name}</td>
 									<td>${mvo.email1}@${mvo.email2}</td>
