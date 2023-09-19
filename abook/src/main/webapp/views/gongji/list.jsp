@@ -314,14 +314,14 @@
 						<c:if test="${!empty glist}">
 							<div id=pageCon>
 								<c:if test="${pstart!=1}">
-									<a href="list?page=${pstart-1}" class="btnPage"></a>
+									<a href="list?page=${pstart-1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage"></a>
 								</c:if>
 								<c:if test="${pstart==1}">
 									<a class="btnPage dis"></a>
 								</c:if>
 
 								<c:if test="${page!=1}">
-									<a href="list?page=${page-1}" class="btnPage prev"></a>
+									<a href="list?page=${page-1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage prev"></a>
 								</c:if>
 								<c:if test="${page==1}">
 									<a class="btnPage dis prev"></a>
@@ -329,23 +329,23 @@
 
 								<c:forEach begin="${pstart}" end="${pend}" var="i">
 									<c:if test="${page!=i}">
-										<a href="list?page=${i}">${i}</a>
+										<a href="list?page=${i}&type=${type}&keyword=${keyword}&start=${start}">${i}</a>
 									</c:if>
 									<c:if test="${page==i}">
-										<a href="list?page=${i}"
+										<a href="list?page=${i}&type=${type}&keyword=${keyword}&start=${start}"
 											style="background-color: #555; color: #fff">${i}</a>
 									</c:if>
 								</c:forEach>
 
 								<c:if test="${page!=chong}">
-									<a href="list?page=${page+1}" class="btnPage next"></a>
+									<a href="list?page=${page+1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage next"></a>
 								</c:if>
 								<c:if test="${page==chong}">
 									<a class="btnPage next dis"></a>
 								</c:if>
 
 								<c:if test="${pend!=chong}">
-									<a href="list?page=${pend+1}" class="btnPage last"></a>
+									<a href="list?page=${pend+1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage last"></a>
 								</c:if>
 								<c:if test="${pend==chong}">
 									<a class="btnPage last dis"></a>
@@ -353,7 +353,6 @@
 							</div>
 						</c:if>
 						<c:if test="${empty glist}">
-						
 						</c:if>
 						</div>
 					</div>
