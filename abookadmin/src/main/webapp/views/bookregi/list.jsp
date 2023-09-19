@@ -232,7 +232,7 @@
 	window.onload=function(){
 		<c:if test="${type!=null}">
 		   <c:if test="${type=='title'}">
-		     <c:set var="aa" value="도서명"/>
+		     <c:set var="aa" value="전체"/>
 		   </c:if>
 		   <c:if test="${type=='writer'}">
 		     <c:set var="aa" value="저자"/>

@@ -91,15 +91,16 @@ public class BreserveServiceImpl implements BreserveService {
 			if (type.equals("aa")) // aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
 				
-				 System.out.println("hh");
-				
 				chong=mapper.getChong3(keyword);
+				
+				
 				if(chong==null)
 					chong=0;
+				
 				model.addAttribute("chong",chong);
 				model.addAttribute("blist", mapper.list2(keyword, start, str));
 			} else {
-				System.out.println("gg");
+				
 				chong=mapper.getChong2(type,keyword);
 				model.addAttribute("chong",chong);
 				model.addAttribute("blist", mapper.list(type, keyword, start, str));
@@ -107,7 +108,7 @@ public class BreserveServiceImpl implements BreserveService {
 		}
 		if(pend > chong)
 			pend=chong;
-		
+		System.out.println(chong);
 		model.addAttribute("pend",pend);
 		
 		return "/breserve/list";
