@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,6 +118,7 @@
 						<form name="iform" method="post" id="form" action="updateOk">
 							<input type="hidden" name="no" value="${ivo.no}">
 							<input type="hidden" name="page">
+							<input type="hidden" name="checkgonge" value="${ivo.gonge}">
 							<table>
 								<tr>
 									<td>제목</td>
@@ -125,6 +127,18 @@
 								<tr>
 									<td>내용</td>
 									<td class="wh"><textarea name="content"> ${ivo.content}</textarea></td>
+								</tr>
+								<tr>
+									<td> 노출옵션 </td>
+									<td>
+									<span class="gong">※ 비공개글은 체크해주세요</span>
+									 <c:if test="${ivo.gonge == 1}">
+										<input type="checkbox" name="gonge" value="1" checked>
+									 </c:if>
+									 <c:if test="${ivo.gonge == 0}">
+										<input type="checkbox" name="gonge" value="1">
+									</c:if>
+									</td>
 								</tr>
 							</table>
 							<div id="btn">

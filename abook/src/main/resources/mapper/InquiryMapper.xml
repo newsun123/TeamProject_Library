@@ -9,7 +9,7 @@
   <select id="list2" resultType="com.example.demo.vo.InquiryVo">
    		select * from inquiry where title like concat('%',"${keyword}",'%') 
 		or content like concat('%',"${keyword}",'%')
-		 order by no desc limit #{start},10;
+		order by no desc limit #{start},10;
    </select>
   <select id="setRownum">
   	set @rownum=(select count(*) from inquiry )-${r} 
@@ -40,7 +40,7 @@
   </select>
   
   <update id="updateOk">
-  	update inquiry set title=#{title},content=#{content}
+  	update inquiry set title=#{title},content=#{content},gonge=#{gonge}
   	where no=#{no}
   </update>
   
@@ -50,5 +50,9 @@
   
    	<select id="getState" resultType="com.example.demo.vo.InquiryVo">
   		select * from inquiry where state=1 and no=#{no}
+  	</select>
+  	
+  	<select id="getMtm" resultType="com.example.demo.vo.MtmVo">
+  		select * from mtm where no=#{no}
   	</select>
 </mapper>

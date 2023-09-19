@@ -21,9 +21,9 @@ public class InquiryController {
 	private InquiryService service;
 	
 	@RequestMapping("/inquiry/list")
-	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss)
+	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss,MtmVo mvo)
 	{
-		return service.list(req,model,ivo,ss);
+		return service.list(req,model,ivo,ss,mvo);
 		// 1234 1234
 	}
 	
