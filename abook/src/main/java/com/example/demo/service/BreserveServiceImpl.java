@@ -28,7 +28,6 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
-		System.out.println(keyword);
 		String num = request.getParameter("num");
 		
 		int page;

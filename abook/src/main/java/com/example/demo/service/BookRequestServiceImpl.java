@@ -54,56 +54,67 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
 	    String title = request.getParameter("title");
-	    System.out.println(keyword + " " + type);
+	    
 	    int page;
 	    if (request.getParameter("page")==null)
 	        page=1;
 	    else
 	        page=Integer.parseInt(request.getParameter("page"));
+	    
 	    int start=(page-1)*10;
-
 	    int pstart=page/10;
 	    if (page%10==0)
 	        pstart--;
+	    
 	    pstart=pstart*10+1;
 
 	    int pend=pstart+9;
-	    int chong=mapper.getChong();
-	    if (pend>chong)
-	        pend=chong;
+	    
+	   
+	    
 	    model.addAttribute("rchk",rchk);
 	    model.addAttribute("page",page);
+	    
+	    int chong;
 	    if (keyword==null || keyword.length()==0) {
+	    	
 	        type="title";
+	        
 	        keyword = "";
-	        model.addAttribute("type","aa");
-		    model.addAttribute("rlist",mapper.search(type,keyword,start));
+	        
+	        chong=mapper.getChong();
+	        
 		    model.addAttribute("page", page);
 	    	model.addAttribute("pstart", pstart);
 	    	model.addAttribute("pend", pend);
 	    	model.addAttribute("chong", chong);
+	    	model.addAttribute("type","aa");
+	    	model.addAttribute("rlist",mapper.search(type,keyword,start));
 	    }
 	    else
 	    {
 	    	model.addAttribute("page", page);
 	    	model.addAttribute("pstart", pstart);
 	    	model.addAttribute("pend", pend);
-	    	model.addAttribute("chong", chong);
 	    	model.addAttribute("type", type);
 	    	model.addAttribute("keyword", keyword);
 	    	model.addAttribute("start", start);
+	    	
 	    	if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
-				System.out.println("list2");
+				chong = mapper.getChong3();
+				model.addAttribute("chong",chong);
 			    model.addAttribute("rlist",mapper.list2(keyword,start));
 			}
 			else
 			{
-				System.out.println("list");
-			  model.addAttribute("rlist",mapper.search(type,keyword,start));
+				chong = mapper.getChong2();
+				model.addAttribute("chong",chong);
+				model.addAttribute("rlist",mapper.search(type,keyword,start));
 			}
 	    }
-
+	    if (pend>chong)
+	        pend=chong;
 	    return "bookrequest/rlist";
 	}
 
