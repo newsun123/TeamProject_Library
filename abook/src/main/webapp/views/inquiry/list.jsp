@@ -298,8 +298,41 @@
 						<c:forEach items="${ilist}" var="ivo">
 							<tr> 
 								<td>
-									<div class="ta">
-										<a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a>
+									<div class="ta"> <!-- 공개글 , 비공개글 처리  -->
+									<!-- <a href="readnum?no=${ivo.no}&page=${page}">${ivo.title}</a> -->
+									<!-- 유저아이디는 다른데 비공개글일경우 -->	
+									<c:if test="${userid != ivo.userid && ivo.gonge == 1 && userid != null}">
+										<div class=""><a onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">
+										${ivo.title}</a></div>
+									</c:if>
+									<!-- 유저아이디는 다른데 공개글일경우 -->
+									<c:if test="${userid != ivo.userid && ivo.gonge == 0 && userid != null}">
+										<div class=""><a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">
+										${ivo.title}</a></div>
+									</c:if>
+									
+									<!-- 유저아이디가 같을경우 공개글 -->	
+									<c:if test="${userid == ivo.userid && ivo.gonge == 0}">
+										<div class="">
+										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
+									</c:if>
+									<!-- 유저아이디가 같을경우 비공개글 -->	
+									<c:if test="${userid == ivo.userid && ivo.gonge == 1}">
+										<div class="">
+										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
+									</c:if>
+									<!-- 로그인 안했을경우 비공개글 -->
+									<c:if test="${userid == null && ivo.gonge == 1}">
+										<div class="">
+										 <a href="/member/login?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}"
+										 onclick="alert('비공개글은 작성자가 아니면 볼 수 없습니다.')">${ivo.title}</a></div>
+									</c:if>
+									<!-- 로그인 안했을경우 공개글 -->
+									<c:if test="${userid == null && ivo.gonge == 0}">
+										<div class="">
+										<a href="readnum?no=${ivo.no}&page=${page}&type=${type}&keyword=${keyword}">${ivo.title}</a></div>
+									</c:if>
+									
 									</div> 
 								</td>
 								<td>${ivo.userid}</td>	
