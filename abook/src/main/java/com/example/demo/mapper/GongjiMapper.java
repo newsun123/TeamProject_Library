@@ -11,6 +11,8 @@ import com.example.demo.vo.GongjiVo;
 public interface GongjiMapper {
 	
 	public int getChong();
+	public int getChong2(String type,String keyword);
+	public int getChong3(String keyword);
 	public ArrayList<GongjiVo> list(String type,String keyword,int start);
 	public ArrayList<GongjiVo> list2(String keyword,int start);
 	public void readnum(String no);
