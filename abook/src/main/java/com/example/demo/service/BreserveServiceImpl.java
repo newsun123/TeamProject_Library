@@ -25,11 +25,14 @@ public class BreserveServiceImpl implements BreserveService {
 
 	@Override
 	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
-		
+		//도서예약 list
+		//검색창
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
+		
 		String num = request.getParameter("num");
 		
+		//페이지 처리
 		int page = 1;
 
 		if (request.getParameter("page") == null)
@@ -45,8 +48,6 @@ public class BreserveServiceImpl implements BreserveService {
 		 pstart=pstart*10+1;
 		
 		int pend=pstart+9;
-		
-		
 		
 		if (num == null)
 			num = "0"; // num null값일 시 0으로 지정(신간도서)
