@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#gongjiWrap{
-		padding-bottom: 30px;
-	}
 	form{
 		width: 100%;
 	    display: block;
@@ -47,29 +45,31 @@
 	}
 	#btn{
 		text-align: center;
-		padding: 30px 0;
+		padding-top: 30px;
 	}
 	input[type=submit]{
-	    color: #fff;
+		color: #fff;
 	    text-align: center;
-	    background: #4e68b9;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    background: #93765a;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 15px;
 	}
 	input[type=button]{
 		text-align: center;
 	    background: #e0e3e6;
 	    color: #6e7277;
-	    font-family: 'NotoSansM';
-	    height: 50px;
-	    width: 130px;
+	    /* font-family: 'NotoSansM'; */
+	    height: 45px;
+	    width: 110px;
 	    cursor: pointer;
 	    margin: 0 2px;
 	    border-radius: 3px;
+	    font-size: 15px;
 	}
 	textarea{
 		width: 100%;
@@ -81,7 +81,7 @@
 	}
 	table tr td.wh{
 		width: 986px;
-   		height: 300px;
+   		height: 400px;
 	}
 	.gog{
 		color: #555;
@@ -93,6 +93,10 @@
 		position: relative;
 	    top: 3px;
 	    margin-left: 10px;
+	}
+	.gog{
+		color: #555;
+    	font-size: 15px;
 	}
 </style>
 </head>
@@ -117,6 +121,7 @@
 						<form name="iform" method="post" id="form" action="updateOk">
 							<input type="hidden" name="no" value="${ivo.no}">
 							<input type="hidden" name="page">
+							<input type="hidden" name="checkgonge" value="${ivo.gonge}">
 							<table>
 								<tr>
 									<td>제목</td>
@@ -125,6 +130,18 @@
 								<tr>
 									<td>내용</td>
 									<td class="wh"><textarea name="content"> ${ivo.content}</textarea></td>
+								</tr>
+								<tr>
+									<td> 노출옵션 </td>
+									<td>
+									<span class="gong">※ 비공개글은 체크해주세요</span>
+									 <c:if test="${ivo.gonge == 1}">
+										<input type="checkbox" name="gonge" value="1" checked>
+									 </c:if>
+									 <c:if test="${ivo.gonge == 0}">
+										<input type="checkbox" name="gonge" value="1">
+									</c:if>
+									</td>
 								</tr>
 							</table>
 							<div id="btn">

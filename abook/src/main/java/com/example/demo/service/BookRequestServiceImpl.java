@@ -54,56 +54,68 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
 	    String title = request.getParameter("title");
-	    System.out.println(keyword + " " + type);
+	    
 	    int page;
 	    if (request.getParameter("page")==null)
 	        page=1;
 	    else
 	        page=Integer.parseInt(request.getParameter("page"));
+	    
 	    int start=(page-1)*10;
-
 	    int pstart=page/10;
 	    if (page%10==0)
 	        pstart--;
+	    
 	    pstart=pstart*10+1;
 
 	    int pend=pstart+9;
-	    int chong=mapper.getChong();
-	    if (pend>chong)
-	        pend=chong;
+	    
+	   
+	    
 	    model.addAttribute("rchk",rchk);
 	    model.addAttribute("page",page);
+	    
+	    int chong;
 	    if (keyword==null || keyword.length()==0) {
+	    	
 	        type="title";
+	        
 	        keyword = "";
-	        model.addAttribute("type","aa");
-		    model.addAttribute("rlist",mapper.search(type,keyword,start));
+	        
+	        chong=mapper.getChong();
+	        
 		    model.addAttribute("page", page);
 	    	model.addAttribute("pstart", pstart);
 	    	model.addAttribute("pend", pend);
 	    	model.addAttribute("chong", chong);
+	    	model.addAttribute("type","aa");
+	    	model.addAttribute("rlist",mapper.search(type,keyword,start));
 	    }
 	    else
 	    {
 	    	model.addAttribute("page", page);
 	    	model.addAttribute("pstart", pstart);
 	    	model.addAttribute("pend", pend);
-	    	model.addAttribute("chong", chong);
 	    	model.addAttribute("type", type);
 	    	model.addAttribute("keyword", keyword);
 	    	model.addAttribute("start", start);
+	    	
 	    	if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
-				System.out.println("list2");
+				chong = mapper.getChong3(keyword);
+				model.addAttribute("chong",chong);
 			    model.addAttribute("rlist",mapper.list2(keyword,start));
 			}
 			else
 			{
-				System.out.println("list");
-			  model.addAttribute("rlist",mapper.search(type,keyword,start));
+				chong = mapper.getChong2(type,keyword);
+				model.addAttribute("chong",chong);
+				model.addAttribute("rlist",mapper.search(type,keyword,start));
 			}
 	    }
-
+	    if (pend>chong)
+	        pend=chong;
+	    model.addAttribute("pend", pend);
 	    return "bookrequest/rlist";
 	}
 
@@ -113,21 +125,27 @@ public class BookRequestServiceImpl implements BookRequestService {
 		String gonge=request.getParameter("gonge");
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
+		
 		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
 			model.addAttribute("type",type);
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("page",page);
-			model.addAttribute("brvo",mapper.rcontent(brvo));
+			brvo=mapper.rcontent(brvo);
+			brvo.setEct( brvo.getEct().replace("\r\n","<br>") );
+			model.addAttribute("brvo",brvo);
 			return "/bookrequest/rcontent";
 		}
 		
 		String userid=session.getAttribute("userid").toString();
 		brvo.setGonge(brvo.getGonge());
+		
 		model.addAttribute("type",type);
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("page",page);
 		model.addAttribute("userid",userid);
-		model.addAttribute("brvo",mapper.rcontent(brvo));
+		brvo=mapper.rcontent(brvo);
+		brvo.setEct( brvo.getEct().replace("\r\n","<br>") );
+		model.addAttribute("brvo",brvo);
 		
 		return "/bookrequest/rcontent";
 	}

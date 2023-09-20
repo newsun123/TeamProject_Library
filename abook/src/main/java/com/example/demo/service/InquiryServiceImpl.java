@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.mapper.InquiryMapper;
 import com.example.demo.vo.InquiryVo;
@@ -22,15 +23,13 @@ public class InquiryServiceImpl implements InquiryService {
 	private InquiryMapper mapper;
 
 	@Override
-	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss) {
-		
+	public String list(HttpServletRequest req, Model model, InquiryVo ivo,HttpSession ss,MtmVo mvo) {
 
 		String gonge=req.getParameter("gonge");
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("req");
 
-		
 		int page=1;
 		if(req.getParameter("page") ==null)
 			page =1;
@@ -46,45 +45,54 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		int pend=pstart +9;
 		
-		int chong=mapper.getChong();
-		
-		if(pend > chong)
-			pend=chong;
+		mvo=mapper.getMtm(mvo);
 		
 		// String userid=ss.getAttribute("userid").toString();
-		model.addAttribute("chong", chong);
+		model.addAttribute("mvo",mvo);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		model.addAttribute("gonge",gonge);
 		
 		// model.addAttribute("userid",userid);
-
-		
-		if(keyword==null || keyword.length()==0) {
-			type="title";
-			keyword="";
-			model.addAttribute("type","aa");
-			model.addAttribute("glist",mapper.list(type,keyword,start));
-			model.addAttribute("pstart",pstart);
-			model.addAttribute("pend",pend);
-			model.addAttribute("page", page);
-			model.addAttribute("chong",chong);
-		}
-		else {
-			model.addAttribute("chong", chong);
+		int chong;
+		if (keyword == null || keyword.length() == 0) {
+			
+			type = "title";
+			keyword = "";
+			
+			chong=mapper.getChong();
+			
+			model.addAttribute("type", "aa");
 			model.addAttribute("pstart", pstart);
 			model.addAttribute("pend", pend);
 			model.addAttribute("page", page);
-			model.addAttribute("type",type);
-			model.addAttribute("keyword",keyword);
-			model.addAttribute("start",start);
+			model.addAttribute("chong", chong);
+			model.addAttribute("glist", mapper.list(type, keyword, start));
+			
+		} else {
+			
+			model.addAttribute("pstart", pstart);
+			model.addAttribute("pend", pend);
+			model.addAttribute("page", page);
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("start", start);
 		}
-		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
-			model.addAttribute("ilist",mapper.list2(keyword, start));
-		else
-			model.addAttribute("ilist",mapper.list(type,keyword,start));
 		
+		if (type.equals("aa")) { // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
+			chong = mapper.getChong3(keyword);
+			model.addAttribute("chong",chong);
+			model.addAttribute("ilist", mapper.list2(keyword, start));
+		} else {
+			chong = mapper.getChong2(type,keyword);
+			model.addAttribute("chong",chong);
+			model.addAttribute("ilist", mapper.list(type, keyword, start));
+		}
+		
+		if(pend > chong)
+			pend=chong;
+		model.addAttribute("pend", pend);
 		return "/inquiry/list";
 	}
 
@@ -94,6 +102,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String userid=ss.getAttribute("userid").toString();
 		
 		int gonge;
+		System.out.println(req.getParameter("gonge"));
 		if(req.getParameter("gonge") == null)
 		{
 			gonge=0;
@@ -115,8 +124,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		model.addAttribute("page",page);
-//		String userid=ss.getAttribute("userid").toString();
-//		model.addAttribute("userid",userid);
+
 		String mchk = req.getParameter("mchk"); //mypage에서 이동한 것 확인용
 		model.addAttribute("mchk",mchk);
 
@@ -129,6 +137,13 @@ public class InquiryServiceImpl implements InquiryService {
 		MtmVo mvo=mapper.getAnswer(no);
 		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		model.addAttribute("mvo",mvo);
+		
+		// rttr로 보냈으므로 굳이 다시 값을 받아서 모델로 보낼 필요가 없음.
+//		String type= req.getParameter("type");
+//		model.addAttribute("type",type);
+//		String keyword = req.getParameter("keyword");
+//		System.out.println(keyword);
+//		model.addAttribute("keyword",keyword);
 		
 		return "/inquiry/content";
 	}
@@ -172,13 +187,16 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public String readnum(HttpServletRequest req,Model model) {
+	public String readnum(HttpServletRequest req,Model model,RedirectAttributes rttr) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
 		mapper.readnum(no);
 		model.addAttribute("no",no);
-		
+		String keyword = req.getParameter("keyword");
+		rttr.addFlashAttribute("keyword", keyword);
+		String type = req.getParameter("type");
+		rttr.addFlashAttribute("type", type); // 리다이렉트 시에 rttr 사용해서 값 보내기
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 }

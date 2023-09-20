@@ -15,6 +15,8 @@ public interface BookregiMapper {
 	public ArrayList<BookregiVo> list(String type,String keyword,int start);
 	public ArrayList<BookregiVo> list2(String keyword,int start);
 	public int getChong();
+	public Integer getChong2(String type, String keyword);
+	public Integer getChong3(String type);
 	public ArrayList<BookregiVo> content(String bcode);
 	// 0909 강서영
 	public BookregiVo getlist(String bcode);

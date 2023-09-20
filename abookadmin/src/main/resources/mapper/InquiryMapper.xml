@@ -4,6 +4,15 @@
 	<select id="getChong" resultType="int">
 		select ceil(count(*)/10) from inquiry
 	</select>
+	<select id="getChong2" resultType="int">
+		select ceil(count(*)/10) from inquiry
+		where ${type} like concat('%',"${keyword}",'%')
+	</select>
+	<select id="getChong3" resultType="int">
+		select ceil(count(*)/10) from inquiry
+		where title like concat('%',"${keyword}",'%') 
+		or content like concat('%',"${keyword}",'%')
+	</select>
 	<select id="setRownum">
 		set @rownum=(select count(*) from inquiry)-${start} 
 	</select>  

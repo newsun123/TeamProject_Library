@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.service.InquiryService;
 import com.example.demo.vo.InquiryVo;
@@ -21,9 +22,9 @@ public class InquiryController {
 	private InquiryService service;
 	
 	@RequestMapping("/inquiry/list")
-	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss)
+	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss,MtmVo mvo)
 	{
-		return service.list(req,model,ivo,ss);
+		return service.list(req,model,ivo,ss,mvo);
 		// 1234 1234
 	}
 	
@@ -40,9 +41,9 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("/inquiry/readnum")
-	public String readnum(HttpServletRequest req,Model model)
+	public String readnum(HttpServletRequest req,Model model,RedirectAttributes rttr)
 	{
-		return service.readnum(req,model);
+		return service.readnum(req,model,rttr);
 	}
 	
 	@RequestMapping("/inquiry/content")

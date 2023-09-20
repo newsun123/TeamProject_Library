@@ -145,7 +145,7 @@
 						</c:if>
 						</table>
 						<div id="btWrap">
-						<c:if test="${!empty ilist}">
+						<c:if test="${!empty mapall}">
 							<div id=pageCon>
 								<c:if test="${pstart!=1}">
 									<a href="loanlist?page=${pstart-1}" class="btnPage"></a>
@@ -186,7 +186,7 @@
 								</c:if>
 							</div>
 						</c:if>
-						<c:if test="${empty ilist}">
+						<c:if test="${empty mapall}">
 						</c:if>
 						</div>			
 					</div>

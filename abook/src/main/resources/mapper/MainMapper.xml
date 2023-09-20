@@ -6,12 +6,12 @@
 	<select id="gongji" resultType="com.example.demo.vo.GongjiVo">
 		select * from gongji order by no desc limit 4
 	</select>
-	<select id="search" resultType="com.example.demo.vo.BookregiVo">
+<!-- 	<select id="search" resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi where title like concat('%',"${keyword}",'%') 
 		or writer like concat('%',"${keyword}",'%') or
 		publi like concat('%',"${keyword}",'%')  
 		group by substr(bcode,1,4) order by ${str} limit #{start},10;
-	</select>
+	</select> -->
 	<select id="checkSeatNomal" resultType="int">
 		select count(*) from tablename where ${time}=1 and tname like 'n%'
 	</select>

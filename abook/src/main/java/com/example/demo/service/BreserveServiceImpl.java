@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import com.example.demo.mapper.BreserveMapper;
 import com.example.demo.vo.BookregiVo;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+
 @Service
 @Qualifier("brsv")
 public class BreserveServiceImpl implements BreserveService {
@@ -23,10 +25,12 @@ public class BreserveServiceImpl implements BreserveService {
 
 	@Override
 	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
+		
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 		String num = request.getParameter("num");
-		int page;
+		
+		int page = 1;
 
 		if (request.getParameter("page") == null)
 			page = 1;
@@ -42,30 +46,30 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		int pend=pstart+9;
 		
-		int chong=mapper.getChong();
 		
-		if(pend > chong)
-			pend=chong;
-		//최윤도꺼 붙임
 		
 		if (num == null)
 			num = "0"; // num null값일 시 0으로 지정(신간도서)
 		//System.out.println(num);
 		String str = ""; // 값 지정할 것
-		
 		switch (num) {
 		case "0": str = "no desc"; break;
 		case "1": str = "cnt desc"; break;
 		default: str = "no desc"; break;
-		} //최윤도꺼 붙임 끝
+		} 
 		model.addAttribute("num", num); // num값 보내야댐
 		
+		Integer chong;
 		
 		if(keyword==null || keyword.length()==0)
 		{
 			type="title";
       
 			keyword="";
+			
+           chong=mapper.getChong();
+           if(chong==null)
+        	   chong=0;
 			model.addAttribute("page",page);
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
@@ -76,28 +80,41 @@ public class BreserveServiceImpl implements BreserveService {
 		} 
 		else
 		{
+
 			model.addAttribute("page",page);
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
-			model.addAttribute("chong",chong);
 			model.addAttribute("type",type);
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 			
-			if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+			if (type.equals("aa")) // aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
 			{
 				
-				//System.out.println("list2");
-			    model.addAttribute("blist",mapper.list2(keyword,start,str));
+				chong=mapper.getChong3(keyword);
+				
+				
+				if(chong==null)
+					chong=0;
+				
+				model.addAttribute("chong",chong);
+				model.addAttribute("blist", mapper.list2(keyword, start, str));
+			} else {
+				
+				chong=mapper.getChong2(type,keyword);
+				model.addAttribute("chong",chong);
+				model.addAttribute("blist", mapper.list(type, keyword, start, str));
 			}
-			else
-			{
-				//System.out.println("list");
-			  model.addAttribute("blist",mapper.list(type,keyword,start,str));
-			} 
 		}
+		if(pend > chong)
+			pend=chong;
+		System.out.println(chong);
+		model.addAttribute("pend",pend);
+		
 		return "/breserve/list";
 	}
+	
+	
 
 	@Override
 	public String content(HttpServletRequest request, Model model,HttpSession ss) {

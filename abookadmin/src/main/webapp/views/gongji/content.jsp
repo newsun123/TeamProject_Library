@@ -75,7 +75,7 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>공지사항</h3>
+					<h3>공지사항${type }+${keyword }</h3>
 					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</p>
 				</div>
 				<div id="contents">
@@ -97,7 +97,7 @@
 							</tr>
 						</table>
 						<div id="btn">
-							<a href="list?page=${page}" class="dis">목록</a>
+							<a href="list?page=${page}&type=${type}&keyword=${keyword}" class="dis">목록</a>
 							<a href="update?no=${gvo.no}&page=${page}">수정하기</a>
 							<a href="delete?no=${gvo.no}&page=${page}">삭제하기</a>
 						</div> 

@@ -57,7 +57,28 @@
 	    height: 45px;
 	    margin-bottom: 30px;
 	}
-	
+	.el{
+		width: 445px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.tt_l{
+		width: 725px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+	    height: 100%;
+	    line-height: 60px;
+	    text-align: left;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
 </style>
 </head>
 <body>
@@ -82,12 +103,12 @@
 						<h4>${map.name}님의 상세정보</h4>
 						<table id="table1">
 								<tr>
-									<td>아이디</td>
-									<td>이름</td>
-									<td>전화번호</td>
-									<td>이메일</td>
+									<td width="150">아이디</td>
+									<td width="160">이름</td>
+									<td width="180">전화번호</td>
+									<td width="250">이메일</td>
 									<td>주소</td>
-									<td>가입일</td>
+									<td width="150">가입일</td>
 								</tr>
 								<tr>
 									<td>${map.userid}</td>
@@ -103,7 +124,7 @@
 							<tr>
 								<td>제목</td>
 								<td width="180">등록일</td>
-								<td width="180">조회수</td>
+								<td width="100">조회수</td>
 								<td width="180">답변 상태</td>
 							</tr>
 							<c:if test="${ilist.size()==0}">
@@ -114,7 +135,7 @@
 							<c:if test="${ilist.size()!=0}">
 							<c:forEach items="${ilist}" var="ivo">
 							<tr>
-								<td><a href="/inquiry/content?no=${ivo.no}&mchk=1"">${ivo.title}</a></td>
+								<td><div class="tt_l"><a href="/inquiry/content?no=${ivo.no}&mchk=1">${ivo.title}</a></div></td>
 								<td>${ivo.writeday }</td>
 								<td>${ivo.readnum}</td>
 								<td>
@@ -133,10 +154,10 @@
 						<table id="table3">
 							<tr>
 								<td>도서명</td>
-								<td>출판사</td>
-								<td>저자</td>
-								<td>대출일</td>
-								<td>반납일</td>
+								<td width="170">출판사</td>
+								<td width="170">저자</td>
+								<td width="200">대출일</td>
+								<td width="200">반납일</td>
 							</tr>
 							<c:if test="${blist.size()==0}">
 							<tr>
@@ -146,7 +167,7 @@
 							<c:if test="${blist.size()!=0}">
 							<c:forEach items="${blist}" var="bvo">
 							<tr>
-								<td>${bvo.title}</td>
+								<td><div class="el">${bvo.title}</div></td>
 								<td>${bvo.publi}</td>
 								<td>${bvo.writer}</td>
 								<td>${bvo.rental}</td>
@@ -158,9 +179,9 @@
 						<h4>좌석예약이력</h4>
 						<table id="table4">
 							<tr>
-								<td width="300">예약좌석</td>
+								<td width="180">예약좌석</td>
 								<td>예약시간</td>
-								<td width="300">예약일</td>
+								<td width="180">예약일</td>
 							</tr>
 						<c:if test="${rlist.size()==0}">
 							<td colspan="3" class="no">※ 예약이력이 없습니다.</td>

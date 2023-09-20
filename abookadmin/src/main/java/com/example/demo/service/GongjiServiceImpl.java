@@ -37,15 +37,12 @@ public class GongjiServiceImpl implements GongjiService {
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
-
-		int chong = mapper.getChong();
-
-		if (pend > chong)
-			pend = chong;
-
+		
+		int chong;
 		if(keyword==null || keyword.length()==0) {
 			type="title";
 			keyword="";
+			chong = mapper.getChong();
 			model.addAttribute("type","aa");
 			model.addAttribute("glist",mapper.list(type,keyword,start));
 			model.addAttribute("pstart",pstart);
@@ -54,7 +51,7 @@ public class GongjiServiceImpl implements GongjiService {
 			model.addAttribute("chong",chong);
 		}
 		else {
-			model.addAttribute("chong", chong);
+			
 			model.addAttribute("pstart", pstart);
 			model.addAttribute("pend", pend);
 			model.addAttribute("page", page);
@@ -64,10 +61,20 @@ public class GongjiServiceImpl implements GongjiService {
 		}
 		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
 		{
+			chong = mapper.getChong3(keyword);
+			model.addAttribute("chong",chong);
 			model.addAttribute("glist",mapper.list2(keyword, start));
 		}
-		else
+		else {
+			chong = mapper.getChong2(type,keyword);
+			model.addAttribute("chong",chong);
 			model.addAttribute("glist",mapper.list(type,keyword,start));
+		}
+		
+		if (pend > chong)
+			pend = chong;
+		
+		model.addAttribute("pend",pend);
 		return "/gongji/list";
 	}
 
@@ -105,6 +112,12 @@ public class GongjiServiceImpl implements GongjiService {
 		gvo.setContent(resultBr);
 		
 		gvo2.setContent(content);
+		
+		String type= request.getParameter("type");
+		String keyword = request.getParameter("keyword");
+		
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("type",type);
 		
 		model.addAttribute("gvo",gvo);
 		model.addAttribute("gvo2",gvo2);
@@ -144,14 +157,17 @@ public class GongjiServiceImpl implements GongjiService {
 	}
 
 	@Override
-	public String readnum(HttpServletRequest req) {
+	public String readnum(HttpServletRequest req,Model model) {
 		
 		String page=req.getParameter("page");
 		String no=req.getParameter("no");
-		
+		String keyword=req.getParameter("keyword");
+		model.addAttribute("keyword",keyword);
+		String type=req.getParameter("type");
+		model.addAttribute("type",type);
 		mapper.readnum(no);
 		
-		return "redirect:/gongji/content?no="+no+"&page="+page;
+		return "redirect:/gongji/content?no="+no+"&page="+page+"&type="+type+"&keyword="+keyword;
 	}
 
 }

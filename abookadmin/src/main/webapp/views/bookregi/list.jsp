@@ -232,7 +232,7 @@
 	window.onload=function(){
 		<c:if test="${type!=null}">
 		   <c:if test="${type=='title'}">
-		     <c:set var="aa" value="도서명"/>
+		     <c:set var="aa" value="전체"/>
 		   </c:if>
 		   <c:if test="${type=='writer'}">
 		     <c:set var="aa" value="저자"/>
@@ -332,7 +332,7 @@
 							</c:if>
 							<c:if test="${! empty blist}">
 							<c:forEach items="${blist}" var="bvo">
-								<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}'"> 
+								<tr onclick="location='content?no=${bvo.no}&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword=${keyword}'"> 
 									<td> 
 										<div>
 											<img src="/static/img/bookregi/${bvo.bimg}">					
@@ -354,14 +354,14 @@
 						<c:if test="${!empty blist}">
 							<div id=pageCon>
 							<c:if test="${pstart!=1}">
-								<a href="list?page=${pstart-1}" class="btnPage"></a>
+								<a href="list?page=${pstart-1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage"></a>
 							</c:if>
 							<c:if test="${pstart==1}">
 								<a class="btnPage dis"></a> 
 							</c:if>
 							
 							<c:if test="${page!=1}">
-								<a href="list?page=${page-1}" class="btnPage prev"></a>
+								<a href="list?page=${page-1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage prev"></a>
 							</c:if>
 							<c:if test="${page==1}">
 								<a class="btnPage dis prev"></a>
@@ -369,22 +369,22 @@
 							
 							<c:forEach begin="${pstart}" end="${pend}" var="i">
 								<c:if test="${page!=i}">
-									<a href="list?page=${i}">${i}</a>
+									<a href="list?page=${i}&type=${type}&keyword=${keyword}&start=${start}">${i}</a>
 								</c:if>
 								<c:if test="${page==i}">
-									<a href="list?page=${i}" style="background-color: #555;color:#fff">${i}</a>
+									<a href="list?page=${i}&type=${type}&keyword=${keyword}&start=${start}" style="background-color: #555;color:#fff">${i}</a>
 								</c:if>
 							</c:forEach>
 						
 							<c:if test="${page!=chong}">
-								<a href="list?page=${page+1}" class="btnPage next"></a>
+								<a href="list?page=${page+1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage next"></a>
 							</c:if>
 							<c:if test="${page==chong}">
 								<a class="btnPage next dis"></a>
 							</c:if>
 							
 							<c:if test="${pend!=chong}">
-								<a href="list?page=${pend+1}" class="btnPage last"></a>
+								<a href="list?page=${pend+1}&type=${type}&keyword=${keyword}&start=${start}" class="btnPage last"></a>
 							</c:if>
 							<c:if test="${pend==chong}">
 								<a class="btnPage last dis"></a> 
