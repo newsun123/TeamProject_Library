@@ -99,7 +99,7 @@ public class BookregiServiceImpl implements BookregiService{
 					chong=0;
 				
 				model.addAttribute("chong",chong);
-				ArrayList<BookregiVo> blist = mapper.list(type, keyword, pstart);
+				ArrayList<BookregiVo> blist = mapper.list(type, keyword, start);
 				model.addAttribute("blist", blist);
 			}
 		}
