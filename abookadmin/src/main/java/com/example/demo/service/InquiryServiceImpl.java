@@ -41,7 +41,6 @@ public class InquiryServiceImpl implements InquiryService{
 		int pend=pstart +9;
 				
 		// 번호매기기
-		// mapper.setRownum(start);
 		int chong;
 		if(keyword==null || keyword.length()==0) {
 			type="title";
@@ -116,7 +115,7 @@ public class InquiryServiceImpl implements InquiryService{
 	@Override
 	public String writeOk(MtmVo mvo,HttpServletRequest req) {
 		int inno = Integer.parseInt(req.getParameter("inno"));
-		mvo.setInno(inno);
+		mvo.setInno(inno);	// inno => 답변과 질문의 no 값을 저장한 변수
 		String page = req.getParameter("page");
 		mapper.writeOk(mvo);
 		mapper.chgState(mvo);

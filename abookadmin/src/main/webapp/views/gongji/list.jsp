@@ -304,7 +304,7 @@
 						<c:forEach items="${glist}" var="gvo">
 							<tr> 
 								<td>관리자</td>
-								<td> 
+								<td> <!-- 답변 체크 -->
 									<c:if test="${gvo.step==1}">
 										<img src="../static/img/gongji/ico_notice.png">
 									</c:if>

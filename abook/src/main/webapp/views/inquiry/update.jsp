@@ -132,6 +132,7 @@
 									<td class="wh"><textarea name="content"> ${ivo.content}</textarea></td>
 								</tr>
 								<tr>
+									<!-- 비공개글  -->
 									<td> 노출옵션 </td>
 									<td>
 									<span class="gong">※ 비공개글은 체크해주세요</span>

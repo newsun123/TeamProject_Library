@@ -439,7 +439,7 @@
 		
 	});
 	
-	
+	// 메인홈페이지 달력 출력
 	function calView2(d)
 	{
 		var today=new Date();
@@ -464,7 +464,7 @@
 		var todate=new Date();
 		var todayDate=todate.getDate(); // 오늘날짜 구하기
 		
-		
+		// 년,월,일
 		document.getElementsByClassName("cal_day")[0].innerHTML=y;
 		document.getElementsByClassName("cal_day")[1].innerHTML=(m+1);
 		document.getElementsByClassName("cal_day")[2].innerHTML=todayDate;
@@ -487,7 +487,7 @@
 			
 			str=str+friday+",";
 			chk=chk+7;
-			//str=str.replace(/,/g,"일 ");  혁범이꺼
+			
 		}
 		// alert(str); => 매주 금요일의 집합변수("str")
 		//휴관일 가져온 것 잘라서 배열로 만들기
@@ -513,17 +513,15 @@
 				for(j=0;j<hyu.length;j++)
 				{
 			       var xday=parseInt(data[i].xday);
-			       // console.log(typeof xday);
+			       
 				   if(xday == hyu[j])	
 				   {	   
-					  // console.log("같다");
 					  ccc=1;
 					  break;
 				   }
 					if(xday< hyu[j])
 					{
 						hyu.splice(j,0,xday);
-						// console.log(hyu);
 						ccc=1;
 						
 						break;
@@ -532,11 +530,9 @@
                 
 				if(ccc==0)
 					hyu.splice(hyu.length,0,xday);
-					// console.log(i+" : "+hyu);
 			}
 			
-		    // console.log(hyu);
-		    for(i=0;i<hyu.length;i++){
+			   for(i=0;i<hyu.length;i++){
 		       calData = calData+"<li>"+hyu[i]+"일</li>"; 		    	
 		    }
 				document.getElementsByClassName("conbox")[0].innerHTML=calData;		    	
@@ -546,6 +542,7 @@
 			chk.open("get","cal2?y="+y+"&m="+(m+1));
 			chk.send();	
 	}
+	/*  함수 호출 */
 	window.onload=function()
 	{
 		calView2();
