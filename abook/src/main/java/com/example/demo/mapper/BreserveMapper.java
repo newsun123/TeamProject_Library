@@ -10,7 +10,6 @@ import com.example.demo.vo.BookregiVo;
 
 @Mapper
 public interface BreserveMapper {
-
 	public ArrayList<BookregiVo> list(String type,String keyword,int start,String str);
 	public ArrayList<BookregiVo> list2(String keyword,int start,String str);
 	public int getChong();

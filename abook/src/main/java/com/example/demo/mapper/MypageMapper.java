@@ -16,7 +16,7 @@ public interface MypageMapper {
 	public ArrayList<ReserveSeatVo> reserveToday(String userid, String today);
 	public void cancelSeat(String no);
 	public void resetTablename(String time,String tname);
-	// 0909 강서영 백업
+	// 0909 ksy 백업
 	public ArrayList<HashMap> bookreserve(String userid);
 	public ArrayList<HashMap> bookloan(String userid);
 	public ArrayList<HashMap> bookrefuse(String userid);

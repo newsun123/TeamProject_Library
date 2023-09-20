@@ -294,7 +294,7 @@ public class MypageServiceImple implements MypageService {
 	public String returnOk(HttpServletRequest request) {
 		String no=request.getParameter("no");
 		String bcode=request.getParameter("bcode");
-		System.out.println(bcode);
+		//System.out.println(bcode);
 		mapper.returnOk(no);
 		mapper.changeState(bcode);
 		return "redirect:/mypage/bookreserve";

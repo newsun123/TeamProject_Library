@@ -9,7 +9,6 @@ import com.example.demo.vo.GongjiVo;
 
 @Mapper
 public interface GongjiMapper {
-	
 	public int getChong();
 	public int getChong2(String type,String keyword);
 	public int getChong3(String keyword);

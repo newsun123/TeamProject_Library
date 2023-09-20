@@ -19,30 +19,30 @@ public class BreserveController {
 	@Autowired
 	@Qualifier("brsv")
 	private BreserveService service;
-	
+
 	@RequestMapping("/breserve/list")
-	public String list(Model model,BookregiVo bvo,HttpServletRequest request) {
-		return service.list(model,bvo,request);
+	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
+		return service.list(model, bvo, request);
 	}
-	
+
 	@RequestMapping("/breserve/content")
-	public String content(HttpServletRequest request,Model model,HttpSession ss){
-		return service.content(request,model,ss);
+	public String content(HttpServletRequest request, Model model, HttpSession ss) {
+		return service.content(request, model, ss);
 	}
-	
+
 	@RequestMapping("/breserve/bresOk")
-	public String bresOk(HttpSession session,HttpServletRequest request,Model model) {
-		return service.bresOk(session,request,model);
+	public String bresOk(HttpSession session, HttpServletRequest request, Model model) {
+		return service.bresOk(session, request, model);
 	}
-	
+
 	@RequestMapping("/breserve/addjjim")
-	public @ResponseBody String addjjim(HttpServletRequest req,HttpSession ss) {
-		return service.addjjim(req,ss);
+	public @ResponseBody String addjjim(HttpServletRequest req, HttpSession ss) {
+		return service.addjjim(req, ss);
 	}
-	
+
 	@RequestMapping("/breserve/deljjim")
-	public @ResponseBody String deljjim(HttpServletRequest req,HttpSession ss) {
-		return service.deljjim(req,ss);
+	public @ResponseBody String deljjim(HttpServletRequest req, HttpSession ss) {
+		return service.deljjim(req, ss);
 	}
-	
+
 }

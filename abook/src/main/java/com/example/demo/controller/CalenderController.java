@@ -16,27 +16,23 @@ import com.example.demo.service.CalenderService;
 
 @Controller
 public class CalenderController {
-	
+
 	@Autowired
 	@Qualifier("cc")
 	private CalenderService service;
-	
 
 	@RequestMapping("/calender/calenderTab")
-	public String CalenderTab()
-	{
+	public String CalenderTab() {
 		return "/calender/calenderTab";
 	}
-	
+
 	@RequestMapping("/calender/cal2")
-	public @ResponseBody ArrayList<HashMap> cal2(HttpServletRequest request,Model model)
-	{
-		return service.cal2(request,model);
+	public @ResponseBody ArrayList<HashMap> cal2(HttpServletRequest request, Model model) {
+		return service.cal2(request, model);
 	}
-	
+
 	@RequestMapping("/calender/calenderMain")
-	public String calenderMain()
-	{
+	public String calenderMain() {
 		return "/calender/calenderMain";
 	}
 }

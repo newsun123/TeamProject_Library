@@ -21,9 +21,9 @@ public class InquiryServiceImpl implements InquiryService{
 	
 	@Override
 	public String list(HttpServletRequest req, Model model,HttpSession ss) {
+		
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
-		String title=req.getParameter("title");
 		// 페이지 처리
 		int page=1;
 		if(req.getParameter("page") ==null)
@@ -39,10 +39,7 @@ public class InquiryServiceImpl implements InquiryService{
 		pstart=pstart*10+1;
 		
 		int pend=pstart +9;
-		
-		
-		
-		
+				
 		// 번호매기기
 		// mapper.setRownum(start);
 		int chong;
@@ -68,6 +65,7 @@ public class InquiryServiceImpl implements InquiryService{
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 		}
+		
 		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
 		{	
 			chong=mapper.getChong3(keyword);

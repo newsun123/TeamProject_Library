@@ -22,7 +22,7 @@ public class GongjiServiceImpl implements GongjiService {
 
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
-		String title=request.getParameter("title");
+		
 		int page = 1;
 		if (request.getParameter("page") == null)
 			page = 1;
@@ -39,7 +39,9 @@ public class GongjiServiceImpl implements GongjiService {
 		int pend = pstart + 9;
 		
 		int chong;
+		
 		if(keyword==null || keyword.length()==0) {
+			
 			type="title";
 			keyword="";
 			chong = mapper.getChong();
@@ -49,8 +51,8 @@ public class GongjiServiceImpl implements GongjiService {
 			model.addAttribute("pend",pend);
 			model.addAttribute("page", page);
 			model.addAttribute("chong",chong);
-		}
-		else {
+			
+		}else {
 			
 			model.addAttribute("pstart", pstart);
 			model.addAttribute("pend", pend);
@@ -59,6 +61,7 @@ public class GongjiServiceImpl implements GongjiService {
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 		}
+		
 		if(type.equals("aa")) // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
 		{
 			chong = mapper.getChong3(keyword);

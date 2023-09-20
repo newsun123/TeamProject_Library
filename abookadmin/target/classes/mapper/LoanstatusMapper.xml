@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.LoanstatusMapper">
 	<select id="list" resultType="com.example.demo.vo.BookLoanVo">
-		select * from bookloan where state=0 order by no desc limit #{start},10
+		select * from bookloan where
+		state=0 order by no desc limit #{start},10
 	</select>
 	<update id="loanBook">
 		update bookloan set state=1,writeday=now() where no=#{no}
@@ -13,6 +14,6 @@
 		update bookregi set state=0 where bcode=#{bcode}
 	</update>
 	<select id="getChong" resultType="int">
-      select ceil( count(*)/10 ) from bookloan 
-   </select>
+		select ceil( count(*)/10 ) from bookloan
+	</select>
 </mapper>

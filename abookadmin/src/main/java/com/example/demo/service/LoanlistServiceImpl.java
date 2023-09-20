@@ -19,6 +19,7 @@ public class LoanlistServiceImpl implements LoanlistService {
 	@Override
 	public String list(Model model,HttpServletRequest req) {
 		
+		//페이지 처리
 		int page = 1;
 		if (req.getParameter("page") == null)
 			page = 1;

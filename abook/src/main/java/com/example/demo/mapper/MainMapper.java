@@ -10,7 +10,6 @@ import com.example.demo.vo.GongjiVo;
 
 @Mapper
 public interface MainMapper {
-
 	public ArrayList<GongjiVo> gongji(GongjiVo gvo);
 	public int checkSeatNomal(String time);
 	public int checkSeatPc(String time);

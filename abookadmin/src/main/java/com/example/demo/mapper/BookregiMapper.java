@@ -18,13 +18,13 @@ public interface BookregiMapper {
 	public Integer getChong2(String type, String keyword);
 	public Integer getChong3(String type);
 	public ArrayList<BookregiVo> content(String bcode);
-	// 0909 강서영
+	// 0909 ksy
 	public BookregiVo getlist(String bcode);
 	public void add(BookregiVo bvo);
 	public void beaUpdate(String bcode,int n);
 	public void del(String bcode);
 	public int getcnt(String bcode);
-	//public void statechange(BookRequestVo brvo);
+	
 	public BookregiVo getValueBrvo(String brno);
 	public void chgStateBookrequest(String brno);
 }

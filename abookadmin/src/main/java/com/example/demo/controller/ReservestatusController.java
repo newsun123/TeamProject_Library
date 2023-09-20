@@ -14,24 +14,24 @@ import com.example.demo.service.ReservestatusService;
 
 @Controller
 public class ReservestatusController {
-	
+
 	@Autowired
 	@Qualifier("rsvs")
 	private ReservestatusService service;
-	
+
 	@RequestMapping("/reservestatus/list")
-	public String list(Model model,HttpServletRequest request) {
-		return service.list(model,request);
+	public String list(Model model, HttpServletRequest request) {
+		return service.list(model, request);
 	}
-	
+
 	@RequestMapping("/reservestatus/rcheck")
 	public String rcheck(HttpServletRequest request) {
 		return service.rcheck(request);
 	}
-	
+
 	@RequestMapping("/reservestatus/dcheck")
 	public String dcheck(HttpServletRequest request) {
 		return service.dcheck(request);
 	}
-	
+
 }
