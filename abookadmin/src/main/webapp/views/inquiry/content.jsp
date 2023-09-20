@@ -92,7 +92,7 @@
 	    right: 0;
 	}
 </style>
-<script>
+<script> /* 수정폼 숨기기  */
 	function upForm() {
 		document.getElementById("con").style.display="none";
 		document.getElementById("upForm").style.display="block";

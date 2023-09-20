@@ -170,6 +170,7 @@
 								<!-- 답변에 대한 값이 없다면 , 아무것도 뜨지 않음  -->
 					     </c:otherwise>
 						 </c:choose>
+						 <!-- userid에 따른 수정,삭제 버튼 숨기기 -->
 						 <div id="btn"> 		
 							<c:if test="${userid == ivo.userid && ivo.state == 0}">
 								<a href="update?no=${ivo.no}&page=${page}" id="update">수정하기</a>

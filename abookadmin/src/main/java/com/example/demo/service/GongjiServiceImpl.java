@@ -92,13 +92,6 @@ public class GongjiServiceImpl implements GongjiService {
 
 		mapper.writeOk(gvo);
 
-		/*
-		 * for(int i=1;i<200;i++) {
-		 * 
-		 * String title="공지사항 페이징 테스트 - 제목입니다. "+i; String
-		 * content="공지사항 페이징 테스트 - 내용입니다. "+i; gvo.setTitle(title);
-		 * gvo.setContent(content); mapper.writeOk(gvo); }
-		 */
 		return "redirect:/gongji/list";
 	}
 
@@ -109,7 +102,7 @@ public class GongjiServiceImpl implements GongjiService {
 		
 		String replaceBr=mapper.content(gvo).getContent();
 		String resultBr=replaceBr.replaceAll("\\n","<br>");
-
+		
 		GongjiVo gvo2=mapper.content(gvo);
 		String content=gvo2.getContent().replaceAll("//n", "<br>");
 		gvo.setContent(resultBr);

@@ -341,6 +341,7 @@
 								<td>${ivo.userid}</td>	
 								<td>${ivo.writeday}</td>  
 								<td>
+								<!--  답변 상태 -->
 								<c:if test="${ivo.state==0}">
 									답변대기
 								</c:if>

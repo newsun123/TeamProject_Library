@@ -288,7 +288,7 @@
 								</tr>
 							</c:if>
 							<c:if test="${!empty ilist}">
-						<c:if test="${ilist.size()==0}"> <!-- size할때는 괄호해야됌 -->
+						<c:if test="${ilist.size()==0}"> 
 							<tr>
 								<td colspan="5" class="no">※ 문의사항이 없습니다.</td>
 							</tr>

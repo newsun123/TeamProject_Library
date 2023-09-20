@@ -23,7 +23,7 @@ public class GongjiServiceImpl implements GongjiService {
 		String type=req.getParameter("type");
 		String keyword=req.getParameter("keyword");
 		String title=req.getParameter("title");
-		//System.out.println(type+" : "+keyword);
+		
 		int page = 1;
 		
 		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
@@ -103,6 +103,7 @@ public class GongjiServiceImpl implements GongjiService {
 		
 		String page=req.getParameter("page");
 		
+		// 줄바꿈 처리
 		gvo=mapper.content(gvo);
 		String imsi=gvo.getContent().replace("\r\n", "<br>");
 		gvo.setContent(imsi);

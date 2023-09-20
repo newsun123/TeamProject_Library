@@ -102,9 +102,6 @@
 	    vertical-align: middle;
 	    margin-right: 2px;
 	}
-	.chktoday { /* 서영아 */
-		/*background:#ccc;*/	
-	}
 	#sswrap{
 		position: relative;
 	}
@@ -172,11 +169,11 @@
 	
 		calData=calData+"<caption>";
 		
-		calData=calData+"<span onclick='calView("+y+","+(m-1)+")' id='prev'></span>";
+		calData=calData+"<span onclick='calView("+y+","+(m-1)+")' id='prev'></span>"; // 이전달
 		
-		calData=calData+y+"년 "+(m+1)+"월";
+		calData=calData+y+"년 "+(m+1)+"월"; // 년월 출력
 		
-		calData=calData+"<span onclick='calView("+y+","+(m+1)+")' id='next'></span>";
+		calData=calData+"<span onclick='calView("+y+","+(m+1)+")' id='next'></span>"; // 다음달
 		
 		calData=calData+" </caption>";
 		calData=calData+"<tr>";
@@ -213,18 +210,18 @@
 					
 					var inback="";
 					
-					if( j == 5 )
+					if( j == 5 ) // 휴관일 체크
 					{
 						insertText="휴관일";
 						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+inback+day+
 						"<div class='inner'><i></i>"+insertText+"</div></td>";
 					}
-					else if(day==aa && (m+1)==bb && y==cc)
+					else if(day==aa && (m+1)==bb && y==cc) // 오늘날짜
 					{
 						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'><div class='ss'></div><span class='to'>"+inback+day+
 						"</span><div class='inner'>"+insertText+"</div></td>";
 					}
-					else
+					else // 휴관일,공휴일이 아닐 경우
 					{
 						calData=calData+"<td  class='chktd' onclick='thisDay("+y+","+(m+1)+","+day+")'>"+inback+day+
 						"<div class='inner'>"+insertText+"</div></td>";
@@ -236,6 +233,7 @@
 			}
 			calData=calData+"</tr>";
 		}
+		// 달력 출력
 		document.getElementById("calender").innerHTML=calData;
 		
 		/* 

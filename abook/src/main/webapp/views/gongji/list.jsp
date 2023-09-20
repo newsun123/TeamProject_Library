@@ -296,7 +296,7 @@
 							<c:if test="${!empty glist}">
 							<c:forEach items="${glist}" var="gvo">
 								<tr>
-									<td>관리자</td>
+									<td>관리자</td>	<!-- 답변이 있을경우 , 없을 경우  -->
 									<td><c:if test="${gvo.step==1}">
 											<img src="../static/img/gongji/ico_notice.png">
 										</c:if> <c:if test="${gvo.step!=1}">

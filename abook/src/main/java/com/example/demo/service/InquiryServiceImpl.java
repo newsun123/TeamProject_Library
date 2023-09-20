@@ -47,14 +47,12 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		mvo=mapper.getMtm(mvo);
 		
-		// String userid=ss.getAttribute("userid").toString();
 		model.addAttribute("mvo",mvo);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		model.addAttribute("gonge",gonge);
 		
-		// model.addAttribute("userid",userid);
 		int chong;
 		if (keyword == null || keyword.length() == 0) {
 			
@@ -80,7 +78,8 @@ public class InquiryServiceImpl implements InquiryService {
 			model.addAttribute("start", start);
 		}
 		
-		if (type.equals("aa")) { // aa와 같을때. type은 필요가없다 다 필요하기 때문에.
+		if (type.equals("aa")) { 
+		// aa와 같을때. type은 필요가없다 다 필요하기 때문에.
 			chong = mapper.getChong3(keyword);
 			model.addAttribute("chong",chong);
 			model.addAttribute("ilist", mapper.list2(keyword, start));
@@ -102,7 +101,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String userid=ss.getAttribute("userid").toString();
 		
 		int gonge;
-		//System.out.println(req.getParameter("gonge"));
+		// 글 작성시 비밀글 체크
 		if(req.getParameter("gonge") == null)
 		{
 			gonge=0;
@@ -134,23 +133,16 @@ public class InquiryServiceImpl implements InquiryService {
 		ivo.setContent(imsi);
 		model.addAttribute("ivo",ivo);
 		
-		MtmVo mvo=mapper.getAnswer(no);
+		MtmVo mvo=mapper.getAnswer(no); // 답변 가져오기
 		ivo=mapper.getState(ivo.getState(),ivo.getNo());	
 		model.addAttribute("mvo",mvo);
-		
-		// rttr로 보냈으므로 굳이 다시 값을 받아서 모델로 보낼 필요가 없음.
-//		String type= req.getParameter("type");
-//		model.addAttribute("type",type);
-//		String keyword = req.getParameter("keyword");
-//		System.out.println(keyword);
-//		model.addAttribute("keyword",keyword);
 		
 		return "/inquiry/content";
 	}
 	
 	@Override
 	public String write(HttpServletRequest req,Model model,HttpSession session) {
-		//귀찮아서 못지움. 나중에 지우기
+		
 		return "/inquiry/write";
 	}
 
@@ -196,7 +188,8 @@ public class InquiryServiceImpl implements InquiryService {
 		String keyword = req.getParameter("keyword");
 		rttr.addFlashAttribute("keyword", keyword);
 		String type = req.getParameter("type");
-		rttr.addFlashAttribute("type", type); // 리다이렉트 시에 rttr 사용해서 값 보내기
+		rttr.addFlashAttribute("type", type); 
+		// 리다이렉트 시에 rttr 사용해서 값 보내기
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
 	}
 }
