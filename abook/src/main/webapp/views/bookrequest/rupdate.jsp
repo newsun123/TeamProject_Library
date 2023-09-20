@@ -92,31 +92,31 @@
 <script>
 	function check(my)
 	{
-		if(my.title.value.trim()=="")
+		if(my.title.value.trim()=="") // 제목이 비어있는경우
 		{
-			document.getElementById("msg2").style.visibility="visible";
+			document.getElementById("msg2").style.visibility="visible"; // 메세지 보이게하기
 			document.getElementById("msg2").style.color="red";
 			my.title.focus();
 		}
-			if(my.writer.value.trim()=="")
+			if(my.writer.value.trim()=="") // 저자가 비어있는경우
 			{
 				document.getElementById("msg3").style.visibility="visible";
 				document.getElementById("msg3").style.color="red";
 				my.writer.focus();
 			}
-				if(my.publi.value.trim()=="")
+				if(my.publi.value.trim()=="") // 출판사가 비어있는경유
 				{
 					document.getElementById("msg4").style.visibility="visible";
 					document.getElementById("msg4").style.color="red";
 					my.publi.focus();
 				}
-					if(my.writeyear.value.trim()=="")
+					if(my.writeyear.value.trim()=="") // 출판년도가 비어있는경우
 					{
 						document.getElementById("msg5").style.visibility="visible";
 						document.getElementById("msg5").style.color="red";
 						my.writeyear.focus();
 					}
-						if(my.ect.value.trim()=="")
+						if(my.ect.value.trim()=="") // 비고가 비어있는경우
 						{
 							document.getElementById("msg6").style.visibility="visible";
 							document.getElementById("msg6").style.color="red";
@@ -134,7 +134,7 @@
 		var writeyear=document.rform.writeyear.value;
 		var ect=document.rform.ect.value;
 		
-		if(title.trim().length>0)
+		if(title.trim().length>0) // 칸에 글이 들어가면 메세지 다시 숨기기.
 		{
 			document.getElementById("msg2").style.visibility="hidden";
 		}

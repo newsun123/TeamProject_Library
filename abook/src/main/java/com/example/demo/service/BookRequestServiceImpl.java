@@ -30,16 +30,16 @@ public class BookRequestServiceImpl implements BookRequestService {
 	public String requestwrite_ok(HttpSession session,BookRequestVo brvo,HttpServletRequest request) {
 		
 		int gonge;
-		if(request.getParameter("gonge")==null)
+		if(request.getParameter("gonge")==null) // 비공개체크를 안했을경우
 		{
-			gonge=0;
+			gonge=0; // 공개글
 		}
 		else
 		{
-			gonge=1;
+			gonge=1; // 비공개글
 		}
-		brvo.setGonge(gonge);
-		brvo.setUserid(session.getAttribute("userid").toString());
+		brvo.setGonge(gonge); // BookRequestVo에 공개값 주기.
+		brvo.setUserid(session.getAttribute("userid").toString()); // 로그인한 유저아이디 brvo에 객체 설정.
 		mapper.requestwrite_ok(brvo);
 		return "redirect:/bookrequest/rlist";
 	}
@@ -51,10 +51,12 @@ public class BookRequestServiceImpl implements BookRequestService {
 			rchk="1";
 		}
 		
+		// 검색창 type,keyword 받아오기.
 	    String type = request.getParameter("type");
 	    String keyword = request.getParameter("keyword");
-	    String title = request.getParameter("title");
+	    String title = request.getParameter("title"); // title 도서명 받아오기.
 	    
+	    // 페이지 처리
 	    int page;
 	    if (request.getParameter("page")==null)
 	        page=1;
@@ -76,9 +78,9 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    model.addAttribute("page",page);
 	    
 	    int chong;
-	    if (keyword==null || keyword.length()==0) {
+	    if (keyword==null || keyword.length()==0) { // 검색어가 없을경우
 	    	
-	        type="title";
+	        type="title"; // type을 무작위(title)로 하나 선정.
 	        
 	        keyword = "";
 	        
@@ -91,7 +93,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    	model.addAttribute("type","aa");
 	    	model.addAttribute("rlist",mapper.search(type,keyword,start));
 	    }
-	    else
+	    else // 검색어가 있을경우
 	    {
 	    	model.addAttribute("page", page);
 	    	model.addAttribute("pstart", pstart);
@@ -100,13 +102,13 @@ public class BookRequestServiceImpl implements BookRequestService {
 	    	model.addAttribute("keyword", keyword);
 	    	model.addAttribute("start", start);
 	    	
-	    	if(type.equals("aa")) //aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
+	    	if(type.equals("aa")) //전체 검색일경우 type 필요없다. 다 필요하기 때문.
 			{
 				chong = mapper.getChong3(keyword);
 				model.addAttribute("chong",chong);
 			    model.addAttribute("rlist",mapper.list2(keyword,start));
 			}
-			else
+			else // 전체검색 제외일 경우
 			{
 				chong = mapper.getChong2(type,keyword);
 				model.addAttribute("chong",chong);
@@ -126,7 +128,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
 		
-		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 이걸 추가했더니 로그인 안해도 공개글이 보임.
+		if(session.getAttribute("userid")==null && brvo.getGonge() == 0) { // 로그인을 안했거나 공개글일 경우
 			model.addAttribute("type",type);
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("page",page);
@@ -177,12 +179,4 @@ public class BookRequestServiceImpl implements BookRequestService {
 		mapper.delete(brvo);
 		return "redirect:/bookrequest/rlist?page="+page;
 	}
-	/*
-	 * public String search(HttpServletRequest request) { String
-	 * type=request.getParameter("type"); String
-	 * keyword=request.getParameter("keyword");
-	 * 
-	 * mapper.search(type, keyword); // 심부름을 시켰다. System.out.println(type);
-	 * System.out.println(keyword); return "redirect:/bookrequest/rlist"; }
-	 */
 }
