@@ -202,7 +202,7 @@ public class BookregiServiceImpl implements BookregiService{
 		String page=request.getParameter("page");
 		String bcode=request.getParameter("bcode");
 		
-		bcode=bcode.substring(0,4);
+		bcode=bcode.substring(0,4); //같은 도서 갯수만큼 처리하기위해 bcode자르기 'b001'
 		model.addAttribute("page",page);
 		model.addAttribute("mapall",mapper.content(bcode));
 		

@@ -229,7 +229,7 @@
 	}
 </style>
 <script>
-	window.onload=function(){
+	window.onload=function(){ //검색창 타입별
 		<c:if test="${type!=null}">
 		   <c:if test="${type=='title'}">
 		     <c:set var="aa" value="전체"/>
@@ -248,7 +248,7 @@
 		 
 	}
 	var schk=0;
-	function selectView(){
+	function selectView(){ //검색창 select박스 스타일
 		
 		if(schk==0){
 			document.getElementById("type").style.display="block";
