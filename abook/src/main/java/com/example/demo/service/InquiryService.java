@@ -10,7 +10,6 @@ import com.example.demo.vo.InquiryVo;
 import com.example.demo.vo.MtmVo;
 
 public interface InquiryService {
-	
 	public String list(HttpServletRequest req,Model model,InquiryVo ivo,HttpSession ss,MtmVo mvo);
 	public String write(HttpServletRequest req,Model model,HttpSession session);
 	public String writeOk(InquiryVo ivo,HttpSession ss,HttpServletRequest req);

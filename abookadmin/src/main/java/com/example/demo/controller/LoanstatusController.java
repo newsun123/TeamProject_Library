@@ -12,19 +12,19 @@ import com.example.demo.service.LoanstatusService;
 
 @Controller
 public class LoanstatusController {
-	
+
 	@Autowired
 	@Qualifier("loans")
 	private LoanstatusService service;
-	
+
 	@RequestMapping("/loanstatus/list")
-	public String list(Model model,HttpServletRequest req) {
-		return service.list(model,req);
+	public String list(Model model, HttpServletRequest req) {
+		return service.list(model, req);
 	}
-	
+
 	@RequestMapping("/loanstatus/loanBook")
 	public String loanBook(HttpServletRequest req) {
 		return service.loanBook(req);
 	}
-	
+
 }

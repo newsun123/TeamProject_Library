@@ -32,7 +32,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 	@Override
 	public String stopTable(HttpServletRequest req, Model model) {
 		String tname = req.getParameter("tname");
-		System.out.println(tname);
+		//System.out.println(tname);
 		mapper.stopTable(tname);
 		return "redirect:/rsvseat/reserveseat";
 	}
@@ -160,11 +160,11 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		
 		// tablename의 time 찾아서 0으로 만들기
 		String tn = req.getParameter("tn");
-		System.out.println(tn);
+		//System.out.println(tn);
 		//이제 배열인거 확인하고, 잘라서 만들어야지
 		String[] tntime = tn.split(",");
 		// System.out.println(tntime[0]+" / "+tntime[1]+" / "+tntime[2]); 잘되네
-		System.out.println(tntime.length);
+		//System.out.println(tntime.length);
 		for(int i=0; i<tntime.length; i++) {
 			mapper.resetTablename(tntime[i],tname);
 		}

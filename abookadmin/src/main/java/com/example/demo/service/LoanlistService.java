@@ -6,5 +6,4 @@ import org.springframework.ui.Model;
 
 public interface LoanlistService {
 	public String list(Model model,HttpServletRequest req);
-
 }

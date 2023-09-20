@@ -16,9 +16,9 @@ public class LoanlistController {
 	@Autowired
 	@Qualifier("ls")
 	private LoanlistService service;
-	
+
 	@RequestMapping("/loanlist/list")
-	public String allList(Model model,HttpServletRequest req) {
-		return service.list(model,req);
+	public String allList(Model model, HttpServletRequest req) {
+		return service.list(model, req);
 	}
 }

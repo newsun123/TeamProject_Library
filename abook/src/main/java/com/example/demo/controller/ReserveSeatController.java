@@ -20,15 +20,15 @@ public class ReserveSeatController {
 	@Autowired
 	@Qualifier("rs")
 	private ReserveSeatService rs;
-	
+
 	@RequestMapping("/seat/chkReserveSeat")
-	public String chkReserveSeat(HttpSession session,Model model) {
-		return rs.chkReserveSeat(session,model);
+	public String chkReserveSeat(HttpSession session, Model model) {
+		return rs.chkReserveSeat(session, model);
 	}
 
 	@RequestMapping("/seat/reserveseat")
-	public String reserveseat(HttpSession session,Model model,HttpServletRequest req) {
-		return rs.reserveseat(session,model,req);
+	public String reserveseat(HttpSession session, Model model, HttpServletRequest req) {
+		return rs.reserveseat(session, model, req);
 	}
 
 	@RequestMapping("/seat/rulelibrary")
@@ -40,12 +40,12 @@ public class ReserveSeatController {
 	public @ResponseBody TableNameVo tableName(HttpServletRequest request, Model model) {
 		return rs.tableName(request, model);
 	}
-	
+
 	@RequestMapping("/seat/reserveSeater")
-	public String reserveSeater(ReserveSeatVo rvo,HttpSession session,HttpServletRequest request) {
-		return rs.reserveSeater(rvo,session,request);
+	public String reserveSeater(ReserveSeatVo rvo, HttpSession session, HttpServletRequest request) {
+		return rs.reserveSeater(rvo, session, request);
 	}
-	
+
 	@RequestMapping("/seat/reserveok")
 	public String reserveok(HttpServletRequest req, Model model) {
 		return rs.reserveok(req, model);

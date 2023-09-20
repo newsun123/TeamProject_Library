@@ -12,7 +12,6 @@ import com.example.demo.vo.BookregiVo;
 public interface BookRequestMapper {
 	public void requestwrite_ok(BookRequestVo brvo);
 	public int getChong();
-	// public ArrayList<BookRequestVo> rlist(@Param("start") int start,BookRequestVo brvo);
 	public BookRequestVo rcontent(BookRequestVo brvo);
 	public BookRequestVo rupdate(String no);
 	public void rupdate_ok(BookRequestVo brvo);

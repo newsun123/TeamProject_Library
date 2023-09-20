@@ -4,17 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ReservestatusMapper">
 	<select id="list" resultType="HashMap">
-		select *,(select title from bookregi where bcode=b.bcode) as title from bookreserve as b order by writeday desc limit #{start},10
+		select *,(select title from
+		bookregi where bcode=b.bcode) as title from bookreserve as b order by
+		writeday desc limit #{start},10
 	</select>
 	<update id="rcheck">
 		update bookregi set state=2 where bcode=#{bcode}
 	</update>
-
 	<select id="getbook" resultType="com.example.demo.vo.BookregiVo">
-		select title,publi,writer from bookregi where bcode=#{bcode}
+		select title,publi,writer from
+		bookregi where bcode=#{bcode}
 	</select>
 	<insert id="setloan">
-		insert into bookloan(bcode,userid,title,publi,writer,rental,returnday)
+		insert into
+		bookloan(bcode,userid,title,publi,writer,rental,returnday)
 		values(#{bcode},#{userid},#{title},#{publi},#{writer},curdate(),curdate()+5)
 	</insert>
 	<delete id="delbreserve">
@@ -24,13 +27,15 @@
 		update bookregi set state=0 where bcode=#{bcode}
 	</update>
 	<insert id="setbrefuse">
-		insert into brefuse(bcode,userid,title,publi,writer,writeday)
+		insert into
+		brefuse(bcode,userid,title,publi,writer,writeday)
 		values(#{bcode},#{userid},#{title},#{publi},#{writer},#{writeday})
 	</insert>
 	<update id="cntupdate">
-		update bookregi set cnt=cnt+1 where bcode like concat(#{bcode},'%')
+		update bookregi set cnt=cnt+1 where bcode like
+		concat(#{bcode},'%')
 	</update>
 	<select id="getChong" resultType="int">
-      select ceil( count(*)/10 ) from bookreserve 
-   </select>
+		select ceil( count(*)/10 ) from bookreserve
+	</select>
 </mapper>

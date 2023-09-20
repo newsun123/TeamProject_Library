@@ -102,7 +102,7 @@ public class InquiryServiceImpl implements InquiryService {
 		String userid=ss.getAttribute("userid").toString();
 		
 		int gonge;
-		System.out.println(req.getParameter("gonge"));
+		//System.out.println(req.getParameter("gonge"));
 		if(req.getParameter("gonge") == null)
 		{
 			gonge=0;

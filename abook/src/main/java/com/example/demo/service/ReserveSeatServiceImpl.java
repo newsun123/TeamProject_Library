@@ -32,7 +32,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		//지금 총 예약이 몇개인지 확인하는 쿼리
 		String userid = session.getAttribute("userid").toString();
 		String time = LocalDate.now().toString();
-		System.out.println(time);
+		//System.out.println(time);
 		int total = mapper.totalTime(userid,time);
 		model.addAttribute("total",total);
 		return "redirect:/seat/reserveseat?total="+total;

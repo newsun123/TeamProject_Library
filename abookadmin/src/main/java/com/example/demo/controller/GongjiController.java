@@ -32,17 +32,17 @@ public class GongjiController {
 	public String writeOk(GongjiVo gvo) {
 		return service.writeOk(gvo);
 	}
-	
+
 	@RequestMapping("/gongji/readnum")
-	public String readnum(HttpServletRequest req,Model model)
-	{
-		return service.readnum(req,model);
+	public String readnum(HttpServletRequest req, Model model) {
+		return service.readnum(req, model);
 	}
+
 	@RequestMapping("/gongji/content")
 	public String content(GongjiVo gvo, Model model, HttpServletRequest request) {
-		
+
 		return service.content(gvo, model, request);
-	
+
 	}
 
 	@RequestMapping("/gongji/delete")

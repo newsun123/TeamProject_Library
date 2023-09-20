@@ -6,30 +6,32 @@
 	<select id="gongji" resultType="com.example.demo.vo.GongjiVo">
 		select * from gongji order by no desc limit 4
 	</select>
-<!-- 	<select id="search" resultType="com.example.demo.vo.BookregiVo">
-		select * from bookregi where title like concat('%',"${keyword}",'%') 
-		or writer like concat('%',"${keyword}",'%') or
-		publi like concat('%',"${keyword}",'%')  
-		group by substr(bcode,1,4) order by ${str} limit #{start},10;
-	</select> -->
+	<!-- <select id="search" resultType="com.example.demo.vo.BookregiVo"> select 
+		* from bookregi where title like concat('%',"${keyword}",'%') or writer like 
+		concat('%',"${keyword}",'%') or publi like concat('%',"${keyword}",'%') group 
+		by substr(bcode,1,4) order by ${str} limit #{start},10; </select> -->
 	<select id="checkSeatNomal" resultType="int">
-		select count(*) from tablename where ${time}=1 and tname like 'n%'
+		select count(*) from
+		tablename where ${time}=1 and tname like 'n%'
 	</select>
 
 	<select id="checkSeatPc" resultType="int">
-		select count(*) from tablename where ${time}=1 and tname like 'pc%'
+		select count(*) from
+		tablename where ${time}=1 and tname like 'pc%'
 	</select>
-	
-	<select id="bookList" resultType="com.example.demo.vo.BookregiVo">
+
+	<select id="bookList"
+		resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi group by substr(bcode,1,4)
 		order by no desc limit 6
 	</select>
-	<select id="bestBookList" resultType="com.example.demo.vo.BookregiVo">
+	<select id="bestBookList"
+		resultType="com.example.demo.vo.BookregiVo">
 		select * from bookregi group by substr(bcode,1,4)
 		order by cnt desc limit 6
 	</select>
-	  	<select id="Cal2" resultType="HashMap">
-  		select right(xday,2) as xday from cal where xday like concat(#{day},'%')
-  		and chk=1
-  	</select>
+	<select id="Cal2" resultType="HashMap">
+		select right(xday,2) as xday from cal 
+		where xday like concat(#{day},'%') and chk=1
+	</select>
 </mapper>

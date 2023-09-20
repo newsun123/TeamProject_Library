@@ -10,7 +10,6 @@ import com.example.demo.vo.MtmVo;
 
 @Mapper
 public interface InquiryMapper {
-	
 	public int getChong();
 	public ArrayList<InquiryVo> list(String type,String keyword,int start);
 	public ArrayList<InquiryVo> list2(String keyword,int start);

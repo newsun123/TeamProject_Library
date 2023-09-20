@@ -1,7 +1,0 @@
-create table gongji(
-no int auto_increment primary key,
-title varchar(40),
-content text,
-readnum int default 0,
- writeday date,
-step int default 0);

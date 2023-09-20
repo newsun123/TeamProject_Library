@@ -108,7 +108,7 @@ public class BreserveServiceImpl implements BreserveService {
 		}
 		if(pend > chong)
 			pend=chong;
-		System.out.println(chong);
+		//System.out.println(chong);
 		model.addAttribute("pend",pend);
 		
 		return "/breserve/list";

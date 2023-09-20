@@ -20,6 +20,8 @@ public class BookRequestServiceImpl implements BookRequestService {
 
 	@Override
 	public String hopelist(HttpServletRequest request, BookRequestVo brvo, Model model,BookregiVo bvo) {
+		
+		//페이지 처리
 		int page;
 		if(request.getParameter("page")==null) {
 			page=1;
@@ -27,14 +29,19 @@ public class BookRequestServiceImpl implements BookRequestService {
 		else {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
+		
 		int start=(page-1)*10;
 		int pstart=page/10;
+		
 		if(page%10==0) {
 			pstart--;
 		}
+		
 		pstart=pstart*10+1;
+		
 		int pend=pstart+9;
 		int chong=mapper.getChong();
+		
 		if(pend>chong)
 			pend=chong;
 		
@@ -51,7 +58,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	@Override
 	public String cancelBrequest(HttpServletRequest req) {
 		String brno = req.getParameter("brno");
-		System.out.println(brno);
+		//System.out.println(brno);
 		mapper.cancelBrequest(brno);
 		return "redirect:/bookrequest/hopelist";
 	}

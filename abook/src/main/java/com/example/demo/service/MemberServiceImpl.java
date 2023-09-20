@@ -93,7 +93,7 @@ public class MemberServiceImpl implements MemberService {
 
 			String name = mapper.loginOk(mvo);
 			String ban = mapper.getBan(userid);
-			System.out.println(ban);
+			//System.out.println(ban);
 			String page = request.getParameter("page");
 			String bcode = request.getParameter("bcode");
 			

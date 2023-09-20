@@ -8,8 +8,6 @@ import com.example.demo.vo.BookLoanVo;
 
 @Mapper
 public interface LoanlistMapper {
-	
 	public int getChong();
-	public ArrayList<BookLoanVo> list(int start);
-	
+	public ArrayList<BookLoanVo> list(int start);	
 }

@@ -15,32 +15,29 @@ import com.example.demo.vo.MtmVo;
 
 @Controller
 public class InquiryController {
-	
+
 	@Autowired
 	@Qualifier("is")
 	private InquiryService service;
-	
+
 	@RequestMapping("/inquiry/list")
-	public String list(HttpServletRequest req,Model model,HttpSession ss)
-	{
-		return service.list(req,model,ss);
+	public String list(HttpServletRequest req, Model model, HttpSession ss) {
+		return service.list(req, model, ss);
 	}
-	
+
 	@RequestMapping("/inquiry/content")
-	public String content(HttpServletRequest req,Model model)
-	{
-		return service.content(req,model);
+	public String content(HttpServletRequest req, Model model) {
+		return service.content(req, model);
 	}
-	
+
 	@RequestMapping("/inquiry/writeOk")
-	public String writeOk(MtmVo mvo,HttpServletRequest req)
-	{
-		return service.writeOk(mvo,req);
+	public String writeOk(MtmVo mvo, HttpServletRequest req) {
+		return service.writeOk(mvo, req);
 	}
-	
+
 	@RequestMapping("/inquiry/updateOk")
-	public String updateOk(MtmVo mvo,HttpServletRequest req) {
-		return service.updateOK(mvo,req);
+	public String updateOk(MtmVo mvo, HttpServletRequest req) {
+		return service.updateOK(mvo, req);
 	}
-	
+
 }
