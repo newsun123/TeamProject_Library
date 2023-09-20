@@ -97,7 +97,7 @@
 	}
 </style>
 <script>
-	function check(){
+	function check(){ //아이디 체크
 		var name=document.getElementById("name").value;
 		var phone=document.getElementById("phone").value;
 		

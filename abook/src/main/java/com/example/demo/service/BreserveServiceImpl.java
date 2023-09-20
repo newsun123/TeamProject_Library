@@ -24,12 +24,13 @@ public class BreserveServiceImpl implements BreserveService {
 	private BreserveMapper mapper;
 
 	@Override
-	public String list(Model model, BookregiVo bvo, HttpServletRequest request) {
-		//도서예약 list
-		//검색창
+	public String list(Model model, BookregiVo bvo, HttpServletRequest request) { //도서예약 list
+		
+		//검색창 타입 키워드
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 		
+		//신간도서,인기도서 확인
 		String num = request.getParameter("num");
 		
 		//페이지 처리
@@ -58,11 +59,11 @@ public class BreserveServiceImpl implements BreserveService {
 		case "1": str = "cnt desc"; break;
 		default: str = "no desc"; break;
 		} 
-		model.addAttribute("num", num); // num값 보내야댐
+		model.addAttribute("num", num); // num값 보내기
 		
 		Integer chong;
 		
-		if(keyword==null || keyword.length()==0)
+		if(keyword==null || keyword.length()==0) //검색어 없을 경우
 		{
 			type="title";
       
@@ -71,6 +72,7 @@ public class BreserveServiceImpl implements BreserveService {
            chong=mapper.getChong();
            if(chong==null)
         	   chong=0;
+           
 			model.addAttribute("page",page);
 			model.addAttribute("pstart",pstart);
 			model.addAttribute("pend",pend);
@@ -78,9 +80,7 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("type","aa");
 		    model.addAttribute("blist",mapper.list(type,keyword,start,str));
 		
-		} 
-		else
-		{
+		} else{ //검색어 있을 경우
 
 			model.addAttribute("page",page);
 			model.addAttribute("pstart",pstart);
@@ -89,24 +89,24 @@ public class BreserveServiceImpl implements BreserveService {
 			model.addAttribute("keyword",keyword);
 			model.addAttribute("start",start);
 			
-			if (type.equals("aa")) // aa와 같을때. type은 필요가없다 셋다 필요하기때문에.
-			{
+			if (type.equals("aa")) { //전제검색
 				
 				chong=mapper.getChong3(keyword);
-				
 				
 				if(chong==null)
 					chong=0;
 				
 				model.addAttribute("chong",chong);
 				model.addAttribute("blist", mapper.list2(keyword, start, str));
-			} else {
+				
+			} else { //전제검색 제외하고 검색
 				
 				chong=mapper.getChong2(type,keyword);
 				model.addAttribute("chong",chong);
 				model.addAttribute("blist", mapper.list(type, keyword, start, str));
 			}
 		}
+		
 		if(pend > chong)
 			pend=chong;
 		//System.out.println(chong);
@@ -133,15 +133,14 @@ public class BreserveServiceImpl implements BreserveService {
 		String num = request.getParameter("num");
 		model.addAttribute("num",num);
 
-		bcode = bcode.substring(0, 4);
+		bcode = bcode.substring(0, 4); //'b001'
 		model.addAttribute("page", page);
 
-		ArrayList<HashMap> mapall = mapper.content(bcode);
+		ArrayList<HashMap> mapall = mapper.content(bcode); //같은 도서 갯수만큼 예약 가능하게 list
 		model.addAttribute("mapall", mapall);
 		
 		// jjim 체크해서 모델 보내기
 
-		
 		if(ss.getAttribute("userid")!=null) {
 			String userid= ss.getAttribute("userid").toString();
 			
@@ -150,7 +149,6 @@ public class BreserveServiceImpl implements BreserveService {
 			}else {
 				model.addAttribute("img","jjim1.png");
 			}
-
 
 			//mypage jjim 관련 mj 값 줌
 			String mj = request.getParameter("mj");
@@ -182,7 +180,7 @@ public class BreserveServiceImpl implements BreserveService {
 			String bcode = request.getParameter("bcode");
 			String userid = session.getAttribute("userid").toString();
 
-			if (mapper.cntCheck(userid)+mapper.cntCheck2(userid) > 3) {
+			if (mapper.cntCheck(userid)+mapper.cntCheck2(userid) > 3) { //예약중,대출중 회원 최대 4개까지만 가능 체크
 				return "redirect:/breserve/content?bcode="+bcode+"&page="+page+"&chk=1";
 
 			} else {
@@ -197,7 +195,7 @@ public class BreserveServiceImpl implements BreserveService {
 	}
 
 	@Override
-	public String addjjim(HttpServletRequest req, HttpSession ss) {
+	public String addjjim(HttpServletRequest req, HttpSession ss) { //도서 찜
 		if (ss.getAttribute("userid") != null) {
 
 			String userid = ss.getAttribute("userid").toString();
@@ -215,7 +213,7 @@ public class BreserveServiceImpl implements BreserveService {
 	}
 
 	@Override
-	public String deljjim(HttpServletRequest req, HttpSession ss) {
+	public String deljjim(HttpServletRequest req, HttpSession ss) { //도서 찜 삭제
 		if (ss.getAttribute("userid") != null) {
 			String userid = ss.getAttribute("userid").toString();
 			String bcode = req.getParameter("bcode");

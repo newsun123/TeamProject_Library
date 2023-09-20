@@ -286,7 +286,7 @@
 	/* 전송전 입력값 유효성 체크 */
 	function check(my){
 	
-		var chk=7;
+		var chk=7; //전체 체크값
 		
 		var userid=my.userid.value;
 		var pwd=my.pwd.value;
@@ -330,7 +330,7 @@
 			chk--; 
 		}
 		
-		if(pchk==0){
+		if(pchk==0){ //비밀번호 오류
 			
 			if(pwd.trim().length==0){
 				pwdMsg1.innerText="비밀번호를 입력하세요.";

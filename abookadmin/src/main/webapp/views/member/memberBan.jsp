@@ -121,33 +121,33 @@
 	}
 </style>
 <script>
-function openBanForm(n) {
-	var bForm = document.getElementsByClassName("bForm");
-	var bformbtn = document.getElementsByClassName("bformbtn");
-	
-	bForm[n].style.display="block";
-	bformbtn[n].style.display="none";
-	
-}
-
-function closeForm(n) {
-	
-	var bForm = document.getElementsByClassName("bForm");
-	var bformbtn = document.getElementsByClassName("bformbtn");
-	
-	bForm[n].style.display="none";
-	bformbtn[n].style.display="inline-block";
-}
-
-function check(my) {
-	
-	var reason = my.bReason.value;
-	if(reason == null || reason.length == 0 || reason == " ") {
-		alert("사유를 다시 적어주세요")
-		return false;
+	function openBanForm(n) { //임시정지 폼 열기
+		var bForm = document.getElementsByClassName("bForm");
+		var bformbtn = document.getElementsByClassName("bformbtn");
+		
+		bForm[n].style.display="block";
+		bformbtn[n].style.display="none";
+		
 	}
-	return true;
-}
+	
+	function closeForm(n) { //임시정지 폼 닫기
+		
+		var bForm = document.getElementsByClassName("bForm");
+		var bformbtn = document.getElementsByClassName("bformbtn");
+		
+		bForm[n].style.display="none";
+		bformbtn[n].style.display="inline-block";
+	}
+	
+	function check(my) { //임시정지 유효성 체크
+		
+		var reason = my.bReason.value;
+		if(reason == null || reason.length == 0 || reason == " ") {
+			alert("사유를 다시 적어주세요")
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 <body>

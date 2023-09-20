@@ -116,17 +116,6 @@
 		cursor:default;
 	}
 </style>
-<script>
-	function rcheck(my){
-		
-		var parent=my.parentNode.parentNode;
-	    var inputbocde=parent.getElementsByClassName('bcode');
-	    var bcode=inputbocde[0].value;
-	    
-	    location="rcheck?bcode="+bcode;
-	}
-	
-</script>
 </head>
 <body>
 	<div id="secWrap">
