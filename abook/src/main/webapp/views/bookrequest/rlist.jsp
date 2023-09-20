@@ -198,36 +198,36 @@
 	var schk=0;
 	function selectView(){
 		
-		if(schk==0){
-			document.getElementById("type").style.display="block";
+		if(schk==0){ // 0인경우 
+			document.getElementById("type").style.display="block"; // 0인경우 펼쳐서 보이게하기
 			document.getElementsByClassName("arrow")[0].style.transform="rotate(180deg)";
-			schk=1;
-		}else{
-			document.getElementById("type").style.display="none";
+			schk=1; // 처음 클릭하면 0 다시 클릭하게 되면 1로 값주기.
+		}else{ // 1인경우
+			document.getElementById("type").style.display="none"; // 1인경우 숨기기
 			document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
-			schk=0;
+			schk=0; // 처음클릭하면 1 다시 클릭하면 0으로.
 		}
 	}
 	function inputWr(txt){
  
-		if(txt=="전체"){
+		if(txt=="전체"){ // txt가 전체일경우 seltype의 아이디를 가진 입력필드의 값을 aa로.
 			document.getElementsByClassName("selected_value")[0].innerText="전체";
-			document.getElementById("seltype").value="aa";  // titlewriterpubli
+			document.getElementById("seltype").value="aa";  // title,writer,publi 모든 type값 '전체'를 의미.
 			// aa로 value값을 줘서 impl
 		}
-		else if(txt=="도서명"){
+		else if(txt=="도서명"){ // txt가 도서명일경우 seltype의 아이디를 가진 입력필드의 값을 title로.
 			document.getElementsByClassName("selected_value")[0].innerText="도서명";
 			document.getElementById("seltype").value="title";
-		}else if(txt=="저자"){
+		}else if(txt=="저자"){ // txt가 저자일경우 seltype의 아이디를 가진 입력필드의 값을 writer로.
 			document.getElementsByClassName("selected_value")[0].innerText="저자";
 			document.getElementById("seltype").value="writer";
 		}
-			else if(txt=="출판사"){
+			else if(txt=="출판사"){ // txt가 출판사일경우 seltype의 아이디를 가진 입력필드의 값을 publi로.
 				document.getElementsByClassName("selected_value")[0].innerText="출판사";
 				document.getElementById("seltype").value="publi";
 			}
-		document.getElementById("type").style.display="none";
-		schk=0;
+		document.getElementById("type").style.display="none"; // type다시 숨기기.
+		schk=0; // schk(selectview)값을 0으로.
 		document.getElementsByClassName("arrow")[0].style.transform="rotate(0)";
 	}
 </script>
