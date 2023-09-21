@@ -32,7 +32,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		//지금 총 예약이 몇개인지 확인하는 쿼리
 		String userid = session.getAttribute("userid").toString();
 		String time = LocalDate.now().toString();
-		//System.out.println(time);
+		
 		int total = mapper.totalTime(userid,time);
 		model.addAttribute("total",total);
 		return "redirect:/seat/reserveseat?total="+total;
@@ -49,7 +49,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 				|| time.equals("time14") || time.equals("time15") || time.equals("time16") || time.equals("time17") || time.equals("time18")) {
 			mapper.closeTable(time); // 정해진 시간대 닫기 완료
 		}else {
-			//mapper.closeAllTable();
+			mapper.closeAllTable();
 		}
 			ArrayList<TableNameVo> list = mapper.searchTable();
 			model.addAttribute("list", list);
@@ -61,7 +61,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 
 	@Override
 	public String rulelibrary() {
-		// TODO Auto-generated method stub
+
 		return "/seat/rulelibrary";
 	}
 
@@ -70,6 +70,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		String tname = request.getParameter("tname");
 		
 		TableNameVo tvo = mapper.tableName(tname);
+		
 		return tvo;
 	}
 
@@ -144,7 +145,7 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 				time = time + "18시~19시,";
 
 			time = time.substring(0, time.length() - 1); // 마지막 ,를 자르기 위해 사용
-			// System.out.println(time.length());
+
 			timelist.put("time", time);
 
 			model.addAttribute("timelist", timelist);
