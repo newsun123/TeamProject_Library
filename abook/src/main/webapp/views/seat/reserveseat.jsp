@@ -304,6 +304,7 @@
 		} else {
 			t.checked = true;
 			my.style.background = "#7cc576";
+			
 			if (chk.length > 2) {
 				alert("최대 3시간까지 가능합니다.");
 				my.style.background = "#f8931d";
@@ -318,7 +319,7 @@
 		var total = ${total} + chk.length; // 이전에 예약한 값 가져와 예약 확인하기
 		//alert(total);
 		 if (total > 3) {
-			alert("최대 3시간까지 가능합니다.");
+			alert("당일 좌석 예약은 최대 3시간입니다. 이전 예약을 확인하세요.");
 			return false;
 		} else if (chk.length == 0) {
 			alert("시간을 예약하세요");
