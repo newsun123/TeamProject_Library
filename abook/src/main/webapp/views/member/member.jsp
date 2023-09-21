@@ -175,6 +175,10 @@
 			mform.email2.value=txt;
 			document.getElementsByClassName("selected_value")[0].innerText=txt;
 			
+			if(document.getElementById("email1").value.trim().length!=0){
+				document.getElementById("emailMsg").style.display="none";
+			}
+			
 		}
 		
 		document.getElementById("sel").style.display="none";
@@ -419,7 +423,6 @@
 		var email1=document.getElementById("email1").value;
 		var email2=document.getElementById("email2").value;
 		
-		console.log(email1,email2)
 		if(email1.trim().length!=0 && email2.trim().length!=0){
 			document.getElementById(n).style.display="none";
 		}else{
