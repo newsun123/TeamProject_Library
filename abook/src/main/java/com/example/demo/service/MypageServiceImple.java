@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -53,6 +54,11 @@ public class MypageServiceImple implements MypageService {
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		
+		//현재 시간 비례 예약취소 잠그기
+		String imsi = LocalTime.now().toString();
+		String now = imsi.substring(0,2);
+		model.addAttribute("now",now);
+		
 		//전체 예약 현황 mapper 만들어 보내기
 		
 		model.addAttribute("userid",userid); 
@@ -67,10 +73,12 @@ public class MypageServiceImple implements MypageService {
 		ArrayList<String> timelist = new ArrayList<String>();
 		ArrayList<String> tntime = new ArrayList<String>(); // 예약되있는거 찾으면 여기에 값 넣을거임
 		ArrayList<Integer> chongtimes= new ArrayList<Integer>();
+		ArrayList<String> rtimes = new ArrayList<String>();
 		for (int i = 0; i < rlist.size(); i++) {
 			String time = ""; // 타임값 넣는거임.
 			String tn = ""; // 예약된 시간 넣는거임.
 			int chongtime = 0; //총 예약시간 넣는거임.
+			String rtime = ""; // 마이페이지 금일예약 시간 
 			int time9 = rlist.get(i).getTime9();
 			int time10 = rlist.get(i).getTime10();
 			int time11 = rlist.get(i).getTime11();
@@ -86,52 +94,62 @@ public class MypageServiceImple implements MypageService {
 				time = time + "9시~10시,";
 				tn = tn + "time9,"; 
 				chongtime = chongtime+1;
+				rtime="9";
 			}
 
 			if(time10 == 1) {
 				time = time + "10시~11시,";	
 				tn = tn + "time10,"; 
 				chongtime = chongtime+1;
+				rtime="10";
 			}
 			if(time11 == 1) {				
 				time = time + "11시~12시,";
 				tn = tn + "time11,"; 
 				chongtime = chongtime+1;
+				rtime="11";
 			}
 			if(time12 == 1) {
 				time = time + "12시~13시,";
 				tn = tn + "time12,"; 
 				chongtime = chongtime+1;
+				rtime="12";
 			}
 			if(time13 == 1) {
 				time = time + "13시~14시,";
 				tn = tn + "time13,"; 
 				chongtime = chongtime+1;
+				rtime="13";
 			}
 			if(time14 == 1) {
 				time = time + "14시~15시,";
 				tn = tn + "time14,"; 
 				chongtime = chongtime+1;
+				rtime="14";
 			}
 			if(time15 == 1) { 
 				time = time + "15시~16시,";
 				tn = tn + "time15,"; 
 				chongtime = chongtime+1;
+				rtime="15";
 			}
 			if(time16 == 1) { 
 				time = time + "16시~17시,";
 				tn = tn + "time16,"; 
 				chongtime = chongtime+1;
+				rtime="16";
 			}
 			if(time17 == 1) { 
 				time= time + "17시~18시,";
 				tn = tn + "time17,"; 
 				chongtime = chongtime+1;
+				rtime="17";
 			}
 			if(time18 == 1) { 
 				time = time + "18시~19시,";
 				tn = tn + "time18,"; 
 				chongtime = chongtime+1;
+				rtime="18";
 			}
 			
 			time=time.substring(0, time.length()-1); // 마지막 ,를 자르기 위해 사용
@@ -139,12 +157,13 @@ public class MypageServiceImple implements MypageService {
 			timelist.add(time);
 			tntime.add(tn);
 			chongtimes.add(chongtime);
+			rtimes.add(rtime);
 		}
 		
 		model.addAttribute("timelist",timelist);
 		model.addAttribute("tntime",tntime);
 		model.addAttribute("chongtimes",chongtimes);
-		
+		model.addAttribute("rtimes",rtimes);
 		// 당일 예약현황 만들기
 		
 		String today = LocalDate.now().toString(); // 당일 날짜 가져오기
