@@ -405,6 +405,27 @@
 			return false;
 		}
 	}
+	
+	function chgMsg(my,n){
+		
+		if(my!=""||my.trim().length!=0){
+			document.getElementById(n).style.display="none";
+		}else{
+			document.getElementById(n).style.display="block";
+		}
+	}
+	
+	function chgMsg3(n){
+		var email1=document.getElementById("email1").value;
+		var email2=document.getElementById("email2").value;
+		
+		console.log(email1,email2)
+		if(email1.trim().length!=0 && email2.trim().length!=0){
+			document.getElementById(n).style.display="none";
+		}else{
+			document.getElementById(n).style.display="block";
+		}
+	}
 </script>
 </head>
 <body>
@@ -438,19 +459,19 @@
 						         <p id="pwdMsg1" class="msg"></p>
 						         <div><input type="password" name="pwd2" placeholder="비밀번호 확인" oninput="pwdCheck()"></div>
 						         <p id="pwdMsg2" class="msg"></p>
-						         <div><input type="text" name="name" placeholder="이름"></div>
+						         <div><input type="text" name="name" placeholder="이름" oninput="chgMsg(this.value,'nameMsg')"></div>
 						         <p id="nameMsg" class="msg"></p>
 						         <div id="addrDiv">
 						         	<input type="text" id="zip" name="zip" readonly="readonly" placeholder="우편번호">
 									<input type="text" id="addr" name="addr" readonly="readonly" placeholder="주소">
-									<input type="text" id="addrDtl" name="addrDtl" placeholder="상세주소">
+									<input type="text" id="addrDtl" name="addrDtl" placeholder="상세주소" oninput="chgMsg(this.value,'addMsg')">
 									<input type="button" value="주소검색" id="addBtn" onclick="openZipSearch()">
 						         </div>
 						         <p id="addMsg" class="msg"></p>
 						         <div>
-						         	<input type="text" name="email1" placeholder="이메일" class="email1">
+						         	<input type="text" id="email1" name="email1" placeholder="이메일" class="email1" oninput="chgMsg3('emailMsg')">
 						         	<span>@</span> 
-						         	<input type="text" name="email2" class="email2">
+						         	<input type="text" id="email2" name="email2" class="email2" oninput="chgMsg3('emailMsg')">
 						         	<div id="select">
 						         		<div class="selected" onclick="selectView()">
 						         			<div class="selected_value">직접입력</div>
@@ -466,7 +487,7 @@
 						         	</div> 
 						         </div>
 						         <p id="emailMsg" class="msg"></p>
-						         <div><input type="text" name="phone" placeholder="전화번호"></div>
+						         <div><input type="text" name="phone" placeholder="전화번호" oninput="chgMsg(this.value,'phoneMsg')"></div>
 						         <p id="phoneMsg" class="msg"></p>
 						         <div><input type="submit" value="회원가입"></div> 
 						     </form>
