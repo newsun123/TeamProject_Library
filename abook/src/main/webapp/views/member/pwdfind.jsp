@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	#contents {
+		min-height: 530px;
+	}
 	#loginWrap{
 		position: relative;
 		border:4px solid #f1f1f1;
