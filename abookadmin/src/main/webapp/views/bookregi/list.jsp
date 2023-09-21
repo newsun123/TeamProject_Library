@@ -41,7 +41,7 @@
 	    height:210px;
 	    box-sizing: border-box;
     	border: 1px solid #e2e2e2;
-    	object-fit:cover;    	   
+    	/*object-fit:cover;*/   	   
 	}
 	table tr td:nth-child(1) > div{
 		width: 100%;
