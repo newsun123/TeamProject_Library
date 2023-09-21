@@ -138,15 +138,28 @@
 							</tr>
 							</c:if>
 							<c:if test="${rtoday.size()!=0}">
+							<c:if test="${now>19}">
+							<tr>
+								<td colspan="5" class="no">※ 금일 이용 시간이 지났습니다.</td>
+							</tr>
+							</c:if>
+							<c:if test="${now<19}">
 							<c:forEach items="${rtoday}" var="map" varStatus="sts">
 							<tr>
 								<td>${map.userid}</td>
 								<td>${map.tname} 좌석</td>
 								<td class="ls">${timelist2.get(sts.index)}</td>
 								<td>${chongtimes2.get(sts.index)}시간</td>
-								<td><input type="button" value="예약취소" class="btn1" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'"></td>
+								<td>
+								<c:if test="${now<rtimes.get(sts.index)}">
+								<input type="button" value="예약취소" class="btn1" onclick="location='cancelSeat?no=${map.no}&tn=${tntime2.get(sts.index)}&tname=${map.tname}'">
+								</c:if>
+								<c:if test="${now>rtimes.get(sts.index)}">
+								</c:if>
+								</td>
 							</tr>
 							</c:forEach>
+							</c:if>
 							</c:if>	
 						</table>
 						<h4>전체 예약현황</h4>
