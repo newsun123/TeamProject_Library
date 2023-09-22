@@ -9,7 +9,7 @@
 <style>
 	#requestWrap{
 		position:relative;
-    	min-height: 350px;
+    	min-height: 530px;
 	}
 	form{
 		width: 100%;

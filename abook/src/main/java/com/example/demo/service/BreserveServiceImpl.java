@@ -132,7 +132,10 @@ public class BreserveServiceImpl implements BreserveService {
 		
 		String num = request.getParameter("num");
 		model.addAttribute("num",num);
-
+		String type=request.getParameter("type");
+		model.addAttribute("type",type);
+		String keyword = request.getParameter("keyword");
+		model.addAttribute("keyword",keyword);
 		bcode = bcode.substring(0, 4); //'b001'
 		model.addAttribute("page", page);
 

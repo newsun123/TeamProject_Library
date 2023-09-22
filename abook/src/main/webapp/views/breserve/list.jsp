@@ -334,7 +334,7 @@
 						</c:if>	
 						<c:if test="${! empty blist}">
 						<c:forEach items="${blist}" var="bvo">
-							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword${keyword}&num=${num }'"> 
+							<tr onclick="location='content?&page=${page}&bcode=${bvo.bcode}&type=${type}&keyword=${keyword}&num=${num }'"> 
 								<td> 
 									<div>
 										<img src="/static/img/breserve/${bvo.bimg}">					

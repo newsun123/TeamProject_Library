@@ -214,7 +214,7 @@
 				<div id="contents">
 					<div id="bookregiWrap">
 						<c:if test="${mj!=1}">
-						<a href="/breserve/list?page=${page}&num=${num}" class="rbtn">목록으로</a>
+						<a href="/breserve/list?page=${page}&num=${num}&keyword=${keyword}&type=${type}" class="rbtn">목록으로</a>
 						</c:if>
 						<c:if test="${mj==1}">
 						<a href="/mypage/myjjim" class="rbtn">목록으로</a>
