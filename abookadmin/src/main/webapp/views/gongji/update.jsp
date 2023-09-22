@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>       
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,21 +93,8 @@
 	    margin-left: 10px;
 	}
 </style>
-<script>
-	function stepchk(my)
-	{	
-		if(my.step.checked)
-		{	
-			my.step.value=1;	
-		}
-		else 
-		{
-			my.step.value=0;
-		}		
-	}
-</script>
 </head>
-<body>
+<body>  
 	<div id="secWrap">
 		<div class="sImg"></div>
 		<div id="section">
@@ -139,8 +128,11 @@
 									<td>노출옵션</td>
 									<td>
 										<div>
-											<span class="gog">고정글은 체크해주세요</span>
-											<input type="checkbox" name="step" value="${gvo.step}">										
+										  <span class="gog">고정글은 체크해주세요</span>
+										  <c:if test="${gvo.step==1}">
+										    <c:set var="aa" value="checked"/>
+										  </c:if> 
+											<input type="checkbox" name="step" value="1" ${aa}>										
 										</div>
 									</td>
 								</tr>

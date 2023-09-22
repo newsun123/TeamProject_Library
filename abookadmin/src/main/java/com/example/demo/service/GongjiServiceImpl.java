@@ -90,23 +90,8 @@ public class GongjiServiceImpl implements GongjiService {
 	@Override
 	public String writeOk(GongjiVo gvo) {
 		
-		String title="2023 대한민국 독서대전 국민 아이디어 공모전";
-		String content="안녕하세요. 페이징 확인용 공지사항 컨텐츠입니다.\r\n"
-				+ "참여대상 : 대한민국 독서대전에 관심있는 누구나\r\n"
-				+ "공모기간 : 2023. 9. 18.(월) ~ 10. 27.(금)\r\n"
-				+ "결과발표 : 2023. 11. 2.(화)";
-				
-		
-		for(int i=1;i<100;i++) {
-			gvo.setTitle(title+i);
-			gvo.setContent(content+i);	
 			mapper.writeOk(gvo);
-		}
-		
-		
-
-		
-
+	
 		return "redirect:/gongji/list";
 	}
 
