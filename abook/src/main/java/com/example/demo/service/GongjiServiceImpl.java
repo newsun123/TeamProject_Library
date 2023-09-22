@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.mapper.GongjiMapper;
 import com.example.demo.vo.GongjiVo;
@@ -88,11 +89,14 @@ public class GongjiServiceImpl implements GongjiService {
 	}
 
 	@Override
-	public String readnum(HttpServletRequest req) {
+	public String readnum(HttpServletRequest req,RedirectAttributes rttr) {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
-		
+		String keyword = req.getParameter("keyword");
+		String type = req.getParameter("type");
+		rttr.addAttribute("keyword",keyword);
+		rttr.addAttribute("type",type);
 		mapper.readnum(no);
 		
 		return "redirect:/gongji/content?no="+no+"&page="+page;
@@ -110,6 +114,7 @@ public class GongjiServiceImpl implements GongjiService {
 		
 		model.addAttribute("gvo",gvo);
 		model.addAttribute("page", page);
+		
 		
 		return "/gongji/content";
 	}

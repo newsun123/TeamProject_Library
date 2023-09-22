@@ -161,10 +161,11 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
+		
 		mapper.update(ivo);
 		
 		model.addAttribute("ivo",mapper.content(no));
-		model.addAttribute("page","page");
+		model.addAttribute("page",page);
 		
 		return "/inquiry/update";
 	}
@@ -173,6 +174,7 @@ public class InquiryServiceImpl implements InquiryService {
 	public String updateOk(InquiryVo ivo, HttpServletRequest req) {
 		
 		String page=req.getParameter("page");
+
 		String no=req.getParameter("no");
 		mapper.updateOk(ivo);
 		return "redirect:/inquiry/content?no="+no+"&page="+page;
