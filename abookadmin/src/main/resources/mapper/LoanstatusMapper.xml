@@ -14,6 +14,6 @@
 		update bookregi set state=0 where bcode=#{bcode}
 	</update>
 	<select id="getChong" resultType="int">
-		select ceil( count(*)/10 ) from bookloan
+		select ceil( count(*)/10 ) from bookloan where state=0
 	</select>
 </mapper>

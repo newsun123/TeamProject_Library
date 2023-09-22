@@ -6,6 +6,6 @@
 		state=1 order by no desc limit #{start},10
 	</select>
 	<select id="getChong" resultType="int">
-		select ceil( count(*)/10 ) from bookloan
+		select ceil( count(*)/10 ) from bookloan where state=1
 	</select>
 </mapper>

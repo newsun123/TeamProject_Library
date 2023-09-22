@@ -44,10 +44,10 @@ public class LoanstatusServiceImpl implements LoanstatusService{
 		if (pend > chong)
 			pend = chong;
 
-		model.addAttribute("chong", chong);
-		model.addAttribute("pstart", pstart);
-		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
+		model.addAttribute("pstart", pstart);
+		model.addAttribute("chong", chong);
+		model.addAttribute("pend", pend);
 		
 		ArrayList<BookLoanVo> blist=mapper.list(start);
 		model.addAttribute("blist",blist);

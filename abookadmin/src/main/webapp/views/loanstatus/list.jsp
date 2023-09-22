@@ -123,7 +123,7 @@
 		<div class="sImg"></div>
 		<div id="section">
 			<div id="labNav">
-				<h2><span>도서관리</span></h2>
+				<h2><span></span></h2>
 				<ul id="lnb">
 					<li><a href="/bookregi/list"><span>도서등록</span></a></li>
 					<li><a href="/reservestatus/list"><span>예약현황</span></a></li>
@@ -134,7 +134,7 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>대출현황</h3>
+					<h3>대출현황${blist.size() }</h3>
 					<p>도서 관리&nbsp;&nbsp;>&nbsp;&nbsp;대출현황</p>
 				</div>
 				<div id="contents">
