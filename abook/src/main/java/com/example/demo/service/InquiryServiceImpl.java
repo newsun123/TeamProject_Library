@@ -161,7 +161,7 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		String no=req.getParameter("no");
 		String page=req.getParameter("page");
-		
+		System.out.println(page);
 		mapper.update(ivo);
 		
 		model.addAttribute("ivo",mapper.content(no));

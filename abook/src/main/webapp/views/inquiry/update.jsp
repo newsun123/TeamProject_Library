@@ -120,7 +120,7 @@
 					<div id="gongjiWrap">					
 						<form name="iform" method="post" id="form" action="updateOk">
 							<input type="hidden" name="no" value="${ivo.no}">
-							<input type="hidden" name="page" value="${page }">
+							<input type="hidden" name="page" value="${page}">
 							<input type="hidden" name="checkgonge" value="${ivo.gonge}">
 							<table>
 								<tr>
