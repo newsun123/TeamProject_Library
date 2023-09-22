@@ -75,7 +75,7 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>공지사항${type }+${keyword }</h3>
+					<h3>공지사항</h3>
 					<p>게시판 관리&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</p>
 				</div>
 				<div id="contents">
@@ -83,7 +83,7 @@
 						<table>
 							<tr>
 								<td>제목</td>
-								<td>${gvo2.title}</td>
+								<td>${gvo.title}</td>
 							</tr>
 							<tr>
 								<td>내용</td>

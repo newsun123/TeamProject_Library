@@ -278,14 +278,14 @@
 							<tr>
 								<td width="100">번호</td>
 								<td width="49"></td>
-								<td width="591"> 도서명 </td>
-								<td width="150"> 신청자 </td>
-								<td width="150"> 신청일 </td>
-								<td width="130"> 처리상태 </td>
+								<td width="591">도서명</td>
+								<td width="150">신청자</td>
+								<td width="150">신청일</td>
+								<td width="130">처리상태</td>
 							</tr>	
 							<c:if test="${empty rlist}">
 								<tr>
-									<td colspan="5" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
+									<td colspan="6" align="center" class="no">※ 일치하는 검색 기록이 없습니다.</td>
 								</tr>
 							</c:if>
 							<c:if test="${! empty rlist}">

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.GongjiMapper">
 	<select id="list" resultType="com.example.demo.vo.GongjiVo">
-		select * from gongji where ${type} like concat('%',"${keyword}",'%') order by no desc limit #{start},10
+		select * from gongji where ${type} like concat('%',"${keyword}",'%') order by step desc,no desc limit #{start},10
 	</select>
 	<select id="list2" resultType="com.example.demo.vo.GongjiVo">
 		select * from gongji where title like concat('%',"${keyword}",'%')
 		or content like concat('%',"${keyword}",'%')
-		order by no desc limit #{start},10;
+		order by step desc,no desc limit #{start},10;
 	</select>
 	<insert id="writeOk">
 		insert into gongji(title,content,step,writeday) values(#{title},#{content},#{step},now())
