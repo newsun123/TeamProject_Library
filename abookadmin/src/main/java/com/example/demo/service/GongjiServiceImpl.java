@@ -89,9 +89,8 @@ public class GongjiServiceImpl implements GongjiService {
 
 	@Override
 	public String writeOk(GongjiVo gvo) {
-		
-			mapper.writeOk(gvo);
-	
+		mapper.writeOk(gvo);
+
 		return "redirect:/gongji/list";
 	}
 
