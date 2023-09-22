@@ -156,7 +156,7 @@
 									<form method="post" action="writeOk">
 										<input type="hidden" name="inno" value="${ivo.no}">
 										<input type="hidden" name="page" value="${page}">
-										<textarea name="content" placeholder="답변입력"></textarea>
+										<textarea name="content" placeholder="답변입력" class="tar"></textarea>
 								</c:if>
 								</td>	
 							</tr>
