@@ -89,8 +89,23 @@ public class GongjiServiceImpl implements GongjiService {
 
 	@Override
 	public String writeOk(GongjiVo gvo) {
+		
+		String title="2023 대한민국 독서대전 국민 아이디어 공모전";
+		String content="안녕하세요. 페이징 확인용 공지사항 컨텐츠입니다.\r\n"
+				+ "참여대상 : 대한민국 독서대전에 관심있는 누구나\r\n"
+				+ "공모기간 : 2023. 9. 18.(월) ~ 10. 27.(금)\r\n"
+				+ "결과발표 : 2023. 11. 2.(화)";
+				
+		
+		for(int i=1;i<100;i++) {
+			gvo.setTitle(title+i);
+			gvo.setContent(content+i);	
+			mapper.writeOk(gvo);
+		}
+		
+		
 
-		mapper.writeOk(gvo);
+		
 
 		return "redirect:/gongji/list";
 	}
@@ -99,16 +114,11 @@ public class GongjiServiceImpl implements GongjiService {
 	public String content(GongjiVo gvo, Model model, HttpServletRequest request) {
 
 		String page = request.getParameter("page");
+		String no=request.getParameter("no");
+		gvo=mapper.content(no);
 		
-		String replaceBr=mapper.content(gvo).getContent();
-		String resultBr=replaceBr.replaceAll("\\n","<br>");
-		
-		GongjiVo gvo2=mapper.content(gvo);
-		String content=gvo2.getContent().replaceAll("//n", "<br>");
-		gvo.setContent(resultBr);
-		
-		gvo2.setContent(content);
-		
+		String imsi=gvo.getContent().replace("\r\n", "<br>");
+		gvo.setContent(imsi);
 		String type= request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 		
@@ -116,7 +126,6 @@ public class GongjiServiceImpl implements GongjiService {
 		model.addAttribute("type",type);
 		
 		model.addAttribute("gvo",gvo);
-		model.addAttribute("gvo2",gvo2);
 		model.addAttribute("page", page);
 		
 		return "/gongji/content";
@@ -135,9 +144,10 @@ public class GongjiServiceImpl implements GongjiService {
 	public String update(GongjiVo gvo, Model model, HttpServletRequest request) {
 
 		String page = request.getParameter("page");
+		String no=request.getParameter("no");
 		mapper.update(gvo);
 
-		model.addAttribute("gvo", mapper.content(gvo));
+		model.addAttribute("gvo", mapper.content(no));
 		model.addAttribute("page", page);
 
 		return "/gongji/update";

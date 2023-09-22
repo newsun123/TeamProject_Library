@@ -12,7 +12,7 @@ public interface GongjiMapper {
 	public ArrayList<GongjiVo> list(String type,String keyword,int start);
 	public ArrayList<GongjiVo> list2(String keyword,int start);
 	public void writeOk(GongjiVo gvo);
-	public GongjiVo content(GongjiVo gvo);
+	public GongjiVo content(String no);
 	public void delete(GongjiVo gvo);
 	public void update(GongjiVo gvo);
 	public void updateOk(GongjiVo gvo);
