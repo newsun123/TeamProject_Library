@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.service.GongjiService;
 import com.example.demo.vo.GongjiVo;
@@ -24,8 +25,8 @@ public class GongjiController {
 	}
 
 	@RequestMapping("/gongji/readnum")
-	public String readnum(HttpServletRequest req) {
-		return service.readnum(req);
+	public String readnum(HttpServletRequest req,RedirectAttributes rttr) {
+		return service.readnum(req,rttr);
 	}
 
 	@RequestMapping("/gongji/content")
