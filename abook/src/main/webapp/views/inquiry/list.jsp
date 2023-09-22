@@ -9,7 +9,7 @@
 <style>
 	#inquiryWrap{
 		padding-bottom: 30px;
-		min-height: 380px;
+		min-height: 530px;
 	}
 	form{
 		width: 100%;

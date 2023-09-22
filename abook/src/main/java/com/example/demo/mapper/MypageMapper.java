@@ -24,8 +24,7 @@ public interface MypageMapper {
 	public void changeState(String bcode);
 	public void giganUpdate(String no);
 	public void returnOk(String no);
-	public int getChong(String db);
-	public int getChongloan();
+	public int getChongjjim(String userid);
 	public ArrayList<HashMap> loanlist(String userid,@Param("start") int start);
 	// jjim추가 0911
 	public ArrayList<HashMap> myjjim(String userid);

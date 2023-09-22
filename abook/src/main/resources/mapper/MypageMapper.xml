@@ -46,11 +46,9 @@
 	<!-- jjim 추가 0911 -->
 	<select id="myjjim" resultType="HashMap">
 		select j.writeday,
-		j.bcode,j.userid, b.title, b.publi, b.writer, b.writeyear, b.ect,
-		b.bimg
+		j.bcode,j.userid, b.title, b.publi, b.writer, b.writeyear, b.ect, b.bimg
 		from jjim as j inner join bookregi as b on b.bcode=j.bcode
-		where
-		userid=#{userid}
+		where userid=#{userid}
 	</select>
 	<select id="myinquiry1" resultType="com.example.demo.vo.InquiryVo">
 		select * from inquiry where userid=#{userid} and state=0
@@ -63,10 +61,10 @@
 		select ceil(count(*)/10) from reserveseat where userid=#{userid}
 	</select>
 	<select id="getChongBregi1" resultType="int">
-		select ceil(count(*)/10) from bookregi
+		select ceil(count(*)/10) from bookregi where userid=#{userid}
 	</select>
-	<select id="getChong" resultType="int">
-		select ceil(count(*)/10) from ${db}
+	<select id="getChongjjim" resultType="int">
+		select ceil(count(*)/10) from jjim where userid=#{userid}
 	</select>
 	<select id="getChongloan" resultType="int">
 		select ceil(count(*)/10) from bookloan where userid=#{userid}

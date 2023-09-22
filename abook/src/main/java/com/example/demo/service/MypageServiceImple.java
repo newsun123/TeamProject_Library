@@ -358,6 +358,8 @@ public class MypageServiceImple implements MypageService {
 	@Override
 	public String myjjim(HttpSession ss,Model model,HttpServletRequest req) {
 		
+		String userid= ss.getAttribute("userid").toString();
+		
 		int page = 1;
 		if (req.getParameter("page") == null || req.getParameter("page").equals(""))
 			page = 1;
@@ -367,14 +369,15 @@ public class MypageServiceImple implements MypageService {
 		int start = (page - 1) * 10;
 
 		int pstart = page / 10;
+		
 		if (page % 10 == 0)
 			pstart--;
+		
 		pstart = pstart * 10 + 1;
 
 		int pend = pstart + 9;
-		String db = "jjim";
-		int chong = mapper.getChong(db);
-
+		
+		int chong = mapper.getChongjjim(userid);
 		if (pend > chong)
 			pend = chong;
 
@@ -383,7 +386,6 @@ public class MypageServiceImple implements MypageService {
 		model.addAttribute("pend", pend);
 		model.addAttribute("page", page);
 		
-		String userid = ss.getAttribute("userid").toString();
 		ArrayList<HashMap> mapall = mapper.myjjim(userid);
 		model.addAttribute("mapall",mapall);
 		return "/mypage/myjjim";
