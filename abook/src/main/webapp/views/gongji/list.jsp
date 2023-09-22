@@ -302,7 +302,7 @@
 										</c:if> <c:if test="${gvo.step!=1}">
 										&nbsp;
 									</c:if></td>
-									<td><a href="readnum?no=${gvo.no}&page=${page}">${gvo.title}</a>
+									<td><a href="readnum?no=${gvo.no}&page=${page}&keyword=${keyword}&type=${type}">${gvo.title}</a>
 									</td>
 									<td>${gvo.writeday}</td>
 									<td>${gvo.readnum}</td>
