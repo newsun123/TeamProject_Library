@@ -15,8 +15,8 @@ public interface ReserveSeatMapper {
 	public void startTable(String tname);
 	public ArrayList<TableNameVo> searchTable();
 	public ArrayList<ReserveSeatVo> searchReserve1(@Param("start")int start);
-	public ArrayList<HashMap> searchReserve2(String today);
+	public ArrayList<ReserveSeatVo> searchReserve2(String today);
 	public void resetTablename(String time,String tname);
 	public void cancelSeat(String no);
-	public int getChong();
+	public int getChong1();
 }

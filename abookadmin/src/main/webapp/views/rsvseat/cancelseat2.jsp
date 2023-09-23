@@ -127,18 +127,18 @@
 								<td width="425">예약시간</td>
 								<td width="230">예약취소</td>
 							</tr>
-							<c:if test="${rlist2.size()==0}">
+							<c:if test="${mapall.size()==0}">
 							<tr>
 								<td colspan="4" class="no">※ 금일 예약 내역이 없습니다.</td>
 							</tr>
 							</c:if>
-							<c:if test="${rlist2.size()!=0}">
-							<c:forEach items="${rlist2}" var="rvo2" varStatus="sts">
+							<c:if test="${mapall.size()!=0}">
+							<c:forEach items="${mapall}" var="map" varStatus="sts">
 							<tr>
-								<td>${rvo2.userid}</td>
-								<td>${rvo2.tname}</td>
-								<td>${timelists.get(sts.index)}</td>
-								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${rvo2.no}&tn=${tntimes.get(sts.index)}&tname=${rvo2.tname}'" class="btn"></td>
+								<td>${map.userid}</td>
+								<td>${map.tname} 좌석</td>
+								<td>${timelist.get(sts.index)}</td>
+								<td><input type="button" value="예약취소" onclick="location='cancelSeat?no=${map.no}&tn=${tntime.get(sts.index)}&tname=${map.tname}'" class="btn"></td>
 							</tr>
 							</c:forEach>
 							</c:if>							
@@ -160,7 +160,7 @@
 							<c:forEach items="${rlist}" var="rvo" varStatus="status">
 							<tr>
 								<td>${rvo.userid}</td>
-								<td>${rvo.tname}</td>
+								<td>${rvo.tname} 좌석</td>
 								<td>${rvo.reserveday}</td>
 								<td> ${timelist.get(status.index)}</td>
 							</tr>

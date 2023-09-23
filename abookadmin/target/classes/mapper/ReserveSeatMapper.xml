@@ -14,8 +14,8 @@
 		resultType="com.example.demo.vo.ReserveSeatVo">
 		select * from reserveseat order by no desc limit #{start},10
 	</select>
-	<select id="searchReserve2" resultType="HashMap">
-		select * from reserveseat where reserveday=#{today}
+	<select id="searchReserve2" resultType="com.example.demo.vo.ReserveSeatVo">
+		select * from reserveseat where reserveday=#{today} order by tname desc
 	</select>
 	<update id="resetTablename">
 		update tablename set ${time}=0 where tname=#{tname}
@@ -23,7 +23,8 @@
 	<delete id="cancelSeat">
 		delete from reserveseat where no=#{no}
 	</delete>
-	<select id="getChong" resultType="int">
+	<select id="getChong1" resultType="int">
 		select ceil(count(*)/10) from reserveseat
 	</select>
+
 </mapper>
