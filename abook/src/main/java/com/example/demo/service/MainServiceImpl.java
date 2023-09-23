@@ -54,7 +54,6 @@ public class MainServiceImpl  implements MainService{
    
 		// 현재 시의 숫자를 확인하여 숫자 붙이기
 		String time = "time"+hour;
-		System.out.println(time);
    
 		// main 페이지 현재 남은 좌석 만들기
    
