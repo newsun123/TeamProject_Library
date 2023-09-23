@@ -209,7 +209,7 @@
 								</tr>
 								<tr>
 									<td>비고</td>
-									<td class="wh"><textarea name="ect">${brvo.writeyear}</textarea></td>
+									<td class="wh"><textarea name="ect">${brvo.ect}</textarea></td>
 								</tr>
 								<tr>
 									<td>노출옵션</td>

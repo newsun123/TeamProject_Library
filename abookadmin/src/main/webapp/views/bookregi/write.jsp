@@ -203,7 +203,7 @@
 										<input type="text" id="ect" name="ect" onclick="aaa()">
 									</c:if>
 									<c:if test="${bvo.ect!=null}">
-										<input type="text" id="ect" name="ect" value="${bvo.ect}" onclick="aaa()">
+										<textarea id="ect" name="ect" onclick="aaa()" rows="10" cols="130">${bvo.ect}</textarea>
 									</c:if>
 									</td>
 								</tr>
