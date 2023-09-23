@@ -40,7 +40,7 @@ public class MainServiceImpl  implements MainService{
 			if(xday.getDayOfWeek().getValue()==5){
 				imsi=imsi+xday.getDayOfMonth()+",";
 			}
-		//System.out.println(imsi);  
+
 		}
   
 
@@ -50,33 +50,36 @@ public class MainServiceImpl  implements MainService{
 		// 09월 08일 최윤도 작성- 메인 페이지 내 좌석 체크
 		String allTime = LocalTime.now().toString();
 		String hour = allTime.substring(0,2);
-		// System.out.println(hour);
+
    
 		// 현재 시의 숫자를 확인하여 숫자 붙이기
 		String time = "time"+hour;
-		// System.out.println(time); 확인 완료.
+		System.out.println(time);
    
 		// main 페이지 현재 남은 좌석 만들기
    
 		int pc,nomal; // 기본 페이지 만들기       
    
 		// 예약 가능한 시간이 아닐 때, 그냥 전부 없애기로 함. 0912 추가
-		if(time=="time9"||time=="time10"||time=="time11"||time=="time12"||time=="time13"||time=="time14"||time=="time15"||time=="time16"||time=="time17"||time=="time18") {
+		if(time.equals("time9")||time.equals("time10")||time.equals("time11")||time.equals("time12")
+				||time.equals("time13")||time.equals("time14")||time.equals("time15")
+				||time.equals("time16")||time.equals("time17")||time.equals("time18")) {
   
 			// 현재 시간에 좌석이 몇개 남았는지 확인할 쿼리문 작성
 			pc = mapper.checkSeatPc(time);
 			nomal = mapper.checkSeatNomal(time);          
-			//System.out.println(nomal+"/"+pc); 
+			
 			// 총 좌석 - 가져온 값
 			int setPc = 24 - pc;
 			int setN = 40 - nomal;
-			// System.out.println(setN);
+			
 			// 값 전달
 			model.addAttribute("pc",pc);
 			model.addAttribute("nomal",nomal);
 			model.addAttribute("setN",setN);
 			model.addAttribute("setPc",setPc);
 		} else {
+			
 			pc = 24;
 			nomal = 40;
 			int setPc = 24 - pc;

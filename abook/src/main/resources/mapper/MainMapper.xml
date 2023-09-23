@@ -12,12 +12,12 @@
 		by substr(bcode,1,4) order by ${str} limit #{start},10; </select> -->
 	<select id="checkSeatNomal" resultType="int">
 		select count(*) from
-		tablename where ${time}=1 and tname like 'n%'
+		tablename where ${time}=1 and tname like concat('n','%')
 	</select>
 
 	<select id="checkSeatPc" resultType="int">
 		select count(*) from
-		tablename where ${time}=1 and tname like 'pc%'
+		tablename where ${time}=1 and tname like concat('pc','%')
 	</select>
 
 	<select id="bookList"
