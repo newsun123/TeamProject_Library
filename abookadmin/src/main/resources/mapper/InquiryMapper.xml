@@ -30,6 +30,7 @@
 	<select id="content" resultType="com.example.demo.vo.InquiryVo">
 		select * from inquiry where no=#{no}
 	</select>
+	
 	<insert id="writeOk">
 		insert into mtm(content,inno,writeday)
 		values(#{content},#{inno},now())
