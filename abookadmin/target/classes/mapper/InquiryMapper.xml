@@ -44,4 +44,7 @@
 	<update id="updateOk">
 		update mtm set content=#{content} where no=#{no}
 	</update>
+	<select id="getMtm"  resultType="com.example.demo.vo.MtmVo">
+		select * from mtm
+	</select>
 </mapper>
