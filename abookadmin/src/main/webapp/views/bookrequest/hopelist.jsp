@@ -160,15 +160,21 @@
 									<a href="/bookregi/write?brno= ${brvo.no}"><input type="button" value="도서등록" class="rbtn"></a>
 								</c:if>
 								<c:if test="${brvo.state==1}">
-									<a><input type="button" value="등록완료" class="rbtn" disabled></a>
+									등록완료
+								</c:if>
+								<c:if test="${brvo.state==2}">
+									-
 								</c:if>
 							</td>
 							<td>
 								<c:if test="${brvo.state==0}">
 									<a href="cancelBrequest?brno=${brvo.no}"><input type="button" value="도서반려" class="rbtn"></a>
 								</c:if>
+								<c:if test="${brvo.state==1}">
+									-
+								</c:if>
 								<c:if test="${brvo.state==2}">
-									<a><input type="button" value="반려완료" class="rbtn" disabled></a>
+									반려완료
 								</c:if>
 							</td>
 						</tr>
@@ -196,7 +202,7 @@
 								<a href="hopelist?page=${i}">${i}</a>
 							</c:if>
 							<c:if test="${page==i}">
-								<a href="hopelist?page=${i}" style="background-color:	#555;color:#fff">${i}</a>
+								<a href="hopelist?page=${i}" style="background-color:#555;color:#fff">${i}</a>
 							</c:if>
 						</c:forEach>
 						

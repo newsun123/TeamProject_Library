@@ -88,6 +88,18 @@
 	input[type=file]{
 		font-size: 14px;
 	}
+	table tr td.wh {
+    width: 986px;
+    height: 150px;
+	}
+	textarea{
+		width: 100%;
+	    height: 100%;
+	    display: block;
+	    padding: 10px 0;
+	    font-size: 15px;
+	    overflow:hidden;
+	}	
 </style>
 <script>
 
@@ -116,9 +128,6 @@
 		} else {
 			return true;
 		}
-	}
-	function statechange(){
-		
 	}
 </script>
 </head>
@@ -198,12 +207,12 @@
 								</tr>
 								<tr>
 									<td>비고</td>
-									<td>
+									<td class="wh">
 									<c:if test="${bvo.ect==null}">
-										<input type="text" id="ect" name="ect" onclick="aaa()">
+										<input type="text" id="ect" name="ect">
 									</c:if>
 									<c:if test="${bvo.ect!=null}">
-										<textarea id="ect" name="ect" onclick="aaa()" rows="10" cols="130">${bvo.ect}</textarea>
+										<textarea id="ect" name="ect">${bvo.ect}</textarea>
 									</c:if>
 									</td>
 								</tr>
