@@ -75,7 +75,7 @@
 	}	
 	table tr td.wh{
 		width: 986px;
-   		height: 300px;
+   		height: 150px;
 	}
 	.gog{
 		color: #555;
