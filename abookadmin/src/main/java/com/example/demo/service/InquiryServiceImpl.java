@@ -101,13 +101,14 @@ public class InquiryServiceImpl implements InquiryService{
 		ivo.setContent(imsi);
 		
 		// 내 답변 받아오기
-		MtmVo mvo = mapper.getAnswer(no);
+		MtmVo mvo=mapper.getAnswer(no);
+		String imsi2=mvo.getContent().replace("\r\n", "<br>");
+		mvo.setContent(imsi2);
 		
 		model.addAttribute("mvo",mvo);
 		// mvo 값을 모델로 전해줄려면 mapper 에 select 해줘야한다!
 		model.addAttribute("ivo",ivo);
 		model.addAttribute("page",page);
-		
 		
 		return "/inquiry/content";
 	}
