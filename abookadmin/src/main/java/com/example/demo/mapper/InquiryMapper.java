@@ -21,4 +21,5 @@ public interface InquiryMapper {
 	public void updateOk(MtmVo mvo);
 	public int getChong2(String type,String keyword);
 	public int getChong3(String keyword);	
+
 }

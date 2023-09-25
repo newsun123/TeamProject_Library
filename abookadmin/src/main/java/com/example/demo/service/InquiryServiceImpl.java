@@ -102,8 +102,11 @@ public class InquiryServiceImpl implements InquiryService{
 		
 		// 내 답변 받아오기
 		MtmVo mvo=mapper.getAnswer(no);
-		String imsi2=mvo.getContent().replace("\r\n", "<br>");
-		mvo.setContent(imsi2);
+		if(mvo != null)
+		{
+			String imsi2=mvo.getContent().replace("\r\n","<br>");
+			mvo.setContent(imsi2);
+		}
 		
 		model.addAttribute("mvo",mvo);
 		// mvo 값을 모델로 전해줄려면 mapper 에 select 해줘야한다!
