@@ -18,7 +18,7 @@
 	<insert id="setloan">
 		insert into
 		bookloan(bcode,userid,title,publi,writer,rental,returnday)
-		values(#{bcode},#{userid},#{title},#{publi},#{writer},curdate(),curdate()+5)
+		values(#{bcode},#{userid},#{title},#{publi},#{writer},curdate(),Date_ADD(curdate(), Interval 5 day))
 	</insert>
 	<delete id="delbreserve">
 		delete from bookreserve where bcode=#{bcode}
