@@ -48,6 +48,8 @@ public class ReserveSeatServiceImpl implements ReserveSeatService {
 		if (time.equals("time9") || time.equals("time10") || time.equals("time11") || time.equals("time12") || time.equals("time13")
 				|| time.equals("time14") || time.equals("time15") || time.equals("time16") || time.equals("time17") || time.equals("time18")) {
 			mapper.closeTable(time); // 정해진 시간대 닫기 완료
+		}else if(time.equals("time8")) {
+			//time8은 없으니까 공백으로 비워두기 (9시에는 사람들이 예약해야되니까)
 		}else {
 			mapper.closeAllTable();
 		}
