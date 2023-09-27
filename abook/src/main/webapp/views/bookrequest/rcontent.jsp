@@ -90,7 +90,7 @@
 			<div id="contentCore">
 				<div class="naviTit">
 					<h3>도서신청</h3>
-					<p>도서관이용&nbsp;&nbsp;>&nbsp;&nbsp;도서신청</p>
+					<p>도서관 이용&nbsp;&nbsp;>&nbsp;&nbsp;도서신청</p>
 				</div>
 				<div id="contents">
 					<div id="requestWrap">

@@ -133,8 +133,8 @@
 			</div>
 			<div id="contentCore">
 				<div class="naviTit">
-					<h3>대출현황</h3>
-					<p>도서관리&nbsp;&nbsp;>&nbsp;&nbsp;대출현황</p>
+					<h3>대출이력</h3>
+					<p>도서관리&nbsp;&nbsp;>&nbsp;&nbsp;대출이력</p>
 				</div>
 				<div id="contents">
 					<div id="loanstatusWrap">

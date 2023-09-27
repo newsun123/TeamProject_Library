@@ -112,7 +112,7 @@ button {border: 0; background-color: transparent;}
 }
 #contentCore{
 	float: right;
-   	width: calc(100% - 315px);
+   	width: calc(100% - 330px);
 }
 #contentCore .naviTit{
 	position: relative;
