@@ -395,13 +395,13 @@
 						</div>
 						<div class="pc_line">
 						<c:if test="${list.get(6).close==0}">
-							<div class="pc tablename" onclick="tableName(6)">pc7</div>
+							<div class="pc tablename" onclick="tableName(2)">pc7</div>
 						</c:if>		
 						<c:if test="${list.get(6).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc7</div>
 						</c:if>		
 						<c:if test="${list.get(7).close==0}">	
-							<div class="pc tablename" onclick="tableName(7)">pc8</div>
+							<div class="pc tablename" onclick="tableName(3)">pc8</div>
 						</c:if>		
 						<c:if test="${list.get(7).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc8</div>
@@ -415,13 +415,13 @@
 					<div class="pc_aa_2">
 						<div class="pc_line">
 						<c:if test="${list.get(2).close==0}">	
-							<div class="pc tablename mt" onclick="tableName(2)" >pc3</div>
+							<div class="pc tablename mt" onclick="tableName(4)" >pc3</div>
 						</c:if>		
 						<c:if test="${list.get(2).close==1}">	
 							<div class="pc tablename mt" style="background:#ddd;color:white;cursor:default;" disabled>pc3</div>
 						</c:if>		
 						<c:if test="${list.get(3).close==0}">	
-							<div class="pc tablename"  onclick="tableName(3)">pc4</div>
+							<div class="pc tablename"  onclick="tableName(5)">pc4</div>
 						</c:if>		
 						<c:if test="${list.get(3).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc4</div>
@@ -429,13 +429,13 @@
 						</div>
 						<div class="pc_line">
 						<c:if test="${list.get(8).close==0}">	
-							<div class="pc tablename mt" onclick="tableName(8)">pc9</div>
+							<div class="pc tablename mt" onclick="tableName(6)">pc9</div>
 						</c:if>		
 						<c:if test="${list.get(8).close==1}">	
 							<div class="pc tablename mt" style="background:#ddd;color:white;cursor:default;" disabled>pc9</div>
 						</c:if>		
 						<c:if test="${list.get(9).close==0}">	
-							<div class="pc tablename" onclick="tableName(9)">pc10</div>
+							<div class="pc tablename" onclick="tableName(7)">pc10</div>
 						</c:if>		
 						<c:if test="${list.get(9).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc10</div>
@@ -446,13 +446,13 @@
 					<div class="pc_aa_3">
 						<div class="pc_line">
 						<c:if test="${list.get(4).close==0}">	
-							<div class="pc tablename" onclick="tableName(4)">pc5</div>
+							<div class="pc tablename" onclick="tableName(8)">pc5</div>
 						</c:if>		
 						<c:if test="${list.get(4).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc5</div>
 						</c:if>		
 						<c:if test="${list.get(5).close==0}">
-							<div class="pc tablename" onclick="tableName(5)">pc6</div>
+							<div class="pc tablename" onclick="tableName(9)">pc6</div>
 						</c:if>		
 						<c:if test="${list.get(5).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc6</div>
@@ -477,121 +477,121 @@
 					<div class="pc_bb">
 						<div class="pc_line_two">
 						<c:if test="${list.get(24).close==0}">
-							<div class="nomal tablename" onclick="tableName(24)">N1</div>
+							<div class="nomal tablename" onclick="tableName(12)">N1</div>
 						</c:if>	
 						<c:if test="${list.get(24).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N1</div>
 						</c:if>	
 						<c:if test="${list.get(25).close==0}">	
-							<div class="nomal tablename" onclick="tableName(25)">N2</div>
+							<div class="nomal tablename" onclick="tableName(13)">N2</div>
 						</c:if>	
 						<c:if test="${list.get(25).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N2</div>
 						</c:if>	
 						<c:if test="${list.get(26).close==0}">	
-							<div class="nomal tablename" onclick="tableName(26)">N3</div>
+							<div class="nomal tablename" onclick="tableName(14)">N3</div>
 						</c:if>	
 						<c:if test="${list.get(26).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N3</div>
 						</c:if>	
 						<c:if test="${list.get(27).close==0}">	
-							<div class="nomal tablename" onclick="tableName(27)">N4</div>
+							<div class="nomal tablename" onclick="tableName(15)">N4</div>
 						</c:if>	
 						<c:if test="${list.get(27).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N4</div>
 						</c:if>	
 						<c:if test="${list.get(28).close==0}">	
-							<div class="nomal tablename" onclick="tableName(28)">N5</div>
+							<div class="nomal tablename" onclick="tableName(16)">N5</div>
 						</c:if>	
 						<c:if test="${list.get(28).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N5</div>
 						</c:if>	
 						<c:if test="${list.get(29).close==0}">	
-							<div class="nomal tablename" onclick="tableName(29)">N6</div>
+							<div class="nomal tablename" onclick="tableName(17)">N6</div>
 						</c:if>	
 						<c:if test="${list.get(29).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N6</div>
 						</c:if>	
 						<c:if test="${list.get(30).close==0}">	
-							<div class="nomal tablename" onclick="tableName(30)">N7</div>
+							<div class="nomal tablename" onclick="tableName(18)">N7</div>
 						</c:if>	
 						<c:if test="${list.get(30).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N7</div>
 						</c:if>	
 						<c:if test="${list.get(31).close==0}">	
-							<div class="nomal tablename" onclick="tableName(31)">N8</div>
+							<div class="nomal tablename" onclick="tableName(19)">N8</div>
 						</c:if>	
 						<c:if test="${list.get(31).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N8</div>
 						</c:if>	
 						<c:if test="${list.get(32).close==0}">	
-							<div class="nomal tablename" onclick="tableName(32)">N9</div>
+							<div class="nomal tablename" onclick="tableName(20)">N9</div>
 						</c:if>	
 						<c:if test="${list.get(32).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N9</div>
 						</c:if>	
 						<c:if test="${list.get(33).close==0}">	
-							<div class="nomal tablename" onclick="tableName(33)">N10</div>
+							<div class="nomal tablename" onclick="tableName(21)">N10</div>
 						</c:if>	
 						<c:if test="${list.get(33).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N10</div>
 						</c:if>	
 						<c:if test="${list.get(34).close==0}">	
-							<div class="nomal tablename" onclick="tableName(34)">N11</div>
+							<div class="nomal tablename" onclick="tableName(22)">N11</div>
 						</c:if>	
 						<c:if test="${list.get(34).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N11</div>
 						</c:if>	
 						<c:if test="${list.get(35).close==0}">	
-							<div class="nomal tablename" onclick="tableName(35)">N12</div>
+							<div class="nomal tablename" onclick="tableName(23)">N12</div>
 						</c:if>	
 						<c:if test="${list.get(35).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N12</div>
 						</c:if>	
 						<c:if test="${list.get(36).close==0}">	
-							<div class="nomal tablename" onclick="tableName(36)">N13</div>
+							<div class="nomal tablename" onclick="tableName(24)">N13</div>
 						</c:if>	
 						<c:if test="${list.get(36).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N13</div>
 						</c:if>	
 						<c:if test="${list.get(37).close==0}">	
-							<div class="nomal tablename" onclick="tableName(37)">N14</div>
+							<div class="nomal tablename" onclick="tableName(25)">N14</div>
 						</c:if>	
 						<c:if test="${list.get(37).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N14</div>
 						</c:if>	
 						<c:if test="${list.get(38).close==0}">	
-							<div class="nomal tablename" onclick="tableName(38)">N15</div>
+							<div class="nomal tablename" onclick="tableName(26)">N15</div>
 						</c:if>	
 						<c:if test="${list.get(38).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N15</div>
 						</c:if>	
 						<c:if test="${list.get(39).close==0}">	
-							<div class="nomal tablename" onclick="tableName(39)">N16</div>
+							<div class="nomal tablename" onclick="tableName(27)">N16</div>
 						</c:if>	
 						<c:if test="${list.get(39).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N16</div>
 						</c:if>	
 						<c:if test="${list.get(40).close==0}">	
-							<div class="nomal tablename" onclick="tableName(40)">N17</div>
+							<div class="nomal tablename" onclick="tableName(28)">N17</div>
 						</c:if>	
 						<c:if test="${list.get(40).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N17</div>
 						</c:if>	
 						<c:if test="${list.get(41).close==0}">	
-							<div class="nomal tablename" onclick="tableName(41)">N18</div>
+							<div class="nomal tablename" onclick="tableName(29)">N18</div>
 						</c:if>	
 						<c:if test="${list.get(41).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N18</div>
 						</c:if>	
 						<c:if test="${list.get(42).close==0}">	
-							<div class="nomal tablename" onclick="tableName(42)">N19</div>
+							<div class="nomal tablename" onclick="tableName(30)">N19</div>
 						</c:if>	
 						<c:if test="${list.get(42).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N19</div>
 						</c:if>	
 						<c:if test="${list.get(43).close==0}">	
-							<div class="nomal tablename" onclick="tableName(43)">N20</div>
+							<div class="nomal tablename" onclick="tableName(31)">N20</div>
 						</c:if>	
 						<c:if test="${list.get(43).close==1}">	
 							<div class="nomal tablename" style="background:#ddd;color:white;cursor:default;" disabled>N20</div>
@@ -602,73 +602,73 @@
 					<div class="pc_cc">
 						<div class="pc_line_three_cc">
 						<c:if test="${list.get(12).close==0}">
-							<div class="pc tablename" onclick="tableName(12)">pc13</div>
+							<div class="pc tablename" onclick="tableName(32)">pc13</div>
 						</c:if>		
 						<c:if test="${list.get(12).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc13</div>
 						</c:if>		
 						<c:if test="${list.get(13).close==0}">	
-							<div class="pc tablename" onclick="tableName(13)">pc14</div>
+							<div class="pc tablename" onclick="tableName(33)">pc14</div>
 						</c:if>		
 						<c:if test="${list.get(13).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc14</div>
 						</c:if>		
 						<c:if test="${list.get(14).close==0}">	
-							<div class="pc tablename" onclick="tableName(14)">pc15</div>
+							<div class="pc tablename" onclick="tableName(34)">pc15</div>
 						</c:if>		
 						<c:if test="${list.get(14).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc15</div>
 						</c:if>		
 						<c:if test="${list.get(15).close==0}">	
-							<div class="pc tablename" onclick="tableName(15)">pc16</div>
+							<div class="pc tablename" onclick="tableName(35)">pc16</div>
 						</c:if>		
 						<c:if test="${list.get(15).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc16</div>
 						</c:if>	
 						<c:if test="${list.get(16).close==0}">	
-							<div class="pc tablename" onclick="tableName(16)">pc17</div>
+							<div class="pc tablename" onclick="tableName(36)">pc17</div>
 						</c:if>	
 						<c:if test="${list.get(16).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc17</div>
 						</c:if>	
 						<c:if test="${list.get(17).close==0}">	
-							<div class="pc tablename" onclick="tableName(17)">pc18</div>
+							<div class="pc tablename" onclick="tableName(37)">pc18</div>
 						</c:if>	
 						<c:if test="${list.get(17).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc18</div>
 						</c:if>	
 						<c:if test="${list.get(18).close==0}">	
-							<div class="pc tablename" onclick="tableName(18)">pc19</div>
+							<div class="pc tablename" onclick="tableName(38)">pc19</div>
 						</c:if>	
 						<c:if test="${list.get(18).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc19</div>
 						</c:if>	
 						<c:if test="${list.get(19).close==0}">	
-							<div class="pc tablename" onclick="tableName(19)">pc20</div>
+							<div class="pc tablename" onclick="tableName(39)">pc20</div>
 						</c:if>	
 						<c:if test="${list.get(19).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc20</div>
 						</c:if>	
 						<c:if test="${list.get(20).close==0}">	
-							<div class="pc tablename" onclick="tableName(20)">pc21</div>
+							<div class="pc tablename" onclick="tableName(40)">pc21</div>
 						</c:if>	
 						<c:if test="${list.get(20).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc21</div>
 						</c:if>	
 						<c:if test="${list.get(21).close==0}">	
-							<div class="pc tablename" onclick="tableName(21)">pc22</div>
+							<div class="pc tablename" onclick="tableName(41)">pc22</div>
 						</c:if>	
 						<c:if test="${list.get(21).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc22</div>
 						</c:if>	
 						<c:if test="${list.get(22).close==0}">	
-							<div class="pc tablename" onclick="tableName(22)">pc23</div>
+							<div class="pc tablename" onclick="tableName(42)">pc23</div>
 						</c:if>	
 						<c:if test="${list.get(22).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc23</div>
 						</c:if>	
 						<c:if test="${list.get(23).close==0}">	
-							<div class="pc tablename" onclick="tableName(23)">pc24</div>
+							<div class="pc tablename" onclick="tableName(43)">pc24</div>
 						</c:if>	
 						<c:if test="${list.get(23).close==1}">	
 							<div class="pc tablename" style="background:#ddd;color:white;cursor:default;" disabled>pc24</div>
